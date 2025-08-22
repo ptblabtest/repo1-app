@@ -6,6 +6,7 @@ import {
   applyStageCreate,
   applyStageUpdate,
 } from "../../shared/utils/stageGenerator";
+const { PrismaClient, Prisma } = require('@generated/prisma');
 
 export const serviceFactory = (model: string, options: any = {}) => {
   const service: any = {};
@@ -150,10 +151,22 @@ export const serviceFactory = (model: string, options: any = {}) => {
         JSON.stringify(validatedData, null, 2)
       );
 
-      const record = await prisma[model].update({
-        where: { id },
-        data: validatedData,
-      });
+      
+const modelFields = Prisma.dmmf.datamodel.models
+  .find(m => m.name.toLowerCase() === model.toLowerCase())
+  ?.fields.map(f => f.name) || [];
+
+const cleanData = modelFields.reduce((acc, field) => {
+  if (field in validatedData) {
+    acc[field] = validatedData[field];
+  }
+  return acc;
+}, {} as any);
+
+const record = await prisma[model].update({
+  where: { id },
+  data: cleanData,
+});
 
       if (options.afterUpdate) {
         await options.afterUpdate(record);

@@ -959,3 +959,1251 @@ Unknown argument `data`. Did you mean `name`? Available options are marked with 
 2025-08-22 06:04:43 [INFO]: Server is running in development mode on port 8000
 2025-08-22 07:39:57 [INFO]: Received SIGINT. Cleaning up...
 2025-08-22 07:39:57 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 08:01:05 [INFO]: Checking database connection...
+2025-08-22 08:01:05 [INFO]: Database connection successful.
+2025-08-22 08:01:05 [INFO]: Running scheduler at app startup...
+2025-08-22 08:01:05 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:01:50 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "test",
+          amount: 12121342424,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "sadasdas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 121212,
+                amount: 121212
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:02:49 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12133463636,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 12121212
+              },
+              {
+                categoryId: "c17257fc-3205-4a4d-b2b1-5606e50d4d3a",
+                description: "dsadsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 121212,
+                amount: 121212
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:03:34 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          assigneeId: "",
+          amount: 12268142277,
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: undefined,
+                description: "dsadasdas",
+                quantity: 1,
+                timeUnit: undefined,
+                unitPrice: 12121,
+                amount: 12121
+              },
+              {
+                categoryId: undefined,
+                description: "dsadsadsa",
+                quantity: 1212,
+                timeUnit: undefined,
+                unitPrice: 121212,
+                amount: 146908944
+              },
+              {
+                categoryId: undefined,
+                description: undefined,
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          }
+        }
+      })
+
+Argument `description` is missing.
+2025-08-22 08:04:24 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "dsadasd",
+          amount: 12122554545,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "sdadsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 1212121,
+                amount: 1212121
+              },
+              {
+                categoryId: "c17257fc-3205-4a4d-b2b1-5606e50d4d3a",
+                description: "dsadasdassaddas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 121212,
+                amount: 121212
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:05:04 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          assigneeId: "",
+          amount: 12122445454,
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: undefined,
+                description: "dsadasd",
+                quantity: 1,
+                timeUnit: undefined,
+                unitPrice: 1212121,
+                amount: 1212121
+              },
+              {
+                categoryId: undefined,
+                description: "121dsadsad",
+                quantity: 1,
+                timeUnit: undefined,
+                unitPrice: 12121,
+                amount: 12121
+              },
+              {
+                categoryId: undefined,
+                description: undefined,
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          }
+        }
+      })
+
+Argument `description` is missing.
+2025-08-22 08:08:31 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          assigneeId: "",
+          amount: 12133807097,
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: undefined,
+                description: "sadasd",
+                quantity: 1,
+                timeUnit: undefined,
+                unitPrice: 12121221,
+                amount: 12121221
+              },
+              {
+                categoryId: undefined,
+                description: "ssadsadas",
+                quantity: 2,
+                timeUnit: undefined,
+                unitPrice: 232332,
+                amount: 464664
+              },
+              {
+                categoryId: undefined,
+                description: undefined,
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          }
+        }
+      })
+
+Argument `description` is missing.
+2025-08-22 08:08:55 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12122433333,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 1212121,
+                amount: 1212121
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:13:29 [INFO]: Checking database connection...
+2025-08-22 08:13:29 [INFO]: Database connection successful.
+2025-08-22 08:13:29 [INFO]: Running scheduler at app startup...
+2025-08-22 08:13:29 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:13:36 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12267887853,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "DSADASDASD",
+                quantity: 121,
+                timeUnit: 1,
+                unitPrice: 1212121,
+                amount: 146666641
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:13:56 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          assigneeId: "",
+          amount: 12267899974,
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: undefined,
+                description: "dsadasdasd",
+                quantity: 1,
+                timeUnit: undefined,
+                unitPrice: 12121,
+                amount: 12121
+              },
+              {
+                categoryId: undefined,
+                description: "dsadasd",
+                quantity: 1212121,
+                timeUnit: undefined,
+                unitPrice: 121,
+                amount: 146666641
+              },
+              {
+                categoryId: undefined,
+                description: undefined,
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          }
+        }
+      })
+
+Argument `description` is missing.
+2025-08-22 08:14:28 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12133342424,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dsadsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 12121212
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:15:06 [INFO]: Checking database connection...
+2025-08-22 08:15:06 [INFO]: Database connection successful.
+2025-08-22 08:15:06 [INFO]: Running scheduler at app startup...
+2025-08-22 08:15:06 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:15:10 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12133342424,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dsadsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 12121212
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:15:25 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12121434545,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 1212,
+                amount: 1212
+              },
+              {
+                categoryId: "c17257fc-3205-4a4d-b2b1-5606e50d4d3a",
+                description: "ddsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 212121,
+                amount: 212121
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:15:39 [INFO]: Checking database connection...
+2025-08-22 08:15:39 [INFO]: Database connection successful.
+2025-08-22 08:15:39 [INFO]: Running scheduler at app startup...
+2025-08-22 08:15:39 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:15:54 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "dsadasd",
+          amount: 12121343333,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 122121,
+                amount: 122121
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:15:59 [INFO]: Checking database connection...
+2025-08-22 08:15:59 [INFO]: Database connection successful.
+2025-08-22 08:15:59 [INFO]: Running scheduler at app startup...
+2025-08-22 08:15:59 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:16:11 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: null,
+          amount: 12121463636,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dsadasd",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 121212,
+                amount: 121212
+              },
+              {
+                categoryId: "c17257fc-3205-4a4d-b2b1-5606e50d4d3a",
+                description: "dsadsadasddsad",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 121212,
+                amount: 121212
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:16:52 [INFO]: Checking database connection...
+2025-08-22 08:16:52 [INFO]: Database connection successful.
+2025-08-22 08:16:52 [INFO]: Running scheduler at app startup...
+2025-08-22 08:16:52 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:16:56 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectSchema: Cannot find package '@generated/zod' imported from /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/zodSchemas.ts
+2025-08-22 08:17:49 [INFO]: Checking database connection...
+2025-08-22 08:17:49 [INFO]: Database connection successful.
+2025-08-22 08:17:49 [INFO]: Running scheduler at app startup...
+2025-08-22 08:17:49 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:17:59 [ERROR]: Unhandled Rejection: Failed to load schema BudgetCreateInputObjectSchema: Cannot find package '@generated/zod' imported from /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/zodSchemas.ts
+2025-08-22 08:18:08 [INFO]: Checking database connection...
+2025-08-22 08:18:08 [INFO]: Database connection successful.
+2025-08-22 08:18:08 [INFO]: Running scheduler at app startup...
+2025-08-22 08:18:08 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:21:54 [INFO]: Checking database connection...
+2025-08-22 08:21:54 [INFO]: Database connection successful.
+2025-08-22 08:21:54 [INFO]: Running scheduler at app startup...
+2025-08-22 08:21:54 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:22:06 [INFO]: Checking database connection...
+2025-08-22 08:22:06 [INFO]: Database connection successful.
+2025-08-22 08:22:06 [INFO]: Running scheduler at app startup...
+2025-08-22 08:22:06 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:22:29 [INFO]: Checking database connection...
+2025-08-22 08:22:29 [INFO]: Database connection successful.
+2025-08-22 08:22:29 [INFO]: Running scheduler at app startup...
+2025-08-22 08:22:29 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:22:33 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "sadasdas",
+          amount: 12266675756,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdsa",
+                quantity: 12,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 145454544
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:22:54 [INFO]: Checking database connection...
+2025-08-22 08:22:54 [INFO]: Database connection successful.
+2025-08-22 08:22:54 [INFO]: Running scheduler at app startup...
+2025-08-22 08:22:54 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:22:57 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "sadasdas",
+          amount: 12266675756,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdsa",
+                quantity: 12,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 145454544
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:23:02 [INFO]: Checking database connection...
+2025-08-22 08:23:02 [INFO]: Database connection successful.
+2025-08-22 08:23:02 [INFO]: Running scheduler at app startup...
+2025-08-22 08:23:02 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:23:07 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "sadasdas",
+          amount: 12266675756,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdsa",
+                quantity: 12,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 145454544
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:23:40 [INFO]: Checking database connection...
+2025-08-22 08:23:40 [INFO]: Database connection successful.
+2025-08-22 08:23:40 [INFO]: Running scheduler at app startup...
+2025-08-22 08:23:40 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:23:47 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "sadasdas",
+          amount: 12266675756,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdsa",
+                quantity: 12,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 145454544
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:23:52 [INFO]: Checking database connection...
+2025-08-22 08:23:52 [INFO]: Database connection successful.
+2025-08-22 08:23:52 [INFO]: Running scheduler at app startup...
+2025-08-22 08:23:52 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:23:57 [INFO]: Checking database connection...
+2025-08-22 08:23:57 [INFO]: Database connection successful.
+2025-08-22 08:23:57 [INFO]: Running scheduler at app startup...
+2025-08-22 08:23:57 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:23:59 [ERROR]: Unhandled Rejection: Failed to load schema BudgetCreateInputObjectSchema: Cannot find module '@generated/zod/schemas/BudgetCreateInputObjectSchema.ts'
+Require stack:
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/zodSchemas.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/modules/_permissions/UserPermission/UserPermissionService.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/modules/_permissions/UserPermission/UserPermissionRoutes.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/routes/sharedRoutes.ts
+- /Users/ryans-mac/_projects/repo1-app/apps/client1/backend/src/app.ts
+2025-08-22 08:26:05 [INFO]: Checking database connection...
+2025-08-22 08:26:05 [INFO]: Database connection successful.
+2025-08-22 08:26:05 [INFO]: Running scheduler at app startup...
+2025-08-22 08:26:05 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:26:15 [ERROR]: Unhandled Rejection: Failed to load schema BudgetCreateInputObjectSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:27:08 [INFO]: Checking database connection...
+2025-08-22 08:27:08 [INFO]: Database connection successful.
+2025-08-22 08:27:08 [INFO]: Running scheduler at app startup...
+2025-08-22 08:27:08 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:27:12 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:28:20 [INFO]: Checking database connection...
+2025-08-22 08:28:20 [INFO]: Database connection successful.
+2025-08-22 08:28:20 [INFO]: Running scheduler at app startup...
+2025-08-22 08:28:20 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:28:25 [INFO]: Checking database connection...
+2025-08-22 08:28:25 [INFO]: Database connection successful.
+2025-08-22 08:28:25 [INFO]: Running scheduler at app startup...
+2025-08-22 08:28:25 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:28:28 [INFO]: Checking database connection...
+2025-08-22 08:28:29 [INFO]: Database connection successful.
+2025-08-22 08:28:29 [INFO]: Running scheduler at app startup...
+2025-08-22 08:28:29 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:28:43 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:29:36 [INFO]: Checking database connection...
+2025-08-22 08:29:36 [INFO]: Database connection successful.
+2025-08-22 08:29:36 [INFO]: Running scheduler at app startup...
+2025-08-22 08:29:36 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:29:43 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:30:29 [INFO]: Checking database connection...
+2025-08-22 08:30:29 [INFO]: Database connection successful.
+2025-08-22 08:30:29 [INFO]: Running scheduler at app startup...
+2025-08-22 08:30:29 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:30:44 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:31:47 [INFO]: Checking database connection...
+2025-08-22 08:31:48 [INFO]: Database connection successful.
+2025-08-22 08:31:48 [INFO]: Running scheduler at app startup...
+2025-08-22 08:31:48 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:31:52 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot find package '@generated/zod' imported from /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/zodSchemas.ts
+2025-08-22 08:32:10 [INFO]: Checking database connection...
+2025-08-22 08:32:10 [INFO]: Database connection successful.
+2025-08-22 08:32:10 [INFO]: Running scheduler at app startup...
+2025-08-22 08:32:10 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:32:23 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot find module '@generated/zod/schema'
+Require stack:
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/zodSchemas.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/modules/_permissions/UserPermission/UserPermissionService.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/modules/_permissions/UserPermission/UserPermissionRoutes.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/routes/sharedRoutes.ts
+- /Users/ryans-mac/_projects/repo1-app/apps/client1/backend/src/app.ts
+2025-08-22 08:33:21 [INFO]: Checking database connection...
+2025-08-22 08:33:21 [INFO]: Database connection successful.
+2025-08-22 08:33:21 [INFO]: Running scheduler at app startup...
+2025-08-22 08:33:21 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:33:34 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:34:33 [INFO]: Checking database connection...
+2025-08-22 08:34:33 [INFO]: Database connection successful.
+2025-08-22 08:34:33 [INFO]: Running scheduler at app startup...
+2025-08-22 08:34:33 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:34:43 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot find module '@generated/zod/schema'
+Require stack:
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/zodSchemas.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/modules/_permissions/UserPermission/UserPermissionService.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/modules/_permissions/UserPermission/UserPermissionRoutes.ts
+- /Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/routes/sharedRoutes.ts
+- /Users/ryans-mac/_projects/repo1-app/apps/client1/backend/src/app.ts
+2025-08-22 08:35:28 [INFO]: Checking database connection...
+2025-08-22 08:35:28 [INFO]: Database connection successful.
+2025-08-22 08:35:28 [INFO]: Running scheduler at app startup...
+2025-08-22 08:35:28 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:35:30 [INFO]: Checking database connection...
+2025-08-22 08:35:30 [INFO]: Database connection successful.
+2025-08-22 08:35:30 [INFO]: Running scheduler at app startup...
+2025-08-22 08:35:30 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:35:34 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:37:42 [INFO]: Checking database connection...
+2025-08-22 08:37:42 [INFO]: Database connection successful.
+2025-08-22 08:37:42 [INFO]: Running scheduler at app startup...
+2025-08-22 08:37:42 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:38:07 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:38:12 [INFO]: Checking database connection...
+2025-08-22 08:38:12 [INFO]: Database connection successful.
+2025-08-22 08:38:12 [INFO]: Running scheduler at app startup...
+2025-08-22 08:38:12 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:38:27 [ERROR]: Unhandled Rejection: Failed to load schema BudgetUpdateInputObjectZodSchema: Cannot read properties of undefined (reading 'datetime')
+2025-08-22 08:39:17 [INFO]: Checking database connection...
+2025-08-22 08:39:17 [INFO]: Database connection successful.
+2025-08-22 08:39:17 [INFO]: Running scheduler at app startup...
+2025-08-22 08:39:17 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:39:25 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509"
+        },
+        data: {
+          id: "44ec25d1-3412-4e70-a2b7-b66c67c4f509",
+          regNumber: "BUD-25-08-01",
+          description: "sadasdas",
+          amount: 12266675756,
+          approvedDate: null,
+          revision: null,
+          assigneeId: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~
+          createdAt: "2025-08-22T00:19:41.761Z",
+          updatedAt: "2025-08-22T00:19:41.761Z",
+          stageName: "Draft",
+          createdByName: "user1",
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          items: {
+            deleteMany: {},
+            create: [
+              {
+                categoryId: "5152fb70-ffc6-4d1e-bbd8-1a2bc165aef7",
+                description: "dasdasdsa",
+                quantity: 12,
+                timeUnit: 1,
+                unitPrice: 12121212,
+                amount: 145454544
+              },
+              {
+                categoryId: "637eb7af-2c93-42c7-86c2-d23e2c781536",
+                description: "dsadasdasdsadas",
+                quantity: 1,
+                timeUnit: 1,
+                unitPrice: 12121221212,
+                amount: 12121221212
+              }
+            ]
+          },
+      ?   task?: TaskUpdateOneWithoutBudgetsNestedInput,
+      ?   assignee?: UserUpdateOneWithoutBudgetAssigneeNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorBudgetNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterBudgetNestedInput,
+      ?   notes?: NoteUpdateManyWithoutBudgetNestedInput,
+      ?   stages?: StageUpdateManyWithoutBudgetNestedInput
+        }
+      })
+
+Unknown argument `assigneeId`. Did you mean `assignee`? Available options are marked with ?.
+2025-08-22 08:41:04 [INFO]: Checking database connection...
+2025-08-22 08:41:04 [INFO]: Database connection successful.
+2025-08-22 08:41:04 [INFO]: Running scheduler at app startup...
+2025-08-22 08:41:04 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:42:26 [INFO]: Checking database connection...
+2025-08-22 08:42:26 [INFO]: Database connection successful.
+2025-08-22 08:42:26 [INFO]: Running scheduler at app startup...
+2025-08-22 08:42:26 [INFO]: Server is running in development mode on port 8000
+2025-08-22 08:46:51 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:166:36
+
+  163   return acc;
+  164 }, {} as any);
+  165 
+→ 166 const record = await prisma[model].update(
+An operation failed because it depends on one or more records that were required but not found. No 'Fund' record (needed to inline the relation on 'FundItem' record(s)) was found for a nested create on one-to-many relation 'FundToFundItem'.
+2025-08-22 10:13:24 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 10:13:24 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 10:13:24 [INFO]: Prisma disconnected. Exiting process.
