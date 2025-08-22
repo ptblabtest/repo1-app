@@ -1,0 +1,24 @@
+import { z } from 'zod';
+import type { Prisma } from '../../../prisma';
+import { SortOrderSchema } from '../enums/SortOrder.schema'
+
+export const FileMaxOrderByAggregateInputObjectSchema: z.ZodType<Prisma.FileMaxOrderByAggregateInput, Prisma.FileMaxOrderByAggregateInput> = z.object({
+  id: SortOrderSchema.optional(),
+  filename: SortOrderSchema.optional(),
+  path: SortOrderSchema.optional(),
+  mimeType: SortOrderSchema.optional(),
+  size: SortOrderSchema.optional(),
+  createdAt: SortOrderSchema.optional(),
+  updatedAt: SortOrderSchema.optional(),
+  reportId: SortOrderSchema.optional()
+}).strict();
+export const FileMaxOrderByAggregateInputObjectZodSchema = z.object({
+  id: SortOrderSchema.optional(),
+  filename: SortOrderSchema.optional(),
+  path: SortOrderSchema.optional(),
+  mimeType: SortOrderSchema.optional(),
+  size: SortOrderSchema.optional(),
+  createdAt: SortOrderSchema.optional(),
+  updatedAt: SortOrderSchema.optional(),
+  reportId: SortOrderSchema.optional()
+}).strict();

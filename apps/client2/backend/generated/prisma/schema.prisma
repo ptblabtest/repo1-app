@@ -1,0 +1,298 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+
+  generatedFileExtension = "ts"
+  importFileExtension    = "ts"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "../generated/zod"
+
+  isGenerateSelect  = true
+  isGenerateInclude = true
+}
+
+model ReportCategory {
+  id   String @id @default(uuid())
+  name String @unique
+  code String @unique
+
+  parent   ReportCategory? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  parentId String?
+
+  children ReportCategory[] @relation("CategoryHierarchy")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  reports Report[]
+}
+
+model Report {
+  id         String         @id @default(uuid())
+  category   ReportCategory @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  periodYear  String
+  periodMonth String
+  periodDate  String?
+
+  version Int @default(1)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+
+  notes  Note[]
+  stages Stage[]
+  files  File[]
+}
+
+model File {
+  id       String  @id @default(uuid())
+  filename String
+  path     String
+  mimeType String?
+  size     Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  report   Report? @relation(fields: [reportId], references: [id])
+  reportId String?
+}
+
+model Note {
+  id          String  @id @default(uuid())
+  description String?
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  report   Report? @relation(fields: [reportId], references: [id])
+  reportId String?
+}
+
+model Stage {
+  id          String  @id @default(uuid())
+  stageTypeId String
+  comment     String?
+
+  createdById String?
+  updatedById String?
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  type StageType @relation(fields: [stageTypeId], references: [id])
+
+  createdBy User? @relation("CreatedBy", fields: [createdById], references: [id])
+  updatedBy User? @relation("UpdatedBy", fields: [updatedById], references: [id])
+
+  report   Report? @relation(fields: [reportId], references: [id])
+  reportId String?
+}
+
+model StageType {
+  id    String @id @default(uuid())
+  model String
+  order Int
+  value String
+  label String
+
+  stages Stage[]
+}
+
+// user
+model User {
+  id       String     @id @default(uuid())
+  username String     @unique
+  password String
+  status   UserStatus @default(ACTIVE)
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  department     Department?   @relation(fields: [departmentId], references: [id])
+  departmentId   String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+  role           Role?         @relation(fields: [roleId], references: [id])
+  roleId         String?
+
+  permissions UserPermission[]
+
+  profile Profile?
+
+  CreatorNote Note[] @relation("CreatedBy")
+  UpdaterNote Note[] @relation("UpdatedBy")
+
+  CreatorStage Stage[] @relation("CreatedBy")
+  UpdaterStage Stage[] @relation("UpdatedBy")
+
+  // Report model
+  CreatorReport Report[] @relation("CreatedBy")
+  UpdaterReport Report[] @relation("UpdatedBy")
+
+  // ReportCategory model  
+  CreatorReportCategory ReportCategory[] @relation("CreatedBy")
+  UpdaterReportCategory ReportCategory[] @relation("UpdatedBy")
+
+  CreatorDepartment Department[] @relation("CreatedBy")
+  UpdaterDepartment Department[] @relation("UpdatedBy")
+
+  CreatorPermission Permission[] @relation("CreatedBy")
+  UpdaterPermission Permission[] @relation("UpdatedBy")
+
+  CreatorDepartmentPermission DepartmentPermission[] @relation("CreatedBy")
+  UpdaterDepartmentPermission DepartmentPermission[] @relation("UpdatedBy")
+
+  CreatorUserPermission UserPermission[] @relation("CreatedBy")
+  UpdaterUserPermission UserPermission[] @relation("UpdatedBy")
+
+  CreatorProfile Profile[] @relation("CreatedBy")
+  UpdaterProfile Profile[] @relation("UpdatedBy")
+}
+
+model Organization {
+  id   String @id @default(uuid())
+  name String @unique
+  code String @unique
+
+  users  User[]
+  Report Report[]
+}
+
+model Role {
+  id    String @id @default(uuid())
+  name  String @unique
+  level Int
+
+  users User[]
+}
+
+model Department {
+  id   String @id @default(uuid())
+  name String @unique
+  code String @unique
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  users       User[]
+  permissions DepartmentPermission[]
+}
+
+model Permission {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  resource    String
+  action      String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  dept  DepartmentPermission[]
+  users UserPermission[]
+
+  @@unique([resource, action])
+  @@index([resource])
+}
+
+model DepartmentPermission {
+  id           String   @id @default(uuid())
+  departmentId String
+  permissionId String
+  createdAt    DateTime @default(now())
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([departmentId, permissionId])
+  @@index([departmentId])
+}
+
+model UserPermission {
+  id           String     @id @default(uuid())
+  userId       String
+  permissionId String
+  createdAt    DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  @@index([userId])
+}
+
+model Profile {
+  id         String    @id @default(uuid())
+  name       String?
+  department String?
+  position   String?
+  joinDate   DateTime?
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+model Session {
+  sid    String   @id(map: "session_pkey") @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}

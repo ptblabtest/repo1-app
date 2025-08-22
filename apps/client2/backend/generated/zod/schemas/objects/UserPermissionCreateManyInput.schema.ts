@@ -1,0 +1,20 @@
+import { z } from 'zod';
+import type { Prisma } from '../../../prisma';
+
+
+export const UserPermissionCreateManyInputObjectSchema: z.ZodType<Prisma.UserPermissionCreateManyInput, Prisma.UserPermissionCreateManyInput> = z.object({
+  id: z.string().optional(),
+  userId: z.string(),
+  permissionId: z.string(),
+  createdAt: z.date().optional(),
+  createdById: z.string().nullish(),
+  updatedById: z.string().nullish()
+}).strict();
+export const UserPermissionCreateManyInputObjectZodSchema = z.object({
+  id: z.string().optional(),
+  userId: z.string(),
+  permissionId: z.string(),
+  createdAt: z.date().optional(),
+  createdById: z.string().nullish(),
+  updatedById: z.string().nullish()
+}).strict();

@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "public"."Report" ALTER COLUMN "periodYear" SET DATA TYPE TEXT,
+ALTER COLUMN "periodMonth" SET DATA TYPE TEXT,
+ALTER COLUMN "periodDate" SET DATA TYPE TEXT;

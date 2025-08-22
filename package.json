@@ -6,9 +6,16 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "turbo run check-types",
+    "client1:dev": "turbo run dev --filter=client1-backend --filter=client1-frontend",
+    "client2:dev": "turbo run dev --filter=client2-backend --filter=client2-frontend",
+    "client1:migrate": "cd apps/client1/backend && npx prisma migrate dev",
+    "client2:migrate": "cd apps/client2/backend && npx prisma migrate dev",
+    "client2:reset": "cd apps/client2/backend && npx prisma migrate reset",
+    "client2:seed": "cd apps/client2/backend && npx prisma db seed"
   },
   "devDependencies": {
+    "@types/node": "^20",
     "prettier": "^3.6.2",
     "turbo": "^2.5.6",
     "typescript": "5.9.2"
@@ -18,7 +25,7 @@
   },
   "packageManager": "npm@11.2.0",
   "workspaces": [
-    "apps/*",
+    "apps/*/*",
     "packages/*"
   ]
 }

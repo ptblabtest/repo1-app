@@ -1,0 +1,45 @@
+import { z } from 'zod';
+export const UserFindManyResultSchema = z.object({
+  data: z.array(z.object({
+  id: z.string(),
+  username: z.string(),
+  password: z.string(),
+  status: z.unknown(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+  department: z.unknown().optional(),
+  departmentId: z.string().optional(),
+  organization: z.unknown().optional(),
+  organizationId: z.string().optional(),
+  role: z.unknown().optional(),
+  roleId: z.string().optional(),
+  permissions: z.array(z.unknown()),
+  profile: z.unknown().optional(),
+  CreatorNote: z.array(z.unknown()),
+  UpdaterNote: z.array(z.unknown()),
+  CreatorStage: z.array(z.unknown()),
+  UpdaterStage: z.array(z.unknown()),
+  CreatorReport: z.array(z.unknown()),
+  UpdaterReport: z.array(z.unknown()),
+  CreatorReportCategory: z.array(z.unknown()),
+  UpdaterReportCategory: z.array(z.unknown()),
+  CreatorDepartment: z.array(z.unknown()),
+  UpdaterDepartment: z.array(z.unknown()),
+  CreatorPermission: z.array(z.unknown()),
+  UpdaterPermission: z.array(z.unknown()),
+  CreatorDepartmentPermission: z.array(z.unknown()),
+  UpdaterDepartmentPermission: z.array(z.unknown()),
+  CreatorUserPermission: z.array(z.unknown()),
+  UpdaterUserPermission: z.array(z.unknown()),
+  CreatorProfile: z.array(z.unknown()),
+  UpdaterProfile: z.array(z.unknown())
+})),
+  pagination: z.object({
+  page: z.number().int().min(1),
+  pageSize: z.number().int().min(1),
+  total: z.number().int().min(0),
+  totalPages: z.number().int().min(0),
+  hasNext: z.boolean(),
+  hasPrev: z.boolean()
+})
+});

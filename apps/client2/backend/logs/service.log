@@ -1,0 +1,1086 @@
+2025-08-20 17:55:07 [INFO]: Checking database connection...
+2025-08-20 17:55:07 [INFO]: Database connection successful.
+2025-08-20 17:55:07 [INFO]: Running scheduler at app startup...
+2025-08-20 17:55:07 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:02:58 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:02:58 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:07:18 [INFO]: Checking database connection...
+2025-08-20 18:07:18 [INFO]: Database connection successful.
+2025-08-20 18:07:18 [INFO]: Running scheduler at app startup...
+2025-08-20 18:07:18 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:07:47 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:07:47 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:08:50 [INFO]: Checking database connection...
+2025-08-20 18:08:50 [INFO]: Database connection successful.
+2025-08-20 18:08:50 [INFO]: Running scheduler at app startup...
+2025-08-20 18:08:50 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:15:05 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:15:05 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:15:09 [INFO]: Checking database connection...
+2025-08-20 18:15:09 [INFO]: Database connection successful.
+2025-08-20 18:15:09 [INFO]: Running scheduler at app startup...
+2025-08-20 18:15:09 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:15:17 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:15:17 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:15:17 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:19:46 [INFO]: Checking database connection...
+2025-08-20 18:19:47 [INFO]: Database connection successful.
+2025-08-20 18:19:47 [INFO]: Running scheduler at app startup...
+2025-08-20 18:19:47 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:25:25 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:25:25 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:25:27 [INFO]: Checking database connection...
+2025-08-20 18:25:27 [INFO]: Database connection successful.
+2025-08-20 18:25:27 [INFO]: Running scheduler at app startup...
+2025-08-20 18:25:27 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:26:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:26:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:26:43 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:26:46 [INFO]: Checking database connection...
+2025-08-20 18:26:46 [INFO]: Database connection successful.
+2025-08-20 18:26:46 [INFO]: Running scheduler at app startup...
+2025-08-20 18:26:46 [INFO]: Server is running in development mode on port 8000
+2025-08-21 06:10:55 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 06:10:55 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 06:10:55 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 07:07:37 [INFO]: Checking database connection...
+2025-08-21 07:07:37 [INFO]: Database connection successful.
+2025-08-21 07:07:37 [INFO]: Running scheduler at app startup...
+2025-08-21 07:07:37 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:09:37 [ERROR]: Unhandled error: PrismaClientValidationError: 
+Invalid `prisma.user.findUnique()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/auth/passport.ts:13:40
+
+  10 { usernameField: "username" },
+  11 async (username: string, password: string, done) => {
+  12   try {
+→ 13     const user = await prisma.user.findUnique({
+           where: {
+             username: "superadmin"
+           },
+           select: {
+             id: true,
+             name: true,
+             ~~~~
+             password: true,
+             status: true,
+         ?   username?: true,
+         ?   createdAt?: true,
+         ?   updatedAt?: true,
+         ?   divisionId?: true,
+         ?   organizationId?: true,
+         ?   roleId?: true,
+         ?   division?: true,
+         ?   organization?: true,
+         ?   role?: true,
+         ?   permissions?: true,
+         ?   profile?: true,
+         ?   CreatorNote?: true,
+         ?   UpdaterNote?: true,
+         ?   CreatorStage?: true,
+         ?   UpdaterStage?: true,
+         ?   CreatorReport?: true,
+         ?   UpdaterReport?: true,
+         ?   CreatorReportCategory?: true,
+         ?   UpdaterReportCategory?: true,
+         ?   _count?: true
+           }
+         })
+
+Unknown field `name` for select statement on model `User`. Available options are marked with ?.
+    at _n (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:32:1363)
+    at ei.handleRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6926)
+    at ei.handleAndLogRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6608)
+    at ei.request (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6315)
+    at async a (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:133:9551)
+    at async Strategy._verify (/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/auth/passport.ts:13:22)
+2025-08-21 07:10:06 [INFO]: Checking database connection...
+2025-08-21 07:10:06 [INFO]: Database connection successful.
+2025-08-21 07:10:06 [INFO]: Running scheduler at app startup...
+2025-08-21 07:10:06 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:10:08 [INFO]: Checking database connection...
+2025-08-21 07:10:08 [INFO]: Database connection successful.
+2025-08-21 07:10:08 [INFO]: Running scheduler at app startup...
+2025-08-21 07:10:08 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:10:21 [INFO]: Checking database connection...
+2025-08-21 07:10:21 [INFO]: Database connection successful.
+2025-08-21 07:10:21 [INFO]: Running scheduler at app startup...
+2025-08-21 07:10:21 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:32:36 [ERROR]: Unhandled error: PrismaClientValidationError: 
+Invalid `prisma.user.findUnique()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/auth/passport.ts:55:36
+
+  52 // Deserialize user from session
+  53 passport.deserializeUser(async (id: string, done) => {
+  54   try {
+→ 55     const user = await prisma.user.findUnique({
+           where: {
+             id: "3f80fa36-7ef6-469f-82c5-4c09286081be"
+           },
+           select: {
+             id: true,
+             username: true,
+             status: true,
+             organizationId: true,
+             roleId: true,
+             departmentId: true,
+             ~~~~~~~~~~~~
+         ?   password?: true,
+         ?   createdAt?: true,
+         ?   updatedAt?: true,
+         ?   divisionId?: true,
+         ?   division?: true,
+         ?   organization?: true,
+         ?   role?: true,
+         ?   permissions?: true,
+         ?   profile?: true,
+         ?   CreatorNote?: true,
+         ?   UpdaterNote?: true,
+         ?   CreatorStage?: true,
+         ?   UpdaterStage?: true,
+         ?   CreatorReport?: true,
+         ?   UpdaterReport?: true,
+         ?   CreatorReportCategory?: true,
+         ?   UpdaterReportCategory?: true,
+         ?   _count?: true
+           }
+         })
+
+Unknown field `departmentId` for select statement on model `User`. Available options are marked with ?.
+    at _n (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:32:1363)
+    at ei.handleRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6926)
+    at ei.handleAndLogRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6608)
+    at ei.request (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6315)
+    at async a (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:133:9551)
+    at async <anonymous> (/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/auth/passport.ts:55:18)
+2025-08-21 07:32:48 [ERROR]: Unhandled error: PrismaClientValidationError: 
+Invalid `prisma.user.findUnique()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/auth/passport.ts:55:36
+
+  52 // Deserialize user from session
+  53 passport.deserializeUser(async (id: string, done) => {
+  54   try {
+→ 55     const user = await prisma.user.findUnique({
+           where: {
+             id: "3f80fa36-7ef6-469f-82c5-4c09286081be"
+           },
+           select: {
+             id: true,
+             username: true,
+             status: true,
+             organizationId: true,
+             roleId: true,
+             departmentId: true,
+             ~~~~~~~~~~~~
+         ?   password?: true,
+         ?   createdAt?: true,
+         ?   updatedAt?: true,
+         ?   divisionId?: true,
+         ?   division?: true,
+         ?   organization?: true,
+         ?   role?: true,
+         ?   permissions?: true,
+         ?   profile?: true,
+         ?   CreatorNote?: true,
+         ?   UpdaterNote?: true,
+         ?   CreatorStage?: true,
+         ?   UpdaterStage?: true,
+         ?   CreatorReport?: true,
+         ?   UpdaterReport?: true,
+         ?   CreatorReportCategory?: true,
+         ?   UpdaterReportCategory?: true,
+         ?   _count?: true
+           }
+         })
+
+Unknown field `departmentId` for select statement on model `User`. Available options are marked with ?.
+    at _n (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:32:1363)
+    at ei.handleRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6926)
+    at ei.handleAndLogRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6608)
+    at ei.request (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6315)
+    at async a (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:133:9551)
+    at async <anonymous> (/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/auth/passport.ts:55:18)
+2025-08-21 07:34:15 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 07:34:15 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 07:34:15 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 07:35:16 [INFO]: Checking database connection...
+2025-08-21 07:35:16 [INFO]: Database connection successful.
+2025-08-21 07:35:16 [INFO]: Running scheduler at app startup...
+2025-08-21 07:35:16 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:36:14 [INFO]: Checking database connection...
+2025-08-21 07:36:14 [INFO]: Database connection successful.
+2025-08-21 07:36:14 [INFO]: Running scheduler at app startup...
+2025-08-21 07:36:14 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:40:56 [INFO]: Checking database connection...
+2025-08-21 07:40:56 [INFO]: Database connection successful.
+2025-08-21 07:40:56 [INFO]: Running scheduler at app startup...
+2025-08-21 07:40:56 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:43:56 [INFO]: Checking database connection...
+2025-08-21 07:43:56 [INFO]: Database connection successful.
+2025-08-21 07:43:56 [INFO]: Running scheduler at app startup...
+2025-08-21 07:43:56 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:43:57 [ERROR]: Unhandled error: Error: Invalid file type
+    at fileFilter (/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/config/multer.ts:47:8)
+    at wrappedFileFilter (/Users/ryans-mac/_projects/repo1-app/node_modules/multer/index.js:44:7)
+    at Multipart.<anonymous> (/Users/ryans-mac/_projects/repo1-app/node_modules/multer/lib/make-middleware.js:109:7)
+    at Multipart.emit (node:events:507:28)
+    at HeaderParser.cb (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:358:14)
+    at HeaderParser.push (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:394:37)
+    at feed (/Users/ryans-mac/_projects/repo1-app/node_modules/streamsearch/lib/sbmh.js:219:14)
+    at SBMH.push (/Users/ryans-mac/_projects/repo1-app/node_modules/streamsearch/lib/sbmh.js:104:16)
+    at Multipart._write (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:567:19)
+2025-08-21 07:44:52 [INFO]: Checking database connection...
+2025-08-21 07:44:52 [INFO]: Database connection successful.
+2025-08-21 07:44:52 [INFO]: Running scheduler at app startup...
+2025-08-21 07:44:52 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:44:54 [ERROR]: Unhandled Rejection: 
+Invalid `prisma.report.findFirst()` invocation in
+/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/src/modules/Report/ReportService.ts:158:48
+
+  155 },
+  156 beforeCreate: async (data: any, user: any, context: any) => {
+  157   // Check for duplicate report in same period
+→ 158   const existingReport = await prisma.report.findFirst({
+          where: {
+            categoryId: "c95973a5-c0c8-49f9-a9fc-289ffe7fa3d1",
+            periodYear: "2025",
+                        ~~~~~~
+            periodMonth: "1",
+            periodDate: "15",
+            organizationId: undefined
+          }
+        })
+
+Argument `periodYear`: Invalid value provided. Expected IntFilter or Int, provided String.
+2025-08-21 07:45:33 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 07:45:33 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 07:45:33 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 07:45:49 [INFO]: Checking database connection...
+2025-08-21 07:45:49 [INFO]: Database connection successful.
+2025-08-21 07:45:49 [INFO]: Running scheduler at app startup...
+2025-08-21 07:45:49 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:46:24 [INFO]: Checking database connection...
+2025-08-21 07:46:24 [INFO]: Database connection successful.
+2025-08-21 07:46:24 [INFO]: Running scheduler at app startup...
+2025-08-21 07:46:24 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:46:31 [INFO]: Checking database connection...
+2025-08-21 07:46:31 [INFO]: Database connection successful.
+2025-08-21 07:46:31 [INFO]: Running scheduler at app startup...
+2025-08-21 07:46:31 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:48:33 [INFO]: Checking database connection...
+2025-08-21 07:48:33 [INFO]: Database connection successful.
+2025-08-21 07:48:33 [INFO]: Running scheduler at app startup...
+2025-08-21 07:48:33 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:48:34 [INFO]: Checking database connection...
+2025-08-21 07:48:34 [INFO]: Database connection successful.
+2025-08-21 07:48:34 [INFO]: Running scheduler at app startup...
+2025-08-21 07:48:34 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:48:39 [INFO]: Checking database connection...
+2025-08-21 07:48:39 [INFO]: Database connection successful.
+2025-08-21 07:48:39 [INFO]: Running scheduler at app startup...
+2025-08-21 07:48:39 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:53:04 [INFO]: Checking database connection...
+2025-08-21 07:53:04 [INFO]: Database connection successful.
+2025-08-21 07:53:04 [INFO]: Running scheduler at app startup...
+2025-08-21 07:53:04 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:53:05 [INFO]: Checking database connection...
+2025-08-21 07:53:05 [INFO]: Database connection successful.
+2025-08-21 07:53:05 [INFO]: Running scheduler at app startup...
+2025-08-21 07:53:05 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:53:11 [INFO]: Checking database connection...
+2025-08-21 07:53:11 [INFO]: Database connection successful.
+2025-08-21 07:53:11 [INFO]: Running scheduler at app startup...
+2025-08-21 07:53:11 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:53:16 [INFO]: Checking database connection...
+2025-08-21 07:53:16 [INFO]: Database connection successful.
+2025-08-21 07:53:16 [INFO]: Running scheduler at app startup...
+2025-08-21 07:53:16 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:53:31 [INFO]: Checking database connection...
+2025-08-21 07:53:31 [INFO]: Database connection successful.
+2025-08-21 07:53:31 [INFO]: Running scheduler at app startup...
+2025-08-21 07:53:31 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:53:55 [INFO]: Checking database connection...
+2025-08-21 07:53:55 [INFO]: Database connection successful.
+2025-08-21 07:53:55 [INFO]: Running scheduler at app startup...
+2025-08-21 07:53:55 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:54:32 [INFO]: Checking database connection...
+2025-08-21 07:54:32 [INFO]: Database connection successful.
+2025-08-21 07:54:32 [INFO]: Running scheduler at app startup...
+2025-08-21 07:54:32 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:58:20 [INFO]: Checking database connection...
+2025-08-21 07:58:20 [INFO]: Database connection successful.
+2025-08-21 07:58:20 [INFO]: Running scheduler at app startup...
+2025-08-21 07:58:20 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:59:10 [INFO]: Checking database connection...
+2025-08-21 07:59:10 [INFO]: Database connection successful.
+2025-08-21 07:59:10 [INFO]: Running scheduler at app startup...
+2025-08-21 07:59:10 [INFO]: Server is running in development mode on port 8001
+2025-08-21 07:59:42 [INFO]: Checking database connection...
+2025-08-21 07:59:42 [INFO]: Database connection successful.
+2025-08-21 07:59:42 [INFO]: Running scheduler at app startup...
+2025-08-21 07:59:42 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:00:31 [INFO]: Checking database connection...
+2025-08-21 08:00:31 [INFO]: Database connection successful.
+2025-08-21 08:00:31 [INFO]: Running scheduler at app startup...
+2025-08-21 08:00:31 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:00:32 [INFO]: Checking database connection...
+2025-08-21 08:00:32 [INFO]: Database connection successful.
+2025-08-21 08:00:32 [INFO]: Running scheduler at app startup...
+2025-08-21 08:00:32 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:00:51 [INFO]: Checking database connection...
+2025-08-21 08:00:51 [INFO]: Database connection successful.
+2025-08-21 08:00:51 [INFO]: Running scheduler at app startup...
+2025-08-21 08:00:51 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:00:53 [INFO]: Checking database connection...
+2025-08-21 08:00:53 [INFO]: Database connection successful.
+2025-08-21 08:00:53 [INFO]: Running scheduler at app startup...
+2025-08-21 08:00:53 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:00:55 [INFO]: Checking database connection...
+2025-08-21 08:00:55 [INFO]: Database connection successful.
+2025-08-21 08:00:55 [INFO]: Running scheduler at app startup...
+2025-08-21 08:00:55 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:01:34 [INFO]: Checking database connection...
+2025-08-21 08:01:34 [INFO]: Database connection successful.
+2025-08-21 08:01:34 [INFO]: Running scheduler at app startup...
+2025-08-21 08:01:34 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:01:58 [INFO]: Checking database connection...
+2025-08-21 08:01:58 [INFO]: Database connection successful.
+2025-08-21 08:01:58 [INFO]: Running scheduler at app startup...
+2025-08-21 08:01:58 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:02:01 [INFO]: Checking database connection...
+2025-08-21 08:02:01 [INFO]: Database connection successful.
+2025-08-21 08:02:01 [INFO]: Running scheduler at app startup...
+2025-08-21 08:02:01 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:03:07 [INFO]: Checking database connection...
+2025-08-21 08:03:07 [INFO]: Database connection successful.
+2025-08-21 08:03:07 [INFO]: Running scheduler at app startup...
+2025-08-21 08:03:07 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:03:08 [ERROR]: Unhandled error: MulterError: Unexpected field
+    at wrappedFileFilter (/Users/ryans-mac/_projects/repo1-app/node_modules/multer/index.js:40:19)
+    at Multipart.<anonymous> (/Users/ryans-mac/_projects/repo1-app/node_modules/multer/lib/make-middleware.js:109:7)
+    at Multipart.emit (node:events:507:28)
+    at HeaderParser.cb (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:358:14)
+    at HeaderParser.push (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:394:37)
+    at feed (/Users/ryans-mac/_projects/repo1-app/node_modules/streamsearch/lib/sbmh.js:219:14)
+    at SBMH.push (/Users/ryans-mac/_projects/repo1-app/node_modules/streamsearch/lib/sbmh.js:104:16)
+    at Multipart._write (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+2025-08-21 08:03:10 [ERROR]: Unhandled error: MulterError: Unexpected field
+    at wrappedFileFilter (/Users/ryans-mac/_projects/repo1-app/node_modules/multer/index.js:40:19)
+    at Multipart.<anonymous> (/Users/ryans-mac/_projects/repo1-app/node_modules/multer/lib/make-middleware.js:109:7)
+    at Multipart.emit (node:events:507:28)
+    at HeaderParser.cb (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:358:14)
+    at HeaderParser.push (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:394:37)
+    at feed (/Users/ryans-mac/_projects/repo1-app/node_modules/streamsearch/lib/sbmh.js:200:10)
+    at SBMH.push (/Users/ryans-mac/_projects/repo1-app/node_modules/streamsearch/lib/sbmh.js:104:16)
+    at Multipart._write (/Users/ryans-mac/_projects/repo1-app/node_modules/busboy/lib/types/multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+2025-08-21 08:08:39 [INFO]: Checking database connection...
+2025-08-21 08:08:39 [INFO]: Database connection successful.
+2025-08-21 08:08:39 [INFO]: Running scheduler at app startup...
+2025-08-21 08:08:39 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:08:56 [INFO]: Checking database connection...
+2025-08-21 08:08:56 [INFO]: Database connection successful.
+2025-08-21 08:08:56 [INFO]: Running scheduler at app startup...
+2025-08-21 08:08:56 [INFO]: Server is running in development mode on port 8001
+2025-08-21 08:35:28 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 09:16:58 [INFO]: Checking database connection...
+2025-08-21 09:16:58 [INFO]: Database connection successful.
+2025-08-21 09:16:58 [INFO]: Running scheduler at app startup...
+2025-08-21 09:16:58 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:17:17 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Unique constraint failed on the fields: (`name`)
+2025-08-21 09:18:04 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Unique constraint failed on the fields: (`code`)
+2025-08-21 09:18:32 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Unique constraint failed on the fields: (`name`)
+2025-08-21 09:23:22 [INFO]: Checking database connection...
+2025-08-21 09:23:22 [INFO]: Database connection successful.
+2025-08-21 09:23:22 [INFO]: Running scheduler at app startup...
+2025-08-21 09:23:22 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:23:33 [INFO]: Checking database connection...
+2025-08-21 09:23:33 [INFO]: Database connection successful.
+2025-08-21 09:23:33 [INFO]: Running scheduler at app startup...
+2025-08-21 09:23:33 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:24:24 [INFO]: Checking database connection...
+2025-08-21 09:24:24 [INFO]: Database connection successful.
+2025-08-21 09:24:24 [INFO]: Running scheduler at app startup...
+2025-08-21 09:24:24 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:24:34 [INFO]: Checking database connection...
+2025-08-21 09:24:34 [INFO]: Database connection successful.
+2025-08-21 09:24:34 [INFO]: Running scheduler at app startup...
+2025-08-21 09:24:34 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:24:41 [INFO]: Checking database connection...
+2025-08-21 09:24:42 [INFO]: Database connection successful.
+2025-08-21 09:24:42 [INFO]: Running scheduler at app startup...
+2025-08-21 09:24:42 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:25:37 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 09:25:37 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 09:26:58 [INFO]: Checking database connection...
+2025-08-21 09:26:58 [INFO]: Database connection successful.
+2025-08-21 09:26:58 [INFO]: Running scheduler at app startup...
+2025-08-21 09:26:58 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:27:12 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            organizationId: "cf319ce0-b83d-4ed6-a4b7-339f51f455cd",
+            ~~~~~~~~~~~~~~
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? where?: ReportWhereInput,
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-21 09:28:38 [INFO]: Checking database connection...
+2025-08-21 09:28:38 [INFO]: Database connection successful.
+2025-08-21 09:28:38 [INFO]: Running scheduler at app startup...
+2025-08-21 09:28:38 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:29:21 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            organizationId: "cf319ce0-b83d-4ed6-a4b7-339f51f455cd",
+            ~~~~~~~~~~~~~~
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? where?: ReportWhereInput,
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-21 09:30:16 [INFO]: Checking database connection...
+2025-08-21 09:30:16 [INFO]: Database connection successful.
+2025-08-21 09:30:16 [INFO]: Running scheduler at app startup...
+2025-08-21 09:30:16 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:30:16 [INFO]: Checking database connection...
+2025-08-21 09:30:16 [INFO]: Database connection successful.
+2025-08-21 09:30:16 [INFO]: Running scheduler at app startup...
+2025-08-21 09:30:16 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:34:27 [INFO]: Checking database connection...
+2025-08-21 09:34:27 [INFO]: Database connection successful.
+2025-08-21 09:34:27 [INFO]: Running scheduler at app startup...
+2025-08-21 09:34:27 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:34:31 [INFO]: Checking database connection...
+2025-08-21 09:34:31 [INFO]: Database connection successful.
+2025-08-21 09:34:31 [INFO]: Running scheduler at app startup...
+2025-08-21 09:34:31 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:34:32 [INFO]: Checking database connection...
+2025-08-21 09:34:32 [INFO]: Database connection successful.
+2025-08-21 09:34:32 [INFO]: Running scheduler at app startup...
+2025-08-21 09:34:32 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:45:19 [INFO]: Checking database connection...
+2025-08-21 09:45:19 [INFO]: Database connection successful.
+2025-08-21 09:45:19 [INFO]: Running scheduler at app startup...
+2025-08-21 09:45:19 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:45:24 [INFO]: Checking database connection...
+2025-08-21 09:45:24 [INFO]: Database connection successful.
+2025-08-21 09:45:24 [INFO]: Running scheduler at app startup...
+2025-08-21 09:45:24 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:53:08 [ERROR]: Uncaught Exception: userPermissionRoutes is not defined
+2025-08-21 09:55:52 [INFO]: Checking database connection...
+2025-08-21 09:55:52 [INFO]: Database connection successful.
+2025-08-21 09:55:52 [INFO]: Running scheduler at app startup...
+2025-08-21 09:55:52 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:57:42 [INFO]: Checking database connection...
+2025-08-21 09:57:43 [INFO]: Database connection successful.
+2025-08-21 09:57:43 [INFO]: Running scheduler at app startup...
+2025-08-21 09:57:43 [INFO]: Server is running in development mode on port 8001
+2025-08-21 09:57:43 [INFO]: Checking database connection...
+2025-08-21 09:57:43 [INFO]: Database connection successful.
+2025-08-21 09:57:43 [INFO]: Running scheduler at app startup...
+2025-08-21 09:57:43 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:00:43 [INFO]: Checking database connection...
+2025-08-21 10:00:44 [INFO]: Database connection successful.
+2025-08-21 10:00:44 [INFO]: Running scheduler at app startup...
+2025-08-21 10:00:44 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:00:44 [INFO]: Checking database connection...
+2025-08-21 10:00:44 [INFO]: Database connection successful.
+2025-08-21 10:00:44 [INFO]: Running scheduler at app startup...
+2025-08-21 10:00:44 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:02:27 [INFO]: Checking database connection...
+2025-08-21 10:02:27 [INFO]: Database connection successful.
+2025-08-21 10:02:27 [INFO]: Running scheduler at app startup...
+2025-08-21 10:02:27 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:12:46 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 10:15:29 [INFO]: Checking database connection...
+2025-08-21 10:15:29 [INFO]: Database connection successful.
+2025-08-21 10:15:29 [INFO]: Running scheduler at app startup...
+2025-08-21 10:15:29 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:18:36 [INFO]: Checking database connection...
+2025-08-21 10:18:36 [INFO]: Database connection successful.
+2025-08-21 10:18:36 [INFO]: Running scheduler at app startup...
+2025-08-21 10:18:36 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:18:39 [INFO]: Checking database connection...
+2025-08-21 10:18:39 [INFO]: Database connection successful.
+2025-08-21 10:18:39 [INFO]: Running scheduler at app startup...
+2025-08-21 10:18:39 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:18:39 [INFO]: Checking database connection...
+2025-08-21 10:18:39 [INFO]: Database connection successful.
+2025-08-21 10:18:39 [INFO]: Running scheduler at app startup...
+2025-08-21 10:18:39 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:21:43 [INFO]: Checking database connection...
+2025-08-21 10:21:43 [INFO]: Database connection successful.
+2025-08-21 10:21:43 [INFO]: Running scheduler at app startup...
+2025-08-21 10:21:43 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:21:43 [INFO]: Checking database connection...
+2025-08-21 10:21:43 [INFO]: Database connection successful.
+2025-08-21 10:21:43 [INFO]: Running scheduler at app startup...
+2025-08-21 10:21:43 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:22:07 [INFO]: Checking database connection...
+2025-08-21 10:22:07 [INFO]: Database connection successful.
+2025-08-21 10:22:07 [INFO]: Running scheduler at app startup...
+2025-08-21 10:22:07 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:22:08 [INFO]: Checking database connection...
+2025-08-21 10:22:08 [INFO]: Database connection successful.
+2025-08-21 10:22:08 [INFO]: Running scheduler at app startup...
+2025-08-21 10:22:08 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:24:20 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Foreign key constraint violated on the constraint: `UserPermission_permissionId_fkey`
+2025-08-21 10:24:28 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 10:25:05 [INFO]: Checking database connection...
+2025-08-21 10:25:05 [INFO]: Database connection successful.
+2025-08-21 10:25:05 [INFO]: Running scheduler at app startup...
+2025-08-21 10:25:05 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:25:07 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Foreign key constraint violated on the constraint: `UserPermission_permissionId_fkey`
+2025-08-21 10:25:32 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Foreign key constraint violated on the constraint: `UserPermission_permissionId_fkey`
+2025-08-21 10:26:07 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Foreign key constraint violated on the constraint: `UserPermission_permissionId_fkey`
+2025-08-21 10:30:57 [INFO]: Checking database connection...
+2025-08-21 10:30:57 [INFO]: Database connection successful.
+2025-08-21 10:30:57 [INFO]: Running scheduler at app startup...
+2025-08-21 10:30:57 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:32:37 [INFO]: Checking database connection...
+2025-08-21 10:32:37 [INFO]: Database connection successful.
+2025-08-21 10:32:37 [INFO]: Running scheduler at app startup...
+2025-08-21 10:32:37 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:32:39 [INFO]: Checking database connection...
+2025-08-21 10:32:39 [INFO]: Database connection successful.
+2025-08-21 10:32:39 [INFO]: Running scheduler at app startup...
+2025-08-21 10:32:39 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:32:42 [INFO]: Checking database connection...
+2025-08-21 10:32:42 [INFO]: Database connection successful.
+2025-08-21 10:32:42 [INFO]: Running scheduler at app startup...
+2025-08-21 10:32:42 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:32:45 [INFO]: Checking database connection...
+2025-08-21 10:32:45 [INFO]: Database connection successful.
+2025-08-21 10:32:45 [INFO]: Running scheduler at app startup...
+2025-08-21 10:32:45 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:33:08 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create(
+Unique constraint failed on the fields: (`userId`,`permissionId`)
+2025-08-21 10:34:24 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 10:34:24 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 10:35:06 [INFO]: Checking database connection...
+2025-08-21 10:35:06 [INFO]: Database connection successful.
+2025-08-21 10:35:06 [INFO]: Running scheduler at app startup...
+2025-08-21 10:35:06 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:36:30 [INFO]: Checking database connection...
+2025-08-21 10:36:30 [INFO]: Database connection successful.
+2025-08-21 10:36:30 [INFO]: Running scheduler at app startup...
+2025-08-21 10:36:30 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:36:38 [INFO]: Checking database connection...
+2025-08-21 10:36:38 [INFO]: Database connection successful.
+2025-08-21 10:36:38 [INFO]: Running scheduler at app startup...
+2025-08-21 10:36:38 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:37:14 [INFO]: Checking database connection...
+2025-08-21 10:37:14 [INFO]: Database connection successful.
+2025-08-21 10:37:14 [INFO]: Running scheduler at app startup...
+2025-08-21 10:37:14 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:37:45 [INFO]: Checking database connection...
+2025-08-21 10:37:45 [INFO]: Database connection successful.
+2025-08-21 10:37:45 [INFO]: Running scheduler at app startup...
+2025-08-21 10:37:45 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:37:46 [ERROR]: Unhandled Rejection: Cannot set headers after they are sent to the client
+2025-08-21 10:38:53 [ERROR]: Unhandled Rejection: Cannot set headers after they are sent to the client
+2025-08-21 10:40:11 [INFO]: Checking database connection...
+2025-08-21 10:40:11 [INFO]: Database connection successful.
+2025-08-21 10:40:11 [INFO]: Running scheduler at app startup...
+2025-08-21 10:40:11 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:40:14 [ERROR]: Unhandled Rejection: Cannot set headers after they are sent to the client
+2025-08-21 10:40:35 [INFO]: Checking database connection...
+2025-08-21 10:40:35 [INFO]: Database connection successful.
+2025-08-21 10:40:35 [INFO]: Running scheduler at app startup...
+2025-08-21 10:40:35 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:41:21 [INFO]: Checking database connection...
+2025-08-21 10:41:21 [INFO]: Database connection successful.
+2025-08-21 10:41:21 [INFO]: Running scheduler at app startup...
+2025-08-21 10:41:21 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:41:23 [INFO]: Checking database connection...
+2025-08-21 10:41:23 [INFO]: Database connection successful.
+2025-08-21 10:41:23 [INFO]: Running scheduler at app startup...
+2025-08-21 10:41:23 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:41:27 [INFO]: Checking database connection...
+2025-08-21 10:41:27 [INFO]: Database connection successful.
+2025-08-21 10:41:27 [INFO]: Running scheduler at app startup...
+2025-08-21 10:41:27 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:41:28 [INFO]: Checking database connection...
+2025-08-21 10:41:28 [INFO]: Database connection successful.
+2025-08-21 10:41:28 [INFO]: Running scheduler at app startup...
+2025-08-21 10:41:28 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:41:29 [INFO]: Checking database connection...
+2025-08-21 10:41:29 [INFO]: Database connection successful.
+2025-08-21 10:41:29 [INFO]: Running scheduler at app startup...
+2025-08-21 10:41:29 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:45:12 [INFO]: Checking database connection...
+2025-08-21 10:45:12 [INFO]: Database connection successful.
+2025-08-21 10:45:12 [INFO]: Running scheduler at app startup...
+2025-08-21 10:45:12 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:45:15 [INFO]: Checking database connection...
+2025-08-21 10:45:15 [INFO]: Database connection successful.
+2025-08-21 10:45:15 [INFO]: Running scheduler at app startup...
+2025-08-21 10:45:15 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:45:16 [INFO]: Checking database connection...
+2025-08-21 10:45:16 [INFO]: Database connection successful.
+2025-08-21 10:45:16 [INFO]: Running scheduler at app startup...
+2025-08-21 10:45:16 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:45:19 [ERROR]: Unhandled Rejection: Cannot set headers after they are sent to the client
+2025-08-21 10:47:07 [INFO]: Checking database connection...
+2025-08-21 10:47:07 [INFO]: Database connection successful.
+2025-08-21 10:47:07 [INFO]: Running scheduler at app startup...
+2025-08-21 10:47:07 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:47:43 [INFO]: Checking database connection...
+2025-08-21 10:47:43 [INFO]: Database connection successful.
+2025-08-21 10:47:43 [INFO]: Running scheduler at app startup...
+2025-08-21 10:47:43 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:47:45 [INFO]: Checking database connection...
+2025-08-21 10:47:45 [INFO]: Database connection successful.
+2025-08-21 10:47:45 [INFO]: Running scheduler at app startup...
+2025-08-21 10:47:45 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:48:28 [INFO]: Checking database connection...
+2025-08-21 10:48:28 [INFO]: Database connection successful.
+2025-08-21 10:48:28 [INFO]: Running scheduler at app startup...
+2025-08-21 10:48:28 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:48:28 [INFO]: Checking database connection...
+2025-08-21 10:48:28 [INFO]: Database connection successful.
+2025-08-21 10:48:28 [INFO]: Running scheduler at app startup...
+2025-08-21 10:48:28 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:49:42 [INFO]: Checking database connection...
+2025-08-21 10:49:42 [INFO]: Database connection successful.
+2025-08-21 10:49:42 [INFO]: Running scheduler at app startup...
+2025-08-21 10:49:42 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:51:34 [INFO]: Checking database connection...
+2025-08-21 10:51:34 [INFO]: Database connection successful.
+2025-08-21 10:51:34 [INFO]: Running scheduler at app startup...
+2025-08-21 10:51:34 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:55:50 [INFO]: Checking database connection...
+2025-08-21 10:55:50 [INFO]: Database connection successful.
+2025-08-21 10:55:50 [INFO]: Running scheduler at app startup...
+2025-08-21 10:55:50 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:56:02 [INFO]: Checking database connection...
+2025-08-21 10:56:02 [INFO]: Database connection successful.
+2025-08-21 10:56:02 [INFO]: Running scheduler at app startup...
+2025-08-21 10:56:02 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:56:11 [INFO]: Checking database connection...
+2025-08-21 10:56:11 [INFO]: Database connection successful.
+2025-08-21 10:56:11 [INFO]: Running scheduler at app startup...
+2025-08-21 10:56:11 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:56:19 [INFO]: Checking database connection...
+2025-08-21 10:56:19 [INFO]: Database connection successful.
+2025-08-21 10:56:19 [INFO]: Running scheduler at app startup...
+2025-08-21 10:56:19 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:57:17 [INFO]: Checking database connection...
+2025-08-21 10:57:17 [INFO]: Database connection successful.
+2025-08-21 10:57:17 [INFO]: Running scheduler at app startup...
+2025-08-21 10:57:17 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:57:35 [INFO]: Checking database connection...
+2025-08-21 10:57:36 [INFO]: Database connection successful.
+2025-08-21 10:57:36 [INFO]: Running scheduler at app startup...
+2025-08-21 10:57:36 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:57:47 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            where: {
+              organizationId: "bcde1070-016e-4b9d-bea5-d19ca1e4ec84",
+              ~~~~~~~~~~~~~~
+          ?   AND?: ReportCategoryWhereInput | ReportCategoryWhereInput[],
+          ?   OR?: ReportCategoryWhereInput[],
+          ?   NOT?: ReportCategoryWhereInput | ReportCategoryWhereInput[],
+          ?   id?: StringFilter | String,
+          ?   name?: StringFilter | String,
+          ?   code?: StringFilter | String,
+          ?   parentId?: StringNullableFilter | String | Null,
+          ?   createdAt?: DateTimeFilter | DateTime,
+          ?   updatedAt?: DateTimeFilter | DateTime,
+          ?   createdById?: StringNullableFilter | String | Null,
+          ?   updatedById?: StringNullableFilter | String | Null,
+          ?   parent?: ReportCategoryNullableScalarRelationFilter | ReportCategoryWhereInput | Null,
+          ?   children?: ReportCategoryListRelationFilter,
+          ?   createdBy?: UserNullableScalarRelationFilter | UserWhereInput | Null,
+          ?   updatedBy?: UserNullableScalarRelationFilter | UserWhereInput | Null,
+          ?   reports?: ReportListRelationFilter
+            },
+            select: {
+              id: true,
+              name: true,
+              code: true,
+              parentId: true,
+              parent: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            }
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-21 10:58:48 [INFO]: Checking database connection...
+2025-08-21 10:58:48 [INFO]: Database connection successful.
+2025-08-21 10:58:48 [INFO]: Running scheduler at app startup...
+2025-08-21 10:58:48 [INFO]: Server is running in development mode on port 8001
+2025-08-21 10:58:50 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            where: {
+              organizationId: "bcde1070-016e-4b9d-bea5-d19ca1e4ec84",
+              ~~~~~~~~~~~~~~
+          ?   AND?: ReportCategoryWhereInput | ReportCategoryWhereInput[],
+          ?   OR?: ReportCategoryWhereInput[],
+          ?   NOT?: ReportCategoryWhereInput | ReportCategoryWhereInput[],
+          ?   id?: StringFilter | String,
+          ?   name?: StringFilter | String,
+          ?   code?: StringFilter | String,
+          ?   parentId?: StringNullableFilter | String | Null,
+          ?   createdAt?: DateTimeFilter | DateTime,
+          ?   updatedAt?: DateTimeFilter | DateTime,
+          ?   createdById?: StringNullableFilter | String | Null,
+          ?   updatedById?: StringNullableFilter | String | Null,
+          ?   parent?: ReportCategoryNullableScalarRelationFilter | ReportCategoryWhereInput | Null,
+          ?   children?: ReportCategoryListRelationFilter,
+          ?   createdBy?: UserNullableScalarRelationFilter | UserWhereInput | Null,
+          ?   updatedBy?: UserNullableScalarRelationFilter | UserWhereInput | Null,
+          ?   reports?: ReportListRelationFilter
+            },
+            select: {
+              id: true,
+              name: true,
+              code: true,
+              parentId: true,
+              parent: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            }
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-21 10:59:39 [INFO]: Checking database connection...
+2025-08-21 10:59:39 [INFO]: Database connection successful.
+2025-08-21 10:59:39 [INFO]: Running scheduler at app startup...
+2025-08-21 10:59:39 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:00:52 [INFO]: Checking database connection...
+2025-08-21 11:00:52 [INFO]: Database connection successful.
+2025-08-21 11:00:52 [INFO]: Running scheduler at app startup...
+2025-08-21 11:00:52 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:01:10 [INFO]: Checking database connection...
+2025-08-21 11:01:10 [INFO]: Database connection successful.
+2025-08-21 11:01:10 [INFO]: Running scheduler at app startup...
+2025-08-21 11:01:10 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:01:22 [INFO]: Checking database connection...
+2025-08-21 11:01:22 [INFO]: Database connection successful.
+2025-08-21 11:01:22 [INFO]: Running scheduler at app startup...
+2025-08-21 11:01:22 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:02:25 [INFO]: Checking database connection...
+2025-08-21 11:02:25 [INFO]: Database connection successful.
+2025-08-21 11:02:25 [INFO]: Running scheduler at app startup...
+2025-08-21 11:02:25 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:02:55 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:02:55 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:02:55 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 11:05:55 [INFO]: Checking database connection...
+2025-08-21 11:05:55 [INFO]: Database connection successful.
+2025-08-21 11:05:55 [INFO]: Running scheduler at app startup...
+2025-08-21 11:05:55 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:09:50 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:09:50 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:09:50 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 11:09:57 [INFO]: Checking database connection...
+2025-08-21 11:09:57 [INFO]: Database connection successful.
+2025-08-21 11:09:57 [INFO]: Running scheduler at app startup...
+2025-08-21 11:09:57 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:11:20 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:11:20 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 11:11:26 [INFO]: Checking database connection...
+2025-08-21 11:11:26 [INFO]: Database connection successful.
+2025-08-21 11:11:26 [INFO]: Running scheduler at app startup...
+2025-08-21 11:11:26 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:11:53 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:11:53 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:11:53 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 11:11:57 [INFO]: Checking database connection...
+2025-08-21 11:11:57 [INFO]: Database connection successful.
+2025-08-21 11:11:57 [INFO]: Running scheduler at app startup...
+2025-08-21 11:11:57 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:19:22 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 11:19:22 [INFO]: Prisma disconnected. Exiting process.
+2025-08-21 11:19:34 [INFO]: Checking database connection...
+2025-08-21 11:19:34 [INFO]: Database connection successful.
+2025-08-21 11:19:35 [INFO]: Running scheduler at app startup...
+2025-08-21 11:19:35 [INFO]: Server is running in development mode on port 8001
+2025-08-21 11:45:41 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 11:45:41 [ERROR]: [SelectService] Unsupported select key: roleId
+2025-08-21 11:45:41 [ERROR]: [SelectService] Unsupported select key: departmentId
+2025-08-21 11:45:42 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 11:45:42 [ERROR]: [SelectService] Unsupported select key: departmentId
+2025-08-21 11:45:42 [ERROR]: [SelectService] Unsupported select key: roleId
+2025-08-21 11:45:44 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 11:45:44 [ERROR]: [SelectService] Unsupported select key: departmentId
+2025-08-21 11:45:44 [ERROR]: [SelectService] Unsupported select key: roleId
+2025-08-21 13:35:55 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 13:35:56 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 13:35:58 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 13:37:06 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 13:37:07 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 14:03:07 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 14:03:08 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 14:03:10 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 14:03:14 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 14:03:22 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-21 21:16:19 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 21:16:19 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 21:16:19 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 02:52:42 [INFO]: Checking database connection...
+2025-08-22 02:52:42 [INFO]: Database connection successful.
+2025-08-22 02:52:42 [INFO]: Running scheduler at app startup...
+2025-08-22 02:52:42 [INFO]: Server is running in development mode on port 8001
+2025-08-22 02:52:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:52:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:52:43 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 02:53:30 [INFO]: Checking database connection...
+2025-08-22 02:53:30 [INFO]: Database connection successful.
+2025-08-22 02:53:30 [INFO]: Running scheduler at app startup...
+2025-08-22 02:53:30 [INFO]: Server is running in development mode on port 8001
+2025-08-22 02:53:32 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:53:32 [INFO]: Received SIGINT. Cleaning up...

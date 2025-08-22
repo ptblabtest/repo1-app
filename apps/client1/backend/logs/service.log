@@ -1,0 +1,961 @@
+2025-08-20 17:55:07 [INFO]: Checking database connection...
+2025-08-20 17:55:07 [INFO]: Database connection successful.
+2025-08-20 17:55:07 [INFO]: Running scheduler at app startup...
+2025-08-20 17:55:07 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:02:58 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:02:58 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:07:18 [INFO]: Checking database connection...
+2025-08-20 18:07:18 [INFO]: Database connection successful.
+2025-08-20 18:07:18 [INFO]: Running scheduler at app startup...
+2025-08-20 18:07:18 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:07:47 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:07:47 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:08:50 [INFO]: Checking database connection...
+2025-08-20 18:08:50 [INFO]: Database connection successful.
+2025-08-20 18:08:50 [INFO]: Running scheduler at app startup...
+2025-08-20 18:08:50 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:15:05 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:15:05 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:15:09 [INFO]: Checking database connection...
+2025-08-20 18:15:09 [INFO]: Database connection successful.
+2025-08-20 18:15:09 [INFO]: Running scheduler at app startup...
+2025-08-20 18:15:09 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:15:17 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:15:17 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:15:17 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:19:46 [INFO]: Checking database connection...
+2025-08-20 18:19:47 [INFO]: Database connection successful.
+2025-08-20 18:19:47 [INFO]: Running scheduler at app startup...
+2025-08-20 18:19:47 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:25:25 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:25:25 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:25:27 [INFO]: Checking database connection...
+2025-08-20 18:25:27 [INFO]: Database connection successful.
+2025-08-20 18:25:27 [INFO]: Running scheduler at app startup...
+2025-08-20 18:25:27 [INFO]: Server is running in development mode on port 8000
+2025-08-20 18:26:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:26:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-20 18:26:43 [INFO]: Prisma disconnected. Exiting process.
+2025-08-20 18:26:46 [INFO]: Checking database connection...
+2025-08-20 18:26:46 [INFO]: Database connection successful.
+2025-08-20 18:26:46 [INFO]: Running scheduler at app startup...
+2025-08-20 18:26:46 [INFO]: Server is running in development mode on port 8000
+2025-08-21 06:10:55 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 06:10:55 [INFO]: Received SIGINT. Cleaning up...
+2025-08-21 06:10:55 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 02:52:42 [INFO]: Checking database connection...
+2025-08-22 02:52:42 [INFO]: Database connection successful.
+2025-08-22 02:52:42 [INFO]: Running scheduler at app startup...
+2025-08-22 02:52:42 [INFO]: Server is running in development mode on port 8000
+2025-08-22 02:52:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:52:43 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:53:30 [INFO]: Checking database connection...
+2025-08-22 02:53:30 [INFO]: Database connection successful.
+2025-08-22 02:53:30 [INFO]: Running scheduler at app startup...
+2025-08-22 02:53:30 [INFO]: Server is running in development mode on port 8000
+2025-08-22 02:53:32 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:53:32 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 02:54:28 [INFO]: Checking database connection...
+2025-08-22 02:54:28 [INFO]: Database connection successful.
+2025-08-22 02:54:28 [INFO]: Running scheduler at app startup...
+2025-08-22 02:54:28 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:16:03 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 03:16:03 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 03:17:26 [INFO]: Checking database connection...
+2025-08-22 03:17:26 [INFO]: Database connection successful.
+2025-08-22 03:17:26 [INFO]: Running scheduler at app startup...
+2025-08-22 03:17:26 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:20:53 [INFO]: Checking database connection...
+2025-08-22 03:20:53 [INFO]: Database connection successful.
+2025-08-22 03:20:53 [INFO]: Running scheduler at app startup...
+2025-08-22 03:20:53 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:20:54 [INFO]: Checking database connection...
+2025-08-22 03:20:54 [INFO]: Database connection successful.
+2025-08-22 03:20:54 [INFO]: Running scheduler at app startup...
+2025-08-22 03:20:54 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:23:43 [INFO]: Checking database connection...
+2025-08-22 03:23:43 [INFO]: Database connection successful.
+2025-08-22 03:23:43 [INFO]: Running scheduler at app startup...
+2025-08-22 03:23:43 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:23:44 [INFO]: Checking database connection...
+2025-08-22 03:23:44 [INFO]: Database connection successful.
+2025-08-22 03:23:44 [INFO]: Running scheduler at app startup...
+2025-08-22 03:23:44 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:25:24 [ERROR]: Uncaught Exception: fileRoutes is not defined
+2025-08-22 03:25:29 [INFO]: Checking database connection...
+2025-08-22 03:25:30 [INFO]: Database connection successful.
+2025-08-22 03:25:30 [INFO]: Running scheduler at app startup...
+2025-08-22 03:25:30 [INFO]: Server is running in development mode on port 8000
+2025-08-22 03:59:40 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 04:29:03 [INFO]: Checking database connection...
+2025-08-22 04:29:03 [INFO]: Database connection successful.
+2025-08-22 04:29:03 [INFO]: Running scheduler at app startup...
+2025-08-22 04:29:03 [INFO]: Server is running in development mode on port 8000
+2025-08-22 04:36:31 [INFO]: Checking database connection...
+2025-08-22 04:36:32 [INFO]: Database connection successful.
+2025-08-22 04:36:32 [INFO]: Running scheduler at app startup...
+2025-08-22 04:36:32 [INFO]: Server is running in development mode on port 8000
+2025-08-22 04:36:38 [INFO]: Checking database connection...
+2025-08-22 04:36:38 [INFO]: Database connection successful.
+2025-08-22 04:36:38 [INFO]: Running scheduler at app startup...
+2025-08-22 04:36:38 [INFO]: Server is running in development mode on port 8000
+2025-08-22 04:39:56 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            select: {
+              id: true,
+              regNumber: true,
+              name: true,
+              role: true,
+              email: true,
+              phone: true,
+              companyName: true,
+              companyAddress: true,
+              leadSource: true,
+              leadDate: true,
+              leadAddress: true,
+              description: true,
+              prospectLocation: true,
+              ~~~~~~~~~~~~~~~~
+              approvedDate: true,
+              assigneeId: true,
+              createdAt: true,
+              updatedAt: true,
+              products: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+              opportunities: {
+                select: {
+                  id: true
+                }
+              },
+              assignee: {
+                select: {
+                  name: true
+                }
+              },
+              createdBy: {
+                select: {
+                  name: true
+                }
+              },
+              updatedBy: {
+                select: {
+                  name: true
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  type: true,
+                  comment: true
+                }
+              },
+          ?   createdById?: true,
+          ?   updatedById?: true,
+          ?   notes?: true,
+          ?   events?: true,
+          ?   _count?: true
+            }
+          })
+
+Unknown field `prospectLocation` for select statement on model `Lead`. Available options are marked with ?.
+2025-08-22 04:41:07 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            select: {
+              id: true,
+              regNumber: true,
+              name: true,
+              role: true,
+              email: true,
+              phone: true,
+              companyName: true,
+              companyAddress: true,
+              leadSource: true,
+              leadDate: true,
+              leadAddress: true,
+              description: true,
+              prospectLocation: true,
+              ~~~~~~~~~~~~~~~~
+              approvedDate: true,
+              assigneeId: true,
+              createdAt: true,
+              updatedAt: true,
+              products: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+              opportunities: {
+                select: {
+                  id: true
+                }
+              },
+              assignee: {
+                select: {
+                  name: true
+                }
+              },
+              createdBy: {
+                select: {
+                  name: true
+                }
+              },
+              updatedBy: {
+                select: {
+                  name: true
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  type: true,
+                  comment: true
+                }
+              },
+          ?   createdById?: true,
+          ?   updatedById?: true,
+          ?   notes?: true,
+          ?   events?: true,
+          ?   _count?: true
+            }
+          })
+
+Unknown field `prospectLocation` for select statement on model `Lead`. Available options are marked with ?.
+2025-08-22 04:41:14 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            select: {
+              id: true,
+              regNumber: true,
+              name: true,
+              role: true,
+              email: true,
+              phone: true,
+              companyName: true,
+              companyAddress: true,
+              leadSource: true,
+              leadDate: true,
+              leadAddress: true,
+              description: true,
+              prospectLocation: true,
+              ~~~~~~~~~~~~~~~~
+              approvedDate: true,
+              assigneeId: true,
+              createdAt: true,
+              updatedAt: true,
+              products: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+              opportunities: {
+                select: {
+                  id: true
+                }
+              },
+              assignee: {
+                select: {
+                  name: true
+                }
+              },
+              createdBy: {
+                select: {
+                  name: true
+                }
+              },
+              updatedBy: {
+                select: {
+                  name: true
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  type: true,
+                  comment: true
+                }
+              },
+          ?   createdById?: true,
+          ?   updatedById?: true,
+          ?   notes?: true,
+          ?   events?: true,
+          ?   _count?: true
+            }
+          })
+
+Unknown field `prospectLocation` for select statement on model `Lead`. Available options are marked with ?.
+2025-08-22 04:42:12 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            select: {
+              id: true,
+              regNumber: true,
+              name: true,
+              role: true,
+              email: true,
+              phone: true,
+              companyName: true,
+              companyAddress: true,
+              leadSource: true,
+              leadDate: true,
+              leadAddress: true,
+              description: true,
+              prospectLocation: true,
+              ~~~~~~~~~~~~~~~~
+              approvedDate: true,
+              assigneeId: true,
+              createdAt: true,
+              updatedAt: true,
+              products: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+              opportunities: {
+                select: {
+                  id: true
+                }
+              },
+              assignee: {
+                select: {
+                  name: true
+                }
+              },
+              createdBy: {
+                select: {
+                  name: true
+                }
+              },
+              updatedBy: {
+                select: {
+                  name: true
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  type: true,
+                  comment: true
+                }
+              },
+          ?   createdById?: true,
+          ?   updatedById?: true,
+          ?   notes?: true,
+          ?   events?: true,
+          ?   _count?: true
+            }
+          })
+
+Unknown field `prospectLocation` for select statement on model `Lead`. Available options are marked with ?.
+2025-08-22 04:42:24 [INFO]: Checking database connection...
+2025-08-22 04:42:24 [INFO]: Database connection successful.
+2025-08-22 04:42:24 [INFO]: Running scheduler at app startup...
+2025-08-22 04:42:24 [INFO]: Server is running in development mode on port 8000
+2025-08-22 04:42:25 [INFO]: Checking database connection...
+2025-08-22 04:42:25 [INFO]: Database connection successful.
+2025-08-22 04:42:25 [INFO]: Running scheduler at app startup...
+2025-08-22 04:42:25 [INFO]: Server is running in development mode on port 8000
+2025-08-22 04:42:31 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            select: {
+              id: true,
+              regNumber: true,
+              name: true,
+              role: true,
+              email: true,
+              phone: true,
+              companyName: true,
+              companyAddress: true,
+              leadSource: true,
+              leadDate: true,
+              leadAddress: true,
+              description: true,
+              prospectLocation: true,
+              ~~~~~~~~~~~~~~~~
+              approvedDate: true,
+              assigneeId: true,
+              createdAt: true,
+              updatedAt: true,
+              products: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+              opportunities: {
+                select: {
+                  id: true
+                }
+              },
+              assignee: {
+                select: {
+                  name: true
+                }
+              },
+              createdBy: {
+                select: {
+                  name: true
+                }
+              },
+              updatedBy: {
+                select: {
+                  name: true
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  type: true,
+                  comment: true
+                }
+              },
+          ?   createdById?: true,
+          ?   updatedById?: true,
+          ?   notes?: true,
+          ?   events?: true,
+          ?   _count?: true
+            }
+          })
+
+Unknown field `prospectLocation` for select statement on model `Lead`. Available options are marked with ?.
+2025-08-22 04:42:36 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 04:42:36 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 04:42:36 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 04:43:03 [INFO]: Checking database connection...
+2025-08-22 04:43:04 [INFO]: Database connection successful.
+2025-08-22 04:43:04 [INFO]: Running scheduler at app startup...
+2025-08-22 04:43:04 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:08:02 [INFO]: Checking database connection...
+2025-08-22 05:08:02 [INFO]: Database connection successful.
+2025-08-22 05:08:02 [INFO]: Running scheduler at app startup...
+2025-08-22 05:08:02 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:08:04 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:09:58 [INFO]: Checking database connection...
+2025-08-22 05:09:58 [INFO]: Database connection successful.
+2025-08-22 05:09:58 [INFO]: Running scheduler at app startup...
+2025-08-22 05:09:58 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:09:58 [INFO]: Checking database connection...
+2025-08-22 05:09:58 [INFO]: Database connection successful.
+2025-08-22 05:09:58 [INFO]: Running scheduler at app startup...
+2025-08-22 05:09:58 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:10:00 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:10:47 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:11:08 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create({
+        data: {
+          createdById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      +   name: String
+        }
+      })
+
+Argument `name` is missing.
+2025-08-22 05:11:23 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 05:11:23 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 05:11:50 [INFO]: Checking database connection...
+2025-08-22 05:11:50 [INFO]: Database connection successful.
+2025-08-22 05:11:50 [INFO]: Running scheduler at app startup...
+2025-08-22 05:11:50 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:11:51 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create({
+        data: {
+          createdById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      +   name: String
+        }
+      })
+
+Argument `name` is missing.
+2025-08-22 05:13:29 [INFO]: Checking database connection...
+2025-08-22 05:13:29 [INFO]: Database connection successful.
+2025-08-22 05:13:29 [INFO]: Running scheduler at app startup...
+2025-08-22 05:13:29 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:13:48 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:14:09 [INFO]: Checking database connection...
+2025-08-22 05:14:09 [INFO]: Database connection successful.
+2025-08-22 05:14:09 [INFO]: Running scheduler at app startup...
+2025-08-22 05:14:09 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:14:12 [INFO]: Checking database connection...
+2025-08-22 05:14:12 [INFO]: Database connection successful.
+2025-08-22 05:14:12 [INFO]: Running scheduler at app startup...
+2025-08-22 05:14:12 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:14:14 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:15:02 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:15:05 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:168:43
+
+  165 
+  166 if (operations.includes("findMany")) {
+  167   service.findMany = async (queryParams?: any) => {
+→ 168     const records = await prisma[model].findMany({
+            select: {
+              id: true,
+              name: true,
+              parentId: true,
+              ~~~~~~~~
+              parent: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+              children: {
+                select: {
+                  id: true,
+                  name: true
+                }
+              },
+          ?   accountId?: true,
+          ?   budgetItems?: true,
+          ?   fundItems?: true,
+          ?   purchaseItems?: true,
+          ?   expenses?: true,
+          ?   _count?: true
+            }
+          })
+
+Unknown field `parentId` for select statement on model `CostType`. Available options are marked with ?.
+2025-08-22 05:15:10 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 05:15:29 [INFO]: Checking database connection...
+2025-08-22 05:15:30 [INFO]: Database connection successful.
+2025-08-22 05:15:30 [INFO]: Running scheduler at app startup...
+2025-08-22 05:15:30 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:15:40 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:16:29 [INFO]: Checking database connection...
+2025-08-22 05:16:29 [INFO]: Database connection successful.
+2025-08-22 05:16:29 [INFO]: Running scheduler at app startup...
+2025-08-22 05:16:29 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:16:38 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "upsert"
+        },
+        data: {
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~~
+      ?   id?: String | StringFieldUpdateOperationsInput,
+      ?   name?: String | StringFieldUpdateOperationsInput,
+      ?   parent?: CostTypeUpdateOneWithoutChildrenNestedInput,
+      ?   children?: CostTypeUpdateManyWithoutParentNestedInput,
+      ?   budgetItems?: BudgetItemUpdateManyWithoutCategoryNestedInput,
+      ?   fundItems?: FundItemUpdateManyWithoutCategoryNestedInput,
+      ?   purchaseItems?: PurchaseItemUpdateManyWithoutCategoryNestedInput,
+      ?   expenses?: ExpenseUpdateManyWithoutCategoryNestedInput
+        }
+      })
+
+Unknown argument `updatedById`. Available options are marked with ?.
+2025-08-22 05:18:04 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "upsert"
+        },
+        data: {
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+          ~~~~~~~~~~~
+      ?   id?: String | StringFieldUpdateOperationsInput,
+      ?   name?: String | StringFieldUpdateOperationsInput,
+      ?   parent?: CostTypeUpdateOneWithoutChildrenNestedInput,
+      ?   children?: CostTypeUpdateManyWithoutParentNestedInput,
+      ?   budgetItems?: BudgetItemUpdateManyWithoutCategoryNestedInput,
+      ?   fundItems?: FundItemUpdateManyWithoutCategoryNestedInput,
+      ?   purchaseItems?: PurchaseItemUpdateManyWithoutCategoryNestedInput,
+      ?   expenses?: ExpenseUpdateManyWithoutCategoryNestedInput
+        }
+      })
+
+Unknown argument `updatedById`. Available options are marked with ?.
+2025-08-22 05:18:28 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create({
+        data: {
+          createdById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      +   name: String
+        }
+      })
+
+Argument `name` is missing.
+2025-08-22 05:18:40 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create({
+        data: {
+          createdById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      +   name: String
+        }
+      })
+
+Argument `name` is missing.
+2025-08-22 05:19:14 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create({
+        data: {
+          createdById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      +   name: String
+        }
+      })
+
+Argument `name` is missing.
+2025-08-22 05:19:48 [INFO]: Checking database connection...
+2025-08-22 05:19:48 [INFO]: Database connection successful.
+2025-08-22 05:19:48 [INFO]: Running scheduler at app startup...
+2025-08-22 05:19:48 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:19:52 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].create()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:107:42
+
+  104   JSON.stringify(validatedData, null, 2)
+  105 );
+  106 
+→ 107 const record = await prisma[model].create({
+        data: {
+          createdById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      +   name: String
+        }
+      })
+
+Argument `name` is missing.
+2025-08-22 05:21:06 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 05:21:15 [INFO]: Checking database connection...
+2025-08-22 05:21:16 [INFO]: Database connection successful.
+2025-08-22 05:21:16 [INFO]: Running scheduler at app startup...
+2025-08-22 05:21:16 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:21:42 [INFO]: Checking database connection...
+2025-08-22 05:21:42 [INFO]: Database connection successful.
+2025-08-22 05:21:42 [INFO]: Running scheduler at app startup...
+2025-08-22 05:21:42 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:24:26 [INFO]: Checking database connection...
+2025-08-22 05:24:26 [INFO]: Database connection successful.
+2025-08-22 05:24:26 [INFO]: Running scheduler at app startup...
+2025-08-22 05:24:26 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:25:05 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 05:25:05 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 05:25:48 [INFO]: Checking database connection...
+2025-08-22 05:25:49 [INFO]: Database connection successful.
+2025-08-22 05:25:49 [INFO]: Running scheduler at app startup...
+2025-08-22 05:25:49 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:25:50 [ERROR]: Unhandled error: SyntaxError: Unexpected token ']', ..."
+    },
+  ]
+}" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parse (/Users/ryans-mac/_projects/repo1-app/node_modules/body-parser/lib/types/json.js:92:19)
+    at /Users/ryans-mac/_projects/repo1-app/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:238:16)
+    at done (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:507:28)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-08-22 05:25:55 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "upsert"
+        },
+        data: {
+          data: [
+          ~~~~
+            {
+              name: "Kebutuhan HOK"
+            },
+            {
+              name: "Transportasi"
+            },
+            {
+              name: "DSA"
+            },
+            {
+              name: "Akomodasi Kegiatan"
+            },
+            {
+              name: "Logistic"
+            },
+            {
+              name: "FGD"
+            },
+            {
+              name: "Consultant Fees"
+            }
+          ],
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      ?   id?: String | StringFieldUpdateOperationsInput,
+      ?   name?: String | StringFieldUpdateOperationsInput,
+      ?   parent?: CostTypeUpdateOneWithoutChildrenNestedInput,
+      ?   children?: CostTypeUpdateManyWithoutParentNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorCostTypeNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterCostTypeNestedInput,
+      ?   budgetItems?: BudgetItemUpdateManyWithoutCategoryNestedInput,
+      ?   fundItems?: FundItemUpdateManyWithoutCategoryNestedInput,
+      ?   purchaseItems?: PurchaseItemUpdateManyWithoutCategoryNestedInput,
+      ?   expenses?: ExpenseUpdateManyWithoutCategoryNestedInput
+        }
+      })
+
+Unknown argument `data`. Did you mean `name`? Available options are marked with ?.
+2025-08-22 05:26:39 [ERROR]: Unhandled error: SyntaxError: Unexpected token ']', ..."ees"
+  },
+]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parse (/Users/ryans-mac/_projects/repo1-app/node_modules/body-parser/lib/types/json.js:92:19)
+    at /Users/ryans-mac/_projects/repo1-app/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:238:16)
+    at done (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:507:28)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-08-22 05:26:43 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "upsert"
+        },
+        data: [
+          {
+            name: "Kebutuhan HOK"
+          },
+          {
+            name: "Transportasi"
+          },
+          {
+            name: "DSA"
+          },
+          {
+            name: "Akomodasi Kegiatan"
+          },
+          {
+            name: "Logistic"
+          },
+          {
+            name: "FGD"
+          },
+          {
+            name: "Consultant Fees"
+          }
+        ]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      })
+
+Argument `data`: Invalid value provided. Expected CostTypeUpdateInput or CostTypeUncheckedUpdateInput, provided (Object, Object, Object, Object, Object, Object, Object).
+2025-08-22 05:27:04 [INFO]: Checking database connection...
+2025-08-22 05:27:04 [INFO]: Database connection successful.
+2025-08-22 05:27:04 [INFO]: Running scheduler at app startup...
+2025-08-22 05:27:04 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:27:07 [ERROR]: Unhandled Rejection: Cannot read properties of undefined (reading 'length')
+2025-08-22 05:28:37 [INFO]: Checking database connection...
+2025-08-22 05:28:38 [INFO]: Database connection successful.
+2025-08-22 05:28:38 [INFO]: Running scheduler at app startup...
+2025-08-22 05:28:38 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:29:43 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].update()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/src/shared/utils/serviceFactory.ts:153:42
+
+  150   JSON.stringify(validatedData, null, 2)
+  151 );
+  152 
+→ 153 const record = await prisma[model].update({
+        where: {
+          id: "upsert"
+        },
+        data: {
+          data: [
+          ~~~~
+            {
+              name: "Kebutuhan HOK"
+            },
+            {
+              name: "Transportasi"
+            },
+            {
+              name: "DSA"
+            },
+            {
+              name: "Akomodasi Kegiatan"
+            },
+            {
+              name: "Logistic"
+            },
+            {
+              name: "FGD"
+            },
+            {
+              name: "Consultant Fees"
+            },
+            {
+              name: "Insurance"
+            },
+            {
+              name: "Expert"
+            }
+          ],
+          updatedById: "1bcf35e4-5c61-4aee-bf9c-137f405d6ce8",
+      ?   id?: String | StringFieldUpdateOperationsInput,
+      ?   name?: String | StringFieldUpdateOperationsInput,
+      ?   parent?: CostTypeUpdateOneWithoutChildrenNestedInput,
+      ?   children?: CostTypeUpdateManyWithoutParentNestedInput,
+      ?   createdBy?: UserUpdateOneWithoutCreatorCostTypeNestedInput,
+      ?   updatedBy?: UserUpdateOneWithoutUpdaterCostTypeNestedInput,
+      ?   budgetItems?: BudgetItemUpdateManyWithoutCategoryNestedInput,
+      ?   fundItems?: FundItemUpdateManyWithoutCategoryNestedInput,
+      ?   purchaseItems?: PurchaseItemUpdateManyWithoutCategoryNestedInput,
+      ?   expenses?: ExpenseUpdateManyWithoutCategoryNestedInput
+        }
+      })
+
+Unknown argument `data`. Did you mean `name`? Available options are marked with ?.
+2025-08-22 05:41:26 [INFO]: Checking database connection...
+2025-08-22 05:41:26 [INFO]: Database connection successful.
+2025-08-22 05:41:26 [INFO]: Running scheduler at app startup...
+2025-08-22 05:41:26 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:41:26 [INFO]: Checking database connection...
+2025-08-22 05:41:27 [INFO]: Database connection successful.
+2025-08-22 05:41:27 [INFO]: Running scheduler at app startup...
+2025-08-22 05:41:27 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:41:30 [INFO]: Checking database connection...
+2025-08-22 05:41:30 [INFO]: Database connection successful.
+2025-08-22 05:41:30 [INFO]: Running scheduler at app startup...
+2025-08-22 05:41:30 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:41:52 [INFO]: Checking database connection...
+2025-08-22 05:41:52 [INFO]: Database connection successful.
+2025-08-22 05:41:52 [INFO]: Running scheduler at app startup...
+2025-08-22 05:41:52 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:43:09 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 05:43:09 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 05:43:46 [INFO]: Checking database connection...
+2025-08-22 05:43:46 [INFO]: Database connection successful.
+2025-08-22 05:43:46 [INFO]: Running scheduler at app startup...
+2025-08-22 05:43:46 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:43:54 [INFO]: Checking database connection...
+2025-08-22 05:43:54 [INFO]: Database connection successful.
+2025-08-22 05:43:54 [INFO]: Running scheduler at app startup...
+2025-08-22 05:43:54 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:43:55 [INFO]: Checking database connection...
+2025-08-22 05:43:55 [INFO]: Database connection successful.
+2025-08-22 05:43:55 [INFO]: Running scheduler at app startup...
+2025-08-22 05:43:55 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:44:07 [INFO]: Checking database connection...
+2025-08-22 05:44:07 [INFO]: Database connection successful.
+2025-08-22 05:44:07 [INFO]: Running scheduler at app startup...
+2025-08-22 05:44:07 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:44:11 [INFO]: Checking database connection...
+2025-08-22 05:44:11 [INFO]: Database connection successful.
+2025-08-22 05:44:11 [INFO]: Running scheduler at app startup...
+2025-08-22 05:44:11 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:44:20 [INFO]: Checking database connection...
+2025-08-22 05:44:20 [INFO]: Database connection successful.
+2025-08-22 05:44:20 [INFO]: Running scheduler at app startup...
+2025-08-22 05:44:20 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:47:30 [INFO]: Checking database connection...
+2025-08-22 05:47:30 [INFO]: Database connection successful.
+2025-08-22 05:47:30 [INFO]: Running scheduler at app startup...
+2025-08-22 05:47:30 [INFO]: Server is running in development mode on port 8000
+2025-08-22 05:59:21 [INFO]: Checking database connection...
+2025-08-22 05:59:21 [INFO]: Database connection successful.
+2025-08-22 05:59:21 [INFO]: Running scheduler at app startup...
+2025-08-22 05:59:21 [INFO]: Server is running in development mode on port 8000
+2025-08-22 06:00:04 [INFO]: Checking database connection...
+2025-08-22 06:00:04 [INFO]: Database connection successful.
+2025-08-22 06:00:04 [INFO]: Running scheduler at app startup...
+2025-08-22 06:00:04 [INFO]: Server is running in development mode on port 8000
+2025-08-22 06:00:07 [INFO]: Checking database connection...
+2025-08-22 06:00:07 [INFO]: Database connection successful.
+2025-08-22 06:00:07 [INFO]: Running scheduler at app startup...
+2025-08-22 06:00:07 [INFO]: Server is running in development mode on port 8000
+2025-08-22 06:00:14 [INFO]: Checking database connection...
+2025-08-22 06:00:14 [INFO]: Database connection successful.
+2025-08-22 06:00:14 [INFO]: Running scheduler at app startup...
+2025-08-22 06:00:14 [INFO]: Server is running in development mode on port 8000
+2025-08-22 06:04:10 [INFO]: Checking database connection...
+2025-08-22 06:04:10 [INFO]: Database connection successful.
+2025-08-22 06:04:10 [INFO]: Running scheduler at app startup...
+2025-08-22 06:04:10 [INFO]: Server is running in development mode on port 8000
+2025-08-22 06:04:43 [INFO]: Checking database connection...
+2025-08-22 06:04:43 [INFO]: Database connection successful.
+2025-08-22 06:04:43 [INFO]: Running scheduler at app startup...
+2025-08-22 06:04:43 [INFO]: Server is running in development mode on port 8000
+2025-08-22 07:39:57 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 07:39:57 [INFO]: Prisma disconnected. Exiting process.
