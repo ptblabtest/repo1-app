@@ -1,6 +1,6 @@
 import { milestoneService } from "@/modules/Milestone/MilestoneService";
-import { calculateDuration } from "@shared/shared/utils/calculateDuration";
-import { serviceFactory } from "@shared/shared/utils/serviceFactory";
+import { calculateDuration } from "@shared/utils/calculateDuration";
+import { serviceFactory } from "@shared/utils/serviceFactory";
 
 const service = {
   model: "contract",

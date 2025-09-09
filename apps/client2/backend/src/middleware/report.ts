@@ -1,6 +1,6 @@
 import prisma from "@shared/lib/prisma";
-import { requireOrg } from "@shared/shared/middlewares/auth";
-import { requirePermission } from "@shared/shared/middlewares/permission";
+import { requireOrg } from "@shared/middlewares/auth";
+import { requirePermission } from "@shared/middlewares/permission";
 
 export const requireReportPermission = (
   action: string,

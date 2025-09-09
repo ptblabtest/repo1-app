@@ -13,15 +13,11 @@
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
-  "_moduleAliases": {
-    "@generated": "./generated"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@workspace/shared-backend": "*",
     "@prisma/client": "^6.13.0",
     "@prisma/internals": "^6.5.0",
     "argon2": "^0.41.1",

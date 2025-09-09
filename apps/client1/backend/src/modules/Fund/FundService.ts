@@ -1,5 +1,5 @@
-import { calculateBudgetComparison } from "@shared/shared/utils/compareBudgetExpense";
-import { serviceFactory } from "@shared/shared/utils/serviceFactory";
+import { calculateBudgetComparison } from "@shared/utils/compareBudgetExpense";
+import { serviceFactory } from "@shared/utils/serviceFactory";
 
 const service = {
   model: "fund",

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { requireAuth } from "@shared/shared/middlewares/auth";
+import { requireAuth } from "@shared/middlewares/auth";
 
 import { projectService } from "./ProjectService";
 

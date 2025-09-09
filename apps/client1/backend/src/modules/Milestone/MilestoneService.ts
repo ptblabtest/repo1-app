@@ -1,7 +1,7 @@
 import prisma from "@shared/lib/prisma";
-import { calculateDuration } from "@shared/shared/utils/calculateDuration";
-import { serviceFactory } from "@shared/shared/utils/serviceFactory";
-import { applyStageUpdate } from "@shared/shared/utils/stageGenerator";
+import { calculateDuration } from "@shared/utils/calculateDuration";
+import { serviceFactory } from "@shared/utils/serviceFactory";
+import { applyStageUpdate } from "@shared/utils/stageGenerator";
 
 const service = {
   model: "milestone",

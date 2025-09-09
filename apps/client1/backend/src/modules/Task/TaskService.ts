@@ -2,13 +2,13 @@ import prisma from "@shared/lib/prisma";
 import { milestoneService } from "@/modules/Milestone/MilestoneService";
 import { projectService } from "@/modules/Project/ProjectService";
 import { stageService } from "@/modules/Stage/StageService";
-import { calculateDuration } from "@shared/shared/utils/calculateDuration";
+import { calculateDuration } from "@shared/utils/calculateDuration";
 import {
   calculateWeightedProgress,
   calculateProjectProgress,
-} from "@shared/shared/utils/calculateProgress";
-import { calculateBudgetComparison } from "@shared/shared/utils/compareBudgetExpense";
-import { serviceFactory } from "@shared/shared/utils/serviceFactory";
+} from "@shared/utils/calculateProgress";
+import { calculateBudgetComparison } from "@shared/utils/compareBudgetExpense";
+import { serviceFactory } from "@shared/utils/serviceFactory";
 
 const service = {
   model: "task",

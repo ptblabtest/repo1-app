@@ -1,4 +1,3 @@
-import { seedPermissions, seedReportCategories } from "@prisma/seeds/reportCategories";
 import { PrismaClient } from "../generated/prisma";
 import { seedOrganizations, seedRoles, seedUsers } from "./seeds/userTrials";
 
@@ -9,8 +8,6 @@ async function main() {
     { name: "Role", fn: () => seedRoles(prisma) },
     { name: "Organization", fn: () => seedOrganizations(prisma) },
     { name: "Users", fn: () => seedUsers(prisma) },
-    { name: "Report Categories", fn: () => seedReportCategories(prisma) },
-    { name: "Permissions", fn: () => seedPermissions(prisma) },
   ];
 
   for (const { name, fn } of seeds) {

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { SelectService } from "./SelectService";
-import { requireAuth } from "@shared/shared/middlewares/auth";
+import { requireAuth } from "@shared/middlewares/auth";
 
 const router = Router();
 

@@ -1,22 +1,14 @@
 {
-  "extends": "@repo/typescript-config/base.json",
+  "extends": "../../../packages/typescript-config/base.json",
   "compilerOptions": {
-    "target": "es2018",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "@prisma/*": ["prisma/*"],
       "@generated/*": ["generated/*"],
-      "@shared/*": ["../../../packages/shared-backend/src/*"]
+      "@shared/*": ["../../../packages/shared-backend/*"]
     }
   },
-  "include": ["**/*.ts", "src/**/*.ts", "prisma/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

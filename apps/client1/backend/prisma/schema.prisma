@@ -256,20 +256,21 @@ model PurchaseItem {
 
 // CRM
 model Lead {
-  id               String    @id @default(uuid())
-  regNumber        String?
-  name             String?
-  role             String?
-  email            String?
-  phone            String?
-  companyName      String?
-  companyAddress   String?
-  leadSource       String?
-  leadDate         DateTime?
-  leadAddress      String?
-  description      String?
-  approvedDate     DateTime?
-  prospectLocation String?
+  id                String    @id @default(uuid())
+  regNumber         String?
+  name              String?
+  role              String?
+  email             String?
+  phone             String?
+  companyName       String?
+  companyAddress    String?
+  leadSource        String?
+  leadDate          DateTime?
+  leadAddress       String?
+  description       String?
+  prospectLocation  String?
+  approvedDate      DateTime?
+  expectedCloseDate DateTime?
 
   assigneeId  String?
   createdById String?
@@ -328,25 +329,26 @@ model Opportunity {
 }
 
 model Quote {
-  id            String    @id @default(uuid())
-  regNumber     String?
-  title         String
-  company       String?
-  currency      String?
-  baseAmount    Decimal?
-  exchangeRate  Decimal?
-  amount        Decimal?
-  releasedDate  DateTime?
-  approvedDate  DateTime?
-  expiredDate   DateTime?
-  description   String?
-  productId     String?
-  opportunityId String?
-  assigneeId    String?
-  createdById   String?
-  updatedById   String?
-  createdAt     DateTime? @default(now())
-  updatedAt     DateTime? @updatedAt
+  id                String    @id @default(uuid())
+  regNumber         String?
+  title             String
+  company           String?
+  currency          String?
+  baseAmount        Decimal?
+  exchangeRate      Decimal?
+  amount            Decimal?
+  releasedDate      DateTime?
+  approvedDate      DateTime?
+  expiredDate       DateTime?
+  expectedCloseDate DateTime?
+  description       String?
+  productId         String?
+  opportunityId     String?
+  assigneeId        String?
+  createdById       String?
+  updatedById       String?
+  createdAt         DateTime? @default(now())
+  updatedAt         DateTime? @updatedAt
 
   product     Product?     @relation(fields: [productId], references: [id])
   opportunity Opportunity? @relation(fields: [opportunityId], references: [id])

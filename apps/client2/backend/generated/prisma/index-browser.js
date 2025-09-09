@@ -123,12 +123,10 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ReportCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  code: 'code',
+  interval: 'interval',
   parentId: 'parentId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById',
-  updatedById: 'updatedById'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ReportScalarFieldEnum = {
@@ -136,7 +134,6 @@ exports.Prisma.ReportScalarFieldEnum = {
   categoryId: 'categoryId',
   periodYear: 'periodYear',
   periodMonth: 'periodMonth',
-  periodDate: 'periodDate',
   version: 'version',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -147,7 +144,6 @@ exports.Prisma.ReportScalarFieldEnum = {
 
 exports.Prisma.FileScalarFieldEnum = {
   id: 'id',
-  filename: 'filename',
   path: 'path',
   mimeType: 'mimeType',
   size: 'size',
@@ -166,25 +162,6 @@ exports.Prisma.NoteScalarFieldEnum = {
   reportId: 'reportId'
 };
 
-exports.Prisma.StageScalarFieldEnum = {
-  id: 'id',
-  stageTypeId: 'stageTypeId',
-  comment: 'comment',
-  createdById: 'createdById',
-  updatedById: 'updatedById',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  reportId: 'reportId'
-};
-
-exports.Prisma.StageTypeScalarFieldEnum = {
-  id: 'id',
-  model: 'model',
-  order: 'order',
-  value: 'value',
-  label: 'label'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
@@ -192,9 +169,21 @@ exports.Prisma.UserScalarFieldEnum = {
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  departmentId: 'departmentId',
-  organizationId: 'organizationId',
-  roleId: 'roleId'
+  roleId: 'roleId',
+  organizationId: 'organizationId'
+};
+
+exports.Prisma.ProfileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  department: 'department',
+  position: 'position',
+  joinDate: 'joinDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdById: 'createdById',
+  updatedById: 'updatedById',
+  userId: 'userId'
 };
 
 exports.Prisma.OrganizationScalarFieldEnum = {
@@ -209,14 +198,6 @@ exports.Prisma.RoleScalarFieldEnum = {
   level: 'level'
 };
 
-exports.Prisma.DepartmentScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  code: 'code',
-  createdById: 'createdById',
-  updatedById: 'updatedById'
-};
-
 exports.Prisma.PermissionScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -224,40 +205,14 @@ exports.Prisma.PermissionScalarFieldEnum = {
   action: 'action',
   description: 'description',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById',
-  updatedById: 'updatedById'
-};
-
-exports.Prisma.DepartmentPermissionScalarFieldEnum = {
-  id: 'id',
-  departmentId: 'departmentId',
-  permissionId: 'permissionId',
-  createdAt: 'createdAt',
-  createdById: 'createdById',
-  updatedById: 'updatedById'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.UserPermissionScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   permissionId: 'permissionId',
-  createdAt: 'createdAt',
-  createdById: 'createdById',
-  updatedById: 'updatedById'
-};
-
-exports.Prisma.ProfileScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  department: 'department',
-  position: 'position',
-  joinDate: 'joinDate',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById',
-  updatedById: 'updatedById',
-  userId: 'userId'
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -301,16 +256,12 @@ exports.Prisma.ModelName = {
   Report: 'Report',
   File: 'File',
   Note: 'Note',
-  Stage: 'Stage',
-  StageType: 'StageType',
   User: 'User',
+  Profile: 'Profile',
   Organization: 'Organization',
   Role: 'Role',
-  Department: 'Department',
   Permission: 'Permission',
-  DepartmentPermission: 'DepartmentPermission',
   UserPermission: 'UserPermission',
-  Profile: 'Profile',
   Session: 'Session'
 };
 

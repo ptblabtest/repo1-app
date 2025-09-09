@@ -1,4 +1,4 @@
-import { serviceFactory } from "@shared/shared/utils/serviceFactory";
+import { serviceFactory } from "@shared/utils/serviceFactory";
 
 const service = {
   model: "lead",

@@ -1,14 +1,13 @@
 import { Router } from "express";
-import selectRoutes from "@/modules/_extensions/select/SelectRoutes";
 import reportRoutes from "@/modules/Report/ReportRoutes";
-
-// import excelRoutes from "@/features/_extensions/excel/ExcelRoutes"; // Uncomment if Excel routes are implemented
+import reportCategoryRoutes from "@/modules/ReportCategory/ReportCategoryRoutes";
+import reportPermissionRoutes from "@/modules/ReportPermission/ReportPermissionRoutes";
+import { requireRole } from "@shared/middlewares/auth";
 
 const router = Router();
 // extensions
-router.use(reportRoutes);
-router.use(selectRoutes);
-
-
+router.use(`/reports`, reportRoutes);
+router.use(`/report-categories`, requireRole(2), reportCategoryRoutes);
+router.use(requireRole(2), reportPermissionRoutes);
 
 export default router;

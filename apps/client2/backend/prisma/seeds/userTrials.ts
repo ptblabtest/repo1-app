@@ -119,30 +119,6 @@ export async function seedUsers(prisma: any) {
         roleName: "superadmin",
         orgCode: "ORG001"
       },
-      {
-        username: "org1.leader",
-        password: hashedPassword,
-        roleName: "leader",
-        orgCode: "ORG001"
-      },
-      {
-        username: "org1.user",
-        password: hashedPassword,
-        roleName: "user",
-        orgCode: "ORG001"
-      },
-      {
-        username: "org1.visitor",
-        password: hashedPassword,
-        roleName: "visitor",
-        orgCode: "ORG001"
-      },
-      {
-        username: "org2.leader",
-        password: hashedPassword,
-        roleName: "leader",
-        orgCode: "ORG002"
-      },
     ];
 
     let createdCount = 0;

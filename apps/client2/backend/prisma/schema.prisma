@@ -11,18 +11,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-generator zod {
-  provider = "prisma-zod-generator"
-  output   = "../generated/zod"
-
-  isGenerateSelect  = true
-  isGenerateInclude = true
-}
-
 model ReportCategory {
-  id   String @id @default(uuid())
-  name String @unique
-  code String @unique
+  id       String  @id @default(uuid())
+  name     String  @unique
+  interval String?
 
   parent   ReportCategory? @relation("CategoryHierarchy", fields: [parentId], references: [id])
   parentId String?
@@ -31,11 +23,6 @@ model ReportCategory {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
-  createdById String?
-  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
-  updatedById String?
 
   reports Report[]
 }
@@ -46,8 +33,7 @@ model Report {
   categoryId String
 
   periodYear  String
-  periodMonth String
-  periodDate  String?
+  periodMonth String?
 
   version Int @default(1)
 
@@ -62,14 +48,12 @@ model Report {
   organization   Organization? @relation(fields: [organizationId], references: [id])
   organizationId String?
 
-  notes  Note[]
-  stages Stage[]
-  files  File[]
+  notes Note[]
+  files File[]
 }
 
 model File {
   id       String  @id @default(uuid())
-  filename String
   path     String
   mimeType String?
   size     Int?
@@ -97,36 +81,6 @@ model Note {
   reportId String?
 }
 
-model Stage {
-  id          String  @id @default(uuid())
-  stageTypeId String
-  comment     String?
-
-  createdById String?
-  updatedById String?
-
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @updatedAt
-
-  type StageType @relation(fields: [stageTypeId], references: [id])
-
-  createdBy User? @relation("CreatedBy", fields: [createdById], references: [id])
-  updatedBy User? @relation("UpdatedBy", fields: [updatedById], references: [id])
-
-  report   Report? @relation(fields: [reportId], references: [id])
-  reportId String?
-}
-
-model StageType {
-  id    String @id @default(uuid())
-  model String
-  order Int
-  value String
-  label String
-
-  stages Stage[]
-}
-
 // user
 model User {
   id       String     @id @default(uuid())
@@ -137,131 +91,23 @@ model User {
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
 
-  department     Department?   @relation(fields: [departmentId], references: [id])
-  departmentId   String?
-  organization   Organization? @relation(fields: [organizationId], references: [id])
-  organizationId String?
   role           Role?         @relation(fields: [roleId], references: [id])
   roleId         String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
 
   permissions UserPermission[]
-
   profile Profile?
 
   CreatorNote Note[] @relation("CreatedBy")
   UpdaterNote Note[] @relation("UpdatedBy")
 
-  CreatorStage Stage[] @relation("CreatedBy")
-  UpdaterStage Stage[] @relation("UpdatedBy")
-
   // Report model
   CreatorReport Report[] @relation("CreatedBy")
   UpdaterReport Report[] @relation("UpdatedBy")
 
-  // ReportCategory model  
-  CreatorReportCategory ReportCategory[]       @relation("CreatedBy")
-  UpdaterReportCategory ReportCategory[]       @relation("UpdatedBy")
-  
-  CreatorDepartment Department[] @relation("CreatedBy")
-  UpdaterDepartment Department[] @relation("UpdatedBy")
-
-  CreatorPermission Permission[] @relation("CreatedBy")
-  UpdaterPermission Permission[] @relation("UpdatedBy")
-
-  CreatorDepartmentPermission DepartmentPermission[] @relation("CreatedBy")
-  UpdaterDepartmentPermission DepartmentPermission[] @relation("UpdatedBy")
-
-  CreatorUserPermission UserPermission[] @relation("CreatedBy")
-  UpdaterUserPermission UserPermission[] @relation("UpdatedBy")
-
   CreatorProfile Profile[] @relation("CreatedBy")
   UpdaterProfile Profile[] @relation("UpdatedBy")
-}
-
-model Organization {
-  id   String @id @default(uuid())
-  name String @unique
-  code String @unique
-
-  users  User[]
-  Report Report[]
-}
-
-model Role {
-  id    String @id @default(uuid())
-  name  String @unique
-  level Int
-
-  users User[]
-}
-
-model Department {
-  id   String @id @default(uuid())
-  name String @unique
-  code String @unique
-
-  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
-  createdById String?
-  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
-  updatedById String?
-
-  users       User[]
-  permissions DepartmentPermission[]
-}
-
-model Permission {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  resource    String
-  action      String
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
-  createdById String?
-  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
-  updatedById String?
-
-  dept  DepartmentPermission[]
-  users UserPermission[]
-
-  @@unique([resource, action])
-  @@index([resource])
-}
-
-model DepartmentPermission {
-  id           String   @id @default(uuid())
-  departmentId String
-  permissionId String
-  createdAt    DateTime @default(now())
-
-  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
-  createdById String?
-  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
-  updatedById String?
-
-  department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-
-  @@unique([departmentId, permissionId])
-  @@index([departmentId])
-}
-
-model UserPermission {
-  id           String     @id @default(uuid())
-  userId       String
-  permissionId String
-  createdAt    DateTime   @default(now())
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-
-  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
-  createdById String?
-  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
-  updatedById String?
-
-  @@index([userId])
 }
 
 model Profile {
@@ -281,6 +127,51 @@ model Profile {
 
   user   User   @relation(fields: [userId], references: [id])
   userId String @unique
+}
+
+model Organization {
+  id   String @id @default(uuid())
+  name String @unique
+  code String @unique
+
+  users  User[]
+  Report Report[]
+}
+
+model Role {
+  id    String @id @default(uuid())
+  name  String @unique
+  level Int
+
+  users User[]
+}
+
+model Permission {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  resource    String
+  action      String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users UserPermission[]
+
+  @@unique([resource, action])
+  @@index([resource])
+}
+
+model UserPermission {
+  id           String @id @default(uuid())
+  userId       String
+  permissionId String
+
+  createdAt DateTime @default(now())
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Session {

@@ -34,20 +34,15 @@ export type File = $Result.DefaultSelection<Prisma.$FilePayload>
  */
 export type Note = $Result.DefaultSelection<Prisma.$NotePayload>
 /**
- * Model Stage
- * 
- */
-export type Stage = $Result.DefaultSelection<Prisma.$StagePayload>
-/**
- * Model StageType
- * 
- */
-export type StageType = $Result.DefaultSelection<Prisma.$StageTypePayload>
-/**
  * Model User
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Profile
+ * 
+ */
+export type Profile = $Result.DefaultSelection<Prisma.$ProfilePayload>
 /**
  * Model Organization
  * 
@@ -59,30 +54,15 @@ export type Organization = $Result.DefaultSelection<Prisma.$OrganizationPayload>
  */
 export type Role = $Result.DefaultSelection<Prisma.$RolePayload>
 /**
- * Model Department
- * 
- */
-export type Department = $Result.DefaultSelection<Prisma.$DepartmentPayload>
-/**
  * Model Permission
  * 
  */
 export type Permission = $Result.DefaultSelection<Prisma.$PermissionPayload>
 /**
- * Model DepartmentPermission
- * 
- */
-export type DepartmentPermission = $Result.DefaultSelection<Prisma.$DepartmentPermissionPayload>
-/**
  * Model UserPermission
  * 
  */
 export type UserPermission = $Result.DefaultSelection<Prisma.$UserPermissionPayload>
-/**
- * Model Profile
- * 
- */
-export type Profile = $Result.DefaultSelection<Prisma.$ProfilePayload>
 /**
  * Model Session
  * 
@@ -266,26 +246,6 @@ export class PrismaClient<
   get note(): Prisma.NoteDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.stage`: Exposes CRUD operations for the **Stage** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Stages
-    * const stages = await prisma.stage.findMany()
-    * ```
-    */
-  get stage(): Prisma.StageDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.stageType`: Exposes CRUD operations for the **StageType** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more StageTypes
-    * const stageTypes = await prisma.stageType.findMany()
-    * ```
-    */
-  get stageType(): Prisma.StageTypeDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -294,6 +254,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.profile`: Exposes CRUD operations for the **Profile** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Profiles
+    * const profiles = await prisma.profile.findMany()
+    * ```
+    */
+  get profile(): Prisma.ProfileDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.organization`: Exposes CRUD operations for the **Organization** model.
@@ -316,16 +286,6 @@ export class PrismaClient<
   get role(): Prisma.RoleDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.department`: Exposes CRUD operations for the **Department** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Departments
-    * const departments = await prisma.department.findMany()
-    * ```
-    */
-  get department(): Prisma.DepartmentDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.permission`: Exposes CRUD operations for the **Permission** model.
     * Example usage:
     * ```ts
@@ -336,16 +296,6 @@ export class PrismaClient<
   get permission(): Prisma.PermissionDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.departmentPermission`: Exposes CRUD operations for the **DepartmentPermission** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more DepartmentPermissions
-    * const departmentPermissions = await prisma.departmentPermission.findMany()
-    * ```
-    */
-  get departmentPermission(): Prisma.DepartmentPermissionDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.userPermission`: Exposes CRUD operations for the **UserPermission** model.
     * Example usage:
     * ```ts
@@ -354,16 +304,6 @@ export class PrismaClient<
     * ```
     */
   get userPermission(): Prisma.UserPermissionDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.profile`: Exposes CRUD operations for the **Profile** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Profiles
-    * const profiles = await prisma.profile.findMany()
-    * ```
-    */
-  get profile(): Prisma.ProfileDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.session`: Exposes CRUD operations for the **Session** model.
@@ -818,16 +758,12 @@ export namespace Prisma {
     Report: 'Report',
     File: 'File',
     Note: 'Note',
-    Stage: 'Stage',
-    StageType: 'StageType',
     User: 'User',
+    Profile: 'Profile',
     Organization: 'Organization',
     Role: 'Role',
-    Department: 'Department',
     Permission: 'Permission',
-    DepartmentPermission: 'DepartmentPermission',
     UserPermission: 'UserPermission',
-    Profile: 'Profile',
     Session: 'Session'
   };
 
@@ -847,7 +783,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "reportCategory" | "report" | "file" | "note" | "stage" | "stageType" | "user" | "organization" | "role" | "department" | "permission" | "departmentPermission" | "userPermission" | "profile" | "session"
+      modelProps: "reportCategory" | "report" | "file" | "note" | "user" | "profile" | "organization" | "role" | "permission" | "userPermission" | "session"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1147,154 +1083,6 @@ export namespace Prisma {
           }
         }
       }
-      Stage: {
-        payload: Prisma.$StagePayload<ExtArgs>
-        fields: Prisma.StageFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.StageFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.StageFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>
-          }
-          findFirst: {
-            args: Prisma.StageFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.StageFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>
-          }
-          findMany: {
-            args: Prisma.StageFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>[]
-          }
-          create: {
-            args: Prisma.StageCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>
-          }
-          createMany: {
-            args: Prisma.StageCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.StageCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>[]
-          }
-          delete: {
-            args: Prisma.StageDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>
-          }
-          update: {
-            args: Prisma.StageUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>
-          }
-          deleteMany: {
-            args: Prisma.StageDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.StageUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.StageUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>[]
-          }
-          upsert: {
-            args: Prisma.StageUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StagePayload>
-          }
-          aggregate: {
-            args: Prisma.StageAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateStage>
-          }
-          groupBy: {
-            args: Prisma.StageGroupByArgs<ExtArgs>
-            result: $Utils.Optional<StageGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.StageCountArgs<ExtArgs>
-            result: $Utils.Optional<StageCountAggregateOutputType> | number
-          }
-        }
-      }
-      StageType: {
-        payload: Prisma.$StageTypePayload<ExtArgs>
-        fields: Prisma.StageTypeFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.StageTypeFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.StageTypeFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>
-          }
-          findFirst: {
-            args: Prisma.StageTypeFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.StageTypeFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>
-          }
-          findMany: {
-            args: Prisma.StageTypeFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>[]
-          }
-          create: {
-            args: Prisma.StageTypeCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>
-          }
-          createMany: {
-            args: Prisma.StageTypeCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.StageTypeCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>[]
-          }
-          delete: {
-            args: Prisma.StageTypeDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>
-          }
-          update: {
-            args: Prisma.StageTypeUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>
-          }
-          deleteMany: {
-            args: Prisma.StageTypeDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.StageTypeUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.StageTypeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>[]
-          }
-          upsert: {
-            args: Prisma.StageTypeUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$StageTypePayload>
-          }
-          aggregate: {
-            args: Prisma.StageTypeAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateStageType>
-          }
-          groupBy: {
-            args: Prisma.StageTypeGroupByArgs<ExtArgs>
-            result: $Utils.Optional<StageTypeGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.StageTypeCountArgs<ExtArgs>
-            result: $Utils.Optional<StageTypeCountAggregateOutputType> | number
-          }
-        }
-      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1366,6 +1154,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Profile: {
+        payload: Prisma.$ProfilePayload<ExtArgs>
+        fields: Prisma.ProfileFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProfileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProfileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+          }
+          findFirst: {
+            args: Prisma.ProfileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProfileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+          }
+          findMany: {
+            args: Prisma.ProfileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
+          }
+          create: {
+            args: Prisma.ProfileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+          }
+          createMany: {
+            args: Prisma.ProfileCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProfileCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
+          }
+          delete: {
+            args: Prisma.ProfileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+          }
+          update: {
+            args: Prisma.ProfileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProfileDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProfileUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProfileUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProfileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+          }
+          aggregate: {
+            args: Prisma.ProfileAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProfile>
+          }
+          groupBy: {
+            args: Prisma.ProfileGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProfileGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProfileCountArgs<ExtArgs>
+            result: $Utils.Optional<ProfileCountAggregateOutputType> | number
           }
         }
       }
@@ -1517,80 +1379,6 @@ export namespace Prisma {
           }
         }
       }
-      Department: {
-        payload: Prisma.$DepartmentPayload<ExtArgs>
-        fields: Prisma.DepartmentFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.DepartmentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.DepartmentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
-          }
-          findFirst: {
-            args: Prisma.DepartmentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.DepartmentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
-          }
-          findMany: {
-            args: Prisma.DepartmentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
-          }
-          create: {
-            args: Prisma.DepartmentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
-          }
-          createMany: {
-            args: Prisma.DepartmentCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.DepartmentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
-          }
-          delete: {
-            args: Prisma.DepartmentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
-          }
-          update: {
-            args: Prisma.DepartmentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
-          }
-          deleteMany: {
-            args: Prisma.DepartmentDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.DepartmentUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.DepartmentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
-          }
-          upsert: {
-            args: Prisma.DepartmentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
-          }
-          aggregate: {
-            args: Prisma.DepartmentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDepartment>
-          }
-          groupBy: {
-            args: Prisma.DepartmentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DepartmentGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.DepartmentCountArgs<ExtArgs>
-            result: $Utils.Optional<DepartmentCountAggregateOutputType> | number
-          }
-        }
-      }
       Permission: {
         payload: Prisma.$PermissionPayload<ExtArgs>
         fields: Prisma.PermissionFieldRefs
@@ -1665,80 +1453,6 @@ export namespace Prisma {
           }
         }
       }
-      DepartmentPermission: {
-        payload: Prisma.$DepartmentPermissionPayload<ExtArgs>
-        fields: Prisma.DepartmentPermissionFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.DepartmentPermissionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.DepartmentPermissionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>
-          }
-          findFirst: {
-            args: Prisma.DepartmentPermissionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.DepartmentPermissionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>
-          }
-          findMany: {
-            args: Prisma.DepartmentPermissionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>[]
-          }
-          create: {
-            args: Prisma.DepartmentPermissionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>
-          }
-          createMany: {
-            args: Prisma.DepartmentPermissionCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.DepartmentPermissionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>[]
-          }
-          delete: {
-            args: Prisma.DepartmentPermissionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>
-          }
-          update: {
-            args: Prisma.DepartmentPermissionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>
-          }
-          deleteMany: {
-            args: Prisma.DepartmentPermissionDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.DepartmentPermissionUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.DepartmentPermissionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>[]
-          }
-          upsert: {
-            args: Prisma.DepartmentPermissionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DepartmentPermissionPayload>
-          }
-          aggregate: {
-            args: Prisma.DepartmentPermissionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDepartmentPermission>
-          }
-          groupBy: {
-            args: Prisma.DepartmentPermissionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DepartmentPermissionGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.DepartmentPermissionCountArgs<ExtArgs>
-            result: $Utils.Optional<DepartmentPermissionCountAggregateOutputType> | number
-          }
-        }
-      }
       UserPermission: {
         payload: Prisma.$UserPermissionPayload<ExtArgs>
         fields: Prisma.UserPermissionFieldRefs
@@ -1810,80 +1524,6 @@ export namespace Prisma {
           count: {
             args: Prisma.UserPermissionCountArgs<ExtArgs>
             result: $Utils.Optional<UserPermissionCountAggregateOutputType> | number
-          }
-        }
-      }
-      Profile: {
-        payload: Prisma.$ProfilePayload<ExtArgs>
-        fields: Prisma.ProfileFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ProfileFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ProfileFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
-          }
-          findFirst: {
-            args: Prisma.ProfileFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ProfileFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
-          }
-          findMany: {
-            args: Prisma.ProfileFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
-          }
-          create: {
-            args: Prisma.ProfileCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
-          }
-          createMany: {
-            args: Prisma.ProfileCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ProfileCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
-          }
-          delete: {
-            args: Prisma.ProfileDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
-          }
-          update: {
-            args: Prisma.ProfileUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
-          }
-          deleteMany: {
-            args: Prisma.ProfileDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ProfileUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ProfileUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
-          }
-          upsert: {
-            args: Prisma.ProfileUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
-          }
-          aggregate: {
-            args: Prisma.ProfileAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateProfile>
-          }
-          groupBy: {
-            args: Prisma.ProfileGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ProfileGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ProfileCountArgs<ExtArgs>
-            result: $Utils.Optional<ProfileCountAggregateOutputType> | number
           }
         }
       }
@@ -2057,16 +1697,12 @@ export namespace Prisma {
     report?: ReportOmit
     file?: FileOmit
     note?: NoteOmit
-    stage?: StageOmit
-    stageType?: StageTypeOmit
     user?: UserOmit
+    profile?: ProfileOmit
     organization?: OrganizationOmit
     role?: RoleOmit
-    department?: DepartmentOmit
     permission?: PermissionOmit
-    departmentPermission?: DepartmentPermissionOmit
     userPermission?: UserPermissionOmit
-    profile?: ProfileOmit
     session?: SessionOmit
   }
 
@@ -2189,13 +1825,11 @@ export namespace Prisma {
 
   export type ReportCountOutputType = {
     notes: number
-    stages: number
     files: number
   }
 
   export type ReportCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notes?: boolean | ReportCountOutputTypeCountNotesArgs
-    stages?: boolean | ReportCountOutputTypeCountStagesArgs
     files?: boolean | ReportCountOutputTypeCountFilesArgs
   }
 
@@ -2220,46 +1854,8 @@ export namespace Prisma {
   /**
    * ReportCountOutputType without action
    */
-  export type ReportCountOutputTypeCountStagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StageWhereInput
-  }
-
-  /**
-   * ReportCountOutputType without action
-   */
   export type ReportCountOutputTypeCountFilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FileWhereInput
-  }
-
-
-  /**
-   * Count Type StageTypeCountOutputType
-   */
-
-  export type StageTypeCountOutputType = {
-    stages: number
-  }
-
-  export type StageTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    stages?: boolean | StageTypeCountOutputTypeCountStagesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * StageTypeCountOutputType without action
-   */
-  export type StageTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageTypeCountOutputType
-     */
-    select?: StageTypeCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * StageTypeCountOutputType without action
-   */
-  export type StageTypeCountOutputTypeCountStagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StageWhereInput
   }
 
 
@@ -2271,20 +1867,8 @@ export namespace Prisma {
     permissions: number
     CreatorNote: number
     UpdaterNote: number
-    CreatorStage: number
-    UpdaterStage: number
     CreatorReport: number
     UpdaterReport: number
-    CreatorReportCategory: number
-    UpdaterReportCategory: number
-    CreatorDepartment: number
-    UpdaterDepartment: number
-    CreatorPermission: number
-    UpdaterPermission: number
-    CreatorDepartmentPermission: number
-    UpdaterDepartmentPermission: number
-    CreatorUserPermission: number
-    UpdaterUserPermission: number
     CreatorProfile: number
     UpdaterProfile: number
   }
@@ -2293,20 +1877,8 @@ export namespace Prisma {
     permissions?: boolean | UserCountOutputTypeCountPermissionsArgs
     CreatorNote?: boolean | UserCountOutputTypeCountCreatorNoteArgs
     UpdaterNote?: boolean | UserCountOutputTypeCountUpdaterNoteArgs
-    CreatorStage?: boolean | UserCountOutputTypeCountCreatorStageArgs
-    UpdaterStage?: boolean | UserCountOutputTypeCountUpdaterStageArgs
     CreatorReport?: boolean | UserCountOutputTypeCountCreatorReportArgs
     UpdaterReport?: boolean | UserCountOutputTypeCountUpdaterReportArgs
-    CreatorReportCategory?: boolean | UserCountOutputTypeCountCreatorReportCategoryArgs
-    UpdaterReportCategory?: boolean | UserCountOutputTypeCountUpdaterReportCategoryArgs
-    CreatorDepartment?: boolean | UserCountOutputTypeCountCreatorDepartmentArgs
-    UpdaterDepartment?: boolean | UserCountOutputTypeCountUpdaterDepartmentArgs
-    CreatorPermission?: boolean | UserCountOutputTypeCountCreatorPermissionArgs
-    UpdaterPermission?: boolean | UserCountOutputTypeCountUpdaterPermissionArgs
-    CreatorDepartmentPermission?: boolean | UserCountOutputTypeCountCreatorDepartmentPermissionArgs
-    UpdaterDepartmentPermission?: boolean | UserCountOutputTypeCountUpdaterDepartmentPermissionArgs
-    CreatorUserPermission?: boolean | UserCountOutputTypeCountCreatorUserPermissionArgs
-    UpdaterUserPermission?: boolean | UserCountOutputTypeCountUpdaterUserPermissionArgs
     CreatorProfile?: boolean | UserCountOutputTypeCountCreatorProfileArgs
     UpdaterProfile?: boolean | UserCountOutputTypeCountUpdaterProfileArgs
   }
@@ -2346,20 +1918,6 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountCreatorStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StageWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpdaterStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StageWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountCreatorReportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReportWhereInput
   }
@@ -2369,76 +1927,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountUpdaterReportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReportWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCreatorReportCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ReportCategoryWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpdaterReportCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ReportCategoryWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCreatorDepartmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpdaterDepartmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCreatorPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PermissionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpdaterPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PermissionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCreatorDepartmentPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentPermissionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpdaterDepartmentPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentPermissionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCreatorUserPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserPermissionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpdaterUserPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserPermissionWhereInput
   }
 
   /**
@@ -2528,56 +2016,14 @@ export namespace Prisma {
 
 
   /**
-   * Count Type DepartmentCountOutputType
-   */
-
-  export type DepartmentCountOutputType = {
-    users: number
-    permissions: number
-  }
-
-  export type DepartmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | DepartmentCountOutputTypeCountUsersArgs
-    permissions?: boolean | DepartmentCountOutputTypeCountPermissionsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * DepartmentCountOutputType without action
-   */
-  export type DepartmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentCountOutputType
-     */
-    select?: DepartmentCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * DepartmentCountOutputType without action
-   */
-  export type DepartmentCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-  /**
-   * DepartmentCountOutputType without action
-   */
-  export type DepartmentCountOutputTypeCountPermissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentPermissionWhereInput
-  }
-
-
-  /**
    * Count Type PermissionCountOutputType
    */
 
   export type PermissionCountOutputType = {
-    dept: number
     users: number
   }
 
   export type PermissionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    dept?: boolean | PermissionCountOutputTypeCountDeptArgs
     users?: boolean | PermissionCountOutputTypeCountUsersArgs
   }
 
@@ -2590,13 +2036,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the PermissionCountOutputType
      */
     select?: PermissionCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PermissionCountOutputType without action
-   */
-  export type PermissionCountOutputTypeCountDeptArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentPermissionWhereInput
   }
 
   /**
@@ -2624,34 +2063,28 @@ export namespace Prisma {
   export type ReportCategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
-    code: string | null
+    interval: string | null
     parentId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
   }
 
   export type ReportCategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    code: string | null
+    interval: string | null
     parentId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
   }
 
   export type ReportCategoryCountAggregateOutputType = {
     id: number
     name: number
-    code: number
+    interval: number
     parentId: number
     createdAt: number
     updatedAt: number
-    createdById: number
-    updatedById: number
     _all: number
   }
 
@@ -2659,34 +2092,28 @@ export namespace Prisma {
   export type ReportCategoryMinAggregateInputType = {
     id?: true
     name?: true
-    code?: true
+    interval?: true
     parentId?: true
     createdAt?: true
     updatedAt?: true
-    createdById?: true
-    updatedById?: true
   }
 
   export type ReportCategoryMaxAggregateInputType = {
     id?: true
     name?: true
-    code?: true
+    interval?: true
     parentId?: true
     createdAt?: true
     updatedAt?: true
-    createdById?: true
-    updatedById?: true
   }
 
   export type ReportCategoryCountAggregateInputType = {
     id?: true
     name?: true
-    code?: true
+    interval?: true
     parentId?: true
     createdAt?: true
     updatedAt?: true
-    createdById?: true
-    updatedById?: true
     _all?: true
   }
 
@@ -2765,12 +2192,10 @@ export namespace Prisma {
   export type ReportCategoryGroupByOutputType = {
     id: string
     name: string
-    code: string
+    interval: string | null
     parentId: string | null
     createdAt: Date
     updatedAt: Date
-    createdById: string | null
-    updatedById: string | null
     _count: ReportCategoryCountAggregateOutputType | null
     _min: ReportCategoryMinAggregateOutputType | null
     _max: ReportCategoryMaxAggregateOutputType | null
@@ -2793,16 +2218,12 @@ export namespace Prisma {
   export type ReportCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    code?: boolean
+    interval?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
     parent?: boolean | ReportCategory$parentArgs<ExtArgs>
     children?: boolean | ReportCategory$childrenArgs<ExtArgs>
-    createdBy?: boolean | ReportCategory$createdByArgs<ExtArgs>
-    updatedBy?: boolean | ReportCategory$updatedByArgs<ExtArgs>
     reports?: boolean | ReportCategory$reportsArgs<ExtArgs>
     _count?: boolean | ReportCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reportCategory"]>
@@ -2810,60 +2231,44 @@ export namespace Prisma {
   export type ReportCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    code?: boolean
+    interval?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
     parent?: boolean | ReportCategory$parentArgs<ExtArgs>
-    createdBy?: boolean | ReportCategory$createdByArgs<ExtArgs>
-    updatedBy?: boolean | ReportCategory$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["reportCategory"]>
 
   export type ReportCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    code?: boolean
+    interval?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
     parent?: boolean | ReportCategory$parentArgs<ExtArgs>
-    createdBy?: boolean | ReportCategory$createdByArgs<ExtArgs>
-    updatedBy?: boolean | ReportCategory$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["reportCategory"]>
 
   export type ReportCategorySelectScalar = {
     id?: boolean
     name?: boolean
-    code?: boolean
+    interval?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
   }
 
-  export type ReportCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "parentId" | "createdAt" | "updatedAt" | "createdById" | "updatedById", ExtArgs["result"]["reportCategory"]>
+  export type ReportCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "interval" | "parentId" | "createdAt" | "updatedAt", ExtArgs["result"]["reportCategory"]>
   export type ReportCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | ReportCategory$parentArgs<ExtArgs>
     children?: boolean | ReportCategory$childrenArgs<ExtArgs>
-    createdBy?: boolean | ReportCategory$createdByArgs<ExtArgs>
-    updatedBy?: boolean | ReportCategory$updatedByArgs<ExtArgs>
     reports?: boolean | ReportCategory$reportsArgs<ExtArgs>
     _count?: boolean | ReportCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ReportCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | ReportCategory$parentArgs<ExtArgs>
-    createdBy?: boolean | ReportCategory$createdByArgs<ExtArgs>
-    updatedBy?: boolean | ReportCategory$updatedByArgs<ExtArgs>
   }
   export type ReportCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | ReportCategory$parentArgs<ExtArgs>
-    createdBy?: boolean | ReportCategory$createdByArgs<ExtArgs>
-    updatedBy?: boolean | ReportCategory$updatedByArgs<ExtArgs>
   }
 
   export type $ReportCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2871,19 +2276,15 @@ export namespace Prisma {
     objects: {
       parent: Prisma.$ReportCategoryPayload<ExtArgs> | null
       children: Prisma.$ReportCategoryPayload<ExtArgs>[]
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
       reports: Prisma.$ReportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      code: string
+      interval: string | null
       parentId: string | null
       createdAt: Date
       updatedAt: Date
-      createdById: string | null
-      updatedById: string | null
     }, ExtArgs["result"]["reportCategory"]>
     composites: {}
   }
@@ -3280,8 +2681,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     parent<T extends ReportCategory$parentArgs<ExtArgs> = {}>(args?: Subset<T, ReportCategory$parentArgs<ExtArgs>>): Prisma__ReportCategoryClient<$Result.GetResult<Prisma.$ReportCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     children<T extends ReportCategory$childrenArgs<ExtArgs> = {}>(args?: Subset<T, ReportCategory$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    createdBy<T extends ReportCategory$createdByArgs<ExtArgs> = {}>(args?: Subset<T, ReportCategory$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends ReportCategory$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, ReportCategory$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     reports<T extends ReportCategory$reportsArgs<ExtArgs> = {}>(args?: Subset<T, ReportCategory$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3314,12 +2713,10 @@ export namespace Prisma {
   interface ReportCategoryFieldRefs {
     readonly id: FieldRef<"ReportCategory", 'String'>
     readonly name: FieldRef<"ReportCategory", 'String'>
-    readonly code: FieldRef<"ReportCategory", 'String'>
+    readonly interval: FieldRef<"ReportCategory", 'String'>
     readonly parentId: FieldRef<"ReportCategory", 'String'>
     readonly createdAt: FieldRef<"ReportCategory", 'DateTime'>
     readonly updatedAt: FieldRef<"ReportCategory", 'DateTime'>
-    readonly createdById: FieldRef<"ReportCategory", 'String'>
-    readonly updatedById: FieldRef<"ReportCategory", 'String'>
   }
     
 
@@ -3759,44 +3156,6 @@ export namespace Prisma {
   }
 
   /**
-   * ReportCategory.createdBy
-   */
-  export type ReportCategory$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * ReportCategory.updatedBy
-   */
-  export type ReportCategory$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
    * ReportCategory.reports
    */
   export type ReportCategory$reportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3864,7 +3223,6 @@ export namespace Prisma {
     categoryId: string | null
     periodYear: string | null
     periodMonth: string | null
-    periodDate: string | null
     version: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3878,7 +3236,6 @@ export namespace Prisma {
     categoryId: string | null
     periodYear: string | null
     periodMonth: string | null
-    periodDate: string | null
     version: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3892,7 +3249,6 @@ export namespace Prisma {
     categoryId: number
     periodYear: number
     periodMonth: number
-    periodDate: number
     version: number
     createdAt: number
     updatedAt: number
@@ -3916,7 +3272,6 @@ export namespace Prisma {
     categoryId?: true
     periodYear?: true
     periodMonth?: true
-    periodDate?: true
     version?: true
     createdAt?: true
     updatedAt?: true
@@ -3930,7 +3285,6 @@ export namespace Prisma {
     categoryId?: true
     periodYear?: true
     periodMonth?: true
-    periodDate?: true
     version?: true
     createdAt?: true
     updatedAt?: true
@@ -3944,7 +3298,6 @@ export namespace Prisma {
     categoryId?: true
     periodYear?: true
     periodMonth?: true
-    periodDate?: true
     version?: true
     createdAt?: true
     updatedAt?: true
@@ -4044,8 +3397,7 @@ export namespace Prisma {
     id: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate: string | null
+    periodMonth: string | null
     version: number
     createdAt: Date
     updatedAt: Date
@@ -4078,7 +3430,6 @@ export namespace Prisma {
     categoryId?: boolean
     periodYear?: boolean
     periodMonth?: boolean
-    periodDate?: boolean
     version?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4090,7 +3441,6 @@ export namespace Prisma {
     updatedBy?: boolean | Report$updatedByArgs<ExtArgs>
     organization?: boolean | Report$organizationArgs<ExtArgs>
     notes?: boolean | Report$notesArgs<ExtArgs>
-    stages?: boolean | Report$stagesArgs<ExtArgs>
     files?: boolean | Report$filesArgs<ExtArgs>
     _count?: boolean | ReportCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
@@ -4100,7 +3450,6 @@ export namespace Prisma {
     categoryId?: boolean
     periodYear?: boolean
     periodMonth?: boolean
-    periodDate?: boolean
     version?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4118,7 +3467,6 @@ export namespace Prisma {
     categoryId?: boolean
     periodYear?: boolean
     periodMonth?: boolean
-    periodDate?: boolean
     version?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4136,7 +3484,6 @@ export namespace Prisma {
     categoryId?: boolean
     periodYear?: boolean
     periodMonth?: boolean
-    periodDate?: boolean
     version?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4145,14 +3492,13 @@ export namespace Prisma {
     organizationId?: boolean
   }
 
-  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "periodYear" | "periodMonth" | "periodDate" | "version" | "createdAt" | "updatedAt" | "createdById" | "updatedById" | "organizationId", ExtArgs["result"]["report"]>
+  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "periodYear" | "periodMonth" | "version" | "createdAt" | "updatedAt" | "createdById" | "updatedById" | "organizationId", ExtArgs["result"]["report"]>
   export type ReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | ReportCategoryDefaultArgs<ExtArgs>
     createdBy?: boolean | Report$createdByArgs<ExtArgs>
     updatedBy?: boolean | Report$updatedByArgs<ExtArgs>
     organization?: boolean | Report$organizationArgs<ExtArgs>
     notes?: boolean | Report$notesArgs<ExtArgs>
-    stages?: boolean | Report$stagesArgs<ExtArgs>
     files?: boolean | Report$filesArgs<ExtArgs>
     _count?: boolean | ReportCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -4177,15 +3523,13 @@ export namespace Prisma {
       updatedBy: Prisma.$UserPayload<ExtArgs> | null
       organization: Prisma.$OrganizationPayload<ExtArgs> | null
       notes: Prisma.$NotePayload<ExtArgs>[]
-      stages: Prisma.$StagePayload<ExtArgs>[]
       files: Prisma.$FilePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       categoryId: string
       periodYear: string
-      periodMonth: string
-      periodDate: string | null
+      periodMonth: string | null
       version: number
       createdAt: Date
       updatedAt: Date
@@ -4591,7 +3935,6 @@ export namespace Prisma {
     updatedBy<T extends Report$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, Report$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     organization<T extends Report$organizationArgs<ExtArgs> = {}>(args?: Subset<T, Report$organizationArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     notes<T extends Report$notesArgs<ExtArgs> = {}>(args?: Subset<T, Report$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    stages<T extends Report$stagesArgs<ExtArgs> = {}>(args?: Subset<T, Report$stagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     files<T extends Report$filesArgs<ExtArgs> = {}>(args?: Subset<T, Report$filesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4626,7 +3969,6 @@ export namespace Prisma {
     readonly categoryId: FieldRef<"Report", 'String'>
     readonly periodYear: FieldRef<"Report", 'String'>
     readonly periodMonth: FieldRef<"Report", 'String'>
-    readonly periodDate: FieldRef<"Report", 'String'>
     readonly version: FieldRef<"Report", 'Int'>
     readonly createdAt: FieldRef<"Report", 'DateTime'>
     readonly updatedAt: FieldRef<"Report", 'DateTime'>
@@ -5110,30 +4452,6 @@ export namespace Prisma {
   }
 
   /**
-   * Report.stages
-   */
-  export type Report$stagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    where?: StageWhereInput
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    cursor?: StageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
    * Report.files
    */
   export type Report$filesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5198,7 +4516,6 @@ export namespace Prisma {
 
   export type FileMinAggregateOutputType = {
     id: string | null
-    filename: string | null
     path: string | null
     mimeType: string | null
     size: number | null
@@ -5209,7 +4526,6 @@ export namespace Prisma {
 
   export type FileMaxAggregateOutputType = {
     id: string | null
-    filename: string | null
     path: string | null
     mimeType: string | null
     size: number | null
@@ -5220,7 +4536,6 @@ export namespace Prisma {
 
   export type FileCountAggregateOutputType = {
     id: number
-    filename: number
     path: number
     mimeType: number
     size: number
@@ -5241,7 +4556,6 @@ export namespace Prisma {
 
   export type FileMinAggregateInputType = {
     id?: true
-    filename?: true
     path?: true
     mimeType?: true
     size?: true
@@ -5252,7 +4566,6 @@ export namespace Prisma {
 
   export type FileMaxAggregateInputType = {
     id?: true
-    filename?: true
     path?: true
     mimeType?: true
     size?: true
@@ -5263,7 +4576,6 @@ export namespace Prisma {
 
   export type FileCountAggregateInputType = {
     id?: true
-    filename?: true
     path?: true
     mimeType?: true
     size?: true
@@ -5361,7 +4673,6 @@ export namespace Prisma {
 
   export type FileGroupByOutputType = {
     id: string
-    filename: string
     path: string
     mimeType: string | null
     size: number | null
@@ -5391,7 +4702,6 @@ export namespace Prisma {
 
   export type FileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    filename?: boolean
     path?: boolean
     mimeType?: boolean
     size?: boolean
@@ -5403,7 +4713,6 @@ export namespace Prisma {
 
   export type FileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    filename?: boolean
     path?: boolean
     mimeType?: boolean
     size?: boolean
@@ -5415,7 +4724,6 @@ export namespace Prisma {
 
   export type FileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    filename?: boolean
     path?: boolean
     mimeType?: boolean
     size?: boolean
@@ -5427,7 +4735,6 @@ export namespace Prisma {
 
   export type FileSelectScalar = {
     id?: boolean
-    filename?: boolean
     path?: boolean
     mimeType?: boolean
     size?: boolean
@@ -5436,7 +4743,7 @@ export namespace Prisma {
     reportId?: boolean
   }
 
-  export type FileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "path" | "mimeType" | "size" | "createdAt" | "updatedAt" | "reportId", ExtArgs["result"]["file"]>
+  export type FileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "path" | "mimeType" | "size" | "createdAt" | "updatedAt" | "reportId", ExtArgs["result"]["file"]>
   export type FileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     report?: boolean | File$reportArgs<ExtArgs>
   }
@@ -5454,7 +4761,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      filename: string
       path: string
       mimeType: string | null
       size: number | null
@@ -5886,7 +5192,6 @@ export namespace Prisma {
    */
   interface FileFieldRefs {
     readonly id: FieldRef<"File", 'String'>
-    readonly filename: FieldRef<"File", 'String'>
     readonly path: FieldRef<"File", 'String'>
     readonly mimeType: FieldRef<"File", 'String'>
     readonly size: FieldRef<"File", 'Int'>
@@ -7484,2288 +6789,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Stage
-   */
-
-  export type AggregateStage = {
-    _count: StageCountAggregateOutputType | null
-    _min: StageMinAggregateOutputType | null
-    _max: StageMaxAggregateOutputType | null
-  }
-
-  export type StageMinAggregateOutputType = {
-    id: string | null
-    stageTypeId: string | null
-    comment: string | null
-    createdById: string | null
-    updatedById: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    reportId: string | null
-  }
-
-  export type StageMaxAggregateOutputType = {
-    id: string | null
-    stageTypeId: string | null
-    comment: string | null
-    createdById: string | null
-    updatedById: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    reportId: string | null
-  }
-
-  export type StageCountAggregateOutputType = {
-    id: number
-    stageTypeId: number
-    comment: number
-    createdById: number
-    updatedById: number
-    createdAt: number
-    updatedAt: number
-    reportId: number
-    _all: number
-  }
-
-
-  export type StageMinAggregateInputType = {
-    id?: true
-    stageTypeId?: true
-    comment?: true
-    createdById?: true
-    updatedById?: true
-    createdAt?: true
-    updatedAt?: true
-    reportId?: true
-  }
-
-  export type StageMaxAggregateInputType = {
-    id?: true
-    stageTypeId?: true
-    comment?: true
-    createdById?: true
-    updatedById?: true
-    createdAt?: true
-    updatedAt?: true
-    reportId?: true
-  }
-
-  export type StageCountAggregateInputType = {
-    id?: true
-    stageTypeId?: true
-    comment?: true
-    createdById?: true
-    updatedById?: true
-    createdAt?: true
-    updatedAt?: true
-    reportId?: true
-    _all?: true
-  }
-
-  export type StageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Stage to aggregate.
-     */
-    where?: StageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Stages to fetch.
-     */
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: StageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Stages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Stages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Stages
-    **/
-    _count?: true | StageCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: StageMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: StageMaxAggregateInputType
-  }
-
-  export type GetStageAggregateType<T extends StageAggregateArgs> = {
-        [P in keyof T & keyof AggregateStage]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateStage[P]>
-      : GetScalarType<T[P], AggregateStage[P]>
-  }
-
-
-
-
-  export type StageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StageWhereInput
-    orderBy?: StageOrderByWithAggregationInput | StageOrderByWithAggregationInput[]
-    by: StageScalarFieldEnum[] | StageScalarFieldEnum
-    having?: StageScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: StageCountAggregateInputType | true
-    _min?: StageMinAggregateInputType
-    _max?: StageMaxAggregateInputType
-  }
-
-  export type StageGroupByOutputType = {
-    id: string
-    stageTypeId: string
-    comment: string | null
-    createdById: string | null
-    updatedById: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    reportId: string | null
-    _count: StageCountAggregateOutputType | null
-    _min: StageMinAggregateOutputType | null
-    _max: StageMaxAggregateOutputType | null
-  }
-
-  type GetStageGroupByPayload<T extends StageGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<StageGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof StageGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], StageGroupByOutputType[P]>
-            : GetScalarType<T[P], StageGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type StageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    stageTypeId?: boolean
-    comment?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    reportId?: boolean
-    type?: boolean | StageTypeDefaultArgs<ExtArgs>
-    createdBy?: boolean | Stage$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Stage$updatedByArgs<ExtArgs>
-    report?: boolean | Stage$reportArgs<ExtArgs>
-  }, ExtArgs["result"]["stage"]>
-
-  export type StageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    stageTypeId?: boolean
-    comment?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    reportId?: boolean
-    type?: boolean | StageTypeDefaultArgs<ExtArgs>
-    createdBy?: boolean | Stage$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Stage$updatedByArgs<ExtArgs>
-    report?: boolean | Stage$reportArgs<ExtArgs>
-  }, ExtArgs["result"]["stage"]>
-
-  export type StageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    stageTypeId?: boolean
-    comment?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    reportId?: boolean
-    type?: boolean | StageTypeDefaultArgs<ExtArgs>
-    createdBy?: boolean | Stage$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Stage$updatedByArgs<ExtArgs>
-    report?: boolean | Stage$reportArgs<ExtArgs>
-  }, ExtArgs["result"]["stage"]>
-
-  export type StageSelectScalar = {
-    id?: boolean
-    stageTypeId?: boolean
-    comment?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    reportId?: boolean
-  }
-
-  export type StageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "stageTypeId" | "comment" | "createdById" | "updatedById" | "createdAt" | "updatedAt" | "reportId", ExtArgs["result"]["stage"]>
-  export type StageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    type?: boolean | StageTypeDefaultArgs<ExtArgs>
-    createdBy?: boolean | Stage$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Stage$updatedByArgs<ExtArgs>
-    report?: boolean | Stage$reportArgs<ExtArgs>
-  }
-  export type StageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    type?: boolean | StageTypeDefaultArgs<ExtArgs>
-    createdBy?: boolean | Stage$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Stage$updatedByArgs<ExtArgs>
-    report?: boolean | Stage$reportArgs<ExtArgs>
-  }
-  export type StageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    type?: boolean | StageTypeDefaultArgs<ExtArgs>
-    createdBy?: boolean | Stage$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Stage$updatedByArgs<ExtArgs>
-    report?: boolean | Stage$reportArgs<ExtArgs>
-  }
-
-  export type $StagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Stage"
-    objects: {
-      type: Prisma.$StageTypePayload<ExtArgs>
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
-      report: Prisma.$ReportPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      stageTypeId: string
-      comment: string | null
-      createdById: string | null
-      updatedById: string | null
-      createdAt: Date | null
-      updatedAt: Date | null
-      reportId: string | null
-    }, ExtArgs["result"]["stage"]>
-    composites: {}
-  }
-
-  type StageGetPayload<S extends boolean | null | undefined | StageDefaultArgs> = $Result.GetResult<Prisma.$StagePayload, S>
-
-  type StageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<StageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: StageCountAggregateInputType | true
-    }
-
-  export interface StageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Stage'], meta: { name: 'Stage' } }
-    /**
-     * Find zero or one Stage that matches the filter.
-     * @param {StageFindUniqueArgs} args - Arguments to find a Stage
-     * @example
-     * // Get one Stage
-     * const stage = await prisma.stage.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends StageFindUniqueArgs>(args: SelectSubset<T, StageFindUniqueArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Stage that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {StageFindUniqueOrThrowArgs} args - Arguments to find a Stage
-     * @example
-     * // Get one Stage
-     * const stage = await prisma.stage.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends StageFindUniqueOrThrowArgs>(args: SelectSubset<T, StageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Stage that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageFindFirstArgs} args - Arguments to find a Stage
-     * @example
-     * // Get one Stage
-     * const stage = await prisma.stage.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends StageFindFirstArgs>(args?: SelectSubset<T, StageFindFirstArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Stage that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageFindFirstOrThrowArgs} args - Arguments to find a Stage
-     * @example
-     * // Get one Stage
-     * const stage = await prisma.stage.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends StageFindFirstOrThrowArgs>(args?: SelectSubset<T, StageFindFirstOrThrowArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Stages that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Stages
-     * const stages = await prisma.stage.findMany()
-     * 
-     * // Get first 10 Stages
-     * const stages = await prisma.stage.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const stageWithIdOnly = await prisma.stage.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends StageFindManyArgs>(args?: SelectSubset<T, StageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Stage.
-     * @param {StageCreateArgs} args - Arguments to create a Stage.
-     * @example
-     * // Create one Stage
-     * const Stage = await prisma.stage.create({
-     *   data: {
-     *     // ... data to create a Stage
-     *   }
-     * })
-     * 
-     */
-    create<T extends StageCreateArgs>(args: SelectSubset<T, StageCreateArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Stages.
-     * @param {StageCreateManyArgs} args - Arguments to create many Stages.
-     * @example
-     * // Create many Stages
-     * const stage = await prisma.stage.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends StageCreateManyArgs>(args?: SelectSubset<T, StageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Stages and returns the data saved in the database.
-     * @param {StageCreateManyAndReturnArgs} args - Arguments to create many Stages.
-     * @example
-     * // Create many Stages
-     * const stage = await prisma.stage.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Stages and only return the `id`
-     * const stageWithIdOnly = await prisma.stage.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends StageCreateManyAndReturnArgs>(args?: SelectSubset<T, StageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Stage.
-     * @param {StageDeleteArgs} args - Arguments to delete one Stage.
-     * @example
-     * // Delete one Stage
-     * const Stage = await prisma.stage.delete({
-     *   where: {
-     *     // ... filter to delete one Stage
-     *   }
-     * })
-     * 
-     */
-    delete<T extends StageDeleteArgs>(args: SelectSubset<T, StageDeleteArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Stage.
-     * @param {StageUpdateArgs} args - Arguments to update one Stage.
-     * @example
-     * // Update one Stage
-     * const stage = await prisma.stage.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends StageUpdateArgs>(args: SelectSubset<T, StageUpdateArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Stages.
-     * @param {StageDeleteManyArgs} args - Arguments to filter Stages to delete.
-     * @example
-     * // Delete a few Stages
-     * const { count } = await prisma.stage.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends StageDeleteManyArgs>(args?: SelectSubset<T, StageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Stages.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Stages
-     * const stage = await prisma.stage.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends StageUpdateManyArgs>(args: SelectSubset<T, StageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Stages and returns the data updated in the database.
-     * @param {StageUpdateManyAndReturnArgs} args - Arguments to update many Stages.
-     * @example
-     * // Update many Stages
-     * const stage = await prisma.stage.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Stages and only return the `id`
-     * const stageWithIdOnly = await prisma.stage.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends StageUpdateManyAndReturnArgs>(args: SelectSubset<T, StageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Stage.
-     * @param {StageUpsertArgs} args - Arguments to update or create a Stage.
-     * @example
-     * // Update or create a Stage
-     * const stage = await prisma.stage.upsert({
-     *   create: {
-     *     // ... data to create a Stage
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Stage we want to update
-     *   }
-     * })
-     */
-    upsert<T extends StageUpsertArgs>(args: SelectSubset<T, StageUpsertArgs<ExtArgs>>): Prisma__StageClient<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Stages.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageCountArgs} args - Arguments to filter Stages to count.
-     * @example
-     * // Count the number of Stages
-     * const count = await prisma.stage.count({
-     *   where: {
-     *     // ... the filter for the Stages we want to count
-     *   }
-     * })
-    **/
-    count<T extends StageCountArgs>(
-      args?: Subset<T, StageCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], StageCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Stage.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends StageAggregateArgs>(args: Subset<T, StageAggregateArgs>): Prisma.PrismaPromise<GetStageAggregateType<T>>
-
-    /**
-     * Group by Stage.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends StageGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: StageGroupByArgs['orderBy'] }
-        : { orderBy?: StageGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, StageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Stage model
-   */
-  readonly fields: StageFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Stage.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__StageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    type<T extends StageTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StageTypeDefaultArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    createdBy<T extends Stage$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Stage$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends Stage$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, Stage$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    report<T extends Stage$reportArgs<ExtArgs> = {}>(args?: Subset<T, Stage$reportArgs<ExtArgs>>): Prisma__ReportClient<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Stage model
-   */
-  interface StageFieldRefs {
-    readonly id: FieldRef<"Stage", 'String'>
-    readonly stageTypeId: FieldRef<"Stage", 'String'>
-    readonly comment: FieldRef<"Stage", 'String'>
-    readonly createdById: FieldRef<"Stage", 'String'>
-    readonly updatedById: FieldRef<"Stage", 'String'>
-    readonly createdAt: FieldRef<"Stage", 'DateTime'>
-    readonly updatedAt: FieldRef<"Stage", 'DateTime'>
-    readonly reportId: FieldRef<"Stage", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Stage findUnique
-   */
-  export type StageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * Filter, which Stage to fetch.
-     */
-    where: StageWhereUniqueInput
-  }
-
-  /**
-   * Stage findUniqueOrThrow
-   */
-  export type StageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * Filter, which Stage to fetch.
-     */
-    where: StageWhereUniqueInput
-  }
-
-  /**
-   * Stage findFirst
-   */
-  export type StageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * Filter, which Stage to fetch.
-     */
-    where?: StageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Stages to fetch.
-     */
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Stages.
-     */
-    cursor?: StageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Stages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Stages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Stages.
-     */
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
-   * Stage findFirstOrThrow
-   */
-  export type StageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * Filter, which Stage to fetch.
-     */
-    where?: StageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Stages to fetch.
-     */
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Stages.
-     */
-    cursor?: StageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Stages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Stages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Stages.
-     */
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
-   * Stage findMany
-   */
-  export type StageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * Filter, which Stages to fetch.
-     */
-    where?: StageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Stages to fetch.
-     */
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Stages.
-     */
-    cursor?: StageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Stages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Stages.
-     */
-    skip?: number
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
-   * Stage create
-   */
-  export type StageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Stage.
-     */
-    data: XOR<StageCreateInput, StageUncheckedCreateInput>
-  }
-
-  /**
-   * Stage createMany
-   */
-  export type StageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Stages.
-     */
-    data: StageCreateManyInput | StageCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Stage createManyAndReturn
-   */
-  export type StageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * The data used to create many Stages.
-     */
-    data: StageCreateManyInput | StageCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Stage update
-   */
-  export type StageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Stage.
-     */
-    data: XOR<StageUpdateInput, StageUncheckedUpdateInput>
-    /**
-     * Choose, which Stage to update.
-     */
-    where: StageWhereUniqueInput
-  }
-
-  /**
-   * Stage updateMany
-   */
-  export type StageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Stages.
-     */
-    data: XOR<StageUpdateManyMutationInput, StageUncheckedUpdateManyInput>
-    /**
-     * Filter which Stages to update
-     */
-    where?: StageWhereInput
-    /**
-     * Limit how many Stages to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Stage updateManyAndReturn
-   */
-  export type StageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * The data used to update Stages.
-     */
-    data: XOR<StageUpdateManyMutationInput, StageUncheckedUpdateManyInput>
-    /**
-     * Filter which Stages to update
-     */
-    where?: StageWhereInput
-    /**
-     * Limit how many Stages to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Stage upsert
-   */
-  export type StageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Stage to update in case it exists.
-     */
-    where: StageWhereUniqueInput
-    /**
-     * In case the Stage found by the `where` argument doesn't exist, create a new Stage with this data.
-     */
-    create: XOR<StageCreateInput, StageUncheckedCreateInput>
-    /**
-     * In case the Stage was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<StageUpdateInput, StageUncheckedUpdateInput>
-  }
-
-  /**
-   * Stage delete
-   */
-  export type StageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    /**
-     * Filter which Stage to delete.
-     */
-    where: StageWhereUniqueInput
-  }
-
-  /**
-   * Stage deleteMany
-   */
-  export type StageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Stages to delete
-     */
-    where?: StageWhereInput
-    /**
-     * Limit how many Stages to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Stage.createdBy
-   */
-  export type Stage$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Stage.updatedBy
-   */
-  export type Stage$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Stage.report
-   */
-  export type Stage$reportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Report
-     */
-    select?: ReportSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Report
-     */
-    omit?: ReportOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReportInclude<ExtArgs> | null
-    where?: ReportWhereInput
-  }
-
-  /**
-   * Stage without action
-   */
-  export type StageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model StageType
-   */
-
-  export type AggregateStageType = {
-    _count: StageTypeCountAggregateOutputType | null
-    _avg: StageTypeAvgAggregateOutputType | null
-    _sum: StageTypeSumAggregateOutputType | null
-    _min: StageTypeMinAggregateOutputType | null
-    _max: StageTypeMaxAggregateOutputType | null
-  }
-
-  export type StageTypeAvgAggregateOutputType = {
-    order: number | null
-  }
-
-  export type StageTypeSumAggregateOutputType = {
-    order: number | null
-  }
-
-  export type StageTypeMinAggregateOutputType = {
-    id: string | null
-    model: string | null
-    order: number | null
-    value: string | null
-    label: string | null
-  }
-
-  export type StageTypeMaxAggregateOutputType = {
-    id: string | null
-    model: string | null
-    order: number | null
-    value: string | null
-    label: string | null
-  }
-
-  export type StageTypeCountAggregateOutputType = {
-    id: number
-    model: number
-    order: number
-    value: number
-    label: number
-    _all: number
-  }
-
-
-  export type StageTypeAvgAggregateInputType = {
-    order?: true
-  }
-
-  export type StageTypeSumAggregateInputType = {
-    order?: true
-  }
-
-  export type StageTypeMinAggregateInputType = {
-    id?: true
-    model?: true
-    order?: true
-    value?: true
-    label?: true
-  }
-
-  export type StageTypeMaxAggregateInputType = {
-    id?: true
-    model?: true
-    order?: true
-    value?: true
-    label?: true
-  }
-
-  export type StageTypeCountAggregateInputType = {
-    id?: true
-    model?: true
-    order?: true
-    value?: true
-    label?: true
-    _all?: true
-  }
-
-  export type StageTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which StageType to aggregate.
-     */
-    where?: StageTypeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of StageTypes to fetch.
-     */
-    orderBy?: StageTypeOrderByWithRelationInput | StageTypeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: StageTypeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` StageTypes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` StageTypes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned StageTypes
-    **/
-    _count?: true | StageTypeCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: StageTypeAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: StageTypeSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: StageTypeMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: StageTypeMaxAggregateInputType
-  }
-
-  export type GetStageTypeAggregateType<T extends StageTypeAggregateArgs> = {
-        [P in keyof T & keyof AggregateStageType]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateStageType[P]>
-      : GetScalarType<T[P], AggregateStageType[P]>
-  }
-
-
-
-
-  export type StageTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StageTypeWhereInput
-    orderBy?: StageTypeOrderByWithAggregationInput | StageTypeOrderByWithAggregationInput[]
-    by: StageTypeScalarFieldEnum[] | StageTypeScalarFieldEnum
-    having?: StageTypeScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: StageTypeCountAggregateInputType | true
-    _avg?: StageTypeAvgAggregateInputType
-    _sum?: StageTypeSumAggregateInputType
-    _min?: StageTypeMinAggregateInputType
-    _max?: StageTypeMaxAggregateInputType
-  }
-
-  export type StageTypeGroupByOutputType = {
-    id: string
-    model: string
-    order: number
-    value: string
-    label: string
-    _count: StageTypeCountAggregateOutputType | null
-    _avg: StageTypeAvgAggregateOutputType | null
-    _sum: StageTypeSumAggregateOutputType | null
-    _min: StageTypeMinAggregateOutputType | null
-    _max: StageTypeMaxAggregateOutputType | null
-  }
-
-  type GetStageTypeGroupByPayload<T extends StageTypeGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<StageTypeGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof StageTypeGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], StageTypeGroupByOutputType[P]>
-            : GetScalarType<T[P], StageTypeGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type StageTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    model?: boolean
-    order?: boolean
-    value?: boolean
-    label?: boolean
-    stages?: boolean | StageType$stagesArgs<ExtArgs>
-    _count?: boolean | StageTypeCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["stageType"]>
-
-  export type StageTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    model?: boolean
-    order?: boolean
-    value?: boolean
-    label?: boolean
-  }, ExtArgs["result"]["stageType"]>
-
-  export type StageTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    model?: boolean
-    order?: boolean
-    value?: boolean
-    label?: boolean
-  }, ExtArgs["result"]["stageType"]>
-
-  export type StageTypeSelectScalar = {
-    id?: boolean
-    model?: boolean
-    order?: boolean
-    value?: boolean
-    label?: boolean
-  }
-
-  export type StageTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "model" | "order" | "value" | "label", ExtArgs["result"]["stageType"]>
-  export type StageTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    stages?: boolean | StageType$stagesArgs<ExtArgs>
-    _count?: boolean | StageTypeCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type StageTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type StageTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $StageTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "StageType"
-    objects: {
-      stages: Prisma.$StagePayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      model: string
-      order: number
-      value: string
-      label: string
-    }, ExtArgs["result"]["stageType"]>
-    composites: {}
-  }
-
-  type StageTypeGetPayload<S extends boolean | null | undefined | StageTypeDefaultArgs> = $Result.GetResult<Prisma.$StageTypePayload, S>
-
-  type StageTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<StageTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: StageTypeCountAggregateInputType | true
-    }
-
-  export interface StageTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StageType'], meta: { name: 'StageType' } }
-    /**
-     * Find zero or one StageType that matches the filter.
-     * @param {StageTypeFindUniqueArgs} args - Arguments to find a StageType
-     * @example
-     * // Get one StageType
-     * const stageType = await prisma.stageType.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends StageTypeFindUniqueArgs>(args: SelectSubset<T, StageTypeFindUniqueArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one StageType that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {StageTypeFindUniqueOrThrowArgs} args - Arguments to find a StageType
-     * @example
-     * // Get one StageType
-     * const stageType = await prisma.stageType.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends StageTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, StageTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first StageType that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeFindFirstArgs} args - Arguments to find a StageType
-     * @example
-     * // Get one StageType
-     * const stageType = await prisma.stageType.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends StageTypeFindFirstArgs>(args?: SelectSubset<T, StageTypeFindFirstArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first StageType that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeFindFirstOrThrowArgs} args - Arguments to find a StageType
-     * @example
-     * // Get one StageType
-     * const stageType = await prisma.stageType.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends StageTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, StageTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more StageTypes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all StageTypes
-     * const stageTypes = await prisma.stageType.findMany()
-     * 
-     * // Get first 10 StageTypes
-     * const stageTypes = await prisma.stageType.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const stageTypeWithIdOnly = await prisma.stageType.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends StageTypeFindManyArgs>(args?: SelectSubset<T, StageTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a StageType.
-     * @param {StageTypeCreateArgs} args - Arguments to create a StageType.
-     * @example
-     * // Create one StageType
-     * const StageType = await prisma.stageType.create({
-     *   data: {
-     *     // ... data to create a StageType
-     *   }
-     * })
-     * 
-     */
-    create<T extends StageTypeCreateArgs>(args: SelectSubset<T, StageTypeCreateArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many StageTypes.
-     * @param {StageTypeCreateManyArgs} args - Arguments to create many StageTypes.
-     * @example
-     * // Create many StageTypes
-     * const stageType = await prisma.stageType.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends StageTypeCreateManyArgs>(args?: SelectSubset<T, StageTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many StageTypes and returns the data saved in the database.
-     * @param {StageTypeCreateManyAndReturnArgs} args - Arguments to create many StageTypes.
-     * @example
-     * // Create many StageTypes
-     * const stageType = await prisma.stageType.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many StageTypes and only return the `id`
-     * const stageTypeWithIdOnly = await prisma.stageType.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends StageTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, StageTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a StageType.
-     * @param {StageTypeDeleteArgs} args - Arguments to delete one StageType.
-     * @example
-     * // Delete one StageType
-     * const StageType = await prisma.stageType.delete({
-     *   where: {
-     *     // ... filter to delete one StageType
-     *   }
-     * })
-     * 
-     */
-    delete<T extends StageTypeDeleteArgs>(args: SelectSubset<T, StageTypeDeleteArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one StageType.
-     * @param {StageTypeUpdateArgs} args - Arguments to update one StageType.
-     * @example
-     * // Update one StageType
-     * const stageType = await prisma.stageType.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends StageTypeUpdateArgs>(args: SelectSubset<T, StageTypeUpdateArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more StageTypes.
-     * @param {StageTypeDeleteManyArgs} args - Arguments to filter StageTypes to delete.
-     * @example
-     * // Delete a few StageTypes
-     * const { count } = await prisma.stageType.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends StageTypeDeleteManyArgs>(args?: SelectSubset<T, StageTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more StageTypes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many StageTypes
-     * const stageType = await prisma.stageType.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends StageTypeUpdateManyArgs>(args: SelectSubset<T, StageTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more StageTypes and returns the data updated in the database.
-     * @param {StageTypeUpdateManyAndReturnArgs} args - Arguments to update many StageTypes.
-     * @example
-     * // Update many StageTypes
-     * const stageType = await prisma.stageType.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more StageTypes and only return the `id`
-     * const stageTypeWithIdOnly = await prisma.stageType.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends StageTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, StageTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one StageType.
-     * @param {StageTypeUpsertArgs} args - Arguments to update or create a StageType.
-     * @example
-     * // Update or create a StageType
-     * const stageType = await prisma.stageType.upsert({
-     *   create: {
-     *     // ... data to create a StageType
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the StageType we want to update
-     *   }
-     * })
-     */
-    upsert<T extends StageTypeUpsertArgs>(args: SelectSubset<T, StageTypeUpsertArgs<ExtArgs>>): Prisma__StageTypeClient<$Result.GetResult<Prisma.$StageTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of StageTypes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeCountArgs} args - Arguments to filter StageTypes to count.
-     * @example
-     * // Count the number of StageTypes
-     * const count = await prisma.stageType.count({
-     *   where: {
-     *     // ... the filter for the StageTypes we want to count
-     *   }
-     * })
-    **/
-    count<T extends StageTypeCountArgs>(
-      args?: Subset<T, StageTypeCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], StageTypeCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a StageType.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends StageTypeAggregateArgs>(args: Subset<T, StageTypeAggregateArgs>): Prisma.PrismaPromise<GetStageTypeAggregateType<T>>
-
-    /**
-     * Group by StageType.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {StageTypeGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends StageTypeGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: StageTypeGroupByArgs['orderBy'] }
-        : { orderBy?: StageTypeGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, StageTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStageTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the StageType model
-   */
-  readonly fields: StageTypeFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for StageType.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__StageTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    stages<T extends StageType$stagesArgs<ExtArgs> = {}>(args?: Subset<T, StageType$stagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the StageType model
-   */
-  interface StageTypeFieldRefs {
-    readonly id: FieldRef<"StageType", 'String'>
-    readonly model: FieldRef<"StageType", 'String'>
-    readonly order: FieldRef<"StageType", 'Int'>
-    readonly value: FieldRef<"StageType", 'String'>
-    readonly label: FieldRef<"StageType", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * StageType findUnique
-   */
-  export type StageTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * Filter, which StageType to fetch.
-     */
-    where: StageTypeWhereUniqueInput
-  }
-
-  /**
-   * StageType findUniqueOrThrow
-   */
-  export type StageTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * Filter, which StageType to fetch.
-     */
-    where: StageTypeWhereUniqueInput
-  }
-
-  /**
-   * StageType findFirst
-   */
-  export type StageTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * Filter, which StageType to fetch.
-     */
-    where?: StageTypeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of StageTypes to fetch.
-     */
-    orderBy?: StageTypeOrderByWithRelationInput | StageTypeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for StageTypes.
-     */
-    cursor?: StageTypeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` StageTypes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` StageTypes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of StageTypes.
-     */
-    distinct?: StageTypeScalarFieldEnum | StageTypeScalarFieldEnum[]
-  }
-
-  /**
-   * StageType findFirstOrThrow
-   */
-  export type StageTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * Filter, which StageType to fetch.
-     */
-    where?: StageTypeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of StageTypes to fetch.
-     */
-    orderBy?: StageTypeOrderByWithRelationInput | StageTypeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for StageTypes.
-     */
-    cursor?: StageTypeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` StageTypes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` StageTypes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of StageTypes.
-     */
-    distinct?: StageTypeScalarFieldEnum | StageTypeScalarFieldEnum[]
-  }
-
-  /**
-   * StageType findMany
-   */
-  export type StageTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * Filter, which StageTypes to fetch.
-     */
-    where?: StageTypeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of StageTypes to fetch.
-     */
-    orderBy?: StageTypeOrderByWithRelationInput | StageTypeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing StageTypes.
-     */
-    cursor?: StageTypeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` StageTypes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` StageTypes.
-     */
-    skip?: number
-    distinct?: StageTypeScalarFieldEnum | StageTypeScalarFieldEnum[]
-  }
-
-  /**
-   * StageType create
-   */
-  export type StageTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * The data needed to create a StageType.
-     */
-    data: XOR<StageTypeCreateInput, StageTypeUncheckedCreateInput>
-  }
-
-  /**
-   * StageType createMany
-   */
-  export type StageTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many StageTypes.
-     */
-    data: StageTypeCreateManyInput | StageTypeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * StageType createManyAndReturn
-   */
-  export type StageTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * The data used to create many StageTypes.
-     */
-    data: StageTypeCreateManyInput | StageTypeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * StageType update
-   */
-  export type StageTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * The data needed to update a StageType.
-     */
-    data: XOR<StageTypeUpdateInput, StageTypeUncheckedUpdateInput>
-    /**
-     * Choose, which StageType to update.
-     */
-    where: StageTypeWhereUniqueInput
-  }
-
-  /**
-   * StageType updateMany
-   */
-  export type StageTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update StageTypes.
-     */
-    data: XOR<StageTypeUpdateManyMutationInput, StageTypeUncheckedUpdateManyInput>
-    /**
-     * Filter which StageTypes to update
-     */
-    where?: StageTypeWhereInput
-    /**
-     * Limit how many StageTypes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * StageType updateManyAndReturn
-   */
-  export type StageTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * The data used to update StageTypes.
-     */
-    data: XOR<StageTypeUpdateManyMutationInput, StageTypeUncheckedUpdateManyInput>
-    /**
-     * Filter which StageTypes to update
-     */
-    where?: StageTypeWhereInput
-    /**
-     * Limit how many StageTypes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * StageType upsert
-   */
-  export type StageTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * The filter to search for the StageType to update in case it exists.
-     */
-    where: StageTypeWhereUniqueInput
-    /**
-     * In case the StageType found by the `where` argument doesn't exist, create a new StageType with this data.
-     */
-    create: XOR<StageTypeCreateInput, StageTypeUncheckedCreateInput>
-    /**
-     * In case the StageType was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<StageTypeUpdateInput, StageTypeUncheckedUpdateInput>
-  }
-
-  /**
-   * StageType delete
-   */
-  export type StageTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-    /**
-     * Filter which StageType to delete.
-     */
-    where: StageTypeWhereUniqueInput
-  }
-
-  /**
-   * StageType deleteMany
-   */
-  export type StageTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which StageTypes to delete
-     */
-    where?: StageTypeWhereInput
-    /**
-     * Limit how many StageTypes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * StageType.stages
-   */
-  export type StageType$stagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    where?: StageWhereInput
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    cursor?: StageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
-   * StageType without action
-   */
-  export type StageTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StageType
-     */
-    select?: StageTypeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the StageType
-     */
-    omit?: StageTypeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageTypeInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model User
    */
 
@@ -9782,9 +6805,8 @@ export namespace Prisma {
     status: $Enums.UserStatus | null
     createdAt: Date | null
     updatedAt: Date | null
-    departmentId: string | null
-    organizationId: string | null
     roleId: string | null
+    organizationId: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -9794,9 +6816,8 @@ export namespace Prisma {
     status: $Enums.UserStatus | null
     createdAt: Date | null
     updatedAt: Date | null
-    departmentId: string | null
-    organizationId: string | null
     roleId: string | null
+    organizationId: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -9806,9 +6827,8 @@ export namespace Prisma {
     status: number
     createdAt: number
     updatedAt: number
-    departmentId: number
-    organizationId: number
     roleId: number
+    organizationId: number
     _all: number
   }
 
@@ -9820,9 +6840,8 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     updatedAt?: true
-    departmentId?: true
-    organizationId?: true
     roleId?: true
+    organizationId?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -9832,9 +6851,8 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     updatedAt?: true
-    departmentId?: true
-    organizationId?: true
     roleId?: true
+    organizationId?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -9844,9 +6862,8 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     updatedAt?: true
-    departmentId?: true
-    organizationId?: true
     roleId?: true
+    organizationId?: true
     _all?: true
   }
 
@@ -9929,9 +6946,8 @@ export namespace Prisma {
     status: $Enums.UserStatus
     createdAt: Date | null
     updatedAt: Date | null
-    departmentId: string | null
-    organizationId: string | null
     roleId: string | null
+    organizationId: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -9958,30 +6974,16 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    departmentId?: boolean
-    organizationId?: boolean
     roleId?: boolean
-    department?: boolean | User$departmentArgs<ExtArgs>
-    organization?: boolean | User$organizationArgs<ExtArgs>
+    organizationId?: boolean
     role?: boolean | User$roleArgs<ExtArgs>
+    organization?: boolean | User$organizationArgs<ExtArgs>
     permissions?: boolean | User$permissionsArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
     CreatorNote?: boolean | User$CreatorNoteArgs<ExtArgs>
     UpdaterNote?: boolean | User$UpdaterNoteArgs<ExtArgs>
-    CreatorStage?: boolean | User$CreatorStageArgs<ExtArgs>
-    UpdaterStage?: boolean | User$UpdaterStageArgs<ExtArgs>
     CreatorReport?: boolean | User$CreatorReportArgs<ExtArgs>
     UpdaterReport?: boolean | User$UpdaterReportArgs<ExtArgs>
-    CreatorReportCategory?: boolean | User$CreatorReportCategoryArgs<ExtArgs>
-    UpdaterReportCategory?: boolean | User$UpdaterReportCategoryArgs<ExtArgs>
-    CreatorDepartment?: boolean | User$CreatorDepartmentArgs<ExtArgs>
-    UpdaterDepartment?: boolean | User$UpdaterDepartmentArgs<ExtArgs>
-    CreatorPermission?: boolean | User$CreatorPermissionArgs<ExtArgs>
-    UpdaterPermission?: boolean | User$UpdaterPermissionArgs<ExtArgs>
-    CreatorDepartmentPermission?: boolean | User$CreatorDepartmentPermissionArgs<ExtArgs>
-    UpdaterDepartmentPermission?: boolean | User$UpdaterDepartmentPermissionArgs<ExtArgs>
-    CreatorUserPermission?: boolean | User$CreatorUserPermissionArgs<ExtArgs>
-    UpdaterUserPermission?: boolean | User$UpdaterUserPermissionArgs<ExtArgs>
     CreatorProfile?: boolean | User$CreatorProfileArgs<ExtArgs>
     UpdaterProfile?: boolean | User$UpdaterProfileArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -9994,12 +6996,10 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    departmentId?: boolean
-    organizationId?: boolean
     roleId?: boolean
-    department?: boolean | User$departmentArgs<ExtArgs>
-    organization?: boolean | User$organizationArgs<ExtArgs>
+    organizationId?: boolean
     role?: boolean | User$roleArgs<ExtArgs>
+    organization?: boolean | User$organizationArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10009,12 +7009,10 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    departmentId?: boolean
-    organizationId?: boolean
     roleId?: boolean
-    department?: boolean | User$departmentArgs<ExtArgs>
-    organization?: boolean | User$organizationArgs<ExtArgs>
+    organizationId?: boolean
     role?: boolean | User$roleArgs<ExtArgs>
+    organization?: boolean | User$organizationArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -10024,73 +7022,44 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    departmentId?: boolean
-    organizationId?: boolean
     roleId?: boolean
+    organizationId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "status" | "createdAt" | "updatedAt" | "departmentId" | "organizationId" | "roleId", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "status" | "createdAt" | "updatedAt" | "roleId" | "organizationId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    department?: boolean | User$departmentArgs<ExtArgs>
-    organization?: boolean | User$organizationArgs<ExtArgs>
     role?: boolean | User$roleArgs<ExtArgs>
+    organization?: boolean | User$organizationArgs<ExtArgs>
     permissions?: boolean | User$permissionsArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
     CreatorNote?: boolean | User$CreatorNoteArgs<ExtArgs>
     UpdaterNote?: boolean | User$UpdaterNoteArgs<ExtArgs>
-    CreatorStage?: boolean | User$CreatorStageArgs<ExtArgs>
-    UpdaterStage?: boolean | User$UpdaterStageArgs<ExtArgs>
     CreatorReport?: boolean | User$CreatorReportArgs<ExtArgs>
     UpdaterReport?: boolean | User$UpdaterReportArgs<ExtArgs>
-    CreatorReportCategory?: boolean | User$CreatorReportCategoryArgs<ExtArgs>
-    UpdaterReportCategory?: boolean | User$UpdaterReportCategoryArgs<ExtArgs>
-    CreatorDepartment?: boolean | User$CreatorDepartmentArgs<ExtArgs>
-    UpdaterDepartment?: boolean | User$UpdaterDepartmentArgs<ExtArgs>
-    CreatorPermission?: boolean | User$CreatorPermissionArgs<ExtArgs>
-    UpdaterPermission?: boolean | User$UpdaterPermissionArgs<ExtArgs>
-    CreatorDepartmentPermission?: boolean | User$CreatorDepartmentPermissionArgs<ExtArgs>
-    UpdaterDepartmentPermission?: boolean | User$UpdaterDepartmentPermissionArgs<ExtArgs>
-    CreatorUserPermission?: boolean | User$CreatorUserPermissionArgs<ExtArgs>
-    UpdaterUserPermission?: boolean | User$UpdaterUserPermissionArgs<ExtArgs>
     CreatorProfile?: boolean | User$CreatorProfileArgs<ExtArgs>
     UpdaterProfile?: boolean | User$UpdaterProfileArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    department?: boolean | User$departmentArgs<ExtArgs>
-    organization?: boolean | User$organizationArgs<ExtArgs>
     role?: boolean | User$roleArgs<ExtArgs>
+    organization?: boolean | User$organizationArgs<ExtArgs>
   }
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    department?: boolean | User$departmentArgs<ExtArgs>
-    organization?: boolean | User$organizationArgs<ExtArgs>
     role?: boolean | User$roleArgs<ExtArgs>
+    organization?: boolean | User$organizationArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      department: Prisma.$DepartmentPayload<ExtArgs> | null
-      organization: Prisma.$OrganizationPayload<ExtArgs> | null
       role: Prisma.$RolePayload<ExtArgs> | null
+      organization: Prisma.$OrganizationPayload<ExtArgs> | null
       permissions: Prisma.$UserPermissionPayload<ExtArgs>[]
       profile: Prisma.$ProfilePayload<ExtArgs> | null
       CreatorNote: Prisma.$NotePayload<ExtArgs>[]
       UpdaterNote: Prisma.$NotePayload<ExtArgs>[]
-      CreatorStage: Prisma.$StagePayload<ExtArgs>[]
-      UpdaterStage: Prisma.$StagePayload<ExtArgs>[]
       CreatorReport: Prisma.$ReportPayload<ExtArgs>[]
       UpdaterReport: Prisma.$ReportPayload<ExtArgs>[]
-      CreatorReportCategory: Prisma.$ReportCategoryPayload<ExtArgs>[]
-      UpdaterReportCategory: Prisma.$ReportCategoryPayload<ExtArgs>[]
-      CreatorDepartment: Prisma.$DepartmentPayload<ExtArgs>[]
-      UpdaterDepartment: Prisma.$DepartmentPayload<ExtArgs>[]
-      CreatorPermission: Prisma.$PermissionPayload<ExtArgs>[]
-      UpdaterPermission: Prisma.$PermissionPayload<ExtArgs>[]
-      CreatorDepartmentPermission: Prisma.$DepartmentPermissionPayload<ExtArgs>[]
-      UpdaterDepartmentPermission: Prisma.$DepartmentPermissionPayload<ExtArgs>[]
-      CreatorUserPermission: Prisma.$UserPermissionPayload<ExtArgs>[]
-      UpdaterUserPermission: Prisma.$UserPermissionPayload<ExtArgs>[]
       CreatorProfile: Prisma.$ProfilePayload<ExtArgs>[]
       UpdaterProfile: Prisma.$ProfilePayload<ExtArgs>[]
     }
@@ -10101,9 +7070,8 @@ export namespace Prisma {
       status: $Enums.UserStatus
       createdAt: Date | null
       updatedAt: Date | null
-      departmentId: string | null
-      organizationId: string | null
       roleId: string | null
+      organizationId: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -10498,27 +7466,14 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    department<T extends User$departmentArgs<ExtArgs> = {}>(args?: Subset<T, User$departmentArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    organization<T extends User$organizationArgs<ExtArgs> = {}>(args?: Subset<T, User$organizationArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     role<T extends User$roleArgs<ExtArgs> = {}>(args?: Subset<T, User$roleArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    organization<T extends User$organizationArgs<ExtArgs> = {}>(args?: Subset<T, User$organizationArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     permissions<T extends User$permissionsArgs<ExtArgs> = {}>(args?: Subset<T, User$permissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     CreatorNote<T extends User$CreatorNoteArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorNoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     UpdaterNote<T extends User$UpdaterNoteArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterNoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    CreatorStage<T extends User$CreatorStageArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorStageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UpdaterStage<T extends User$UpdaterStageArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterStageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     CreatorReport<T extends User$CreatorReportArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorReportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     UpdaterReport<T extends User$UpdaterReportArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterReportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    CreatorReportCategory<T extends User$CreatorReportCategoryArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorReportCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UpdaterReportCategory<T extends User$UpdaterReportCategoryArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterReportCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    CreatorDepartment<T extends User$CreatorDepartmentArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorDepartmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UpdaterDepartment<T extends User$UpdaterDepartmentArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterDepartmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    CreatorPermission<T extends User$CreatorPermissionArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorPermissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UpdaterPermission<T extends User$UpdaterPermissionArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterPermissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    CreatorDepartmentPermission<T extends User$CreatorDepartmentPermissionArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorDepartmentPermissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UpdaterDepartmentPermission<T extends User$UpdaterDepartmentPermissionArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterDepartmentPermissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    CreatorUserPermission<T extends User$CreatorUserPermissionArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorUserPermissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UpdaterUserPermission<T extends User$UpdaterUserPermissionArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterUserPermissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     CreatorProfile<T extends User$CreatorProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorProfileArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     UpdaterProfile<T extends User$UpdaterProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$UpdaterProfileArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -10556,9 +7511,8 @@ export namespace Prisma {
     readonly status: FieldRef<"User", 'UserStatus'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
-    readonly departmentId: FieldRef<"User", 'String'>
-    readonly organizationId: FieldRef<"User", 'String'>
     readonly roleId: FieldRef<"User", 'String'>
+    readonly organizationId: FieldRef<"User", 'String'>
   }
     
 
@@ -10955,22 +7909,22 @@ export namespace Prisma {
   }
 
   /**
-   * User.department
+   * User.role
    */
-  export type User$departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$roleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Department
+     * Select specific fields to fetch from the Role
      */
-    select?: DepartmentSelect<ExtArgs> | null
+    select?: RoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Department
+     * Omit specific fields from the Role
      */
-    omit?: DepartmentOmit<ExtArgs> | null
+    omit?: RoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DepartmentInclude<ExtArgs> | null
-    where?: DepartmentWhereInput
+    include?: RoleInclude<ExtArgs> | null
+    where?: RoleWhereInput
   }
 
   /**
@@ -10990,25 +7944,6 @@ export namespace Prisma {
      */
     include?: OrganizationInclude<ExtArgs> | null
     where?: OrganizationWhereInput
-  }
-
-  /**
-   * User.role
-   */
-  export type User$roleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Role
-     */
-    select?: RoleSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Role
-     */
-    omit?: RoleOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RoleInclude<ExtArgs> | null
-    where?: RoleWhereInput
   }
 
   /**
@@ -11103,54 +8038,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.CreatorStage
-   */
-  export type User$CreatorStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    where?: StageWhereInput
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    cursor?: StageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
-   * User.UpdaterStage
-   */
-  export type User$UpdaterStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Stage
-     */
-    select?: StageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Stage
-     */
-    omit?: StageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StageInclude<ExtArgs> | null
-    where?: StageWhereInput
-    orderBy?: StageOrderByWithRelationInput | StageOrderByWithRelationInput[]
-    cursor?: StageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: StageScalarFieldEnum | StageScalarFieldEnum[]
-  }
-
-  /**
    * User.CreatorReport
    */
   export type User$CreatorReportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11196,246 +8083,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
-  }
-
-  /**
-   * User.CreatorReportCategory
-   */
-  export type User$CreatorReportCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ReportCategory
-     */
-    select?: ReportCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReportCategory
-     */
-    omit?: ReportCategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReportCategoryInclude<ExtArgs> | null
-    where?: ReportCategoryWhereInput
-    orderBy?: ReportCategoryOrderByWithRelationInput | ReportCategoryOrderByWithRelationInput[]
-    cursor?: ReportCategoryWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ReportCategoryScalarFieldEnum | ReportCategoryScalarFieldEnum[]
-  }
-
-  /**
-   * User.UpdaterReportCategory
-   */
-  export type User$UpdaterReportCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ReportCategory
-     */
-    select?: ReportCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReportCategory
-     */
-    omit?: ReportCategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReportCategoryInclude<ExtArgs> | null
-    where?: ReportCategoryWhereInput
-    orderBy?: ReportCategoryOrderByWithRelationInput | ReportCategoryOrderByWithRelationInput[]
-    cursor?: ReportCategoryWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ReportCategoryScalarFieldEnum | ReportCategoryScalarFieldEnum[]
-  }
-
-  /**
-   * User.CreatorDepartment
-   */
-  export type User$CreatorDepartmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    where?: DepartmentWhereInput
-    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
-    cursor?: DepartmentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
-  }
-
-  /**
-   * User.UpdaterDepartment
-   */
-  export type User$UpdaterDepartmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    where?: DepartmentWhereInput
-    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
-    cursor?: DepartmentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
-  }
-
-  /**
-   * User.CreatorPermission
-   */
-  export type User$CreatorPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permission
-     */
-    select?: PermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permission
-     */
-    omit?: PermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermissionInclude<ExtArgs> | null
-    where?: PermissionWhereInput
-    orderBy?: PermissionOrderByWithRelationInput | PermissionOrderByWithRelationInput[]
-    cursor?: PermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PermissionScalarFieldEnum | PermissionScalarFieldEnum[]
-  }
-
-  /**
-   * User.UpdaterPermission
-   */
-  export type User$UpdaterPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permission
-     */
-    select?: PermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permission
-     */
-    omit?: PermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermissionInclude<ExtArgs> | null
-    where?: PermissionWhereInput
-    orderBy?: PermissionOrderByWithRelationInput | PermissionOrderByWithRelationInput[]
-    cursor?: PermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PermissionScalarFieldEnum | PermissionScalarFieldEnum[]
-  }
-
-  /**
-   * User.CreatorDepartmentPermission
-   */
-  export type User$CreatorDepartmentPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    where?: DepartmentPermissionWhereInput
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    cursor?: DepartmentPermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * User.UpdaterDepartmentPermission
-   */
-  export type User$UpdaterDepartmentPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    where?: DepartmentPermissionWhereInput
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    cursor?: DepartmentPermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * User.CreatorUserPermission
-   */
-  export type User$CreatorUserPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserPermission
-     */
-    select?: UserPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserPermission
-     */
-    omit?: UserPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserPermissionInclude<ExtArgs> | null
-    where?: UserPermissionWhereInput
-    orderBy?: UserPermissionOrderByWithRelationInput | UserPermissionOrderByWithRelationInput[]
-    cursor?: UserPermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserPermissionScalarFieldEnum | UserPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * User.UpdaterUserPermission
-   */
-  export type User$UpdaterUserPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserPermission
-     */
-    select?: UserPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserPermission
-     */
-    omit?: UserPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserPermissionInclude<ExtArgs> | null
-    where?: UserPermissionWhereInput
-    orderBy?: UserPermissionOrderByWithRelationInput | UserPermissionOrderByWithRelationInput[]
-    cursor?: UserPermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserPermissionScalarFieldEnum | UserPermissionScalarFieldEnum[]
   }
 
   /**
@@ -11502,6 +8149,1183 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Profile
+   */
+
+  export type AggregateProfile = {
+    _count: ProfileCountAggregateOutputType | null
+    _min: ProfileMinAggregateOutputType | null
+    _max: ProfileMaxAggregateOutputType | null
+  }
+
+  export type ProfileMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    department: string | null
+    position: string | null
+    joinDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdById: string | null
+    updatedById: string | null
+    userId: string | null
+  }
+
+  export type ProfileMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    department: string | null
+    position: string | null
+    joinDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdById: string | null
+    updatedById: string | null
+    userId: string | null
+  }
+
+  export type ProfileCountAggregateOutputType = {
+    id: number
+    name: number
+    department: number
+    position: number
+    joinDate: number
+    createdAt: number
+    updatedAt: number
+    createdById: number
+    updatedById: number
+    userId: number
+    _all: number
+  }
+
+
+  export type ProfileMinAggregateInputType = {
+    id?: true
+    name?: true
+    department?: true
+    position?: true
+    joinDate?: true
+    createdAt?: true
+    updatedAt?: true
+    createdById?: true
+    updatedById?: true
+    userId?: true
+  }
+
+  export type ProfileMaxAggregateInputType = {
+    id?: true
+    name?: true
+    department?: true
+    position?: true
+    joinDate?: true
+    createdAt?: true
+    updatedAt?: true
+    createdById?: true
+    updatedById?: true
+    userId?: true
+  }
+
+  export type ProfileCountAggregateInputType = {
+    id?: true
+    name?: true
+    department?: true
+    position?: true
+    joinDate?: true
+    createdAt?: true
+    updatedAt?: true
+    createdById?: true
+    updatedById?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type ProfileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Profile to aggregate.
+     */
+    where?: ProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profiles to fetch.
+     */
+    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Profiles
+    **/
+    _count?: true | ProfileCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProfileMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProfileMaxAggregateInputType
+  }
+
+  export type GetProfileAggregateType<T extends ProfileAggregateArgs> = {
+        [P in keyof T & keyof AggregateProfile]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProfile[P]>
+      : GetScalarType<T[P], AggregateProfile[P]>
+  }
+
+
+
+
+  export type ProfileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProfileWhereInput
+    orderBy?: ProfileOrderByWithAggregationInput | ProfileOrderByWithAggregationInput[]
+    by: ProfileScalarFieldEnum[] | ProfileScalarFieldEnum
+    having?: ProfileScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProfileCountAggregateInputType | true
+    _min?: ProfileMinAggregateInputType
+    _max?: ProfileMaxAggregateInputType
+  }
+
+  export type ProfileGroupByOutputType = {
+    id: string
+    name: string | null
+    department: string | null
+    position: string | null
+    joinDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdById: string | null
+    updatedById: string | null
+    userId: string
+    _count: ProfileCountAggregateOutputType | null
+    _min: ProfileMinAggregateOutputType | null
+    _max: ProfileMaxAggregateOutputType | null
+  }
+
+  type GetProfileGroupByPayload<T extends ProfileGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProfileGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProfileGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProfileGroupByOutputType[P]>
+            : GetScalarType<T[P], ProfileGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    department?: boolean
+    position?: boolean
+    joinDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdById?: boolean
+    updatedById?: boolean
+    userId?: boolean
+    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
+    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profile"]>
+
+  export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    department?: boolean
+    position?: boolean
+    joinDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdById?: boolean
+    updatedById?: boolean
+    userId?: boolean
+    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
+    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profile"]>
+
+  export type ProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    department?: boolean
+    position?: boolean
+    joinDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdById?: boolean
+    updatedById?: boolean
+    userId?: boolean
+    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
+    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profile"]>
+
+  export type ProfileSelectScalar = {
+    id?: boolean
+    name?: boolean
+    department?: boolean
+    position?: boolean
+    joinDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdById?: boolean
+    updatedById?: boolean
+    userId?: boolean
+  }
+
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "department" | "position" | "joinDate" | "createdAt" | "updatedAt" | "createdById" | "updatedById" | "userId", ExtArgs["result"]["profile"]>
+  export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
+    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
+    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
+    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Profile"
+    objects: {
+      createdBy: Prisma.$UserPayload<ExtArgs> | null
+      updatedBy: Prisma.$UserPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string | null
+      department: string | null
+      position: string | null
+      joinDate: Date | null
+      createdAt: Date | null
+      updatedAt: Date | null
+      createdById: string | null
+      updatedById: string | null
+      userId: string
+    }, ExtArgs["result"]["profile"]>
+    composites: {}
+  }
+
+  type ProfileGetPayload<S extends boolean | null | undefined | ProfileDefaultArgs> = $Result.GetResult<Prisma.$ProfilePayload, S>
+
+  type ProfileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProfileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProfileCountAggregateInputType | true
+    }
+
+  export interface ProfileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Profile'], meta: { name: 'Profile' } }
+    /**
+     * Find zero or one Profile that matches the filter.
+     * @param {ProfileFindUniqueArgs} args - Arguments to find a Profile
+     * @example
+     * // Get one Profile
+     * const profile = await prisma.profile.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProfileFindUniqueArgs>(args: SelectSubset<T, ProfileFindUniqueArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Profile that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProfileFindUniqueOrThrowArgs} args - Arguments to find a Profile
+     * @example
+     * // Get one Profile
+     * const profile = await prisma.profile.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProfileFindUniqueOrThrowArgs>(args: SelectSubset<T, ProfileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Profile that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileFindFirstArgs} args - Arguments to find a Profile
+     * @example
+     * // Get one Profile
+     * const profile = await prisma.profile.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProfileFindFirstArgs>(args?: SelectSubset<T, ProfileFindFirstArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Profile that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileFindFirstOrThrowArgs} args - Arguments to find a Profile
+     * @example
+     * // Get one Profile
+     * const profile = await prisma.profile.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProfileFindFirstOrThrowArgs>(args?: SelectSubset<T, ProfileFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Profiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Profiles
+     * const profiles = await prisma.profile.findMany()
+     * 
+     * // Get first 10 Profiles
+     * const profiles = await prisma.profile.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const profileWithIdOnly = await prisma.profile.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProfileFindManyArgs>(args?: SelectSubset<T, ProfileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Profile.
+     * @param {ProfileCreateArgs} args - Arguments to create a Profile.
+     * @example
+     * // Create one Profile
+     * const Profile = await prisma.profile.create({
+     *   data: {
+     *     // ... data to create a Profile
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProfileCreateArgs>(args: SelectSubset<T, ProfileCreateArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Profiles.
+     * @param {ProfileCreateManyArgs} args - Arguments to create many Profiles.
+     * @example
+     * // Create many Profiles
+     * const profile = await prisma.profile.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProfileCreateManyArgs>(args?: SelectSubset<T, ProfileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Profiles and returns the data saved in the database.
+     * @param {ProfileCreateManyAndReturnArgs} args - Arguments to create many Profiles.
+     * @example
+     * // Create many Profiles
+     * const profile = await prisma.profile.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Profiles and only return the `id`
+     * const profileWithIdOnly = await prisma.profile.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProfileCreateManyAndReturnArgs>(args?: SelectSubset<T, ProfileCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Profile.
+     * @param {ProfileDeleteArgs} args - Arguments to delete one Profile.
+     * @example
+     * // Delete one Profile
+     * const Profile = await prisma.profile.delete({
+     *   where: {
+     *     // ... filter to delete one Profile
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProfileDeleteArgs>(args: SelectSubset<T, ProfileDeleteArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Profile.
+     * @param {ProfileUpdateArgs} args - Arguments to update one Profile.
+     * @example
+     * // Update one Profile
+     * const profile = await prisma.profile.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProfileUpdateArgs>(args: SelectSubset<T, ProfileUpdateArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Profiles.
+     * @param {ProfileDeleteManyArgs} args - Arguments to filter Profiles to delete.
+     * @example
+     * // Delete a few Profiles
+     * const { count } = await prisma.profile.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProfileDeleteManyArgs>(args?: SelectSubset<T, ProfileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Profiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Profiles
+     * const profile = await prisma.profile.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProfileUpdateManyArgs>(args: SelectSubset<T, ProfileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Profiles and returns the data updated in the database.
+     * @param {ProfileUpdateManyAndReturnArgs} args - Arguments to update many Profiles.
+     * @example
+     * // Update many Profiles
+     * const profile = await prisma.profile.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Profiles and only return the `id`
+     * const profileWithIdOnly = await prisma.profile.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProfileUpdateManyAndReturnArgs>(args: SelectSubset<T, ProfileUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Profile.
+     * @param {ProfileUpsertArgs} args - Arguments to update or create a Profile.
+     * @example
+     * // Update or create a Profile
+     * const profile = await prisma.profile.upsert({
+     *   create: {
+     *     // ... data to create a Profile
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Profile we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProfileUpsertArgs>(args: SelectSubset<T, ProfileUpsertArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Profiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileCountArgs} args - Arguments to filter Profiles to count.
+     * @example
+     * // Count the number of Profiles
+     * const count = await prisma.profile.count({
+     *   where: {
+     *     // ... the filter for the Profiles we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProfileCountArgs>(
+      args?: Subset<T, ProfileCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProfileCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Profile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProfileAggregateArgs>(args: Subset<T, ProfileAggregateArgs>): Prisma.PrismaPromise<GetProfileAggregateType<T>>
+
+    /**
+     * Group by Profile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProfileGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProfileGroupByArgs['orderBy'] }
+        : { orderBy?: ProfileGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProfileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Profile model
+   */
+  readonly fields: ProfileFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Profile.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    createdBy<T extends Profile$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Profile$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    updatedBy<T extends Profile$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, Profile$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Profile model
+   */
+  interface ProfileFieldRefs {
+    readonly id: FieldRef<"Profile", 'String'>
+    readonly name: FieldRef<"Profile", 'String'>
+    readonly department: FieldRef<"Profile", 'String'>
+    readonly position: FieldRef<"Profile", 'String'>
+    readonly joinDate: FieldRef<"Profile", 'DateTime'>
+    readonly createdAt: FieldRef<"Profile", 'DateTime'>
+    readonly updatedAt: FieldRef<"Profile", 'DateTime'>
+    readonly createdById: FieldRef<"Profile", 'String'>
+    readonly updatedById: FieldRef<"Profile", 'String'>
+    readonly userId: FieldRef<"Profile", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Profile findUnique
+   */
+  export type ProfileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which Profile to fetch.
+     */
+    where: ProfileWhereUniqueInput
+  }
+
+  /**
+   * Profile findUniqueOrThrow
+   */
+  export type ProfileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which Profile to fetch.
+     */
+    where: ProfileWhereUniqueInput
+  }
+
+  /**
+   * Profile findFirst
+   */
+  export type ProfileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which Profile to fetch.
+     */
+    where?: ProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profiles to fetch.
+     */
+    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Profiles.
+     */
+    cursor?: ProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Profiles.
+     */
+    distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
+  }
+
+  /**
+   * Profile findFirstOrThrow
+   */
+  export type ProfileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which Profile to fetch.
+     */
+    where?: ProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profiles to fetch.
+     */
+    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Profiles.
+     */
+    cursor?: ProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Profiles.
+     */
+    distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
+  }
+
+  /**
+   * Profile findMany
+   */
+  export type ProfileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which Profiles to fetch.
+     */
+    where?: ProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profiles to fetch.
+     */
+    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Profiles.
+     */
+    cursor?: ProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profiles.
+     */
+    skip?: number
+    distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
+  }
+
+  /**
+   * Profile create
+   */
+  export type ProfileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Profile.
+     */
+    data: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
+  }
+
+  /**
+   * Profile createMany
+   */
+  export type ProfileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Profiles.
+     */
+    data: ProfileCreateManyInput | ProfileCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Profile createManyAndReturn
+   */
+  export type ProfileCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * The data used to create many Profiles.
+     */
+    data: ProfileCreateManyInput | ProfileCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Profile update
+   */
+  export type ProfileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Profile.
+     */
+    data: XOR<ProfileUpdateInput, ProfileUncheckedUpdateInput>
+    /**
+     * Choose, which Profile to update.
+     */
+    where: ProfileWhereUniqueInput
+  }
+
+  /**
+   * Profile updateMany
+   */
+  export type ProfileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Profiles.
+     */
+    data: XOR<ProfileUpdateManyMutationInput, ProfileUncheckedUpdateManyInput>
+    /**
+     * Filter which Profiles to update
+     */
+    where?: ProfileWhereInput
+    /**
+     * Limit how many Profiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Profile updateManyAndReturn
+   */
+  export type ProfileUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * The data used to update Profiles.
+     */
+    data: XOR<ProfileUpdateManyMutationInput, ProfileUncheckedUpdateManyInput>
+    /**
+     * Filter which Profiles to update
+     */
+    where?: ProfileWhereInput
+    /**
+     * Limit how many Profiles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Profile upsert
+   */
+  export type ProfileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Profile to update in case it exists.
+     */
+    where: ProfileWhereUniqueInput
+    /**
+     * In case the Profile found by the `where` argument doesn't exist, create a new Profile with this data.
+     */
+    create: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
+    /**
+     * In case the Profile was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProfileUpdateInput, ProfileUncheckedUpdateInput>
+  }
+
+  /**
+   * Profile delete
+   */
+  export type ProfileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
+     * Filter which Profile to delete.
+     */
+    where: ProfileWhereUniqueInput
+  }
+
+  /**
+   * Profile deleteMany
+   */
+  export type ProfileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Profiles to delete
+     */
+    where?: ProfileWhereInput
+    /**
+     * Limit how many Profiles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Profile.createdBy
+   */
+  export type Profile$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Profile.updatedBy
+   */
+  export type Profile$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Profile without action
+   */
+  export type ProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
   }
 
 
@@ -13656,1168 +11480,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Department
-   */
-
-  export type AggregateDepartment = {
-    _count: DepartmentCountAggregateOutputType | null
-    _min: DepartmentMinAggregateOutputType | null
-    _max: DepartmentMaxAggregateOutputType | null
-  }
-
-  export type DepartmentMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    code: string | null
-    createdById: string | null
-    updatedById: string | null
-  }
-
-  export type DepartmentMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    code: string | null
-    createdById: string | null
-    updatedById: string | null
-  }
-
-  export type DepartmentCountAggregateOutputType = {
-    id: number
-    name: number
-    code: number
-    createdById: number
-    updatedById: number
-    _all: number
-  }
-
-
-  export type DepartmentMinAggregateInputType = {
-    id?: true
-    name?: true
-    code?: true
-    createdById?: true
-    updatedById?: true
-  }
-
-  export type DepartmentMaxAggregateInputType = {
-    id?: true
-    name?: true
-    code?: true
-    createdById?: true
-    updatedById?: true
-  }
-
-  export type DepartmentCountAggregateInputType = {
-    id?: true
-    name?: true
-    code?: true
-    createdById?: true
-    updatedById?: true
-    _all?: true
-  }
-
-  export type DepartmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Department to aggregate.
-     */
-    where?: DepartmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Departments to fetch.
-     */
-    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: DepartmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Departments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Departments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Departments
-    **/
-    _count?: true | DepartmentCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: DepartmentMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: DepartmentMaxAggregateInputType
-  }
-
-  export type GetDepartmentAggregateType<T extends DepartmentAggregateArgs> = {
-        [P in keyof T & keyof AggregateDepartment]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDepartment[P]>
-      : GetScalarType<T[P], AggregateDepartment[P]>
-  }
-
-
-
-
-  export type DepartmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentWhereInput
-    orderBy?: DepartmentOrderByWithAggregationInput | DepartmentOrderByWithAggregationInput[]
-    by: DepartmentScalarFieldEnum[] | DepartmentScalarFieldEnum
-    having?: DepartmentScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: DepartmentCountAggregateInputType | true
-    _min?: DepartmentMinAggregateInputType
-    _max?: DepartmentMaxAggregateInputType
-  }
-
-  export type DepartmentGroupByOutputType = {
-    id: string
-    name: string
-    code: string
-    createdById: string | null
-    updatedById: string | null
-    _count: DepartmentCountAggregateOutputType | null
-    _min: DepartmentMinAggregateOutputType | null
-    _max: DepartmentMaxAggregateOutputType | null
-  }
-
-  type GetDepartmentGroupByPayload<T extends DepartmentGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<DepartmentGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DepartmentGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DepartmentGroupByOutputType[P]>
-            : GetScalarType<T[P], DepartmentGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type DepartmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    code?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | Department$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Department$updatedByArgs<ExtArgs>
-    users?: boolean | Department$usersArgs<ExtArgs>
-    permissions?: boolean | Department$permissionsArgs<ExtArgs>
-    _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["department"]>
-
-  export type DepartmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    code?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | Department$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Department$updatedByArgs<ExtArgs>
-  }, ExtArgs["result"]["department"]>
-
-  export type DepartmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    code?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | Department$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Department$updatedByArgs<ExtArgs>
-  }, ExtArgs["result"]["department"]>
-
-  export type DepartmentSelectScalar = {
-    id?: boolean
-    name?: boolean
-    code?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-  }
-
-  export type DepartmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "createdById" | "updatedById", ExtArgs["result"]["department"]>
-  export type DepartmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Department$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Department$updatedByArgs<ExtArgs>
-    users?: boolean | Department$usersArgs<ExtArgs>
-    permissions?: boolean | Department$permissionsArgs<ExtArgs>
-    _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type DepartmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Department$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Department$updatedByArgs<ExtArgs>
-  }
-  export type DepartmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Department$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Department$updatedByArgs<ExtArgs>
-  }
-
-  export type $DepartmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Department"
-    objects: {
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
-      users: Prisma.$UserPayload<ExtArgs>[]
-      permissions: Prisma.$DepartmentPermissionPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string
-      code: string
-      createdById: string | null
-      updatedById: string | null
-    }, ExtArgs["result"]["department"]>
-    composites: {}
-  }
-
-  type DepartmentGetPayload<S extends boolean | null | undefined | DepartmentDefaultArgs> = $Result.GetResult<Prisma.$DepartmentPayload, S>
-
-  type DepartmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DepartmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DepartmentCountAggregateInputType | true
-    }
-
-  export interface DepartmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Department'], meta: { name: 'Department' } }
-    /**
-     * Find zero or one Department that matches the filter.
-     * @param {DepartmentFindUniqueArgs} args - Arguments to find a Department
-     * @example
-     * // Get one Department
-     * const department = await prisma.department.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends DepartmentFindUniqueArgs>(args: SelectSubset<T, DepartmentFindUniqueArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Department that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {DepartmentFindUniqueOrThrowArgs} args - Arguments to find a Department
-     * @example
-     * // Get one Department
-     * const department = await prisma.department.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends DepartmentFindUniqueOrThrowArgs>(args: SelectSubset<T, DepartmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Department that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentFindFirstArgs} args - Arguments to find a Department
-     * @example
-     * // Get one Department
-     * const department = await prisma.department.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends DepartmentFindFirstArgs>(args?: SelectSubset<T, DepartmentFindFirstArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Department that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentFindFirstOrThrowArgs} args - Arguments to find a Department
-     * @example
-     * // Get one Department
-     * const department = await prisma.department.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends DepartmentFindFirstOrThrowArgs>(args?: SelectSubset<T, DepartmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Departments that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Departments
-     * const departments = await prisma.department.findMany()
-     * 
-     * // Get first 10 Departments
-     * const departments = await prisma.department.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const departmentWithIdOnly = await prisma.department.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends DepartmentFindManyArgs>(args?: SelectSubset<T, DepartmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Department.
-     * @param {DepartmentCreateArgs} args - Arguments to create a Department.
-     * @example
-     * // Create one Department
-     * const Department = await prisma.department.create({
-     *   data: {
-     *     // ... data to create a Department
-     *   }
-     * })
-     * 
-     */
-    create<T extends DepartmentCreateArgs>(args: SelectSubset<T, DepartmentCreateArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Departments.
-     * @param {DepartmentCreateManyArgs} args - Arguments to create many Departments.
-     * @example
-     * // Create many Departments
-     * const department = await prisma.department.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends DepartmentCreateManyArgs>(args?: SelectSubset<T, DepartmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Departments and returns the data saved in the database.
-     * @param {DepartmentCreateManyAndReturnArgs} args - Arguments to create many Departments.
-     * @example
-     * // Create many Departments
-     * const department = await prisma.department.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Departments and only return the `id`
-     * const departmentWithIdOnly = await prisma.department.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends DepartmentCreateManyAndReturnArgs>(args?: SelectSubset<T, DepartmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Department.
-     * @param {DepartmentDeleteArgs} args - Arguments to delete one Department.
-     * @example
-     * // Delete one Department
-     * const Department = await prisma.department.delete({
-     *   where: {
-     *     // ... filter to delete one Department
-     *   }
-     * })
-     * 
-     */
-    delete<T extends DepartmentDeleteArgs>(args: SelectSubset<T, DepartmentDeleteArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Department.
-     * @param {DepartmentUpdateArgs} args - Arguments to update one Department.
-     * @example
-     * // Update one Department
-     * const department = await prisma.department.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends DepartmentUpdateArgs>(args: SelectSubset<T, DepartmentUpdateArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Departments.
-     * @param {DepartmentDeleteManyArgs} args - Arguments to filter Departments to delete.
-     * @example
-     * // Delete a few Departments
-     * const { count } = await prisma.department.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends DepartmentDeleteManyArgs>(args?: SelectSubset<T, DepartmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Departments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Departments
-     * const department = await prisma.department.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends DepartmentUpdateManyArgs>(args: SelectSubset<T, DepartmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Departments and returns the data updated in the database.
-     * @param {DepartmentUpdateManyAndReturnArgs} args - Arguments to update many Departments.
-     * @example
-     * // Update many Departments
-     * const department = await prisma.department.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Departments and only return the `id`
-     * const departmentWithIdOnly = await prisma.department.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends DepartmentUpdateManyAndReturnArgs>(args: SelectSubset<T, DepartmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Department.
-     * @param {DepartmentUpsertArgs} args - Arguments to update or create a Department.
-     * @example
-     * // Update or create a Department
-     * const department = await prisma.department.upsert({
-     *   create: {
-     *     // ... data to create a Department
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Department we want to update
-     *   }
-     * })
-     */
-    upsert<T extends DepartmentUpsertArgs>(args: SelectSubset<T, DepartmentUpsertArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Departments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentCountArgs} args - Arguments to filter Departments to count.
-     * @example
-     * // Count the number of Departments
-     * const count = await prisma.department.count({
-     *   where: {
-     *     // ... the filter for the Departments we want to count
-     *   }
-     * })
-    **/
-    count<T extends DepartmentCountArgs>(
-      args?: Subset<T, DepartmentCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DepartmentCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Department.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends DepartmentAggregateArgs>(args: Subset<T, DepartmentAggregateArgs>): Prisma.PrismaPromise<GetDepartmentAggregateType<T>>
-
-    /**
-     * Group by Department.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends DepartmentGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DepartmentGroupByArgs['orderBy'] }
-        : { orderBy?: DepartmentGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, DepartmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDepartmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Department model
-   */
-  readonly fields: DepartmentFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Department.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    createdBy<T extends Department$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Department$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends Department$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, Department$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    users<T extends Department$usersArgs<ExtArgs> = {}>(args?: Subset<T, Department$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    permissions<T extends Department$permissionsArgs<ExtArgs> = {}>(args?: Subset<T, Department$permissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Department model
-   */
-  interface DepartmentFieldRefs {
-    readonly id: FieldRef<"Department", 'String'>
-    readonly name: FieldRef<"Department", 'String'>
-    readonly code: FieldRef<"Department", 'String'>
-    readonly createdById: FieldRef<"Department", 'String'>
-    readonly updatedById: FieldRef<"Department", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Department findUnique
-   */
-  export type DepartmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Department to fetch.
-     */
-    where: DepartmentWhereUniqueInput
-  }
-
-  /**
-   * Department findUniqueOrThrow
-   */
-  export type DepartmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Department to fetch.
-     */
-    where: DepartmentWhereUniqueInput
-  }
-
-  /**
-   * Department findFirst
-   */
-  export type DepartmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Department to fetch.
-     */
-    where?: DepartmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Departments to fetch.
-     */
-    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Departments.
-     */
-    cursor?: DepartmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Departments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Departments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Departments.
-     */
-    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
-  }
-
-  /**
-   * Department findFirstOrThrow
-   */
-  export type DepartmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Department to fetch.
-     */
-    where?: DepartmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Departments to fetch.
-     */
-    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Departments.
-     */
-    cursor?: DepartmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Departments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Departments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Departments.
-     */
-    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
-  }
-
-  /**
-   * Department findMany
-   */
-  export type DepartmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * Filter, which Departments to fetch.
-     */
-    where?: DepartmentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Departments to fetch.
-     */
-    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Departments.
-     */
-    cursor?: DepartmentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Departments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Departments.
-     */
-    skip?: number
-    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
-  }
-
-  /**
-   * Department create
-   */
-  export type DepartmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Department.
-     */
-    data: XOR<DepartmentCreateInput, DepartmentUncheckedCreateInput>
-  }
-
-  /**
-   * Department createMany
-   */
-  export type DepartmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Departments.
-     */
-    data: DepartmentCreateManyInput | DepartmentCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Department createManyAndReturn
-   */
-  export type DepartmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * The data used to create many Departments.
-     */
-    data: DepartmentCreateManyInput | DepartmentCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Department update
-   */
-  export type DepartmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Department.
-     */
-    data: XOR<DepartmentUpdateInput, DepartmentUncheckedUpdateInput>
-    /**
-     * Choose, which Department to update.
-     */
-    where: DepartmentWhereUniqueInput
-  }
-
-  /**
-   * Department updateMany
-   */
-  export type DepartmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Departments.
-     */
-    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyInput>
-    /**
-     * Filter which Departments to update
-     */
-    where?: DepartmentWhereInput
-    /**
-     * Limit how many Departments to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Department updateManyAndReturn
-   */
-  export type DepartmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * The data used to update Departments.
-     */
-    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyInput>
-    /**
-     * Filter which Departments to update
-     */
-    where?: DepartmentWhereInput
-    /**
-     * Limit how many Departments to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Department upsert
-   */
-  export type DepartmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Department to update in case it exists.
-     */
-    where: DepartmentWhereUniqueInput
-    /**
-     * In case the Department found by the `where` argument doesn't exist, create a new Department with this data.
-     */
-    create: XOR<DepartmentCreateInput, DepartmentUncheckedCreateInput>
-    /**
-     * In case the Department was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<DepartmentUpdateInput, DepartmentUncheckedUpdateInput>
-  }
-
-  /**
-   * Department delete
-   */
-  export type DepartmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-    /**
-     * Filter which Department to delete.
-     */
-    where: DepartmentWhereUniqueInput
-  }
-
-  /**
-   * Department deleteMany
-   */
-  export type DepartmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Departments to delete
-     */
-    where?: DepartmentWhereInput
-    /**
-     * Limit how many Departments to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Department.createdBy
-   */
-  export type Department$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Department.updatedBy
-   */
-  export type Department$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Department.users
-   */
-  export type Department$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
-   * Department.permissions
-   */
-  export type Department$permissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    where?: DepartmentPermissionWhereInput
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    cursor?: DepartmentPermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * Department without action
-   */
-  export type DepartmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Department
-     */
-    select?: DepartmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Department
-     */
-    omit?: DepartmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model Permission
    */
 
@@ -14835,8 +11497,6 @@ export namespace Prisma {
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
   }
 
   export type PermissionMaxAggregateOutputType = {
@@ -14847,8 +11507,6 @@ export namespace Prisma {
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
   }
 
   export type PermissionCountAggregateOutputType = {
@@ -14859,8 +11517,6 @@ export namespace Prisma {
     description: number
     createdAt: number
     updatedAt: number
-    createdById: number
-    updatedById: number
     _all: number
   }
 
@@ -14873,8 +11529,6 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
-    createdById?: true
-    updatedById?: true
   }
 
   export type PermissionMaxAggregateInputType = {
@@ -14885,8 +11539,6 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
-    createdById?: true
-    updatedById?: true
   }
 
   export type PermissionCountAggregateInputType = {
@@ -14897,8 +11549,6 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
-    createdById?: true
-    updatedById?: true
     _all?: true
   }
 
@@ -14982,8 +11632,6 @@ export namespace Prisma {
     description: string | null
     createdAt: Date
     updatedAt: Date
-    createdById: string | null
-    updatedById: string | null
     _count: PermissionCountAggregateOutputType | null
     _min: PermissionMinAggregateOutputType | null
     _max: PermissionMaxAggregateOutputType | null
@@ -15011,11 +11659,6 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | Permission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Permission$updatedByArgs<ExtArgs>
-    dept?: boolean | Permission$deptArgs<ExtArgs>
     users?: boolean | Permission$usersArgs<ExtArgs>
     _count?: boolean | PermissionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["permission"]>
@@ -15028,10 +11671,6 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | Permission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Permission$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["permission"]>
 
   export type PermissionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15042,10 +11681,6 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | Permission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Permission$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["permission"]>
 
   export type PermissionSelectScalar = {
@@ -15056,33 +11691,19 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
   }
 
-  export type PermissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "resource" | "action" | "description" | "createdAt" | "updatedAt" | "createdById" | "updatedById", ExtArgs["result"]["permission"]>
+  export type PermissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "resource" | "action" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["permission"]>
   export type PermissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Permission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Permission$updatedByArgs<ExtArgs>
-    dept?: boolean | Permission$deptArgs<ExtArgs>
     users?: boolean | Permission$usersArgs<ExtArgs>
     _count?: boolean | PermissionCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type PermissionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Permission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Permission$updatedByArgs<ExtArgs>
-  }
-  export type PermissionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Permission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Permission$updatedByArgs<ExtArgs>
-  }
+  export type PermissionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PermissionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $PermissionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Permission"
     objects: {
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
-      dept: Prisma.$DepartmentPermissionPayload<ExtArgs>[]
       users: Prisma.$UserPermissionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -15093,8 +11714,6 @@ export namespace Prisma {
       description: string | null
       createdAt: Date
       updatedAt: Date
-      createdById: string | null
-      updatedById: string | null
     }, ExtArgs["result"]["permission"]>
     composites: {}
   }
@@ -15489,9 +12108,6 @@ export namespace Prisma {
    */
   export interface Prisma__PermissionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    createdBy<T extends Permission$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Permission$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends Permission$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, Permission$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    dept<T extends Permission$deptArgs<ExtArgs> = {}>(args?: Subset<T, Permission$deptArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Permission$usersArgs<ExtArgs> = {}>(args?: Subset<T, Permission$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15529,8 +12145,6 @@ export namespace Prisma {
     readonly description: FieldRef<"Permission", 'String'>
     readonly createdAt: FieldRef<"Permission", 'DateTime'>
     readonly updatedAt: FieldRef<"Permission", 'DateTime'>
-    readonly createdById: FieldRef<"Permission", 'String'>
-    readonly updatedById: FieldRef<"Permission", 'String'>
   }
     
 
@@ -15780,10 +12394,6 @@ export namespace Prisma {
      */
     data: PermissionCreateManyInput | PermissionCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermissionIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15854,10 +12464,6 @@ export namespace Prisma {
      * Limit how many Permissions to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermissionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15927,68 +12533,6 @@ export namespace Prisma {
   }
 
   /**
-   * Permission.createdBy
-   */
-  export type Permission$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Permission.updatedBy
-   */
-  export type Permission$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Permission.dept
-   */
-  export type Permission$deptArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    where?: DepartmentPermissionWhereInput
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    cursor?: DepartmentPermissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
    * Permission.users
    */
   export type Permission$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16032,1139 +12576,6 @@ export namespace Prisma {
 
 
   /**
-   * Model DepartmentPermission
-   */
-
-  export type AggregateDepartmentPermission = {
-    _count: DepartmentPermissionCountAggregateOutputType | null
-    _min: DepartmentPermissionMinAggregateOutputType | null
-    _max: DepartmentPermissionMaxAggregateOutputType | null
-  }
-
-  export type DepartmentPermissionMinAggregateOutputType = {
-    id: string | null
-    departmentId: string | null
-    permissionId: string | null
-    createdAt: Date | null
-    createdById: string | null
-    updatedById: string | null
-  }
-
-  export type DepartmentPermissionMaxAggregateOutputType = {
-    id: string | null
-    departmentId: string | null
-    permissionId: string | null
-    createdAt: Date | null
-    createdById: string | null
-    updatedById: string | null
-  }
-
-  export type DepartmentPermissionCountAggregateOutputType = {
-    id: number
-    departmentId: number
-    permissionId: number
-    createdAt: number
-    createdById: number
-    updatedById: number
-    _all: number
-  }
-
-
-  export type DepartmentPermissionMinAggregateInputType = {
-    id?: true
-    departmentId?: true
-    permissionId?: true
-    createdAt?: true
-    createdById?: true
-    updatedById?: true
-  }
-
-  export type DepartmentPermissionMaxAggregateInputType = {
-    id?: true
-    departmentId?: true
-    permissionId?: true
-    createdAt?: true
-    createdById?: true
-    updatedById?: true
-  }
-
-  export type DepartmentPermissionCountAggregateInputType = {
-    id?: true
-    departmentId?: true
-    permissionId?: true
-    createdAt?: true
-    createdById?: true
-    updatedById?: true
-    _all?: true
-  }
-
-  export type DepartmentPermissionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which DepartmentPermission to aggregate.
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DepartmentPermissions to fetch.
-     */
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: DepartmentPermissionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DepartmentPermissions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DepartmentPermissions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned DepartmentPermissions
-    **/
-    _count?: true | DepartmentPermissionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: DepartmentPermissionMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: DepartmentPermissionMaxAggregateInputType
-  }
-
-  export type GetDepartmentPermissionAggregateType<T extends DepartmentPermissionAggregateArgs> = {
-        [P in keyof T & keyof AggregateDepartmentPermission]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDepartmentPermission[P]>
-      : GetScalarType<T[P], AggregateDepartmentPermission[P]>
-  }
-
-
-
-
-  export type DepartmentPermissionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentPermissionWhereInput
-    orderBy?: DepartmentPermissionOrderByWithAggregationInput | DepartmentPermissionOrderByWithAggregationInput[]
-    by: DepartmentPermissionScalarFieldEnum[] | DepartmentPermissionScalarFieldEnum
-    having?: DepartmentPermissionScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: DepartmentPermissionCountAggregateInputType | true
-    _min?: DepartmentPermissionMinAggregateInputType
-    _max?: DepartmentPermissionMaxAggregateInputType
-  }
-
-  export type DepartmentPermissionGroupByOutputType = {
-    id: string
-    departmentId: string
-    permissionId: string
-    createdAt: Date
-    createdById: string | null
-    updatedById: string | null
-    _count: DepartmentPermissionCountAggregateOutputType | null
-    _min: DepartmentPermissionMinAggregateOutputType | null
-    _max: DepartmentPermissionMaxAggregateOutputType | null
-  }
-
-  type GetDepartmentPermissionGroupByPayload<T extends DepartmentPermissionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<DepartmentPermissionGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DepartmentPermissionGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DepartmentPermissionGroupByOutputType[P]>
-            : GetScalarType<T[P], DepartmentPermissionGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type DepartmentPermissionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    departmentId?: boolean
-    permissionId?: boolean
-    createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | DepartmentPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | DepartmentPermission$updatedByArgs<ExtArgs>
-    department?: boolean | DepartmentDefaultArgs<ExtArgs>
-    permission?: boolean | PermissionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["departmentPermission"]>
-
-  export type DepartmentPermissionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    departmentId?: boolean
-    permissionId?: boolean
-    createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | DepartmentPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | DepartmentPermission$updatedByArgs<ExtArgs>
-    department?: boolean | DepartmentDefaultArgs<ExtArgs>
-    permission?: boolean | PermissionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["departmentPermission"]>
-
-  export type DepartmentPermissionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    departmentId?: boolean
-    permissionId?: boolean
-    createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    createdBy?: boolean | DepartmentPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | DepartmentPermission$updatedByArgs<ExtArgs>
-    department?: boolean | DepartmentDefaultArgs<ExtArgs>
-    permission?: boolean | PermissionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["departmentPermission"]>
-
-  export type DepartmentPermissionSelectScalar = {
-    id?: boolean
-    departmentId?: boolean
-    permissionId?: boolean
-    createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-  }
-
-  export type DepartmentPermissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "departmentId" | "permissionId" | "createdAt" | "createdById" | "updatedById", ExtArgs["result"]["departmentPermission"]>
-  export type DepartmentPermissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | DepartmentPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | DepartmentPermission$updatedByArgs<ExtArgs>
-    department?: boolean | DepartmentDefaultArgs<ExtArgs>
-    permission?: boolean | PermissionDefaultArgs<ExtArgs>
-  }
-  export type DepartmentPermissionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | DepartmentPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | DepartmentPermission$updatedByArgs<ExtArgs>
-    department?: boolean | DepartmentDefaultArgs<ExtArgs>
-    permission?: boolean | PermissionDefaultArgs<ExtArgs>
-  }
-  export type DepartmentPermissionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | DepartmentPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | DepartmentPermission$updatedByArgs<ExtArgs>
-    department?: boolean | DepartmentDefaultArgs<ExtArgs>
-    permission?: boolean | PermissionDefaultArgs<ExtArgs>
-  }
-
-  export type $DepartmentPermissionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "DepartmentPermission"
-    objects: {
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
-      department: Prisma.$DepartmentPayload<ExtArgs>
-      permission: Prisma.$PermissionPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      departmentId: string
-      permissionId: string
-      createdAt: Date
-      createdById: string | null
-      updatedById: string | null
-    }, ExtArgs["result"]["departmentPermission"]>
-    composites: {}
-  }
-
-  type DepartmentPermissionGetPayload<S extends boolean | null | undefined | DepartmentPermissionDefaultArgs> = $Result.GetResult<Prisma.$DepartmentPermissionPayload, S>
-
-  type DepartmentPermissionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DepartmentPermissionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DepartmentPermissionCountAggregateInputType | true
-    }
-
-  export interface DepartmentPermissionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DepartmentPermission'], meta: { name: 'DepartmentPermission' } }
-    /**
-     * Find zero or one DepartmentPermission that matches the filter.
-     * @param {DepartmentPermissionFindUniqueArgs} args - Arguments to find a DepartmentPermission
-     * @example
-     * // Get one DepartmentPermission
-     * const departmentPermission = await prisma.departmentPermission.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends DepartmentPermissionFindUniqueArgs>(args: SelectSubset<T, DepartmentPermissionFindUniqueArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one DepartmentPermission that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {DepartmentPermissionFindUniqueOrThrowArgs} args - Arguments to find a DepartmentPermission
-     * @example
-     * // Get one DepartmentPermission
-     * const departmentPermission = await prisma.departmentPermission.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends DepartmentPermissionFindUniqueOrThrowArgs>(args: SelectSubset<T, DepartmentPermissionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first DepartmentPermission that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionFindFirstArgs} args - Arguments to find a DepartmentPermission
-     * @example
-     * // Get one DepartmentPermission
-     * const departmentPermission = await prisma.departmentPermission.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends DepartmentPermissionFindFirstArgs>(args?: SelectSubset<T, DepartmentPermissionFindFirstArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first DepartmentPermission that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionFindFirstOrThrowArgs} args - Arguments to find a DepartmentPermission
-     * @example
-     * // Get one DepartmentPermission
-     * const departmentPermission = await prisma.departmentPermission.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends DepartmentPermissionFindFirstOrThrowArgs>(args?: SelectSubset<T, DepartmentPermissionFindFirstOrThrowArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more DepartmentPermissions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all DepartmentPermissions
-     * const departmentPermissions = await prisma.departmentPermission.findMany()
-     * 
-     * // Get first 10 DepartmentPermissions
-     * const departmentPermissions = await prisma.departmentPermission.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const departmentPermissionWithIdOnly = await prisma.departmentPermission.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends DepartmentPermissionFindManyArgs>(args?: SelectSubset<T, DepartmentPermissionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a DepartmentPermission.
-     * @param {DepartmentPermissionCreateArgs} args - Arguments to create a DepartmentPermission.
-     * @example
-     * // Create one DepartmentPermission
-     * const DepartmentPermission = await prisma.departmentPermission.create({
-     *   data: {
-     *     // ... data to create a DepartmentPermission
-     *   }
-     * })
-     * 
-     */
-    create<T extends DepartmentPermissionCreateArgs>(args: SelectSubset<T, DepartmentPermissionCreateArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many DepartmentPermissions.
-     * @param {DepartmentPermissionCreateManyArgs} args - Arguments to create many DepartmentPermissions.
-     * @example
-     * // Create many DepartmentPermissions
-     * const departmentPermission = await prisma.departmentPermission.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends DepartmentPermissionCreateManyArgs>(args?: SelectSubset<T, DepartmentPermissionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many DepartmentPermissions and returns the data saved in the database.
-     * @param {DepartmentPermissionCreateManyAndReturnArgs} args - Arguments to create many DepartmentPermissions.
-     * @example
-     * // Create many DepartmentPermissions
-     * const departmentPermission = await prisma.departmentPermission.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many DepartmentPermissions and only return the `id`
-     * const departmentPermissionWithIdOnly = await prisma.departmentPermission.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends DepartmentPermissionCreateManyAndReturnArgs>(args?: SelectSubset<T, DepartmentPermissionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a DepartmentPermission.
-     * @param {DepartmentPermissionDeleteArgs} args - Arguments to delete one DepartmentPermission.
-     * @example
-     * // Delete one DepartmentPermission
-     * const DepartmentPermission = await prisma.departmentPermission.delete({
-     *   where: {
-     *     // ... filter to delete one DepartmentPermission
-     *   }
-     * })
-     * 
-     */
-    delete<T extends DepartmentPermissionDeleteArgs>(args: SelectSubset<T, DepartmentPermissionDeleteArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one DepartmentPermission.
-     * @param {DepartmentPermissionUpdateArgs} args - Arguments to update one DepartmentPermission.
-     * @example
-     * // Update one DepartmentPermission
-     * const departmentPermission = await prisma.departmentPermission.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends DepartmentPermissionUpdateArgs>(args: SelectSubset<T, DepartmentPermissionUpdateArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more DepartmentPermissions.
-     * @param {DepartmentPermissionDeleteManyArgs} args - Arguments to filter DepartmentPermissions to delete.
-     * @example
-     * // Delete a few DepartmentPermissions
-     * const { count } = await prisma.departmentPermission.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends DepartmentPermissionDeleteManyArgs>(args?: SelectSubset<T, DepartmentPermissionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more DepartmentPermissions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many DepartmentPermissions
-     * const departmentPermission = await prisma.departmentPermission.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends DepartmentPermissionUpdateManyArgs>(args: SelectSubset<T, DepartmentPermissionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more DepartmentPermissions and returns the data updated in the database.
-     * @param {DepartmentPermissionUpdateManyAndReturnArgs} args - Arguments to update many DepartmentPermissions.
-     * @example
-     * // Update many DepartmentPermissions
-     * const departmentPermission = await prisma.departmentPermission.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more DepartmentPermissions and only return the `id`
-     * const departmentPermissionWithIdOnly = await prisma.departmentPermission.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends DepartmentPermissionUpdateManyAndReturnArgs>(args: SelectSubset<T, DepartmentPermissionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one DepartmentPermission.
-     * @param {DepartmentPermissionUpsertArgs} args - Arguments to update or create a DepartmentPermission.
-     * @example
-     * // Update or create a DepartmentPermission
-     * const departmentPermission = await prisma.departmentPermission.upsert({
-     *   create: {
-     *     // ... data to create a DepartmentPermission
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the DepartmentPermission we want to update
-     *   }
-     * })
-     */
-    upsert<T extends DepartmentPermissionUpsertArgs>(args: SelectSubset<T, DepartmentPermissionUpsertArgs<ExtArgs>>): Prisma__DepartmentPermissionClient<$Result.GetResult<Prisma.$DepartmentPermissionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of DepartmentPermissions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionCountArgs} args - Arguments to filter DepartmentPermissions to count.
-     * @example
-     * // Count the number of DepartmentPermissions
-     * const count = await prisma.departmentPermission.count({
-     *   where: {
-     *     // ... the filter for the DepartmentPermissions we want to count
-     *   }
-     * })
-    **/
-    count<T extends DepartmentPermissionCountArgs>(
-      args?: Subset<T, DepartmentPermissionCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DepartmentPermissionCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a DepartmentPermission.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends DepartmentPermissionAggregateArgs>(args: Subset<T, DepartmentPermissionAggregateArgs>): Prisma.PrismaPromise<GetDepartmentPermissionAggregateType<T>>
-
-    /**
-     * Group by DepartmentPermission.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DepartmentPermissionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends DepartmentPermissionGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DepartmentPermissionGroupByArgs['orderBy'] }
-        : { orderBy?: DepartmentPermissionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, DepartmentPermissionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDepartmentPermissionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the DepartmentPermission model
-   */
-  readonly fields: DepartmentPermissionFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for DepartmentPermission.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__DepartmentPermissionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    createdBy<T extends DepartmentPermission$createdByArgs<ExtArgs> = {}>(args?: Subset<T, DepartmentPermission$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends DepartmentPermission$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, DepartmentPermission$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    department<T extends DepartmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DepartmentDefaultArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    permission<T extends PermissionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PermissionDefaultArgs<ExtArgs>>): Prisma__PermissionClient<$Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the DepartmentPermission model
-   */
-  interface DepartmentPermissionFieldRefs {
-    readonly id: FieldRef<"DepartmentPermission", 'String'>
-    readonly departmentId: FieldRef<"DepartmentPermission", 'String'>
-    readonly permissionId: FieldRef<"DepartmentPermission", 'String'>
-    readonly createdAt: FieldRef<"DepartmentPermission", 'DateTime'>
-    readonly createdById: FieldRef<"DepartmentPermission", 'String'>
-    readonly updatedById: FieldRef<"DepartmentPermission", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * DepartmentPermission findUnique
-   */
-  export type DepartmentPermissionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * Filter, which DepartmentPermission to fetch.
-     */
-    where: DepartmentPermissionWhereUniqueInput
-  }
-
-  /**
-   * DepartmentPermission findUniqueOrThrow
-   */
-  export type DepartmentPermissionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * Filter, which DepartmentPermission to fetch.
-     */
-    where: DepartmentPermissionWhereUniqueInput
-  }
-
-  /**
-   * DepartmentPermission findFirst
-   */
-  export type DepartmentPermissionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * Filter, which DepartmentPermission to fetch.
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DepartmentPermissions to fetch.
-     */
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for DepartmentPermissions.
-     */
-    cursor?: DepartmentPermissionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DepartmentPermissions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DepartmentPermissions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of DepartmentPermissions.
-     */
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * DepartmentPermission findFirstOrThrow
-   */
-  export type DepartmentPermissionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * Filter, which DepartmentPermission to fetch.
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DepartmentPermissions to fetch.
-     */
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for DepartmentPermissions.
-     */
-    cursor?: DepartmentPermissionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DepartmentPermissions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DepartmentPermissions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of DepartmentPermissions.
-     */
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * DepartmentPermission findMany
-   */
-  export type DepartmentPermissionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * Filter, which DepartmentPermissions to fetch.
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DepartmentPermissions to fetch.
-     */
-    orderBy?: DepartmentPermissionOrderByWithRelationInput | DepartmentPermissionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing DepartmentPermissions.
-     */
-    cursor?: DepartmentPermissionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DepartmentPermissions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DepartmentPermissions.
-     */
-    skip?: number
-    distinct?: DepartmentPermissionScalarFieldEnum | DepartmentPermissionScalarFieldEnum[]
-  }
-
-  /**
-   * DepartmentPermission create
-   */
-  export type DepartmentPermissionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * The data needed to create a DepartmentPermission.
-     */
-    data: XOR<DepartmentPermissionCreateInput, DepartmentPermissionUncheckedCreateInput>
-  }
-
-  /**
-   * DepartmentPermission createMany
-   */
-  export type DepartmentPermissionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many DepartmentPermissions.
-     */
-    data: DepartmentPermissionCreateManyInput | DepartmentPermissionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * DepartmentPermission createManyAndReturn
-   */
-  export type DepartmentPermissionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * The data used to create many DepartmentPermissions.
-     */
-    data: DepartmentPermissionCreateManyInput | DepartmentPermissionCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * DepartmentPermission update
-   */
-  export type DepartmentPermissionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * The data needed to update a DepartmentPermission.
-     */
-    data: XOR<DepartmentPermissionUpdateInput, DepartmentPermissionUncheckedUpdateInput>
-    /**
-     * Choose, which DepartmentPermission to update.
-     */
-    where: DepartmentPermissionWhereUniqueInput
-  }
-
-  /**
-   * DepartmentPermission updateMany
-   */
-  export type DepartmentPermissionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update DepartmentPermissions.
-     */
-    data: XOR<DepartmentPermissionUpdateManyMutationInput, DepartmentPermissionUncheckedUpdateManyInput>
-    /**
-     * Filter which DepartmentPermissions to update
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * Limit how many DepartmentPermissions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * DepartmentPermission updateManyAndReturn
-   */
-  export type DepartmentPermissionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * The data used to update DepartmentPermissions.
-     */
-    data: XOR<DepartmentPermissionUpdateManyMutationInput, DepartmentPermissionUncheckedUpdateManyInput>
-    /**
-     * Filter which DepartmentPermissions to update
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * Limit how many DepartmentPermissions to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * DepartmentPermission upsert
-   */
-  export type DepartmentPermissionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * The filter to search for the DepartmentPermission to update in case it exists.
-     */
-    where: DepartmentPermissionWhereUniqueInput
-    /**
-     * In case the DepartmentPermission found by the `where` argument doesn't exist, create a new DepartmentPermission with this data.
-     */
-    create: XOR<DepartmentPermissionCreateInput, DepartmentPermissionUncheckedCreateInput>
-    /**
-     * In case the DepartmentPermission was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<DepartmentPermissionUpdateInput, DepartmentPermissionUncheckedUpdateInput>
-  }
-
-  /**
-   * DepartmentPermission delete
-   */
-  export type DepartmentPermissionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-    /**
-     * Filter which DepartmentPermission to delete.
-     */
-    where: DepartmentPermissionWhereUniqueInput
-  }
-
-  /**
-   * DepartmentPermission deleteMany
-   */
-  export type DepartmentPermissionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which DepartmentPermissions to delete
-     */
-    where?: DepartmentPermissionWhereInput
-    /**
-     * Limit how many DepartmentPermissions to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * DepartmentPermission.createdBy
-   */
-  export type DepartmentPermission$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * DepartmentPermission.updatedBy
-   */
-  export type DepartmentPermission$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * DepartmentPermission without action
-   */
-  export type DepartmentPermissionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentPermission
-     */
-    select?: DepartmentPermissionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DepartmentPermission
-     */
-    omit?: DepartmentPermissionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentPermissionInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model UserPermission
    */
 
@@ -17179,8 +12590,6 @@ export namespace Prisma {
     userId: string | null
     permissionId: string | null
     createdAt: Date | null
-    createdById: string | null
-    updatedById: string | null
   }
 
   export type UserPermissionMaxAggregateOutputType = {
@@ -17188,8 +12597,6 @@ export namespace Prisma {
     userId: string | null
     permissionId: string | null
     createdAt: Date | null
-    createdById: string | null
-    updatedById: string | null
   }
 
   export type UserPermissionCountAggregateOutputType = {
@@ -17197,8 +12604,6 @@ export namespace Prisma {
     userId: number
     permissionId: number
     createdAt: number
-    createdById: number
-    updatedById: number
     _all: number
   }
 
@@ -17208,8 +12613,6 @@ export namespace Prisma {
     userId?: true
     permissionId?: true
     createdAt?: true
-    createdById?: true
-    updatedById?: true
   }
 
   export type UserPermissionMaxAggregateInputType = {
@@ -17217,8 +12620,6 @@ export namespace Prisma {
     userId?: true
     permissionId?: true
     createdAt?: true
-    createdById?: true
-    updatedById?: true
   }
 
   export type UserPermissionCountAggregateInputType = {
@@ -17226,8 +12627,6 @@ export namespace Prisma {
     userId?: true
     permissionId?: true
     createdAt?: true
-    createdById?: true
-    updatedById?: true
     _all?: true
   }
 
@@ -17308,8 +12707,6 @@ export namespace Prisma {
     userId: string
     permissionId: string
     createdAt: Date
-    createdById: string | null
-    updatedById: string | null
     _count: UserPermissionCountAggregateOutputType | null
     _min: UserPermissionMinAggregateOutputType | null
     _max: UserPermissionMaxAggregateOutputType | null
@@ -17334,12 +12731,8 @@ export namespace Prisma {
     userId?: boolean
     permissionId?: boolean
     createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     permission?: boolean | PermissionDefaultArgs<ExtArgs>
-    createdBy?: boolean | UserPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | UserPermission$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["userPermission"]>
 
   export type UserPermissionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17347,12 +12740,8 @@ export namespace Prisma {
     userId?: boolean
     permissionId?: boolean
     createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     permission?: boolean | PermissionDefaultArgs<ExtArgs>
-    createdBy?: boolean | UserPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | UserPermission$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["userPermission"]>
 
   export type UserPermissionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17360,12 +12749,8 @@ export namespace Prisma {
     userId?: boolean
     permissionId?: boolean
     createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     permission?: boolean | PermissionDefaultArgs<ExtArgs>
-    createdBy?: boolean | UserPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | UserPermission$updatedByArgs<ExtArgs>
   }, ExtArgs["result"]["userPermission"]>
 
   export type UserPermissionSelectScalar = {
@@ -17373,28 +12758,20 @@ export namespace Prisma {
     userId?: boolean
     permissionId?: boolean
     createdAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
   }
 
-  export type UserPermissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "permissionId" | "createdAt" | "createdById" | "updatedById", ExtArgs["result"]["userPermission"]>
+  export type UserPermissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "permissionId" | "createdAt", ExtArgs["result"]["userPermission"]>
   export type UserPermissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     permission?: boolean | PermissionDefaultArgs<ExtArgs>
-    createdBy?: boolean | UserPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | UserPermission$updatedByArgs<ExtArgs>
   }
   export type UserPermissionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     permission?: boolean | PermissionDefaultArgs<ExtArgs>
-    createdBy?: boolean | UserPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | UserPermission$updatedByArgs<ExtArgs>
   }
   export type UserPermissionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     permission?: boolean | PermissionDefaultArgs<ExtArgs>
-    createdBy?: boolean | UserPermission$createdByArgs<ExtArgs>
-    updatedBy?: boolean | UserPermission$updatedByArgs<ExtArgs>
   }
 
   export type $UserPermissionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17402,16 +12779,12 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       permission: Prisma.$PermissionPayload<ExtArgs>
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
       permissionId: string
       createdAt: Date
-      createdById: string | null
-      updatedById: string | null
     }, ExtArgs["result"]["userPermission"]>
     composites: {}
   }
@@ -17808,8 +13181,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     permission<T extends PermissionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PermissionDefaultArgs<ExtArgs>>): Prisma__PermissionClient<$Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    createdBy<T extends UserPermission$createdByArgs<ExtArgs> = {}>(args?: Subset<T, UserPermission$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends UserPermission$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, UserPermission$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17843,8 +13214,6 @@ export namespace Prisma {
     readonly userId: FieldRef<"UserPermission", 'String'>
     readonly permissionId: FieldRef<"UserPermission", 'String'>
     readonly createdAt: FieldRef<"UserPermission", 'DateTime'>
-    readonly createdById: FieldRef<"UserPermission", 'String'>
-    readonly updatedById: FieldRef<"UserPermission", 'String'>
   }
     
 
@@ -18241,44 +13610,6 @@ export namespace Prisma {
   }
 
   /**
-   * UserPermission.createdBy
-   */
-  export type UserPermission$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * UserPermission.updatedBy
-   */
-  export type UserPermission$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
    * UserPermission without action
    */
   export type UserPermissionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18294,1183 +13625,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserPermissionInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Profile
-   */
-
-  export type AggregateProfile = {
-    _count: ProfileCountAggregateOutputType | null
-    _min: ProfileMinAggregateOutputType | null
-    _max: ProfileMaxAggregateOutputType | null
-  }
-
-  export type ProfileMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    department: string | null
-    position: string | null
-    joinDate: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
-    userId: string | null
-  }
-
-  export type ProfileMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    department: string | null
-    position: string | null
-    joinDate: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
-    userId: string | null
-  }
-
-  export type ProfileCountAggregateOutputType = {
-    id: number
-    name: number
-    department: number
-    position: number
-    joinDate: number
-    createdAt: number
-    updatedAt: number
-    createdById: number
-    updatedById: number
-    userId: number
-    _all: number
-  }
-
-
-  export type ProfileMinAggregateInputType = {
-    id?: true
-    name?: true
-    department?: true
-    position?: true
-    joinDate?: true
-    createdAt?: true
-    updatedAt?: true
-    createdById?: true
-    updatedById?: true
-    userId?: true
-  }
-
-  export type ProfileMaxAggregateInputType = {
-    id?: true
-    name?: true
-    department?: true
-    position?: true
-    joinDate?: true
-    createdAt?: true
-    updatedAt?: true
-    createdById?: true
-    updatedById?: true
-    userId?: true
-  }
-
-  export type ProfileCountAggregateInputType = {
-    id?: true
-    name?: true
-    department?: true
-    position?: true
-    joinDate?: true
-    createdAt?: true
-    updatedAt?: true
-    createdById?: true
-    updatedById?: true
-    userId?: true
-    _all?: true
-  }
-
-  export type ProfileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Profile to aggregate.
-     */
-    where?: ProfileWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Profiles to fetch.
-     */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ProfileWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Profiles from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Profiles.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Profiles
-    **/
-    _count?: true | ProfileCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ProfileMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ProfileMaxAggregateInputType
-  }
-
-  export type GetProfileAggregateType<T extends ProfileAggregateArgs> = {
-        [P in keyof T & keyof AggregateProfile]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProfile[P]>
-      : GetScalarType<T[P], AggregateProfile[P]>
-  }
-
-
-
-
-  export type ProfileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProfileWhereInput
-    orderBy?: ProfileOrderByWithAggregationInput | ProfileOrderByWithAggregationInput[]
-    by: ProfileScalarFieldEnum[] | ProfileScalarFieldEnum
-    having?: ProfileScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ProfileCountAggregateInputType | true
-    _min?: ProfileMinAggregateInputType
-    _max?: ProfileMaxAggregateInputType
-  }
-
-  export type ProfileGroupByOutputType = {
-    id: string
-    name: string | null
-    department: string | null
-    position: string | null
-    joinDate: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    createdById: string | null
-    updatedById: string | null
-    userId: string
-    _count: ProfileCountAggregateOutputType | null
-    _min: ProfileMinAggregateOutputType | null
-    _max: ProfileMaxAggregateOutputType | null
-  }
-
-  type GetProfileGroupByPayload<T extends ProfileGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ProfileGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ProfileGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ProfileGroupByOutputType[P]>
-            : GetScalarType<T[P], ProfileGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    department?: boolean
-    position?: boolean
-    joinDate?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    userId?: boolean
-    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["profile"]>
-
-  export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    department?: boolean
-    position?: boolean
-    joinDate?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    userId?: boolean
-    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["profile"]>
-
-  export type ProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    department?: boolean
-    position?: boolean
-    joinDate?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    userId?: boolean
-    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["profile"]>
-
-  export type ProfileSelectScalar = {
-    id?: boolean
-    name?: boolean
-    department?: boolean
-    position?: boolean
-    joinDate?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    updatedById?: boolean
-    userId?: boolean
-  }
-
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "department" | "position" | "joinDate" | "createdAt" | "updatedAt" | "createdById" | "updatedById" | "userId", ExtArgs["result"]["profile"]>
-  export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type ProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | Profile$createdByArgs<ExtArgs>
-    updatedBy?: boolean | Profile$updatedByArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Profile"
-    objects: {
-      createdBy: Prisma.$UserPayload<ExtArgs> | null
-      updatedBy: Prisma.$UserPayload<ExtArgs> | null
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string | null
-      department: string | null
-      position: string | null
-      joinDate: Date | null
-      createdAt: Date | null
-      updatedAt: Date | null
-      createdById: string | null
-      updatedById: string | null
-      userId: string
-    }, ExtArgs["result"]["profile"]>
-    composites: {}
-  }
-
-  type ProfileGetPayload<S extends boolean | null | undefined | ProfileDefaultArgs> = $Result.GetResult<Prisma.$ProfilePayload, S>
-
-  type ProfileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ProfileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ProfileCountAggregateInputType | true
-    }
-
-  export interface ProfileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Profile'], meta: { name: 'Profile' } }
-    /**
-     * Find zero or one Profile that matches the filter.
-     * @param {ProfileFindUniqueArgs} args - Arguments to find a Profile
-     * @example
-     * // Get one Profile
-     * const profile = await prisma.profile.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ProfileFindUniqueArgs>(args: SelectSubset<T, ProfileFindUniqueArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Profile that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ProfileFindUniqueOrThrowArgs} args - Arguments to find a Profile
-     * @example
-     * // Get one Profile
-     * const profile = await prisma.profile.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ProfileFindUniqueOrThrowArgs>(args: SelectSubset<T, ProfileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Profile that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileFindFirstArgs} args - Arguments to find a Profile
-     * @example
-     * // Get one Profile
-     * const profile = await prisma.profile.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ProfileFindFirstArgs>(args?: SelectSubset<T, ProfileFindFirstArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Profile that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileFindFirstOrThrowArgs} args - Arguments to find a Profile
-     * @example
-     * // Get one Profile
-     * const profile = await prisma.profile.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ProfileFindFirstOrThrowArgs>(args?: SelectSubset<T, ProfileFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Profiles that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Profiles
-     * const profiles = await prisma.profile.findMany()
-     * 
-     * // Get first 10 Profiles
-     * const profiles = await prisma.profile.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const profileWithIdOnly = await prisma.profile.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ProfileFindManyArgs>(args?: SelectSubset<T, ProfileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Profile.
-     * @param {ProfileCreateArgs} args - Arguments to create a Profile.
-     * @example
-     * // Create one Profile
-     * const Profile = await prisma.profile.create({
-     *   data: {
-     *     // ... data to create a Profile
-     *   }
-     * })
-     * 
-     */
-    create<T extends ProfileCreateArgs>(args: SelectSubset<T, ProfileCreateArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Profiles.
-     * @param {ProfileCreateManyArgs} args - Arguments to create many Profiles.
-     * @example
-     * // Create many Profiles
-     * const profile = await prisma.profile.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ProfileCreateManyArgs>(args?: SelectSubset<T, ProfileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Profiles and returns the data saved in the database.
-     * @param {ProfileCreateManyAndReturnArgs} args - Arguments to create many Profiles.
-     * @example
-     * // Create many Profiles
-     * const profile = await prisma.profile.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Profiles and only return the `id`
-     * const profileWithIdOnly = await prisma.profile.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ProfileCreateManyAndReturnArgs>(args?: SelectSubset<T, ProfileCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Profile.
-     * @param {ProfileDeleteArgs} args - Arguments to delete one Profile.
-     * @example
-     * // Delete one Profile
-     * const Profile = await prisma.profile.delete({
-     *   where: {
-     *     // ... filter to delete one Profile
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ProfileDeleteArgs>(args: SelectSubset<T, ProfileDeleteArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Profile.
-     * @param {ProfileUpdateArgs} args - Arguments to update one Profile.
-     * @example
-     * // Update one Profile
-     * const profile = await prisma.profile.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ProfileUpdateArgs>(args: SelectSubset<T, ProfileUpdateArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Profiles.
-     * @param {ProfileDeleteManyArgs} args - Arguments to filter Profiles to delete.
-     * @example
-     * // Delete a few Profiles
-     * const { count } = await prisma.profile.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ProfileDeleteManyArgs>(args?: SelectSubset<T, ProfileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Profiles.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Profiles
-     * const profile = await prisma.profile.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ProfileUpdateManyArgs>(args: SelectSubset<T, ProfileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Profiles and returns the data updated in the database.
-     * @param {ProfileUpdateManyAndReturnArgs} args - Arguments to update many Profiles.
-     * @example
-     * // Update many Profiles
-     * const profile = await prisma.profile.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Profiles and only return the `id`
-     * const profileWithIdOnly = await prisma.profile.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ProfileUpdateManyAndReturnArgs>(args: SelectSubset<T, ProfileUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Profile.
-     * @param {ProfileUpsertArgs} args - Arguments to update or create a Profile.
-     * @example
-     * // Update or create a Profile
-     * const profile = await prisma.profile.upsert({
-     *   create: {
-     *     // ... data to create a Profile
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Profile we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ProfileUpsertArgs>(args: SelectSubset<T, ProfileUpsertArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Profiles.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileCountArgs} args - Arguments to filter Profiles to count.
-     * @example
-     * // Count the number of Profiles
-     * const count = await prisma.profile.count({
-     *   where: {
-     *     // ... the filter for the Profiles we want to count
-     *   }
-     * })
-    **/
-    count<T extends ProfileCountArgs>(
-      args?: Subset<T, ProfileCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ProfileCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Profile.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ProfileAggregateArgs>(args: Subset<T, ProfileAggregateArgs>): Prisma.PrismaPromise<GetProfileAggregateType<T>>
-
-    /**
-     * Group by Profile.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ProfileGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProfileGroupByArgs['orderBy'] }
-        : { orderBy?: ProfileGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ProfileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Profile model
-   */
-  readonly fields: ProfileFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Profile.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    createdBy<T extends Profile$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Profile$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    updatedBy<T extends Profile$updatedByArgs<ExtArgs> = {}>(args?: Subset<T, Profile$updatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Profile model
-   */
-  interface ProfileFieldRefs {
-    readonly id: FieldRef<"Profile", 'String'>
-    readonly name: FieldRef<"Profile", 'String'>
-    readonly department: FieldRef<"Profile", 'String'>
-    readonly position: FieldRef<"Profile", 'String'>
-    readonly joinDate: FieldRef<"Profile", 'DateTime'>
-    readonly createdAt: FieldRef<"Profile", 'DateTime'>
-    readonly updatedAt: FieldRef<"Profile", 'DateTime'>
-    readonly createdById: FieldRef<"Profile", 'String'>
-    readonly updatedById: FieldRef<"Profile", 'String'>
-    readonly userId: FieldRef<"Profile", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Profile findUnique
-   */
-  export type ProfileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * Filter, which Profile to fetch.
-     */
-    where: ProfileWhereUniqueInput
-  }
-
-  /**
-   * Profile findUniqueOrThrow
-   */
-  export type ProfileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * Filter, which Profile to fetch.
-     */
-    where: ProfileWhereUniqueInput
-  }
-
-  /**
-   * Profile findFirst
-   */
-  export type ProfileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * Filter, which Profile to fetch.
-     */
-    where?: ProfileWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Profiles to fetch.
-     */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Profiles.
-     */
-    cursor?: ProfileWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Profiles from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Profiles.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Profiles.
-     */
-    distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
-  }
-
-  /**
-   * Profile findFirstOrThrow
-   */
-  export type ProfileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * Filter, which Profile to fetch.
-     */
-    where?: ProfileWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Profiles to fetch.
-     */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Profiles.
-     */
-    cursor?: ProfileWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Profiles from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Profiles.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Profiles.
-     */
-    distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
-  }
-
-  /**
-   * Profile findMany
-   */
-  export type ProfileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * Filter, which Profiles to fetch.
-     */
-    where?: ProfileWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Profiles to fetch.
-     */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Profiles.
-     */
-    cursor?: ProfileWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Profiles from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Profiles.
-     */
-    skip?: number
-    distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
-  }
-
-  /**
-   * Profile create
-   */
-  export type ProfileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Profile.
-     */
-    data: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
-  }
-
-  /**
-   * Profile createMany
-   */
-  export type ProfileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Profiles.
-     */
-    data: ProfileCreateManyInput | ProfileCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Profile createManyAndReturn
-   */
-  export type ProfileCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * The data used to create many Profiles.
-     */
-    data: ProfileCreateManyInput | ProfileCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Profile update
-   */
-  export type ProfileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Profile.
-     */
-    data: XOR<ProfileUpdateInput, ProfileUncheckedUpdateInput>
-    /**
-     * Choose, which Profile to update.
-     */
-    where: ProfileWhereUniqueInput
-  }
-
-  /**
-   * Profile updateMany
-   */
-  export type ProfileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Profiles.
-     */
-    data: XOR<ProfileUpdateManyMutationInput, ProfileUncheckedUpdateManyInput>
-    /**
-     * Filter which Profiles to update
-     */
-    where?: ProfileWhereInput
-    /**
-     * Limit how many Profiles to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Profile updateManyAndReturn
-   */
-  export type ProfileUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * The data used to update Profiles.
-     */
-    data: XOR<ProfileUpdateManyMutationInput, ProfileUncheckedUpdateManyInput>
-    /**
-     * Filter which Profiles to update
-     */
-    where?: ProfileWhereInput
-    /**
-     * Limit how many Profiles to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Profile upsert
-   */
-  export type ProfileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Profile to update in case it exists.
-     */
-    where: ProfileWhereUniqueInput
-    /**
-     * In case the Profile found by the `where` argument doesn't exist, create a new Profile with this data.
-     */
-    create: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
-    /**
-     * In case the Profile was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ProfileUpdateInput, ProfileUncheckedUpdateInput>
-  }
-
-  /**
-   * Profile delete
-   */
-  export type ProfileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
-    /**
-     * Filter which Profile to delete.
-     */
-    where: ProfileWhereUniqueInput
-  }
-
-  /**
-   * Profile deleteMany
-   */
-  export type ProfileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Profiles to delete
-     */
-    where?: ProfileWhereInput
-    /**
-     * Limit how many Profiles to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Profile.createdBy
-   */
-  export type Profile$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Profile.updatedBy
-   */
-  export type Profile$updatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * Profile without action
-   */
-  export type ProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Profile
-     */
-    select?: ProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Profile
-     */
-    omit?: ProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProfileInclude<ExtArgs> | null
   }
 
 
@@ -20456,12 +14610,10 @@ export namespace Prisma {
   export const ReportCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    code: 'code',
+    interval: 'interval',
     parentId: 'parentId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    createdById: 'createdById',
-    updatedById: 'updatedById'
+    updatedAt: 'updatedAt'
   };
 
   export type ReportCategoryScalarFieldEnum = (typeof ReportCategoryScalarFieldEnum)[keyof typeof ReportCategoryScalarFieldEnum]
@@ -20472,7 +14624,6 @@ export namespace Prisma {
     categoryId: 'categoryId',
     periodYear: 'periodYear',
     periodMonth: 'periodMonth',
-    periodDate: 'periodDate',
     version: 'version',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -20486,7 +14637,6 @@ export namespace Prisma {
 
   export const FileScalarFieldEnum: {
     id: 'id',
-    filename: 'filename',
     path: 'path',
     mimeType: 'mimeType',
     size: 'size',
@@ -20511,31 +14661,6 @@ export namespace Prisma {
   export type NoteScalarFieldEnum = (typeof NoteScalarFieldEnum)[keyof typeof NoteScalarFieldEnum]
 
 
-  export const StageScalarFieldEnum: {
-    id: 'id',
-    stageTypeId: 'stageTypeId',
-    comment: 'comment',
-    createdById: 'createdById',
-    updatedById: 'updatedById',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    reportId: 'reportId'
-  };
-
-  export type StageScalarFieldEnum = (typeof StageScalarFieldEnum)[keyof typeof StageScalarFieldEnum]
-
-
-  export const StageTypeScalarFieldEnum: {
-    id: 'id',
-    model: 'model',
-    order: 'order',
-    value: 'value',
-    label: 'label'
-  };
-
-  export type StageTypeScalarFieldEnum = (typeof StageTypeScalarFieldEnum)[keyof typeof StageTypeScalarFieldEnum]
-
-
   export const UserScalarFieldEnum: {
     id: 'id',
     username: 'username',
@@ -20543,12 +14668,27 @@ export namespace Prisma {
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    departmentId: 'departmentId',
-    organizationId: 'organizationId',
-    roleId: 'roleId'
+    roleId: 'roleId',
+    organizationId: 'organizationId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const ProfileScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    department: 'department',
+    position: 'position',
+    joinDate: 'joinDate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    createdById: 'createdById',
+    updatedById: 'updatedById',
+    userId: 'userId'
+  };
+
+  export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
 
 
   export const OrganizationScalarFieldEnum: {
@@ -20569,17 +14709,6 @@ export namespace Prisma {
   export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
 
 
-  export const DepartmentScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    code: 'code',
-    createdById: 'createdById',
-    updatedById: 'updatedById'
-  };
-
-  export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
-
-
   export const PermissionScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -20587,52 +14716,20 @@ export namespace Prisma {
     action: 'action',
     description: 'description',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    createdById: 'createdById',
-    updatedById: 'updatedById'
+    updatedAt: 'updatedAt'
   };
 
   export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
-
-
-  export const DepartmentPermissionScalarFieldEnum: {
-    id: 'id',
-    departmentId: 'departmentId',
-    permissionId: 'permissionId',
-    createdAt: 'createdAt',
-    createdById: 'createdById',
-    updatedById: 'updatedById'
-  };
-
-  export type DepartmentPermissionScalarFieldEnum = (typeof DepartmentPermissionScalarFieldEnum)[keyof typeof DepartmentPermissionScalarFieldEnum]
 
 
   export const UserPermissionScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
     permissionId: 'permissionId',
-    createdAt: 'createdAt',
-    createdById: 'createdById',
-    updatedById: 'updatedById'
+    createdAt: 'createdAt'
   };
 
   export type UserPermissionScalarFieldEnum = (typeof UserPermissionScalarFieldEnum)[keyof typeof UserPermissionScalarFieldEnum]
-
-
-  export const ProfileScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    department: 'department',
-    position: 'position',
-    joinDate: 'joinDate',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    createdById: 'createdById',
-    updatedById: 'updatedById',
-    userId: 'userId'
-  };
-
-  export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
 
 
   export const SessionScalarFieldEnum: {
@@ -20782,63 +14879,49 @@ export namespace Prisma {
     NOT?: ReportCategoryWhereInput | ReportCategoryWhereInput[]
     id?: StringFilter<"ReportCategory"> | string
     name?: StringFilter<"ReportCategory"> | string
-    code?: StringFilter<"ReportCategory"> | string
+    interval?: StringNullableFilter<"ReportCategory"> | string | null
     parentId?: StringNullableFilter<"ReportCategory"> | string | null
     createdAt?: DateTimeFilter<"ReportCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ReportCategory"> | Date | string
-    createdById?: StringNullableFilter<"ReportCategory"> | string | null
-    updatedById?: StringNullableFilter<"ReportCategory"> | string | null
     parent?: XOR<ReportCategoryNullableScalarRelationFilter, ReportCategoryWhereInput> | null
     children?: ReportCategoryListRelationFilter
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     reports?: ReportListRelationFilter
   }
 
   export type ReportCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    code?: SortOrder
+    interval?: SortOrderInput | SortOrder
     parentId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
     parent?: ReportCategoryOrderByWithRelationInput
     children?: ReportCategoryOrderByRelationAggregateInput
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
     reports?: ReportOrderByRelationAggregateInput
   }
 
   export type ReportCategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     name?: string
-    code?: string
     AND?: ReportCategoryWhereInput | ReportCategoryWhereInput[]
     OR?: ReportCategoryWhereInput[]
     NOT?: ReportCategoryWhereInput | ReportCategoryWhereInput[]
+    interval?: StringNullableFilter<"ReportCategory"> | string | null
     parentId?: StringNullableFilter<"ReportCategory"> | string | null
     createdAt?: DateTimeFilter<"ReportCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ReportCategory"> | Date | string
-    createdById?: StringNullableFilter<"ReportCategory"> | string | null
-    updatedById?: StringNullableFilter<"ReportCategory"> | string | null
     parent?: XOR<ReportCategoryNullableScalarRelationFilter, ReportCategoryWhereInput> | null
     children?: ReportCategoryListRelationFilter
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     reports?: ReportListRelationFilter
-  }, "id" | "name" | "code">
+  }, "id" | "name">
 
   export type ReportCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    code?: SortOrder
+    interval?: SortOrderInput | SortOrder
     parentId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
     _count?: ReportCategoryCountOrderByAggregateInput
     _max?: ReportCategoryMaxOrderByAggregateInput
     _min?: ReportCategoryMinOrderByAggregateInput
@@ -20850,12 +14933,10 @@ export namespace Prisma {
     NOT?: ReportCategoryScalarWhereWithAggregatesInput | ReportCategoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"ReportCategory"> | string
     name?: StringWithAggregatesFilter<"ReportCategory"> | string
-    code?: StringWithAggregatesFilter<"ReportCategory"> | string
+    interval?: StringNullableWithAggregatesFilter<"ReportCategory"> | string | null
     parentId?: StringNullableWithAggregatesFilter<"ReportCategory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ReportCategory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ReportCategory"> | Date | string
-    createdById?: StringNullableWithAggregatesFilter<"ReportCategory"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"ReportCategory"> | string | null
   }
 
   export type ReportWhereInput = {
@@ -20865,8 +14946,7 @@ export namespace Prisma {
     id?: StringFilter<"Report"> | string
     categoryId?: StringFilter<"Report"> | string
     periodYear?: StringFilter<"Report"> | string
-    periodMonth?: StringFilter<"Report"> | string
-    periodDate?: StringNullableFilter<"Report"> | string | null
+    periodMonth?: StringNullableFilter<"Report"> | string | null
     version?: IntFilter<"Report"> | number
     createdAt?: DateTimeFilter<"Report"> | Date | string
     updatedAt?: DateTimeFilter<"Report"> | Date | string
@@ -20878,7 +14958,6 @@ export namespace Prisma {
     updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
     notes?: NoteListRelationFilter
-    stages?: StageListRelationFilter
     files?: FileListRelationFilter
   }
 
@@ -20886,8 +14965,7 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     periodYear?: SortOrder
-    periodMonth?: SortOrder
-    periodDate?: SortOrderInput | SortOrder
+    periodMonth?: SortOrderInput | SortOrder
     version?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -20899,7 +14977,6 @@ export namespace Prisma {
     updatedBy?: UserOrderByWithRelationInput
     organization?: OrganizationOrderByWithRelationInput
     notes?: NoteOrderByRelationAggregateInput
-    stages?: StageOrderByRelationAggregateInput
     files?: FileOrderByRelationAggregateInput
   }
 
@@ -20910,8 +14987,7 @@ export namespace Prisma {
     NOT?: ReportWhereInput | ReportWhereInput[]
     categoryId?: StringFilter<"Report"> | string
     periodYear?: StringFilter<"Report"> | string
-    periodMonth?: StringFilter<"Report"> | string
-    periodDate?: StringNullableFilter<"Report"> | string | null
+    periodMonth?: StringNullableFilter<"Report"> | string | null
     version?: IntFilter<"Report"> | number
     createdAt?: DateTimeFilter<"Report"> | Date | string
     updatedAt?: DateTimeFilter<"Report"> | Date | string
@@ -20923,7 +14999,6 @@ export namespace Prisma {
     updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
     notes?: NoteListRelationFilter
-    stages?: StageListRelationFilter
     files?: FileListRelationFilter
   }, "id">
 
@@ -20931,8 +15006,7 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     periodYear?: SortOrder
-    periodMonth?: SortOrder
-    periodDate?: SortOrderInput | SortOrder
+    periodMonth?: SortOrderInput | SortOrder
     version?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -20953,8 +15027,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Report"> | string
     categoryId?: StringWithAggregatesFilter<"Report"> | string
     periodYear?: StringWithAggregatesFilter<"Report"> | string
-    periodMonth?: StringWithAggregatesFilter<"Report"> | string
-    periodDate?: StringNullableWithAggregatesFilter<"Report"> | string | null
+    periodMonth?: StringNullableWithAggregatesFilter<"Report"> | string | null
     version?: IntWithAggregatesFilter<"Report"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
@@ -20968,7 +15041,6 @@ export namespace Prisma {
     OR?: FileWhereInput[]
     NOT?: FileWhereInput | FileWhereInput[]
     id?: StringFilter<"File"> | string
-    filename?: StringFilter<"File"> | string
     path?: StringFilter<"File"> | string
     mimeType?: StringNullableFilter<"File"> | string | null
     size?: IntNullableFilter<"File"> | number | null
@@ -20980,7 +15052,6 @@ export namespace Prisma {
 
   export type FileOrderByWithRelationInput = {
     id?: SortOrder
-    filename?: SortOrder
     path?: SortOrder
     mimeType?: SortOrderInput | SortOrder
     size?: SortOrderInput | SortOrder
@@ -20995,7 +15066,6 @@ export namespace Prisma {
     AND?: FileWhereInput | FileWhereInput[]
     OR?: FileWhereInput[]
     NOT?: FileWhereInput | FileWhereInput[]
-    filename?: StringFilter<"File"> | string
     path?: StringFilter<"File"> | string
     mimeType?: StringNullableFilter<"File"> | string | null
     size?: IntNullableFilter<"File"> | number | null
@@ -21007,7 +15077,6 @@ export namespace Prisma {
 
   export type FileOrderByWithAggregationInput = {
     id?: SortOrder
-    filename?: SortOrder
     path?: SortOrder
     mimeType?: SortOrderInput | SortOrder
     size?: SortOrderInput | SortOrder
@@ -21026,7 +15095,6 @@ export namespace Prisma {
     OR?: FileScalarWhereWithAggregatesInput[]
     NOT?: FileScalarWhereWithAggregatesInput | FileScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"File"> | string
-    filename?: StringWithAggregatesFilter<"File"> | string
     path?: StringWithAggregatesFilter<"File"> | string
     mimeType?: StringNullableWithAggregatesFilter<"File"> | string | null
     size?: IntNullableWithAggregatesFilter<"File"> | number | null
@@ -21106,142 +15174,6 @@ export namespace Prisma {
     reportId?: StringNullableWithAggregatesFilter<"Note"> | string | null
   }
 
-  export type StageWhereInput = {
-    AND?: StageWhereInput | StageWhereInput[]
-    OR?: StageWhereInput[]
-    NOT?: StageWhereInput | StageWhereInput[]
-    id?: StringFilter<"Stage"> | string
-    stageTypeId?: StringFilter<"Stage"> | string
-    comment?: StringNullableFilter<"Stage"> | string | null
-    createdById?: StringNullableFilter<"Stage"> | string | null
-    updatedById?: StringNullableFilter<"Stage"> | string | null
-    createdAt?: DateTimeNullableFilter<"Stage"> | Date | string | null
-    updatedAt?: DateTimeNullableFilter<"Stage"> | Date | string | null
-    reportId?: StringNullableFilter<"Stage"> | string | null
-    type?: XOR<StageTypeScalarRelationFilter, StageTypeWhereInput>
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    report?: XOR<ReportNullableScalarRelationFilter, ReportWhereInput> | null
-  }
-
-  export type StageOrderByWithRelationInput = {
-    id?: SortOrder
-    stageTypeId?: SortOrder
-    comment?: SortOrderInput | SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    createdAt?: SortOrderInput | SortOrder
-    updatedAt?: SortOrderInput | SortOrder
-    reportId?: SortOrderInput | SortOrder
-    type?: StageTypeOrderByWithRelationInput
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
-    report?: ReportOrderByWithRelationInput
-  }
-
-  export type StageWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: StageWhereInput | StageWhereInput[]
-    OR?: StageWhereInput[]
-    NOT?: StageWhereInput | StageWhereInput[]
-    stageTypeId?: StringFilter<"Stage"> | string
-    comment?: StringNullableFilter<"Stage"> | string | null
-    createdById?: StringNullableFilter<"Stage"> | string | null
-    updatedById?: StringNullableFilter<"Stage"> | string | null
-    createdAt?: DateTimeNullableFilter<"Stage"> | Date | string | null
-    updatedAt?: DateTimeNullableFilter<"Stage"> | Date | string | null
-    reportId?: StringNullableFilter<"Stage"> | string | null
-    type?: XOR<StageTypeScalarRelationFilter, StageTypeWhereInput>
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    report?: XOR<ReportNullableScalarRelationFilter, ReportWhereInput> | null
-  }, "id">
-
-  export type StageOrderByWithAggregationInput = {
-    id?: SortOrder
-    stageTypeId?: SortOrder
-    comment?: SortOrderInput | SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    createdAt?: SortOrderInput | SortOrder
-    updatedAt?: SortOrderInput | SortOrder
-    reportId?: SortOrderInput | SortOrder
-    _count?: StageCountOrderByAggregateInput
-    _max?: StageMaxOrderByAggregateInput
-    _min?: StageMinOrderByAggregateInput
-  }
-
-  export type StageScalarWhereWithAggregatesInput = {
-    AND?: StageScalarWhereWithAggregatesInput | StageScalarWhereWithAggregatesInput[]
-    OR?: StageScalarWhereWithAggregatesInput[]
-    NOT?: StageScalarWhereWithAggregatesInput | StageScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Stage"> | string
-    stageTypeId?: StringWithAggregatesFilter<"Stage"> | string
-    comment?: StringNullableWithAggregatesFilter<"Stage"> | string | null
-    createdById?: StringNullableWithAggregatesFilter<"Stage"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"Stage"> | string | null
-    createdAt?: DateTimeNullableWithAggregatesFilter<"Stage"> | Date | string | null
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Stage"> | Date | string | null
-    reportId?: StringNullableWithAggregatesFilter<"Stage"> | string | null
-  }
-
-  export type StageTypeWhereInput = {
-    AND?: StageTypeWhereInput | StageTypeWhereInput[]
-    OR?: StageTypeWhereInput[]
-    NOT?: StageTypeWhereInput | StageTypeWhereInput[]
-    id?: StringFilter<"StageType"> | string
-    model?: StringFilter<"StageType"> | string
-    order?: IntFilter<"StageType"> | number
-    value?: StringFilter<"StageType"> | string
-    label?: StringFilter<"StageType"> | string
-    stages?: StageListRelationFilter
-  }
-
-  export type StageTypeOrderByWithRelationInput = {
-    id?: SortOrder
-    model?: SortOrder
-    order?: SortOrder
-    value?: SortOrder
-    label?: SortOrder
-    stages?: StageOrderByRelationAggregateInput
-  }
-
-  export type StageTypeWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: StageTypeWhereInput | StageTypeWhereInput[]
-    OR?: StageTypeWhereInput[]
-    NOT?: StageTypeWhereInput | StageTypeWhereInput[]
-    model?: StringFilter<"StageType"> | string
-    order?: IntFilter<"StageType"> | number
-    value?: StringFilter<"StageType"> | string
-    label?: StringFilter<"StageType"> | string
-    stages?: StageListRelationFilter
-  }, "id">
-
-  export type StageTypeOrderByWithAggregationInput = {
-    id?: SortOrder
-    model?: SortOrder
-    order?: SortOrder
-    value?: SortOrder
-    label?: SortOrder
-    _count?: StageTypeCountOrderByAggregateInput
-    _avg?: StageTypeAvgOrderByAggregateInput
-    _max?: StageTypeMaxOrderByAggregateInput
-    _min?: StageTypeMinOrderByAggregateInput
-    _sum?: StageTypeSumOrderByAggregateInput
-  }
-
-  export type StageTypeScalarWhereWithAggregatesInput = {
-    AND?: StageTypeScalarWhereWithAggregatesInput | StageTypeScalarWhereWithAggregatesInput[]
-    OR?: StageTypeScalarWhereWithAggregatesInput[]
-    NOT?: StageTypeScalarWhereWithAggregatesInput | StageTypeScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"StageType"> | string
-    model?: StringWithAggregatesFilter<"StageType"> | string
-    order?: IntWithAggregatesFilter<"StageType"> | number
-    value?: StringWithAggregatesFilter<"StageType"> | string
-    label?: StringWithAggregatesFilter<"StageType"> | string
-  }
-
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -21252,30 +15184,16 @@ export namespace Prisma {
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    departmentId?: StringNullableFilter<"User"> | string | null
-    organizationId?: StringNullableFilter<"User"> | string | null
     roleId?: StringNullableFilter<"User"> | string | null
-    department?: XOR<DepartmentNullableScalarRelationFilter, DepartmentWhereInput> | null
-    organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
+    organizationId?: StringNullableFilter<"User"> | string | null
     role?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
+    organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
     permissions?: UserPermissionListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     CreatorNote?: NoteListRelationFilter
     UpdaterNote?: NoteListRelationFilter
-    CreatorStage?: StageListRelationFilter
-    UpdaterStage?: StageListRelationFilter
     CreatorReport?: ReportListRelationFilter
     UpdaterReport?: ReportListRelationFilter
-    CreatorReportCategory?: ReportCategoryListRelationFilter
-    UpdaterReportCategory?: ReportCategoryListRelationFilter
-    CreatorDepartment?: DepartmentListRelationFilter
-    UpdaterDepartment?: DepartmentListRelationFilter
-    CreatorPermission?: PermissionListRelationFilter
-    UpdaterPermission?: PermissionListRelationFilter
-    CreatorDepartmentPermission?: DepartmentPermissionListRelationFilter
-    UpdaterDepartmentPermission?: DepartmentPermissionListRelationFilter
-    CreatorUserPermission?: UserPermissionListRelationFilter
-    UpdaterUserPermission?: UserPermissionListRelationFilter
     CreatorProfile?: ProfileListRelationFilter
     UpdaterProfile?: ProfileListRelationFilter
   }
@@ -21287,30 +15205,16 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    departmentId?: SortOrderInput | SortOrder
-    organizationId?: SortOrderInput | SortOrder
     roleId?: SortOrderInput | SortOrder
-    department?: DepartmentOrderByWithRelationInput
-    organization?: OrganizationOrderByWithRelationInput
+    organizationId?: SortOrderInput | SortOrder
     role?: RoleOrderByWithRelationInput
+    organization?: OrganizationOrderByWithRelationInput
     permissions?: UserPermissionOrderByRelationAggregateInput
     profile?: ProfileOrderByWithRelationInput
     CreatorNote?: NoteOrderByRelationAggregateInput
     UpdaterNote?: NoteOrderByRelationAggregateInput
-    CreatorStage?: StageOrderByRelationAggregateInput
-    UpdaterStage?: StageOrderByRelationAggregateInput
     CreatorReport?: ReportOrderByRelationAggregateInput
     UpdaterReport?: ReportOrderByRelationAggregateInput
-    CreatorReportCategory?: ReportCategoryOrderByRelationAggregateInput
-    UpdaterReportCategory?: ReportCategoryOrderByRelationAggregateInput
-    CreatorDepartment?: DepartmentOrderByRelationAggregateInput
-    UpdaterDepartment?: DepartmentOrderByRelationAggregateInput
-    CreatorPermission?: PermissionOrderByRelationAggregateInput
-    UpdaterPermission?: PermissionOrderByRelationAggregateInput
-    CreatorDepartmentPermission?: DepartmentPermissionOrderByRelationAggregateInput
-    UpdaterDepartmentPermission?: DepartmentPermissionOrderByRelationAggregateInput
-    CreatorUserPermission?: UserPermissionOrderByRelationAggregateInput
-    UpdaterUserPermission?: UserPermissionOrderByRelationAggregateInput
     CreatorProfile?: ProfileOrderByRelationAggregateInput
     UpdaterProfile?: ProfileOrderByRelationAggregateInput
   }
@@ -21325,30 +15229,16 @@ export namespace Prisma {
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    departmentId?: StringNullableFilter<"User"> | string | null
-    organizationId?: StringNullableFilter<"User"> | string | null
     roleId?: StringNullableFilter<"User"> | string | null
-    department?: XOR<DepartmentNullableScalarRelationFilter, DepartmentWhereInput> | null
-    organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
+    organizationId?: StringNullableFilter<"User"> | string | null
     role?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
+    organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
     permissions?: UserPermissionListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     CreatorNote?: NoteListRelationFilter
     UpdaterNote?: NoteListRelationFilter
-    CreatorStage?: StageListRelationFilter
-    UpdaterStage?: StageListRelationFilter
     CreatorReport?: ReportListRelationFilter
     UpdaterReport?: ReportListRelationFilter
-    CreatorReportCategory?: ReportCategoryListRelationFilter
-    UpdaterReportCategory?: ReportCategoryListRelationFilter
-    CreatorDepartment?: DepartmentListRelationFilter
-    UpdaterDepartment?: DepartmentListRelationFilter
-    CreatorPermission?: PermissionListRelationFilter
-    UpdaterPermission?: PermissionListRelationFilter
-    CreatorDepartmentPermission?: DepartmentPermissionListRelationFilter
-    UpdaterDepartmentPermission?: DepartmentPermissionListRelationFilter
-    CreatorUserPermission?: UserPermissionListRelationFilter
-    UpdaterUserPermission?: UserPermissionListRelationFilter
     CreatorProfile?: ProfileListRelationFilter
     UpdaterProfile?: ProfileListRelationFilter
   }, "id" | "username">
@@ -21360,9 +15250,8 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    departmentId?: SortOrderInput | SortOrder
-    organizationId?: SortOrderInput | SortOrder
     roleId?: SortOrderInput | SortOrder
+    organizationId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -21378,9 +15267,94 @@ export namespace Prisma {
     status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-    departmentId?: StringNullableWithAggregatesFilter<"User"> | string | null
-    organizationId?: StringNullableWithAggregatesFilter<"User"> | string | null
     roleId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    organizationId?: StringNullableWithAggregatesFilter<"User"> | string | null
+  }
+
+  export type ProfileWhereInput = {
+    AND?: ProfileWhereInput | ProfileWhereInput[]
+    OR?: ProfileWhereInput[]
+    NOT?: ProfileWhereInput | ProfileWhereInput[]
+    id?: StringFilter<"Profile"> | string
+    name?: StringNullableFilter<"Profile"> | string | null
+    department?: StringNullableFilter<"Profile"> | string | null
+    position?: StringNullableFilter<"Profile"> | string | null
+    joinDate?: DateTimeNullableFilter<"Profile"> | Date | string | null
+    createdAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
+    createdById?: StringNullableFilter<"Profile"> | string | null
+    updatedById?: StringNullableFilter<"Profile"> | string | null
+    userId?: StringFilter<"Profile"> | string
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ProfileOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    department?: SortOrderInput | SortOrder
+    position?: SortOrderInput | SortOrder
+    joinDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    createdById?: SortOrderInput | SortOrder
+    updatedById?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    createdBy?: UserOrderByWithRelationInput
+    updatedBy?: UserOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ProfileWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: ProfileWhereInput | ProfileWhereInput[]
+    OR?: ProfileWhereInput[]
+    NOT?: ProfileWhereInput | ProfileWhereInput[]
+    name?: StringNullableFilter<"Profile"> | string | null
+    department?: StringNullableFilter<"Profile"> | string | null
+    position?: StringNullableFilter<"Profile"> | string | null
+    joinDate?: DateTimeNullableFilter<"Profile"> | Date | string | null
+    createdAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
+    createdById?: StringNullableFilter<"Profile"> | string | null
+    updatedById?: StringNullableFilter<"Profile"> | string | null
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
+
+  export type ProfileOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    department?: SortOrderInput | SortOrder
+    position?: SortOrderInput | SortOrder
+    joinDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    createdById?: SortOrderInput | SortOrder
+    updatedById?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    _count?: ProfileCountOrderByAggregateInput
+    _max?: ProfileMaxOrderByAggregateInput
+    _min?: ProfileMinOrderByAggregateInput
+  }
+
+  export type ProfileScalarWhereWithAggregatesInput = {
+    AND?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
+    OR?: ProfileScalarWhereWithAggregatesInput[]
+    NOT?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Profile"> | string
+    name?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    department?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    position?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    joinDate?: DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
+    createdAt?: DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
+    createdById?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    updatedById?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    userId?: StringWithAggregatesFilter<"Profile"> | string
   }
 
   export type OrganizationWhereInput = {
@@ -21478,70 +15452,6 @@ export namespace Prisma {
     level?: IntWithAggregatesFilter<"Role"> | number
   }
 
-  export type DepartmentWhereInput = {
-    AND?: DepartmentWhereInput | DepartmentWhereInput[]
-    OR?: DepartmentWhereInput[]
-    NOT?: DepartmentWhereInput | DepartmentWhereInput[]
-    id?: StringFilter<"Department"> | string
-    name?: StringFilter<"Department"> | string
-    code?: StringFilter<"Department"> | string
-    createdById?: StringNullableFilter<"Department"> | string | null
-    updatedById?: StringNullableFilter<"Department"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    users?: UserListRelationFilter
-    permissions?: DepartmentPermissionListRelationFilter
-  }
-
-  export type DepartmentOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    code?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
-    users?: UserOrderByRelationAggregateInput
-    permissions?: DepartmentPermissionOrderByRelationAggregateInput
-  }
-
-  export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    name?: string
-    code?: string
-    AND?: DepartmentWhereInput | DepartmentWhereInput[]
-    OR?: DepartmentWhereInput[]
-    NOT?: DepartmentWhereInput | DepartmentWhereInput[]
-    createdById?: StringNullableFilter<"Department"> | string | null
-    updatedById?: StringNullableFilter<"Department"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    users?: UserListRelationFilter
-    permissions?: DepartmentPermissionListRelationFilter
-  }, "id" | "name" | "code">
-
-  export type DepartmentOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    code?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    _count?: DepartmentCountOrderByAggregateInput
-    _max?: DepartmentMaxOrderByAggregateInput
-    _min?: DepartmentMinOrderByAggregateInput
-  }
-
-  export type DepartmentScalarWhereWithAggregatesInput = {
-    AND?: DepartmentScalarWhereWithAggregatesInput | DepartmentScalarWhereWithAggregatesInput[]
-    OR?: DepartmentScalarWhereWithAggregatesInput[]
-    NOT?: DepartmentScalarWhereWithAggregatesInput | DepartmentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Department"> | string
-    name?: StringWithAggregatesFilter<"Department"> | string
-    code?: StringWithAggregatesFilter<"Department"> | string
-    createdById?: StringNullableWithAggregatesFilter<"Department"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"Department"> | string | null
-  }
-
   export type PermissionWhereInput = {
     AND?: PermissionWhereInput | PermissionWhereInput[]
     OR?: PermissionWhereInput[]
@@ -21553,11 +15463,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Permission"> | string | null
     createdAt?: DateTimeFilter<"Permission"> | Date | string
     updatedAt?: DateTimeFilter<"Permission"> | Date | string
-    createdById?: StringNullableFilter<"Permission"> | string | null
-    updatedById?: StringNullableFilter<"Permission"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    dept?: DepartmentPermissionListRelationFilter
     users?: UserPermissionListRelationFilter
   }
 
@@ -21569,11 +15474,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
-    dept?: DepartmentPermissionOrderByRelationAggregateInput
     users?: UserPermissionOrderByRelationAggregateInput
   }
 
@@ -21589,11 +15489,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Permission"> | string | null
     createdAt?: DateTimeFilter<"Permission"> | Date | string
     updatedAt?: DateTimeFilter<"Permission"> | Date | string
-    createdById?: StringNullableFilter<"Permission"> | string | null
-    updatedById?: StringNullableFilter<"Permission"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    dept?: DepartmentPermissionListRelationFilter
     users?: UserPermissionListRelationFilter
   }, "id" | "name" | "resource_action">
 
@@ -21605,8 +15500,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
     _count?: PermissionCountOrderByAggregateInput
     _max?: PermissionMaxOrderByAggregateInput
     _min?: PermissionMinOrderByAggregateInput
@@ -21623,78 +15516,6 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Permission"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Permission"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Permission"> | Date | string
-    createdById?: StringNullableWithAggregatesFilter<"Permission"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"Permission"> | string | null
-  }
-
-  export type DepartmentPermissionWhereInput = {
-    AND?: DepartmentPermissionWhereInput | DepartmentPermissionWhereInput[]
-    OR?: DepartmentPermissionWhereInput[]
-    NOT?: DepartmentPermissionWhereInput | DepartmentPermissionWhereInput[]
-    id?: StringFilter<"DepartmentPermission"> | string
-    departmentId?: StringFilter<"DepartmentPermission"> | string
-    permissionId?: StringFilter<"DepartmentPermission"> | string
-    createdAt?: DateTimeFilter<"DepartmentPermission"> | Date | string
-    createdById?: StringNullableFilter<"DepartmentPermission"> | string | null
-    updatedById?: StringNullableFilter<"DepartmentPermission"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
-    permission?: XOR<PermissionScalarRelationFilter, PermissionWhereInput>
-  }
-
-  export type DepartmentPermissionOrderByWithRelationInput = {
-    id?: SortOrder
-    departmentId?: SortOrder
-    permissionId?: SortOrder
-    createdAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
-    department?: DepartmentOrderByWithRelationInput
-    permission?: PermissionOrderByWithRelationInput
-  }
-
-  export type DepartmentPermissionWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    departmentId_permissionId?: DepartmentPermissionDepartmentIdPermissionIdCompoundUniqueInput
-    AND?: DepartmentPermissionWhereInput | DepartmentPermissionWhereInput[]
-    OR?: DepartmentPermissionWhereInput[]
-    NOT?: DepartmentPermissionWhereInput | DepartmentPermissionWhereInput[]
-    departmentId?: StringFilter<"DepartmentPermission"> | string
-    permissionId?: StringFilter<"DepartmentPermission"> | string
-    createdAt?: DateTimeFilter<"DepartmentPermission"> | Date | string
-    createdById?: StringNullableFilter<"DepartmentPermission"> | string | null
-    updatedById?: StringNullableFilter<"DepartmentPermission"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
-    permission?: XOR<PermissionScalarRelationFilter, PermissionWhereInput>
-  }, "id" | "departmentId_permissionId">
-
-  export type DepartmentPermissionOrderByWithAggregationInput = {
-    id?: SortOrder
-    departmentId?: SortOrder
-    permissionId?: SortOrder
-    createdAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    _count?: DepartmentPermissionCountOrderByAggregateInput
-    _max?: DepartmentPermissionMaxOrderByAggregateInput
-    _min?: DepartmentPermissionMinOrderByAggregateInput
-  }
-
-  export type DepartmentPermissionScalarWhereWithAggregatesInput = {
-    AND?: DepartmentPermissionScalarWhereWithAggregatesInput | DepartmentPermissionScalarWhereWithAggregatesInput[]
-    OR?: DepartmentPermissionScalarWhereWithAggregatesInput[]
-    NOT?: DepartmentPermissionScalarWhereWithAggregatesInput | DepartmentPermissionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"DepartmentPermission"> | string
-    departmentId?: StringWithAggregatesFilter<"DepartmentPermission"> | string
-    permissionId?: StringWithAggregatesFilter<"DepartmentPermission"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"DepartmentPermission"> | Date | string
-    createdById?: StringNullableWithAggregatesFilter<"DepartmentPermission"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"DepartmentPermission"> | string | null
   }
 
   export type UserPermissionWhereInput = {
@@ -21705,12 +15526,8 @@ export namespace Prisma {
     userId?: StringFilter<"UserPermission"> | string
     permissionId?: StringFilter<"UserPermission"> | string
     createdAt?: DateTimeFilter<"UserPermission"> | Date | string
-    createdById?: StringNullableFilter<"UserPermission"> | string | null
-    updatedById?: StringNullableFilter<"UserPermission"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     permission?: XOR<PermissionScalarRelationFilter, PermissionWhereInput>
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type UserPermissionOrderByWithRelationInput = {
@@ -21718,12 +15535,8 @@ export namespace Prisma {
     userId?: SortOrder
     permissionId?: SortOrder
     createdAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     permission?: PermissionOrderByWithRelationInput
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
   }
 
   export type UserPermissionWhereUniqueInput = Prisma.AtLeast<{
@@ -21734,12 +15547,8 @@ export namespace Prisma {
     userId?: StringFilter<"UserPermission"> | string
     permissionId?: StringFilter<"UserPermission"> | string
     createdAt?: DateTimeFilter<"UserPermission"> | Date | string
-    createdById?: StringNullableFilter<"UserPermission"> | string | null
-    updatedById?: StringNullableFilter<"UserPermission"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     permission?: XOR<PermissionScalarRelationFilter, PermissionWhereInput>
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type UserPermissionOrderByWithAggregationInput = {
@@ -21747,8 +15556,6 @@ export namespace Prisma {
     userId?: SortOrder
     permissionId?: SortOrder
     createdAt?: SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
     _count?: UserPermissionCountOrderByAggregateInput
     _max?: UserPermissionMaxOrderByAggregateInput
     _min?: UserPermissionMinOrderByAggregateInput
@@ -21762,94 +15569,6 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"UserPermission"> | string
     permissionId?: StringWithAggregatesFilter<"UserPermission"> | string
     createdAt?: DateTimeWithAggregatesFilter<"UserPermission"> | Date | string
-    createdById?: StringNullableWithAggregatesFilter<"UserPermission"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"UserPermission"> | string | null
-  }
-
-  export type ProfileWhereInput = {
-    AND?: ProfileWhereInput | ProfileWhereInput[]
-    OR?: ProfileWhereInput[]
-    NOT?: ProfileWhereInput | ProfileWhereInput[]
-    id?: StringFilter<"Profile"> | string
-    name?: StringNullableFilter<"Profile"> | string | null
-    department?: StringNullableFilter<"Profile"> | string | null
-    position?: StringNullableFilter<"Profile"> | string | null
-    joinDate?: DateTimeNullableFilter<"Profile"> | Date | string | null
-    createdAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
-    updatedAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
-    createdById?: StringNullableFilter<"Profile"> | string | null
-    updatedById?: StringNullableFilter<"Profile"> | string | null
-    userId?: StringFilter<"Profile"> | string
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type ProfileOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrderInput | SortOrder
-    department?: SortOrderInput | SortOrder
-    position?: SortOrderInput | SortOrder
-    joinDate?: SortOrderInput | SortOrder
-    createdAt?: SortOrderInput | SortOrder
-    updatedAt?: SortOrderInput | SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    userId?: SortOrder
-    createdBy?: UserOrderByWithRelationInput
-    updatedBy?: UserOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type ProfileWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    userId?: string
-    AND?: ProfileWhereInput | ProfileWhereInput[]
-    OR?: ProfileWhereInput[]
-    NOT?: ProfileWhereInput | ProfileWhereInput[]
-    name?: StringNullableFilter<"Profile"> | string | null
-    department?: StringNullableFilter<"Profile"> | string | null
-    position?: StringNullableFilter<"Profile"> | string | null
-    joinDate?: DateTimeNullableFilter<"Profile"> | Date | string | null
-    createdAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
-    updatedAt?: DateTimeNullableFilter<"Profile"> | Date | string | null
-    createdById?: StringNullableFilter<"Profile"> | string | null
-    updatedById?: StringNullableFilter<"Profile"> | string | null
-    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    updatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "userId">
-
-  export type ProfileOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrderInput | SortOrder
-    department?: SortOrderInput | SortOrder
-    position?: SortOrderInput | SortOrder
-    joinDate?: SortOrderInput | SortOrder
-    createdAt?: SortOrderInput | SortOrder
-    updatedAt?: SortOrderInput | SortOrder
-    createdById?: SortOrderInput | SortOrder
-    updatedById?: SortOrderInput | SortOrder
-    userId?: SortOrder
-    _count?: ProfileCountOrderByAggregateInput
-    _max?: ProfileMaxOrderByAggregateInput
-    _min?: ProfileMinOrderByAggregateInput
-  }
-
-  export type ProfileScalarWhereWithAggregatesInput = {
-    AND?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
-    OR?: ProfileScalarWhereWithAggregatesInput[]
-    NOT?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Profile"> | string
-    name?: StringNullableWithAggregatesFilter<"Profile"> | string | null
-    department?: StringNullableWithAggregatesFilter<"Profile"> | string | null
-    position?: StringNullableWithAggregatesFilter<"Profile"> | string | null
-    joinDate?: DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
-    createdAt?: DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
-    createdById?: StringNullableWithAggregatesFilter<"Profile"> | string | null
-    updatedById?: StringNullableWithAggregatesFilter<"Profile"> | string | null
-    userId?: StringWithAggregatesFilter<"Profile"> | string
   }
 
   export type SessionWhereInput = {
@@ -21897,25 +15616,21 @@ export namespace Prisma {
   export type ReportCategoryCreateInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parent?: ReportCategoryCreateNestedOneWithoutChildrenInput
     children?: ReportCategoryCreateNestedManyWithoutParentInput
-    createdBy?: UserCreateNestedOneWithoutCreatorReportCategoryInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterReportCategoryInput
     reports?: ReportCreateNestedManyWithoutCategoryInput
   }
 
   export type ReportCategoryUncheckedCreateInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
     children?: ReportCategoryUncheckedCreateNestedManyWithoutParentInput
     reports?: ReportUncheckedCreateNestedManyWithoutCategoryInput
   }
@@ -21923,25 +15638,21 @@ export namespace Prisma {
   export type ReportCategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ReportCategoryUpdateOneWithoutChildrenNestedInput
     children?: ReportCategoryUpdateManyWithoutParentNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorReportCategoryNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterReportCategoryNestedInput
     reports?: ReportUpdateManyWithoutCategoryNestedInput
   }
 
   export type ReportCategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     children?: ReportCategoryUncheckedUpdateManyWithoutParentNestedInput
     reports?: ReportUncheckedUpdateManyWithoutCategoryNestedInput
   }
@@ -21949,18 +15660,16 @@ export namespace Prisma {
   export type ReportCategoryCreateManyInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type ReportCategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21968,19 +15677,16 @@ export namespace Prisma {
   export type ReportCategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReportCreateInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21989,7 +15695,6 @@ export namespace Prisma {
     updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
     organization?: OrganizationCreateNestedOneWithoutReportInput
     notes?: NoteCreateNestedManyWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
     files?: FileCreateNestedManyWithoutReportInput
   }
 
@@ -21997,8 +15702,7 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22006,15 +15710,13 @@ export namespace Prisma {
     updatedById?: string | null
     organizationId?: string | null
     notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
     files?: FileUncheckedCreateNestedManyWithoutReportInput
   }
 
   export type ReportUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22023,7 +15725,6 @@ export namespace Prisma {
     updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
     organization?: OrganizationUpdateOneWithoutReportNestedInput
     notes?: NoteUpdateManyWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
     files?: FileUpdateManyWithoutReportNestedInput
   }
 
@@ -22031,8 +15732,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22040,7 +15740,6 @@ export namespace Prisma {
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
     files?: FileUncheckedUpdateManyWithoutReportNestedInput
   }
 
@@ -22048,8 +15747,7 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22061,8 +15759,7 @@ export namespace Prisma {
   export type ReportUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22072,8 +15769,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22084,7 +15780,6 @@ export namespace Prisma {
 
   export type FileCreateInput = {
     id?: string
-    filename: string
     path: string
     mimeType?: string | null
     size?: number | null
@@ -22095,7 +15790,6 @@ export namespace Prisma {
 
   export type FileUncheckedCreateInput = {
     id?: string
-    filename: string
     path: string
     mimeType?: string | null
     size?: number | null
@@ -22106,7 +15800,6 @@ export namespace Prisma {
 
   export type FileUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22117,7 +15810,6 @@ export namespace Prisma {
 
   export type FileUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22128,7 +15820,6 @@ export namespace Prisma {
 
   export type FileCreateManyInput = {
     id?: string
-    filename: string
     path: string
     mimeType?: string | null
     size?: number | null
@@ -22139,7 +15830,6 @@ export namespace Prisma {
 
   export type FileUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22149,7 +15839,6 @@ export namespace Prisma {
 
   export type FileUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22225,139 +15914,6 @@ export namespace Prisma {
     reportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type StageCreateInput = {
-    id?: string
-    comment?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    type: StageTypeCreateNestedOneWithoutStagesInput
-    createdBy?: UserCreateNestedOneWithoutCreatorStageInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterStageInput
-    report?: ReportCreateNestedOneWithoutStagesInput
-  }
-
-  export type StageUncheckedCreateInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    createdById?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: StageTypeUpdateOneRequiredWithoutStagesNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorStageNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterStageNestedInput
-    report?: ReportUpdateOneWithoutStagesNestedInput
-  }
-
-  export type StageUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type StageCreateManyInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    createdById?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type StageUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type StageTypeCreateInput = {
-    id?: string
-    model: string
-    order: number
-    value: string
-    label: string
-    stages?: StageCreateNestedManyWithoutTypeInput
-  }
-
-  export type StageTypeUncheckedCreateInput = {
-    id?: string
-    model: string
-    order: number
-    value: string
-    label: string
-    stages?: StageUncheckedCreateNestedManyWithoutTypeInput
-  }
-
-  export type StageTypeUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    value?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    stages?: StageUpdateManyWithoutTypeNestedInput
-  }
-
-  export type StageTypeUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    value?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    stages?: StageUncheckedUpdateManyWithoutTypeNestedInput
-  }
-
-  export type StageTypeCreateManyInput = {
-    id?: string
-    model: string
-    order: number
-    value: string
-    label: string
-  }
-
-  export type StageTypeUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    value?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type StageTypeUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    value?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-  }
-
   export type UserCreateInput = {
     id?: string
     username: string
@@ -22365,27 +15921,14 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -22397,27 +15940,14 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -22429,27 +15959,14 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -22461,27 +15978,14 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -22493,9 +15997,8 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -22514,9 +16017,96 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ProfileCreateInput = {
+    id?: string
+    name?: string | null
+    department?: string | null
+    position?: string | null
+    joinDate?: Date | string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    createdBy?: UserCreateNestedOneWithoutCreatorProfileInput
+    updatedBy?: UserCreateNestedOneWithoutUpdaterProfileInput
+    user: UserCreateNestedOneWithoutProfileInput
+  }
+
+  export type ProfileUncheckedCreateInput = {
+    id?: string
+    name?: string | null
+    department?: string | null
+    position?: string | null
+    joinDate?: Date | string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    createdById?: string | null
+    updatedById?: string | null
+    userId: string
+  }
+
+  export type ProfileUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    department?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: NullableStringFieldUpdateOperationsInput | string | null
+    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: UserUpdateOneWithoutCreatorProfileNestedInput
+    updatedBy?: UserUpdateOneWithoutUpdaterProfileNestedInput
+    user?: UserUpdateOneRequiredWithoutProfileNestedInput
+  }
+
+  export type ProfileUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    department?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: NullableStringFieldUpdateOperationsInput | string | null
+    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProfileCreateManyInput = {
+    id?: string
+    name?: string | null
+    department?: string | null
+    position?: string | null
+    joinDate?: Date | string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    createdById?: string | null
+    updatedById?: string | null
+    userId: string
+  }
+
+  export type ProfileUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    department?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: NullableStringFieldUpdateOperationsInput | string | null
+    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ProfileUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    department?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: NullableStringFieldUpdateOperationsInput | string | null
+    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type OrganizationCreateInput = {
@@ -22615,68 +16205,6 @@ export namespace Prisma {
     level?: IntFieldUpdateOperationsInput | number
   }
 
-  export type DepartmentCreateInput = {
-    id?: string
-    name: string
-    code: string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentInput
-    users?: UserCreateNestedManyWithoutDepartmentInput
-    permissions?: DepartmentPermissionCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentUncheckedCreateInput = {
-    id?: string
-    name: string
-    code: string
-    createdById?: string | null
-    updatedById?: string | null
-    users?: UserUncheckedCreateNestedManyWithoutDepartmentInput
-    permissions?: DepartmentPermissionUncheckedCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentNestedInput
-    users?: UserUpdateManyWithoutDepartmentNestedInput
-    permissions?: DepartmentPermissionUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    users?: UserUncheckedUpdateManyWithoutDepartmentNestedInput
-    permissions?: DepartmentPermissionUncheckedUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentCreateManyInput = {
-    id?: string
-    name: string
-    code: string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type DepartmentUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DepartmentUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type PermissionCreateInput = {
     id?: string
     name: string
@@ -22685,9 +16213,6 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterPermissionInput
-    dept?: DepartmentPermissionCreateNestedManyWithoutPermissionInput
     users?: UserPermissionCreateNestedManyWithoutPermissionInput
   }
 
@@ -22699,9 +16224,6 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-    dept?: DepartmentPermissionUncheckedCreateNestedManyWithoutPermissionInput
     users?: UserPermissionUncheckedCreateNestedManyWithoutPermissionInput
   }
 
@@ -22713,9 +16235,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterPermissionNestedInput
-    dept?: DepartmentPermissionUpdateManyWithoutPermissionNestedInput
     users?: UserPermissionUpdateManyWithoutPermissionNestedInput
   }
 
@@ -22727,9 +16246,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    dept?: DepartmentPermissionUncheckedUpdateManyWithoutPermissionNestedInput
     users?: UserPermissionUncheckedUpdateManyWithoutPermissionNestedInput
   }
 
@@ -22741,8 +16257,6 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type PermissionUpdateManyMutationInput = {
@@ -22763,67 +16277,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionCreateInput = {
-    id?: string
-    createdAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentPermissionInput
-    department: DepartmentCreateNestedOneWithoutPermissionsInput
-    permission: PermissionCreateNestedOneWithoutDeptInput
-  }
-
-  export type DepartmentPermissionUncheckedCreateInput = {
-    id?: string
-    departmentId: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentPermissionNestedInput
-    department?: DepartmentUpdateOneRequiredWithoutPermissionsNestedInput
-    permission?: PermissionUpdateOneRequiredWithoutDeptNestedInput
-  }
-
-  export type DepartmentPermissionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionCreateManyInput = {
-    id?: string
-    departmentId: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserPermissionCreateInput = {
@@ -22831,8 +16284,6 @@ export namespace Prisma {
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutPermissionsInput
     permission: PermissionCreateNestedOneWithoutUsersInput
-    createdBy?: UserCreateNestedOneWithoutCreatorUserPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterUserPermissionInput
   }
 
   export type UserPermissionUncheckedCreateInput = {
@@ -22840,8 +16291,6 @@ export namespace Prisma {
     userId: string
     permissionId: string
     createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type UserPermissionUpdateInput = {
@@ -22849,8 +16298,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPermissionsNestedInput
     permission?: PermissionUpdateOneRequiredWithoutUsersNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorUserPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterUserPermissionNestedInput
   }
 
   export type UserPermissionUncheckedUpdateInput = {
@@ -22858,8 +16305,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     permissionId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserPermissionCreateManyInput = {
@@ -22867,8 +16312,6 @@ export namespace Prisma {
     userId: string
     permissionId: string
     createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type UserPermissionUpdateManyMutationInput = {
@@ -22881,96 +16324,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     permissionId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ProfileCreateInput = {
-    id?: string
-    name?: string | null
-    department?: string | null
-    position?: string | null
-    joinDate?: Date | string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    createdBy?: UserCreateNestedOneWithoutCreatorProfileInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterProfileInput
-    user: UserCreateNestedOneWithoutProfileInput
-  }
-
-  export type ProfileUncheckedCreateInput = {
-    id?: string
-    name?: string | null
-    department?: string | null
-    position?: string | null
-    joinDate?: Date | string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    createdById?: string | null
-    updatedById?: string | null
-    userId: string
-  }
-
-  export type ProfileUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    department?: NullableStringFieldUpdateOperationsInput | string | null
-    position?: NullableStringFieldUpdateOperationsInput | string | null
-    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: UserUpdateOneWithoutCreatorProfileNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterProfileNestedInput
-    user?: UserUpdateOneRequiredWithoutProfileNestedInput
-  }
-
-  export type ProfileUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    department?: NullableStringFieldUpdateOperationsInput | string | null
-    position?: NullableStringFieldUpdateOperationsInput | string | null
-    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProfileCreateManyInput = {
-    id?: string
-    name?: string | null
-    department?: string | null
-    position?: string | null
-    joinDate?: Date | string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    createdById?: string | null
-    updatedById?: string | null
-    userId: string
-  }
-
-  export type ProfileUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    department?: NullableStringFieldUpdateOperationsInput | string | null
-    position?: NullableStringFieldUpdateOperationsInput | string | null
-    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type ProfileUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    department?: NullableStringFieldUpdateOperationsInput | string | null
-    position?: NullableStringFieldUpdateOperationsInput | string | null
-    joinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionCreateInput = {
@@ -23067,11 +16420,6 @@ export namespace Prisma {
     none?: ReportCategoryWhereInput
   }
 
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
-  }
-
   export type ReportListRelationFilter = {
     every?: ReportWhereInput
     some?: ReportWhereInput
@@ -23094,34 +16442,28 @@ export namespace Prisma {
   export type ReportCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    code?: SortOrder
+    interval?: SortOrder
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type ReportCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    code?: SortOrder
+    interval?: SortOrder
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type ReportCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    code?: SortOrder
+    interval?: SortOrder
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -23190,6 +16532,11 @@ export namespace Prisma {
     isNot?: ReportCategoryWhereInput
   }
 
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
   export type OrganizationNullableScalarRelationFilter = {
     is?: OrganizationWhereInput | null
     isNot?: OrganizationWhereInput | null
@@ -23199,12 +16546,6 @@ export namespace Prisma {
     every?: NoteWhereInput
     some?: NoteWhereInput
     none?: NoteWhereInput
-  }
-
-  export type StageListRelationFilter = {
-    every?: StageWhereInput
-    some?: StageWhereInput
-    none?: StageWhereInput
   }
 
   export type FileListRelationFilter = {
@@ -23217,10 +16558,6 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type StageOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type FileOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -23230,7 +16567,6 @@ export namespace Prisma {
     categoryId?: SortOrder
     periodYear?: SortOrder
     periodMonth?: SortOrder
-    periodDate?: SortOrder
     version?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23248,7 +16584,6 @@ export namespace Prisma {
     categoryId?: SortOrder
     periodYear?: SortOrder
     periodMonth?: SortOrder
-    periodDate?: SortOrder
     version?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23262,7 +16597,6 @@ export namespace Prisma {
     categoryId?: SortOrder
     periodYear?: SortOrder
     periodMonth?: SortOrder
-    periodDate?: SortOrder
     version?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23309,7 +16643,6 @@ export namespace Prisma {
 
   export type FileCountOrderByAggregateInput = {
     id?: SortOrder
-    filename?: SortOrder
     path?: SortOrder
     mimeType?: SortOrder
     size?: SortOrder
@@ -23324,7 +16657,6 @@ export namespace Prisma {
 
   export type FileMaxOrderByAggregateInput = {
     id?: SortOrder
-    filename?: SortOrder
     path?: SortOrder
     mimeType?: SortOrder
     size?: SortOrder
@@ -23335,7 +16667,6 @@ export namespace Prisma {
 
   export type FileMinOrderByAggregateInput = {
     id?: SortOrder
-    filename?: SortOrder
     path?: SortOrder
     mimeType?: SortOrder
     size?: SortOrder
@@ -23419,86 +16750,11 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type StageTypeScalarRelationFilter = {
-    is?: StageTypeWhereInput
-    isNot?: StageTypeWhereInput
-  }
-
-  export type StageCountOrderByAggregateInput = {
-    id?: SortOrder
-    stageTypeId?: SortOrder
-    comment?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    reportId?: SortOrder
-  }
-
-  export type StageMaxOrderByAggregateInput = {
-    id?: SortOrder
-    stageTypeId?: SortOrder
-    comment?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    reportId?: SortOrder
-  }
-
-  export type StageMinOrderByAggregateInput = {
-    id?: SortOrder
-    stageTypeId?: SortOrder
-    comment?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    reportId?: SortOrder
-  }
-
-  export type StageTypeCountOrderByAggregateInput = {
-    id?: SortOrder
-    model?: SortOrder
-    order?: SortOrder
-    value?: SortOrder
-    label?: SortOrder
-  }
-
-  export type StageTypeAvgOrderByAggregateInput = {
-    order?: SortOrder
-  }
-
-  export type StageTypeMaxOrderByAggregateInput = {
-    id?: SortOrder
-    model?: SortOrder
-    order?: SortOrder
-    value?: SortOrder
-    label?: SortOrder
-  }
-
-  export type StageTypeMinOrderByAggregateInput = {
-    id?: SortOrder
-    model?: SortOrder
-    order?: SortOrder
-    value?: SortOrder
-    label?: SortOrder
-  }
-
-  export type StageTypeSumOrderByAggregateInput = {
-    order?: SortOrder
-  }
-
   export type EnumUserStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
     in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
-  }
-
-  export type DepartmentNullableScalarRelationFilter = {
-    is?: DepartmentWhereInput | null
-    isNot?: DepartmentWhereInput | null
   }
 
   export type RoleNullableScalarRelationFilter = {
@@ -23517,24 +16773,6 @@ export namespace Prisma {
     isNot?: ProfileWhereInput | null
   }
 
-  export type DepartmentListRelationFilter = {
-    every?: DepartmentWhereInput
-    some?: DepartmentWhereInput
-    none?: DepartmentWhereInput
-  }
-
-  export type PermissionListRelationFilter = {
-    every?: PermissionWhereInput
-    some?: PermissionWhereInput
-    none?: PermissionWhereInput
-  }
-
-  export type DepartmentPermissionListRelationFilter = {
-    every?: DepartmentPermissionWhereInput
-    some?: DepartmentPermissionWhereInput
-    none?: DepartmentPermissionWhereInput
-  }
-
   export type ProfileListRelationFilter = {
     every?: ProfileWhereInput
     some?: ProfileWhereInput
@@ -23542,18 +16780,6 @@ export namespace Prisma {
   }
 
   export type UserPermissionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type DepartmentOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PermissionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type DepartmentPermissionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23568,9 +16794,8 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    departmentId?: SortOrder
-    organizationId?: SortOrder
     roleId?: SortOrder
+    organizationId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -23580,9 +16805,8 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    departmentId?: SortOrder
-    organizationId?: SortOrder
     roleId?: SortOrder
+    organizationId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -23592,9 +16816,8 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    departmentId?: SortOrder
-    organizationId?: SortOrder
     roleId?: SortOrder
+    organizationId?: SortOrder
   }
 
   export type EnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -23605,6 +16828,50 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserStatusFilter<$PrismaModel>
     _max?: NestedEnumUserStatusFilter<$PrismaModel>
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type ProfileCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    department?: SortOrder
+    position?: SortOrder
+    joinDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdById?: SortOrder
+    updatedById?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ProfileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    department?: SortOrder
+    position?: SortOrder
+    joinDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdById?: SortOrder
+    updatedById?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ProfileMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    department?: SortOrder
+    position?: SortOrder
+    joinDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdById?: SortOrder
+    updatedById?: SortOrder
+    userId?: SortOrder
   }
 
   export type UserListRelationFilter = {
@@ -23661,30 +16928,6 @@ export namespace Prisma {
     level?: SortOrder
   }
 
-  export type DepartmentCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    code?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type DepartmentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    code?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type DepartmentMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    code?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
   export type PermissionResourceActionCompoundUniqueInput = {
     resource: string
     action: string
@@ -23698,8 +16941,6 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type PermissionMaxOrderByAggregateInput = {
@@ -23710,8 +16951,6 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type PermissionMinOrderByAggregateInput = {
@@ -23722,13 +16961,6 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type DepartmentScalarRelationFilter = {
-    is?: DepartmentWhereInput
-    isNot?: DepartmentWhereInput
   }
 
   export type PermissionScalarRelationFilter = {
@@ -23736,50 +16968,11 @@ export namespace Prisma {
     isNot?: PermissionWhereInput
   }
 
-  export type DepartmentPermissionDepartmentIdPermissionIdCompoundUniqueInput = {
-    departmentId: string
-    permissionId: string
-  }
-
-  export type DepartmentPermissionCountOrderByAggregateInput = {
-    id?: SortOrder
-    departmentId?: SortOrder
-    permissionId?: SortOrder
-    createdAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type DepartmentPermissionMaxOrderByAggregateInput = {
-    id?: SortOrder
-    departmentId?: SortOrder
-    permissionId?: SortOrder
-    createdAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type DepartmentPermissionMinOrderByAggregateInput = {
-    id?: SortOrder
-    departmentId?: SortOrder
-    permissionId?: SortOrder
-    createdAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type UserPermissionCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     permissionId?: SortOrder
     createdAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type UserPermissionMaxOrderByAggregateInput = {
@@ -23787,8 +16980,6 @@ export namespace Prisma {
     userId?: SortOrder
     permissionId?: SortOrder
     createdAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
   }
 
   export type UserPermissionMinOrderByAggregateInput = {
@@ -23796,47 +16987,6 @@ export namespace Prisma {
     userId?: SortOrder
     permissionId?: SortOrder
     createdAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-  }
-
-  export type ProfileCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    department?: SortOrder
-    position?: SortOrder
-    joinDate?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type ProfileMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    department?: SortOrder
-    position?: SortOrder
-    joinDate?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type ProfileMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    department?: SortOrder
-    position?: SortOrder
-    joinDate?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    createdById?: SortOrder
-    updatedById?: SortOrder
-    userId?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -23917,18 +17067,6 @@ export namespace Prisma {
     connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
   }
 
-  export type UserCreateNestedOneWithoutCreatorReportCategoryInput = {
-    create?: XOR<UserCreateWithoutCreatorReportCategoryInput, UserUncheckedCreateWithoutCreatorReportCategoryInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorReportCategoryInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterReportCategoryInput = {
-    create?: XOR<UserCreateWithoutUpdaterReportCategoryInput, UserUncheckedCreateWithoutUpdaterReportCategoryInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterReportCategoryInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type ReportCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ReportCreateWithoutCategoryInput, ReportUncheckedCreateWithoutCategoryInput> | ReportCreateWithoutCategoryInput[] | ReportUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ReportCreateOrConnectWithoutCategoryInput | ReportCreateOrConnectWithoutCategoryInput[]
@@ -23952,6 +17090,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -23982,26 +17124,6 @@ export namespace Prisma {
     deleteMany?: ReportCategoryScalarWhereInput | ReportCategoryScalarWhereInput[]
   }
 
-  export type UserUpdateOneWithoutCreatorReportCategoryNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorReportCategoryInput, UserUncheckedCreateWithoutCreatorReportCategoryInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorReportCategoryInput
-    upsert?: UserUpsertWithoutCreatorReportCategoryInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorReportCategoryInput, UserUpdateWithoutCreatorReportCategoryInput>, UserUncheckedUpdateWithoutCreatorReportCategoryInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterReportCategoryNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterReportCategoryInput, UserUncheckedCreateWithoutUpdaterReportCategoryInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterReportCategoryInput
-    upsert?: UserUpsertWithoutUpdaterReportCategoryInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterReportCategoryInput, UserUpdateWithoutUpdaterReportCategoryInput>, UserUncheckedUpdateWithoutUpdaterReportCategoryInput>
-  }
-
   export type ReportUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<ReportCreateWithoutCategoryInput, ReportUncheckedCreateWithoutCategoryInput> | ReportCreateWithoutCategoryInput[] | ReportUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ReportCreateOrConnectWithoutCategoryInput | ReportCreateOrConnectWithoutCategoryInput[]
@@ -24014,10 +17136,6 @@ export namespace Prisma {
     update?: ReportUpdateWithWhereUniqueWithoutCategoryInput | ReportUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: ReportUpdateManyWithWhereWithoutCategoryInput | ReportUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type ReportCategoryUncheckedUpdateManyWithoutParentNestedInput = {
@@ -24079,13 +17197,6 @@ export namespace Prisma {
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type StageCreateNestedManyWithoutReportInput = {
-    create?: XOR<StageCreateWithoutReportInput, StageUncheckedCreateWithoutReportInput> | StageCreateWithoutReportInput[] | StageUncheckedCreateWithoutReportInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutReportInput | StageCreateOrConnectWithoutReportInput[]
-    createMany?: StageCreateManyReportInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
   export type FileCreateNestedManyWithoutReportInput = {
     create?: XOR<FileCreateWithoutReportInput, FileUncheckedCreateWithoutReportInput> | FileCreateWithoutReportInput[] | FileUncheckedCreateWithoutReportInput[]
     connectOrCreate?: FileCreateOrConnectWithoutReportInput | FileCreateOrConnectWithoutReportInput[]
@@ -24098,13 +17209,6 @@ export namespace Prisma {
     connectOrCreate?: NoteCreateOrConnectWithoutReportInput | NoteCreateOrConnectWithoutReportInput[]
     createMany?: NoteCreateManyReportInputEnvelope
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-  }
-
-  export type StageUncheckedCreateNestedManyWithoutReportInput = {
-    create?: XOR<StageCreateWithoutReportInput, StageUncheckedCreateWithoutReportInput> | StageCreateWithoutReportInput[] | StageUncheckedCreateWithoutReportInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutReportInput | StageCreateOrConnectWithoutReportInput[]
-    createMany?: StageCreateManyReportInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
   }
 
   export type FileUncheckedCreateNestedManyWithoutReportInput = {
@@ -24174,20 +17278,6 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type StageUpdateManyWithoutReportNestedInput = {
-    create?: XOR<StageCreateWithoutReportInput, StageUncheckedCreateWithoutReportInput> | StageCreateWithoutReportInput[] | StageUncheckedCreateWithoutReportInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutReportInput | StageCreateOrConnectWithoutReportInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutReportInput | StageUpsertWithWhereUniqueWithoutReportInput[]
-    createMany?: StageCreateManyReportInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutReportInput | StageUpdateWithWhereUniqueWithoutReportInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutReportInput | StageUpdateManyWithWhereWithoutReportInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
   export type FileUpdateManyWithoutReportNestedInput = {
     create?: XOR<FileCreateWithoutReportInput, FileUncheckedCreateWithoutReportInput> | FileCreateWithoutReportInput[] | FileUncheckedCreateWithoutReportInput[]
     connectOrCreate?: FileCreateOrConnectWithoutReportInput | FileCreateOrConnectWithoutReportInput[]
@@ -24214,20 +17304,6 @@ export namespace Prisma {
     update?: NoteUpdateWithWhereUniqueWithoutReportInput | NoteUpdateWithWhereUniqueWithoutReportInput[]
     updateMany?: NoteUpdateManyWithWhereWithoutReportInput | NoteUpdateManyWithWhereWithoutReportInput[]
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
-  }
-
-  export type StageUncheckedUpdateManyWithoutReportNestedInput = {
-    create?: XOR<StageCreateWithoutReportInput, StageUncheckedCreateWithoutReportInput> | StageCreateWithoutReportInput[] | StageUncheckedCreateWithoutReportInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutReportInput | StageCreateOrConnectWithoutReportInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutReportInput | StageUpsertWithWhereUniqueWithoutReportInput[]
-    createMany?: StageCreateManyReportInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutReportInput | StageUpdateWithWhereUniqueWithoutReportInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutReportInput | StageUpdateManyWithWhereWithoutReportInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
   }
 
   export type FileUncheckedUpdateManyWithoutReportNestedInput = {
@@ -24320,126 +17396,16 @@ export namespace Prisma {
     update?: XOR<XOR<ReportUpdateToOneWithWhereWithoutNotesInput, ReportUpdateWithoutNotesInput>, ReportUncheckedUpdateWithoutNotesInput>
   }
 
-  export type StageTypeCreateNestedOneWithoutStagesInput = {
-    create?: XOR<StageTypeCreateWithoutStagesInput, StageTypeUncheckedCreateWithoutStagesInput>
-    connectOrCreate?: StageTypeCreateOrConnectWithoutStagesInput
-    connect?: StageTypeWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutCreatorStageInput = {
-    create?: XOR<UserCreateWithoutCreatorStageInput, UserUncheckedCreateWithoutCreatorStageInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorStageInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterStageInput = {
-    create?: XOR<UserCreateWithoutUpdaterStageInput, UserUncheckedCreateWithoutUpdaterStageInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterStageInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type ReportCreateNestedOneWithoutStagesInput = {
-    create?: XOR<ReportCreateWithoutStagesInput, ReportUncheckedCreateWithoutStagesInput>
-    connectOrCreate?: ReportCreateOrConnectWithoutStagesInput
-    connect?: ReportWhereUniqueInput
-  }
-
-  export type StageTypeUpdateOneRequiredWithoutStagesNestedInput = {
-    create?: XOR<StageTypeCreateWithoutStagesInput, StageTypeUncheckedCreateWithoutStagesInput>
-    connectOrCreate?: StageTypeCreateOrConnectWithoutStagesInput
-    upsert?: StageTypeUpsertWithoutStagesInput
-    connect?: StageTypeWhereUniqueInput
-    update?: XOR<XOR<StageTypeUpdateToOneWithWhereWithoutStagesInput, StageTypeUpdateWithoutStagesInput>, StageTypeUncheckedUpdateWithoutStagesInput>
-  }
-
-  export type UserUpdateOneWithoutCreatorStageNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorStageInput, UserUncheckedCreateWithoutCreatorStageInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorStageInput
-    upsert?: UserUpsertWithoutCreatorStageInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorStageInput, UserUpdateWithoutCreatorStageInput>, UserUncheckedUpdateWithoutCreatorStageInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterStageNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterStageInput, UserUncheckedCreateWithoutUpdaterStageInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterStageInput
-    upsert?: UserUpsertWithoutUpdaterStageInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterStageInput, UserUpdateWithoutUpdaterStageInput>, UserUncheckedUpdateWithoutUpdaterStageInput>
-  }
-
-  export type ReportUpdateOneWithoutStagesNestedInput = {
-    create?: XOR<ReportCreateWithoutStagesInput, ReportUncheckedCreateWithoutStagesInput>
-    connectOrCreate?: ReportCreateOrConnectWithoutStagesInput
-    upsert?: ReportUpsertWithoutStagesInput
-    disconnect?: ReportWhereInput | boolean
-    delete?: ReportWhereInput | boolean
-    connect?: ReportWhereUniqueInput
-    update?: XOR<XOR<ReportUpdateToOneWithWhereWithoutStagesInput, ReportUpdateWithoutStagesInput>, ReportUncheckedUpdateWithoutStagesInput>
-  }
-
-  export type StageCreateNestedManyWithoutTypeInput = {
-    create?: XOR<StageCreateWithoutTypeInput, StageUncheckedCreateWithoutTypeInput> | StageCreateWithoutTypeInput[] | StageUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutTypeInput | StageCreateOrConnectWithoutTypeInput[]
-    createMany?: StageCreateManyTypeInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
-  export type StageUncheckedCreateNestedManyWithoutTypeInput = {
-    create?: XOR<StageCreateWithoutTypeInput, StageUncheckedCreateWithoutTypeInput> | StageCreateWithoutTypeInput[] | StageUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutTypeInput | StageCreateOrConnectWithoutTypeInput[]
-    createMany?: StageCreateManyTypeInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
-  export type StageUpdateManyWithoutTypeNestedInput = {
-    create?: XOR<StageCreateWithoutTypeInput, StageUncheckedCreateWithoutTypeInput> | StageCreateWithoutTypeInput[] | StageUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutTypeInput | StageCreateOrConnectWithoutTypeInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutTypeInput | StageUpsertWithWhereUniqueWithoutTypeInput[]
-    createMany?: StageCreateManyTypeInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutTypeInput | StageUpdateWithWhereUniqueWithoutTypeInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutTypeInput | StageUpdateManyWithWhereWithoutTypeInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
-  export type StageUncheckedUpdateManyWithoutTypeNestedInput = {
-    create?: XOR<StageCreateWithoutTypeInput, StageUncheckedCreateWithoutTypeInput> | StageCreateWithoutTypeInput[] | StageUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutTypeInput | StageCreateOrConnectWithoutTypeInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutTypeInput | StageUpsertWithWhereUniqueWithoutTypeInput[]
-    createMany?: StageCreateManyTypeInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutTypeInput | StageUpdateWithWhereUniqueWithoutTypeInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutTypeInput | StageUpdateManyWithWhereWithoutTypeInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
-  export type DepartmentCreateNestedOneWithoutUsersInput = {
-    create?: XOR<DepartmentCreateWithoutUsersInput, DepartmentUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: DepartmentCreateOrConnectWithoutUsersInput
-    connect?: DepartmentWhereUniqueInput
+  export type RoleCreateNestedOneWithoutUsersInput = {
+    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
+    connect?: RoleWhereUniqueInput
   }
 
   export type OrganizationCreateNestedOneWithoutUsersInput = {
     create?: XOR<OrganizationCreateWithoutUsersInput, OrganizationUncheckedCreateWithoutUsersInput>
     connectOrCreate?: OrganizationCreateOrConnectWithoutUsersInput
     connect?: OrganizationWhereUniqueInput
-  }
-
-  export type RoleCreateNestedOneWithoutUsersInput = {
-    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
-    connect?: RoleWhereUniqueInput
   }
 
   export type UserPermissionCreateNestedManyWithoutUserInput = {
@@ -24469,20 +17435,6 @@ export namespace Prisma {
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type StageCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<StageCreateWithoutCreatedByInput, StageUncheckedCreateWithoutCreatedByInput> | StageCreateWithoutCreatedByInput[] | StageUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutCreatedByInput | StageCreateOrConnectWithoutCreatedByInput[]
-    createMany?: StageCreateManyCreatedByInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
-  export type StageCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<StageCreateWithoutUpdatedByInput, StageUncheckedCreateWithoutUpdatedByInput> | StageCreateWithoutUpdatedByInput[] | StageUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutUpdatedByInput | StageCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: StageCreateManyUpdatedByInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
   export type ReportCreateNestedManyWithoutCreatedByInput = {
     create?: XOR<ReportCreateWithoutCreatedByInput, ReportUncheckedCreateWithoutCreatedByInput> | ReportCreateWithoutCreatedByInput[] | ReportUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: ReportCreateOrConnectWithoutCreatedByInput | ReportCreateOrConnectWithoutCreatedByInput[]
@@ -24495,76 +17447,6 @@ export namespace Prisma {
     connectOrCreate?: ReportCreateOrConnectWithoutUpdatedByInput | ReportCreateOrConnectWithoutUpdatedByInput[]
     createMany?: ReportCreateManyUpdatedByInputEnvelope
     connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
-  }
-
-  export type ReportCategoryCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<ReportCategoryCreateWithoutCreatedByInput, ReportCategoryUncheckedCreateWithoutCreatedByInput> | ReportCategoryCreateWithoutCreatedByInput[] | ReportCategoryUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutCreatedByInput | ReportCategoryCreateOrConnectWithoutCreatedByInput[]
-    createMany?: ReportCategoryCreateManyCreatedByInputEnvelope
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-  }
-
-  export type ReportCategoryCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<ReportCategoryCreateWithoutUpdatedByInput, ReportCategoryUncheckedCreateWithoutUpdatedByInput> | ReportCategoryCreateWithoutUpdatedByInput[] | ReportCategoryUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutUpdatedByInput | ReportCategoryCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: ReportCategoryCreateManyUpdatedByInputEnvelope
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-  }
-
-  export type DepartmentCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<DepartmentCreateWithoutCreatedByInput, DepartmentUncheckedCreateWithoutCreatedByInput> | DepartmentCreateWithoutCreatedByInput[] | DepartmentUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutCreatedByInput | DepartmentCreateOrConnectWithoutCreatedByInput[]
-    createMany?: DepartmentCreateManyCreatedByInputEnvelope
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-  }
-
-  export type DepartmentCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<DepartmentCreateWithoutUpdatedByInput, DepartmentUncheckedCreateWithoutUpdatedByInput> | DepartmentCreateWithoutUpdatedByInput[] | DepartmentUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutUpdatedByInput | DepartmentCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: DepartmentCreateManyUpdatedByInputEnvelope
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-  }
-
-  export type PermissionCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<PermissionCreateWithoutCreatedByInput, PermissionUncheckedCreateWithoutCreatedByInput> | PermissionCreateWithoutCreatedByInput[] | PermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutCreatedByInput | PermissionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: PermissionCreateManyCreatedByInputEnvelope
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-  }
-
-  export type PermissionCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<PermissionCreateWithoutUpdatedByInput, PermissionUncheckedCreateWithoutUpdatedByInput> | PermissionCreateWithoutUpdatedByInput[] | PermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutUpdatedByInput | PermissionCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: PermissionCreateManyUpdatedByInputEnvelope
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-  }
-
-  export type DepartmentPermissionCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutCreatedByInput, DepartmentPermissionUncheckedCreateWithoutCreatedByInput> | DepartmentPermissionCreateWithoutCreatedByInput[] | DepartmentPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutCreatedByInput | DepartmentPermissionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: DepartmentPermissionCreateManyCreatedByInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
-  export type DepartmentPermissionCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutUpdatedByInput, DepartmentPermissionUncheckedCreateWithoutUpdatedByInput> | DepartmentPermissionCreateWithoutUpdatedByInput[] | DepartmentPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutUpdatedByInput | DepartmentPermissionCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: DepartmentPermissionCreateManyUpdatedByInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
-  export type UserPermissionCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<UserPermissionCreateWithoutCreatedByInput, UserPermissionUncheckedCreateWithoutCreatedByInput> | UserPermissionCreateWithoutCreatedByInput[] | UserPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutCreatedByInput | UserPermissionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: UserPermissionCreateManyCreatedByInputEnvelope
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-  }
-
-  export type UserPermissionCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<UserPermissionCreateWithoutUpdatedByInput, UserPermissionUncheckedCreateWithoutUpdatedByInput> | UserPermissionCreateWithoutUpdatedByInput[] | UserPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutUpdatedByInput | UserPermissionCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: UserPermissionCreateManyUpdatedByInputEnvelope
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
   }
 
   export type ProfileCreateNestedManyWithoutCreatedByInput = {
@@ -24608,20 +17490,6 @@ export namespace Prisma {
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type StageUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<StageCreateWithoutCreatedByInput, StageUncheckedCreateWithoutCreatedByInput> | StageCreateWithoutCreatedByInput[] | StageUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutCreatedByInput | StageCreateOrConnectWithoutCreatedByInput[]
-    createMany?: StageCreateManyCreatedByInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
-  export type StageUncheckedCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<StageCreateWithoutUpdatedByInput, StageUncheckedCreateWithoutUpdatedByInput> | StageCreateWithoutUpdatedByInput[] | StageUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutUpdatedByInput | StageCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: StageCreateManyUpdatedByInputEnvelope
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-  }
-
   export type ReportUncheckedCreateNestedManyWithoutCreatedByInput = {
     create?: XOR<ReportCreateWithoutCreatedByInput, ReportUncheckedCreateWithoutCreatedByInput> | ReportCreateWithoutCreatedByInput[] | ReportUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: ReportCreateOrConnectWithoutCreatedByInput | ReportCreateOrConnectWithoutCreatedByInput[]
@@ -24634,76 +17502,6 @@ export namespace Prisma {
     connectOrCreate?: ReportCreateOrConnectWithoutUpdatedByInput | ReportCreateOrConnectWithoutUpdatedByInput[]
     createMany?: ReportCreateManyUpdatedByInputEnvelope
     connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
-  }
-
-  export type ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<ReportCategoryCreateWithoutCreatedByInput, ReportCategoryUncheckedCreateWithoutCreatedByInput> | ReportCategoryCreateWithoutCreatedByInput[] | ReportCategoryUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutCreatedByInput | ReportCategoryCreateOrConnectWithoutCreatedByInput[]
-    createMany?: ReportCategoryCreateManyCreatedByInputEnvelope
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-  }
-
-  export type ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<ReportCategoryCreateWithoutUpdatedByInput, ReportCategoryUncheckedCreateWithoutUpdatedByInput> | ReportCategoryCreateWithoutUpdatedByInput[] | ReportCategoryUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutUpdatedByInput | ReportCategoryCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: ReportCategoryCreateManyUpdatedByInputEnvelope
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-  }
-
-  export type DepartmentUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<DepartmentCreateWithoutCreatedByInput, DepartmentUncheckedCreateWithoutCreatedByInput> | DepartmentCreateWithoutCreatedByInput[] | DepartmentUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutCreatedByInput | DepartmentCreateOrConnectWithoutCreatedByInput[]
-    createMany?: DepartmentCreateManyCreatedByInputEnvelope
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-  }
-
-  export type DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<DepartmentCreateWithoutUpdatedByInput, DepartmentUncheckedCreateWithoutUpdatedByInput> | DepartmentCreateWithoutUpdatedByInput[] | DepartmentUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutUpdatedByInput | DepartmentCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: DepartmentCreateManyUpdatedByInputEnvelope
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-  }
-
-  export type PermissionUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<PermissionCreateWithoutCreatedByInput, PermissionUncheckedCreateWithoutCreatedByInput> | PermissionCreateWithoutCreatedByInput[] | PermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutCreatedByInput | PermissionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: PermissionCreateManyCreatedByInputEnvelope
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-  }
-
-  export type PermissionUncheckedCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<PermissionCreateWithoutUpdatedByInput, PermissionUncheckedCreateWithoutUpdatedByInput> | PermissionCreateWithoutUpdatedByInput[] | PermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutUpdatedByInput | PermissionCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: PermissionCreateManyUpdatedByInputEnvelope
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-  }
-
-  export type DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutCreatedByInput, DepartmentPermissionUncheckedCreateWithoutCreatedByInput> | DepartmentPermissionCreateWithoutCreatedByInput[] | DepartmentPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutCreatedByInput | DepartmentPermissionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: DepartmentPermissionCreateManyCreatedByInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
-  export type DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutUpdatedByInput, DepartmentPermissionUncheckedCreateWithoutUpdatedByInput> | DepartmentPermissionCreateWithoutUpdatedByInput[] | DepartmentPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutUpdatedByInput | DepartmentPermissionCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: DepartmentPermissionCreateManyUpdatedByInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
-  export type UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<UserPermissionCreateWithoutCreatedByInput, UserPermissionUncheckedCreateWithoutCreatedByInput> | UserPermissionCreateWithoutCreatedByInput[] | UserPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutCreatedByInput | UserPermissionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: UserPermissionCreateManyCreatedByInputEnvelope
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-  }
-
-  export type UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput = {
-    create?: XOR<UserPermissionCreateWithoutUpdatedByInput, UserPermissionUncheckedCreateWithoutUpdatedByInput> | UserPermissionCreateWithoutUpdatedByInput[] | UserPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutUpdatedByInput | UserPermissionCreateOrConnectWithoutUpdatedByInput[]
-    createMany?: UserPermissionCreateManyUpdatedByInputEnvelope
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
   }
 
   export type ProfileUncheckedCreateNestedManyWithoutCreatedByInput = {
@@ -24724,14 +17522,14 @@ export namespace Prisma {
     set?: $Enums.UserStatus
   }
 
-  export type DepartmentUpdateOneWithoutUsersNestedInput = {
-    create?: XOR<DepartmentCreateWithoutUsersInput, DepartmentUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: DepartmentCreateOrConnectWithoutUsersInput
-    upsert?: DepartmentUpsertWithoutUsersInput
-    disconnect?: DepartmentWhereInput | boolean
-    delete?: DepartmentWhereInput | boolean
-    connect?: DepartmentWhereUniqueInput
-    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutUsersInput, DepartmentUpdateWithoutUsersInput>, DepartmentUncheckedUpdateWithoutUsersInput>
+  export type RoleUpdateOneWithoutUsersNestedInput = {
+    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
+    upsert?: RoleUpsertWithoutUsersInput
+    disconnect?: RoleWhereInput | boolean
+    delete?: RoleWhereInput | boolean
+    connect?: RoleWhereUniqueInput
+    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
   }
 
   export type OrganizationUpdateOneWithoutUsersNestedInput = {
@@ -24742,16 +17540,6 @@ export namespace Prisma {
     delete?: OrganizationWhereInput | boolean
     connect?: OrganizationWhereUniqueInput
     update?: XOR<XOR<OrganizationUpdateToOneWithWhereWithoutUsersInput, OrganizationUpdateWithoutUsersInput>, OrganizationUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type RoleUpdateOneWithoutUsersNestedInput = {
-    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
-    upsert?: RoleUpsertWithoutUsersInput
-    disconnect?: RoleWhereInput | boolean
-    delete?: RoleWhereInput | boolean
-    connect?: RoleWhereUniqueInput
-    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
   }
 
   export type UserPermissionUpdateManyWithoutUserNestedInput = {
@@ -24806,34 +17594,6 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type StageUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<StageCreateWithoutCreatedByInput, StageUncheckedCreateWithoutCreatedByInput> | StageCreateWithoutCreatedByInput[] | StageUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutCreatedByInput | StageCreateOrConnectWithoutCreatedByInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutCreatedByInput | StageUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: StageCreateManyCreatedByInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutCreatedByInput | StageUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutCreatedByInput | StageUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
-  export type StageUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<StageCreateWithoutUpdatedByInput, StageUncheckedCreateWithoutUpdatedByInput> | StageCreateWithoutUpdatedByInput[] | StageUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutUpdatedByInput | StageCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutUpdatedByInput | StageUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: StageCreateManyUpdatedByInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutUpdatedByInput | StageUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutUpdatedByInput | StageUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
   export type ReportUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<ReportCreateWithoutCreatedByInput, ReportUncheckedCreateWithoutCreatedByInput> | ReportCreateWithoutCreatedByInput[] | ReportUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: ReportCreateOrConnectWithoutCreatedByInput | ReportCreateOrConnectWithoutCreatedByInput[]
@@ -24860,146 +17620,6 @@ export namespace Prisma {
     update?: ReportUpdateWithWhereUniqueWithoutUpdatedByInput | ReportUpdateWithWhereUniqueWithoutUpdatedByInput[]
     updateMany?: ReportUpdateManyWithWhereWithoutUpdatedByInput | ReportUpdateManyWithWhereWithoutUpdatedByInput[]
     deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
-  }
-
-  export type ReportCategoryUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ReportCategoryCreateWithoutCreatedByInput, ReportCategoryUncheckedCreateWithoutCreatedByInput> | ReportCategoryCreateWithoutCreatedByInput[] | ReportCategoryUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutCreatedByInput | ReportCategoryCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ReportCategoryUpsertWithWhereUniqueWithoutCreatedByInput | ReportCategoryUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ReportCategoryCreateManyCreatedByInputEnvelope
-    set?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    disconnect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    delete?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    update?: ReportCategoryUpdateWithWhereUniqueWithoutCreatedByInput | ReportCategoryUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ReportCategoryUpdateManyWithWhereWithoutCreatedByInput | ReportCategoryUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ReportCategoryScalarWhereInput | ReportCategoryScalarWhereInput[]
-  }
-
-  export type ReportCategoryUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<ReportCategoryCreateWithoutUpdatedByInput, ReportCategoryUncheckedCreateWithoutUpdatedByInput> | ReportCategoryCreateWithoutUpdatedByInput[] | ReportCategoryUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutUpdatedByInput | ReportCategoryCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: ReportCategoryUpsertWithWhereUniqueWithoutUpdatedByInput | ReportCategoryUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: ReportCategoryCreateManyUpdatedByInputEnvelope
-    set?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    disconnect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    delete?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    update?: ReportCategoryUpdateWithWhereUniqueWithoutUpdatedByInput | ReportCategoryUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: ReportCategoryUpdateManyWithWhereWithoutUpdatedByInput | ReportCategoryUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: ReportCategoryScalarWhereInput | ReportCategoryScalarWhereInput[]
-  }
-
-  export type DepartmentUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<DepartmentCreateWithoutCreatedByInput, DepartmentUncheckedCreateWithoutCreatedByInput> | DepartmentCreateWithoutCreatedByInput[] | DepartmentUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutCreatedByInput | DepartmentCreateOrConnectWithoutCreatedByInput[]
-    upsert?: DepartmentUpsertWithWhereUniqueWithoutCreatedByInput | DepartmentUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: DepartmentCreateManyCreatedByInputEnvelope
-    set?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    disconnect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    delete?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    update?: DepartmentUpdateWithWhereUniqueWithoutCreatedByInput | DepartmentUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: DepartmentUpdateManyWithWhereWithoutCreatedByInput | DepartmentUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
-  }
-
-  export type DepartmentUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<DepartmentCreateWithoutUpdatedByInput, DepartmentUncheckedCreateWithoutUpdatedByInput> | DepartmentCreateWithoutUpdatedByInput[] | DepartmentUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutUpdatedByInput | DepartmentCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: DepartmentUpsertWithWhereUniqueWithoutUpdatedByInput | DepartmentUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: DepartmentCreateManyUpdatedByInputEnvelope
-    set?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    disconnect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    delete?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    update?: DepartmentUpdateWithWhereUniqueWithoutUpdatedByInput | DepartmentUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: DepartmentUpdateManyWithWhereWithoutUpdatedByInput | DepartmentUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
-  }
-
-  export type PermissionUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<PermissionCreateWithoutCreatedByInput, PermissionUncheckedCreateWithoutCreatedByInput> | PermissionCreateWithoutCreatedByInput[] | PermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutCreatedByInput | PermissionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: PermissionUpsertWithWhereUniqueWithoutCreatedByInput | PermissionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: PermissionCreateManyCreatedByInputEnvelope
-    set?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    disconnect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    delete?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    update?: PermissionUpdateWithWhereUniqueWithoutCreatedByInput | PermissionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: PermissionUpdateManyWithWhereWithoutCreatedByInput | PermissionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: PermissionScalarWhereInput | PermissionScalarWhereInput[]
-  }
-
-  export type PermissionUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<PermissionCreateWithoutUpdatedByInput, PermissionUncheckedCreateWithoutUpdatedByInput> | PermissionCreateWithoutUpdatedByInput[] | PermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutUpdatedByInput | PermissionCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: PermissionUpsertWithWhereUniqueWithoutUpdatedByInput | PermissionUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: PermissionCreateManyUpdatedByInputEnvelope
-    set?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    disconnect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    delete?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    update?: PermissionUpdateWithWhereUniqueWithoutUpdatedByInput | PermissionUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: PermissionUpdateManyWithWhereWithoutUpdatedByInput | PermissionUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: PermissionScalarWhereInput | PermissionScalarWhereInput[]
-  }
-
-  export type DepartmentPermissionUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutCreatedByInput, DepartmentPermissionUncheckedCreateWithoutCreatedByInput> | DepartmentPermissionCreateWithoutCreatedByInput[] | DepartmentPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutCreatedByInput | DepartmentPermissionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutCreatedByInput | DepartmentPermissionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: DepartmentPermissionCreateManyCreatedByInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutCreatedByInput | DepartmentPermissionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutCreatedByInput | DepartmentPermissionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
-  export type DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutUpdatedByInput, DepartmentPermissionUncheckedCreateWithoutUpdatedByInput> | DepartmentPermissionCreateWithoutUpdatedByInput[] | DepartmentPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutUpdatedByInput | DepartmentPermissionCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutUpdatedByInput | DepartmentPermissionUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: DepartmentPermissionCreateManyUpdatedByInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutUpdatedByInput | DepartmentPermissionUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutUpdatedByInput | DepartmentPermissionUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
-  export type UserPermissionUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<UserPermissionCreateWithoutCreatedByInput, UserPermissionUncheckedCreateWithoutCreatedByInput> | UserPermissionCreateWithoutCreatedByInput[] | UserPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutCreatedByInput | UserPermissionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: UserPermissionUpsertWithWhereUniqueWithoutCreatedByInput | UserPermissionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: UserPermissionCreateManyCreatedByInputEnvelope
-    set?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    disconnect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    delete?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    update?: UserPermissionUpdateWithWhereUniqueWithoutCreatedByInput | UserPermissionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: UserPermissionUpdateManyWithWhereWithoutCreatedByInput | UserPermissionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: UserPermissionScalarWhereInput | UserPermissionScalarWhereInput[]
-  }
-
-  export type UserPermissionUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<UserPermissionCreateWithoutUpdatedByInput, UserPermissionUncheckedCreateWithoutUpdatedByInput> | UserPermissionCreateWithoutUpdatedByInput[] | UserPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutUpdatedByInput | UserPermissionCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: UserPermissionUpsertWithWhereUniqueWithoutUpdatedByInput | UserPermissionUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: UserPermissionCreateManyUpdatedByInputEnvelope
-    set?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    disconnect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    delete?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    update?: UserPermissionUpdateWithWhereUniqueWithoutUpdatedByInput | UserPermissionUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: UserPermissionUpdateManyWithWhereWithoutUpdatedByInput | UserPermissionUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: UserPermissionScalarWhereInput | UserPermissionScalarWhereInput[]
   }
 
   export type ProfileUpdateManyWithoutCreatedByNestedInput = {
@@ -25082,34 +17702,6 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type StageUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<StageCreateWithoutCreatedByInput, StageUncheckedCreateWithoutCreatedByInput> | StageCreateWithoutCreatedByInput[] | StageUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutCreatedByInput | StageCreateOrConnectWithoutCreatedByInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutCreatedByInput | StageUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: StageCreateManyCreatedByInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutCreatedByInput | StageUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutCreatedByInput | StageUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
-  export type StageUncheckedUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<StageCreateWithoutUpdatedByInput, StageUncheckedCreateWithoutUpdatedByInput> | StageCreateWithoutUpdatedByInput[] | StageUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: StageCreateOrConnectWithoutUpdatedByInput | StageCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: StageUpsertWithWhereUniqueWithoutUpdatedByInput | StageUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: StageCreateManyUpdatedByInputEnvelope
-    set?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    disconnect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    delete?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    connect?: StageWhereUniqueInput | StageWhereUniqueInput[]
-    update?: StageUpdateWithWhereUniqueWithoutUpdatedByInput | StageUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: StageUpdateManyWithWhereWithoutUpdatedByInput | StageUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: StageScalarWhereInput | StageScalarWhereInput[]
-  }
-
   export type ReportUncheckedUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<ReportCreateWithoutCreatedByInput, ReportUncheckedCreateWithoutCreatedByInput> | ReportCreateWithoutCreatedByInput[] | ReportUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: ReportCreateOrConnectWithoutCreatedByInput | ReportCreateOrConnectWithoutCreatedByInput[]
@@ -25138,146 +17730,6 @@ export namespace Prisma {
     deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
   }
 
-  export type ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ReportCategoryCreateWithoutCreatedByInput, ReportCategoryUncheckedCreateWithoutCreatedByInput> | ReportCategoryCreateWithoutCreatedByInput[] | ReportCategoryUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutCreatedByInput | ReportCategoryCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ReportCategoryUpsertWithWhereUniqueWithoutCreatedByInput | ReportCategoryUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ReportCategoryCreateManyCreatedByInputEnvelope
-    set?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    disconnect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    delete?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    update?: ReportCategoryUpdateWithWhereUniqueWithoutCreatedByInput | ReportCategoryUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ReportCategoryUpdateManyWithWhereWithoutCreatedByInput | ReportCategoryUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ReportCategoryScalarWhereInput | ReportCategoryScalarWhereInput[]
-  }
-
-  export type ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<ReportCategoryCreateWithoutUpdatedByInput, ReportCategoryUncheckedCreateWithoutUpdatedByInput> | ReportCategoryCreateWithoutUpdatedByInput[] | ReportCategoryUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: ReportCategoryCreateOrConnectWithoutUpdatedByInput | ReportCategoryCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: ReportCategoryUpsertWithWhereUniqueWithoutUpdatedByInput | ReportCategoryUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: ReportCategoryCreateManyUpdatedByInputEnvelope
-    set?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    disconnect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    delete?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    connect?: ReportCategoryWhereUniqueInput | ReportCategoryWhereUniqueInput[]
-    update?: ReportCategoryUpdateWithWhereUniqueWithoutUpdatedByInput | ReportCategoryUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: ReportCategoryUpdateManyWithWhereWithoutUpdatedByInput | ReportCategoryUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: ReportCategoryScalarWhereInput | ReportCategoryScalarWhereInput[]
-  }
-
-  export type DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<DepartmentCreateWithoutCreatedByInput, DepartmentUncheckedCreateWithoutCreatedByInput> | DepartmentCreateWithoutCreatedByInput[] | DepartmentUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutCreatedByInput | DepartmentCreateOrConnectWithoutCreatedByInput[]
-    upsert?: DepartmentUpsertWithWhereUniqueWithoutCreatedByInput | DepartmentUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: DepartmentCreateManyCreatedByInputEnvelope
-    set?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    disconnect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    delete?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    update?: DepartmentUpdateWithWhereUniqueWithoutCreatedByInput | DepartmentUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: DepartmentUpdateManyWithWhereWithoutCreatedByInput | DepartmentUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
-  }
-
-  export type DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<DepartmentCreateWithoutUpdatedByInput, DepartmentUncheckedCreateWithoutUpdatedByInput> | DepartmentCreateWithoutUpdatedByInput[] | DepartmentUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentCreateOrConnectWithoutUpdatedByInput | DepartmentCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: DepartmentUpsertWithWhereUniqueWithoutUpdatedByInput | DepartmentUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: DepartmentCreateManyUpdatedByInputEnvelope
-    set?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    disconnect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    delete?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
-    update?: DepartmentUpdateWithWhereUniqueWithoutUpdatedByInput | DepartmentUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: DepartmentUpdateManyWithWhereWithoutUpdatedByInput | DepartmentUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
-  }
-
-  export type PermissionUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<PermissionCreateWithoutCreatedByInput, PermissionUncheckedCreateWithoutCreatedByInput> | PermissionCreateWithoutCreatedByInput[] | PermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutCreatedByInput | PermissionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: PermissionUpsertWithWhereUniqueWithoutCreatedByInput | PermissionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: PermissionCreateManyCreatedByInputEnvelope
-    set?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    disconnect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    delete?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    update?: PermissionUpdateWithWhereUniqueWithoutCreatedByInput | PermissionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: PermissionUpdateManyWithWhereWithoutCreatedByInput | PermissionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: PermissionScalarWhereInput | PermissionScalarWhereInput[]
-  }
-
-  export type PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<PermissionCreateWithoutUpdatedByInput, PermissionUncheckedCreateWithoutUpdatedByInput> | PermissionCreateWithoutUpdatedByInput[] | PermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: PermissionCreateOrConnectWithoutUpdatedByInput | PermissionCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: PermissionUpsertWithWhereUniqueWithoutUpdatedByInput | PermissionUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: PermissionCreateManyUpdatedByInputEnvelope
-    set?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    disconnect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    delete?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    connect?: PermissionWhereUniqueInput | PermissionWhereUniqueInput[]
-    update?: PermissionUpdateWithWhereUniqueWithoutUpdatedByInput | PermissionUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: PermissionUpdateManyWithWhereWithoutUpdatedByInput | PermissionUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: PermissionScalarWhereInput | PermissionScalarWhereInput[]
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutCreatedByInput, DepartmentPermissionUncheckedCreateWithoutCreatedByInput> | DepartmentPermissionCreateWithoutCreatedByInput[] | DepartmentPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutCreatedByInput | DepartmentPermissionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutCreatedByInput | DepartmentPermissionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: DepartmentPermissionCreateManyCreatedByInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutCreatedByInput | DepartmentPermissionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutCreatedByInput | DepartmentPermissionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutUpdatedByInput, DepartmentPermissionUncheckedCreateWithoutUpdatedByInput> | DepartmentPermissionCreateWithoutUpdatedByInput[] | DepartmentPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutUpdatedByInput | DepartmentPermissionCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutUpdatedByInput | DepartmentPermissionUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: DepartmentPermissionCreateManyUpdatedByInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutUpdatedByInput | DepartmentPermissionUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutUpdatedByInput | DepartmentPermissionUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
-  export type UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<UserPermissionCreateWithoutCreatedByInput, UserPermissionUncheckedCreateWithoutCreatedByInput> | UserPermissionCreateWithoutCreatedByInput[] | UserPermissionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutCreatedByInput | UserPermissionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: UserPermissionUpsertWithWhereUniqueWithoutCreatedByInput | UserPermissionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: UserPermissionCreateManyCreatedByInputEnvelope
-    set?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    disconnect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    delete?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    update?: UserPermissionUpdateWithWhereUniqueWithoutCreatedByInput | UserPermissionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: UserPermissionUpdateManyWithWhereWithoutCreatedByInput | UserPermissionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: UserPermissionScalarWhereInput | UserPermissionScalarWhereInput[]
-  }
-
-  export type UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput = {
-    create?: XOR<UserPermissionCreateWithoutUpdatedByInput, UserPermissionUncheckedCreateWithoutUpdatedByInput> | UserPermissionCreateWithoutUpdatedByInput[] | UserPermissionUncheckedCreateWithoutUpdatedByInput[]
-    connectOrCreate?: UserPermissionCreateOrConnectWithoutUpdatedByInput | UserPermissionCreateOrConnectWithoutUpdatedByInput[]
-    upsert?: UserPermissionUpsertWithWhereUniqueWithoutUpdatedByInput | UserPermissionUpsertWithWhereUniqueWithoutUpdatedByInput[]
-    createMany?: UserPermissionCreateManyUpdatedByInputEnvelope
-    set?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    disconnect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    delete?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-    update?: UserPermissionUpdateWithWhereUniqueWithoutUpdatedByInput | UserPermissionUpdateWithWhereUniqueWithoutUpdatedByInput[]
-    updateMany?: UserPermissionUpdateManyWithWhereWithoutUpdatedByInput | UserPermissionUpdateManyWithWhereWithoutUpdatedByInput[]
-    deleteMany?: UserPermissionScalarWhereInput | UserPermissionScalarWhereInput[]
-  }
-
   export type ProfileUncheckedUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<ProfileCreateWithoutCreatedByInput, ProfileUncheckedCreateWithoutCreatedByInput> | ProfileCreateWithoutCreatedByInput[] | ProfileUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: ProfileCreateOrConnectWithoutCreatedByInput | ProfileCreateOrConnectWithoutCreatedByInput[]
@@ -25304,6 +17756,52 @@ export namespace Prisma {
     update?: ProfileUpdateWithWhereUniqueWithoutUpdatedByInput | ProfileUpdateWithWhereUniqueWithoutUpdatedByInput[]
     updateMany?: ProfileUpdateManyWithWhereWithoutUpdatedByInput | ProfileUpdateManyWithWhereWithoutUpdatedByInput[]
     deleteMany?: ProfileScalarWhereInput | ProfileScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCreatorProfileInput = {
+    create?: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatorProfileInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutUpdaterProfileInput = {
+    create?: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUpdaterProfileInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutProfileInput = {
+    create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneWithoutCreatorProfileNestedInput = {
+    create?: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatorProfileInput
+    upsert?: UserUpsertWithoutCreatorProfileInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorProfileInput, UserUpdateWithoutCreatorProfileInput>, UserUncheckedUpdateWithoutCreatorProfileInput>
+  }
+
+  export type UserUpdateOneWithoutUpdaterProfileNestedInput = {
+    create?: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUpdaterProfileInput
+    upsert?: UserUpsertWithoutUpdaterProfileInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterProfileInput, UserUpdateWithoutUpdaterProfileInput>, UserUncheckedUpdateWithoutUpdaterProfileInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutProfileNestedInput = {
+    create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileInput
+    upsert?: UserUpsertWithoutProfileInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
   }
 
   export type UserCreateNestedManyWithoutOrganizationInput = {
@@ -25432,141 +17930,6 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutCreatorDepartmentInput = {
-    create?: XOR<UserCreateWithoutCreatorDepartmentInput, UserUncheckedCreateWithoutCreatorDepartmentInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorDepartmentInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterDepartmentInput = {
-    create?: XOR<UserCreateWithoutUpdaterDepartmentInput, UserUncheckedCreateWithoutUpdaterDepartmentInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterDepartmentInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedManyWithoutDepartmentInput = {
-    create?: XOR<UserCreateWithoutDepartmentInput, UserUncheckedCreateWithoutDepartmentInput> | UserCreateWithoutDepartmentInput[] | UserUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDepartmentInput | UserCreateOrConnectWithoutDepartmentInput[]
-    createMany?: UserCreateManyDepartmentInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type DepartmentPermissionCreateNestedManyWithoutDepartmentInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutDepartmentInput, DepartmentPermissionUncheckedCreateWithoutDepartmentInput> | DepartmentPermissionCreateWithoutDepartmentInput[] | DepartmentPermissionUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutDepartmentInput | DepartmentPermissionCreateOrConnectWithoutDepartmentInput[]
-    createMany?: DepartmentPermissionCreateManyDepartmentInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
-  export type UserUncheckedCreateNestedManyWithoutDepartmentInput = {
-    create?: XOR<UserCreateWithoutDepartmentInput, UserUncheckedCreateWithoutDepartmentInput> | UserCreateWithoutDepartmentInput[] | UserUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDepartmentInput | UserCreateOrConnectWithoutDepartmentInput[]
-    createMany?: UserCreateManyDepartmentInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type DepartmentPermissionUncheckedCreateNestedManyWithoutDepartmentInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutDepartmentInput, DepartmentPermissionUncheckedCreateWithoutDepartmentInput> | DepartmentPermissionCreateWithoutDepartmentInput[] | DepartmentPermissionUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutDepartmentInput | DepartmentPermissionCreateOrConnectWithoutDepartmentInput[]
-    createMany?: DepartmentPermissionCreateManyDepartmentInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
-  export type UserUpdateOneWithoutCreatorDepartmentNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorDepartmentInput, UserUncheckedCreateWithoutCreatorDepartmentInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorDepartmentInput
-    upsert?: UserUpsertWithoutCreatorDepartmentInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorDepartmentInput, UserUpdateWithoutCreatorDepartmentInput>, UserUncheckedUpdateWithoutCreatorDepartmentInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterDepartmentNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterDepartmentInput, UserUncheckedCreateWithoutUpdaterDepartmentInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterDepartmentInput
-    upsert?: UserUpsertWithoutUpdaterDepartmentInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterDepartmentInput, UserUpdateWithoutUpdaterDepartmentInput>, UserUncheckedUpdateWithoutUpdaterDepartmentInput>
-  }
-
-  export type UserUpdateManyWithoutDepartmentNestedInput = {
-    create?: XOR<UserCreateWithoutDepartmentInput, UserUncheckedCreateWithoutDepartmentInput> | UserCreateWithoutDepartmentInput[] | UserUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDepartmentInput | UserCreateOrConnectWithoutDepartmentInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutDepartmentInput | UserUpsertWithWhereUniqueWithoutDepartmentInput[]
-    createMany?: UserCreateManyDepartmentInputEnvelope
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutDepartmentInput | UserUpdateWithWhereUniqueWithoutDepartmentInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutDepartmentInput | UserUpdateManyWithWhereWithoutDepartmentInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type DepartmentPermissionUpdateManyWithoutDepartmentNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutDepartmentInput, DepartmentPermissionUncheckedCreateWithoutDepartmentInput> | DepartmentPermissionCreateWithoutDepartmentInput[] | DepartmentPermissionUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutDepartmentInput | DepartmentPermissionCreateOrConnectWithoutDepartmentInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutDepartmentInput | DepartmentPermissionUpsertWithWhereUniqueWithoutDepartmentInput[]
-    createMany?: DepartmentPermissionCreateManyDepartmentInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutDepartmentInput | DepartmentPermissionUpdateWithWhereUniqueWithoutDepartmentInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutDepartmentInput | DepartmentPermissionUpdateManyWithWhereWithoutDepartmentInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
-  export type UserUncheckedUpdateManyWithoutDepartmentNestedInput = {
-    create?: XOR<UserCreateWithoutDepartmentInput, UserUncheckedCreateWithoutDepartmentInput> | UserCreateWithoutDepartmentInput[] | UserUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDepartmentInput | UserCreateOrConnectWithoutDepartmentInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutDepartmentInput | UserUpsertWithWhereUniqueWithoutDepartmentInput[]
-    createMany?: UserCreateManyDepartmentInputEnvelope
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutDepartmentInput | UserUpdateWithWhereUniqueWithoutDepartmentInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutDepartmentInput | UserUpdateManyWithWhereWithoutDepartmentInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutDepartmentNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutDepartmentInput, DepartmentPermissionUncheckedCreateWithoutDepartmentInput> | DepartmentPermissionCreateWithoutDepartmentInput[] | DepartmentPermissionUncheckedCreateWithoutDepartmentInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutDepartmentInput | DepartmentPermissionCreateOrConnectWithoutDepartmentInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutDepartmentInput | DepartmentPermissionUpsertWithWhereUniqueWithoutDepartmentInput[]
-    createMany?: DepartmentPermissionCreateManyDepartmentInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutDepartmentInput | DepartmentPermissionUpdateWithWhereUniqueWithoutDepartmentInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutDepartmentInput | DepartmentPermissionUpdateManyWithWhereWithoutDepartmentInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutCreatorPermissionInput = {
-    create?: XOR<UserCreateWithoutCreatorPermissionInput, UserUncheckedCreateWithoutCreatorPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorPermissionInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterPermissionInput = {
-    create?: XOR<UserCreateWithoutUpdaterPermissionInput, UserUncheckedCreateWithoutUpdaterPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterPermissionInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type DepartmentPermissionCreateNestedManyWithoutPermissionInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutPermissionInput, DepartmentPermissionUncheckedCreateWithoutPermissionInput> | DepartmentPermissionCreateWithoutPermissionInput[] | DepartmentPermissionUncheckedCreateWithoutPermissionInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutPermissionInput | DepartmentPermissionCreateOrConnectWithoutPermissionInput[]
-    createMany?: DepartmentPermissionCreateManyPermissionInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
   export type UserPermissionCreateNestedManyWithoutPermissionInput = {
     create?: XOR<UserPermissionCreateWithoutPermissionInput, UserPermissionUncheckedCreateWithoutPermissionInput> | UserPermissionCreateWithoutPermissionInput[] | UserPermissionUncheckedCreateWithoutPermissionInput[]
     connectOrCreate?: UserPermissionCreateOrConnectWithoutPermissionInput | UserPermissionCreateOrConnectWithoutPermissionInput[]
@@ -25574,52 +17937,11 @@ export namespace Prisma {
     connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
   }
 
-  export type DepartmentPermissionUncheckedCreateNestedManyWithoutPermissionInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutPermissionInput, DepartmentPermissionUncheckedCreateWithoutPermissionInput> | DepartmentPermissionCreateWithoutPermissionInput[] | DepartmentPermissionUncheckedCreateWithoutPermissionInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutPermissionInput | DepartmentPermissionCreateOrConnectWithoutPermissionInput[]
-    createMany?: DepartmentPermissionCreateManyPermissionInputEnvelope
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-  }
-
   export type UserPermissionUncheckedCreateNestedManyWithoutPermissionInput = {
     create?: XOR<UserPermissionCreateWithoutPermissionInput, UserPermissionUncheckedCreateWithoutPermissionInput> | UserPermissionCreateWithoutPermissionInput[] | UserPermissionUncheckedCreateWithoutPermissionInput[]
     connectOrCreate?: UserPermissionCreateOrConnectWithoutPermissionInput | UserPermissionCreateOrConnectWithoutPermissionInput[]
     createMany?: UserPermissionCreateManyPermissionInputEnvelope
     connect?: UserPermissionWhereUniqueInput | UserPermissionWhereUniqueInput[]
-  }
-
-  export type UserUpdateOneWithoutCreatorPermissionNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorPermissionInput, UserUncheckedCreateWithoutCreatorPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorPermissionInput
-    upsert?: UserUpsertWithoutCreatorPermissionInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorPermissionInput, UserUpdateWithoutCreatorPermissionInput>, UserUncheckedUpdateWithoutCreatorPermissionInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterPermissionNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterPermissionInput, UserUncheckedCreateWithoutUpdaterPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterPermissionInput
-    upsert?: UserUpsertWithoutUpdaterPermissionInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterPermissionInput, UserUpdateWithoutUpdaterPermissionInput>, UserUncheckedUpdateWithoutUpdaterPermissionInput>
-  }
-
-  export type DepartmentPermissionUpdateManyWithoutPermissionNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutPermissionInput, DepartmentPermissionUncheckedCreateWithoutPermissionInput> | DepartmentPermissionCreateWithoutPermissionInput[] | DepartmentPermissionUncheckedCreateWithoutPermissionInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutPermissionInput | DepartmentPermissionCreateOrConnectWithoutPermissionInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutPermissionInput | DepartmentPermissionUpsertWithWhereUniqueWithoutPermissionInput[]
-    createMany?: DepartmentPermissionCreateManyPermissionInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutPermissionInput | DepartmentPermissionUpdateWithWhereUniqueWithoutPermissionInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutPermissionInput | DepartmentPermissionUpdateManyWithWhereWithoutPermissionInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
   }
 
   export type UserPermissionUpdateManyWithoutPermissionNestedInput = {
@@ -25636,20 +17958,6 @@ export namespace Prisma {
     deleteMany?: UserPermissionScalarWhereInput | UserPermissionScalarWhereInput[]
   }
 
-  export type DepartmentPermissionUncheckedUpdateManyWithoutPermissionNestedInput = {
-    create?: XOR<DepartmentPermissionCreateWithoutPermissionInput, DepartmentPermissionUncheckedCreateWithoutPermissionInput> | DepartmentPermissionCreateWithoutPermissionInput[] | DepartmentPermissionUncheckedCreateWithoutPermissionInput[]
-    connectOrCreate?: DepartmentPermissionCreateOrConnectWithoutPermissionInput | DepartmentPermissionCreateOrConnectWithoutPermissionInput[]
-    upsert?: DepartmentPermissionUpsertWithWhereUniqueWithoutPermissionInput | DepartmentPermissionUpsertWithWhereUniqueWithoutPermissionInput[]
-    createMany?: DepartmentPermissionCreateManyPermissionInputEnvelope
-    set?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    disconnect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    delete?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    connect?: DepartmentPermissionWhereUniqueInput | DepartmentPermissionWhereUniqueInput[]
-    update?: DepartmentPermissionUpdateWithWhereUniqueWithoutPermissionInput | DepartmentPermissionUpdateWithWhereUniqueWithoutPermissionInput[]
-    updateMany?: DepartmentPermissionUpdateManyWithWhereWithoutPermissionInput | DepartmentPermissionUpdateManyWithWhereWithoutPermissionInput[]
-    deleteMany?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-  }
-
   export type UserPermissionUncheckedUpdateManyWithoutPermissionNestedInput = {
     create?: XOR<UserPermissionCreateWithoutPermissionInput, UserPermissionUncheckedCreateWithoutPermissionInput> | UserPermissionCreateWithoutPermissionInput[] | UserPermissionUncheckedCreateWithoutPermissionInput[]
     connectOrCreate?: UserPermissionCreateOrConnectWithoutPermissionInput | UserPermissionCreateOrConnectWithoutPermissionInput[]
@@ -25664,66 +17972,6 @@ export namespace Prisma {
     deleteMany?: UserPermissionScalarWhereInput | UserPermissionScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutCreatorDepartmentPermissionInput = {
-    create?: XOR<UserCreateWithoutCreatorDepartmentPermissionInput, UserUncheckedCreateWithoutCreatorDepartmentPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorDepartmentPermissionInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterDepartmentPermissionInput = {
-    create?: XOR<UserCreateWithoutUpdaterDepartmentPermissionInput, UserUncheckedCreateWithoutUpdaterDepartmentPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterDepartmentPermissionInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type DepartmentCreateNestedOneWithoutPermissionsInput = {
-    create?: XOR<DepartmentCreateWithoutPermissionsInput, DepartmentUncheckedCreateWithoutPermissionsInput>
-    connectOrCreate?: DepartmentCreateOrConnectWithoutPermissionsInput
-    connect?: DepartmentWhereUniqueInput
-  }
-
-  export type PermissionCreateNestedOneWithoutDeptInput = {
-    create?: XOR<PermissionCreateWithoutDeptInput, PermissionUncheckedCreateWithoutDeptInput>
-    connectOrCreate?: PermissionCreateOrConnectWithoutDeptInput
-    connect?: PermissionWhereUniqueInput
-  }
-
-  export type UserUpdateOneWithoutCreatorDepartmentPermissionNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorDepartmentPermissionInput, UserUncheckedCreateWithoutCreatorDepartmentPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorDepartmentPermissionInput
-    upsert?: UserUpsertWithoutCreatorDepartmentPermissionInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorDepartmentPermissionInput, UserUpdateWithoutCreatorDepartmentPermissionInput>, UserUncheckedUpdateWithoutCreatorDepartmentPermissionInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterDepartmentPermissionNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterDepartmentPermissionInput, UserUncheckedCreateWithoutUpdaterDepartmentPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterDepartmentPermissionInput
-    upsert?: UserUpsertWithoutUpdaterDepartmentPermissionInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterDepartmentPermissionInput, UserUpdateWithoutUpdaterDepartmentPermissionInput>, UserUncheckedUpdateWithoutUpdaterDepartmentPermissionInput>
-  }
-
-  export type DepartmentUpdateOneRequiredWithoutPermissionsNestedInput = {
-    create?: XOR<DepartmentCreateWithoutPermissionsInput, DepartmentUncheckedCreateWithoutPermissionsInput>
-    connectOrCreate?: DepartmentCreateOrConnectWithoutPermissionsInput
-    upsert?: DepartmentUpsertWithoutPermissionsInput
-    connect?: DepartmentWhereUniqueInput
-    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutPermissionsInput, DepartmentUpdateWithoutPermissionsInput>, DepartmentUncheckedUpdateWithoutPermissionsInput>
-  }
-
-  export type PermissionUpdateOneRequiredWithoutDeptNestedInput = {
-    create?: XOR<PermissionCreateWithoutDeptInput, PermissionUncheckedCreateWithoutDeptInput>
-    connectOrCreate?: PermissionCreateOrConnectWithoutDeptInput
-    upsert?: PermissionUpsertWithoutDeptInput
-    connect?: PermissionWhereUniqueInput
-    update?: XOR<XOR<PermissionUpdateToOneWithWhereWithoutDeptInput, PermissionUpdateWithoutDeptInput>, PermissionUncheckedUpdateWithoutDeptInput>
-  }
-
   export type UserCreateNestedOneWithoutPermissionsInput = {
     create?: XOR<UserCreateWithoutPermissionsInput, UserUncheckedCreateWithoutPermissionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPermissionsInput
@@ -25734,18 +17982,6 @@ export namespace Prisma {
     create?: XOR<PermissionCreateWithoutUsersInput, PermissionUncheckedCreateWithoutUsersInput>
     connectOrCreate?: PermissionCreateOrConnectWithoutUsersInput
     connect?: PermissionWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutCreatorUserPermissionInput = {
-    create?: XOR<UserCreateWithoutCreatorUserPermissionInput, UserUncheckedCreateWithoutCreatorUserPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorUserPermissionInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterUserPermissionInput = {
-    create?: XOR<UserCreateWithoutUpdaterUserPermissionInput, UserUncheckedCreateWithoutUpdaterUserPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterUserPermissionInput
-    connect?: UserWhereUniqueInput
   }
 
   export type UserUpdateOneRequiredWithoutPermissionsNestedInput = {
@@ -25762,72 +17998,6 @@ export namespace Prisma {
     upsert?: PermissionUpsertWithoutUsersInput
     connect?: PermissionWhereUniqueInput
     update?: XOR<XOR<PermissionUpdateToOneWithWhereWithoutUsersInput, PermissionUpdateWithoutUsersInput>, PermissionUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type UserUpdateOneWithoutCreatorUserPermissionNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorUserPermissionInput, UserUncheckedCreateWithoutCreatorUserPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorUserPermissionInput
-    upsert?: UserUpsertWithoutCreatorUserPermissionInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorUserPermissionInput, UserUpdateWithoutCreatorUserPermissionInput>, UserUncheckedUpdateWithoutCreatorUserPermissionInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterUserPermissionNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterUserPermissionInput, UserUncheckedCreateWithoutUpdaterUserPermissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterUserPermissionInput
-    upsert?: UserUpsertWithoutUpdaterUserPermissionInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterUserPermissionInput, UserUpdateWithoutUpdaterUserPermissionInput>, UserUncheckedUpdateWithoutUpdaterUserPermissionInput>
-  }
-
-  export type UserCreateNestedOneWithoutCreatorProfileInput = {
-    create?: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorProfileInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUpdaterProfileInput = {
-    create?: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterProfileInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutProfileInput = {
-    create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProfileInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserUpdateOneWithoutCreatorProfileNestedInput = {
-    create?: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCreatorProfileInput
-    upsert?: UserUpsertWithoutCreatorProfileInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatorProfileInput, UserUpdateWithoutCreatorProfileInput>, UserUncheckedUpdateWithoutCreatorProfileInput>
-  }
-
-  export type UserUpdateOneWithoutUpdaterProfileNestedInput = {
-    create?: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUpdaterProfileInput
-    upsert?: UserUpsertWithoutUpdaterProfileInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpdaterProfileInput, UserUpdateWithoutUpdaterProfileInput>, UserUncheckedUpdateWithoutUpdaterProfileInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutProfileNestedInput = {
-    create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProfileInput
-    upsert?: UserUpsertWithoutProfileInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -26061,24 +18231,20 @@ export namespace Prisma {
   export type ReportCategoryCreateWithoutChildrenInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parent?: ReportCategoryCreateNestedOneWithoutChildrenInput
-    createdBy?: UserCreateNestedOneWithoutCreatorReportCategoryInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterReportCategoryInput
     reports?: ReportCreateNestedManyWithoutCategoryInput
   }
 
   export type ReportCategoryUncheckedCreateWithoutChildrenInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -26090,23 +18256,19 @@ export namespace Prisma {
   export type ReportCategoryCreateWithoutParentInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     children?: ReportCategoryCreateNestedManyWithoutParentInput
-    createdBy?: UserCreateNestedOneWithoutCreatorReportCategoryInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterReportCategoryInput
     reports?: ReportCreateNestedManyWithoutCategoryInput
   }
 
   export type ReportCategoryUncheckedCreateWithoutParentInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
     children?: ReportCategoryUncheckedCreateNestedManyWithoutParentInput
     reports?: ReportUncheckedCreateNestedManyWithoutCategoryInput
   }
@@ -26121,145 +18283,10 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserCreateWithoutCreatorReportCategoryInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorReportCategoryInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorReportCategoryInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorReportCategoryInput, UserUncheckedCreateWithoutCreatorReportCategoryInput>
-  }
-
-  export type UserCreateWithoutUpdaterReportCategoryInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterReportCategoryInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterReportCategoryInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterReportCategoryInput, UserUncheckedCreateWithoutUpdaterReportCategoryInput>
-  }
-
   export type ReportCreateWithoutCategoryInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26267,15 +18294,13 @@ export namespace Prisma {
     updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
     organization?: OrganizationCreateNestedOneWithoutReportInput
     notes?: NoteCreateNestedManyWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
     files?: FileCreateNestedManyWithoutReportInput
   }
 
   export type ReportUncheckedCreateWithoutCategoryInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26283,7 +18308,6 @@ export namespace Prisma {
     updatedById?: string | null
     organizationId?: string | null
     notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
     files?: FileUncheckedCreateNestedManyWithoutReportInput
   }
 
@@ -26311,24 +18335,20 @@ export namespace Prisma {
   export type ReportCategoryUpdateWithoutChildrenInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ReportCategoryUpdateOneWithoutChildrenNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorReportCategoryNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterReportCategoryNestedInput
     reports?: ReportUpdateManyWithoutCategoryNestedInput
   }
 
   export type ReportCategoryUncheckedUpdateWithoutChildrenInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     reports?: ReportUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -26354,158 +18374,10 @@ export namespace Prisma {
     NOT?: ReportCategoryScalarWhereInput | ReportCategoryScalarWhereInput[]
     id?: StringFilter<"ReportCategory"> | string
     name?: StringFilter<"ReportCategory"> | string
-    code?: StringFilter<"ReportCategory"> | string
+    interval?: StringNullableFilter<"ReportCategory"> | string | null
     parentId?: StringNullableFilter<"ReportCategory"> | string | null
     createdAt?: DateTimeFilter<"ReportCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ReportCategory"> | Date | string
-    createdById?: StringNullableFilter<"ReportCategory"> | string | null
-    updatedById?: StringNullableFilter<"ReportCategory"> | string | null
-  }
-
-  export type UserUpsertWithoutCreatorReportCategoryInput = {
-    update: XOR<UserUpdateWithoutCreatorReportCategoryInput, UserUncheckedUpdateWithoutCreatorReportCategoryInput>
-    create: XOR<UserCreateWithoutCreatorReportCategoryInput, UserUncheckedCreateWithoutCreatorReportCategoryInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorReportCategoryInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorReportCategoryInput, UserUncheckedUpdateWithoutCreatorReportCategoryInput>
-  }
-
-  export type UserUpdateWithoutCreatorReportCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorReportCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterReportCategoryInput = {
-    update: XOR<UserUpdateWithoutUpdaterReportCategoryInput, UserUncheckedUpdateWithoutUpdaterReportCategoryInput>
-    create: XOR<UserCreateWithoutUpdaterReportCategoryInput, UserUncheckedCreateWithoutUpdaterReportCategoryInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterReportCategoryInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterReportCategoryInput, UserUncheckedUpdateWithoutUpdaterReportCategoryInput>
-  }
-
-  export type UserUpdateWithoutUpdaterReportCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterReportCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
 
   export type ReportUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -26531,8 +18403,7 @@ export namespace Prisma {
     id?: StringFilter<"Report"> | string
     categoryId?: StringFilter<"Report"> | string
     periodYear?: StringFilter<"Report"> | string
-    periodMonth?: StringFilter<"Report"> | string
-    periodDate?: StringNullableFilter<"Report"> | string | null
+    periodMonth?: StringNullableFilter<"Report"> | string | null
     version?: IntFilter<"Report"> | number
     createdAt?: DateTimeFilter<"Report"> | Date | string
     updatedAt?: DateTimeFilter<"Report"> | Date | string
@@ -26544,24 +18415,20 @@ export namespace Prisma {
   export type ReportCategoryCreateWithoutReportsInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parent?: ReportCategoryCreateNestedOneWithoutChildrenInput
     children?: ReportCategoryCreateNestedManyWithoutParentInput
-    createdBy?: UserCreateNestedOneWithoutCreatorReportCategoryInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterReportCategoryInput
   }
 
   export type ReportCategoryUncheckedCreateWithoutReportsInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
     children?: ReportCategoryUncheckedCreateNestedManyWithoutParentInput
   }
 
@@ -26577,26 +18444,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -26608,26 +18462,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -26644,26 +18485,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -26675,26 +18503,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -26751,39 +18566,8 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type StageCreateWithoutReportInput = {
-    id?: string
-    comment?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    type: StageTypeCreateNestedOneWithoutStagesInput
-    createdBy?: UserCreateNestedOneWithoutCreatorStageInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterStageInput
-  }
-
-  export type StageUncheckedCreateWithoutReportInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    createdById?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-  }
-
-  export type StageCreateOrConnectWithoutReportInput = {
-    where: StageWhereUniqueInput
-    create: XOR<StageCreateWithoutReportInput, StageUncheckedCreateWithoutReportInput>
-  }
-
-  export type StageCreateManyReportInputEnvelope = {
-    data: StageCreateManyReportInput | StageCreateManyReportInput[]
-    skipDuplicates?: boolean
-  }
-
   export type FileCreateWithoutReportInput = {
     id?: string
-    filename: string
     path: string
     mimeType?: string | null
     size?: number | null
@@ -26793,7 +18577,6 @@ export namespace Prisma {
 
   export type FileUncheckedCreateWithoutReportInput = {
     id?: string
-    filename: string
     path: string
     mimeType?: string | null
     size?: number | null
@@ -26825,24 +18608,20 @@ export namespace Prisma {
   export type ReportCategoryUpdateWithoutReportsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ReportCategoryUpdateOneWithoutChildrenNestedInput
     children?: ReportCategoryUpdateManyWithoutParentNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorReportCategoryNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterReportCategoryNestedInput
   }
 
   export type ReportCategoryUncheckedUpdateWithoutReportsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     children?: ReportCategoryUncheckedUpdateManyWithoutParentNestedInput
   }
 
@@ -26864,26 +18643,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -26895,26 +18661,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -26937,26 +18690,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -26968,26 +18708,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -27046,36 +18773,6 @@ export namespace Prisma {
     reportId?: StringNullableFilter<"Note"> | string | null
   }
 
-  export type StageUpsertWithWhereUniqueWithoutReportInput = {
-    where: StageWhereUniqueInput
-    update: XOR<StageUpdateWithoutReportInput, StageUncheckedUpdateWithoutReportInput>
-    create: XOR<StageCreateWithoutReportInput, StageUncheckedCreateWithoutReportInput>
-  }
-
-  export type StageUpdateWithWhereUniqueWithoutReportInput = {
-    where: StageWhereUniqueInput
-    data: XOR<StageUpdateWithoutReportInput, StageUncheckedUpdateWithoutReportInput>
-  }
-
-  export type StageUpdateManyWithWhereWithoutReportInput = {
-    where: StageScalarWhereInput
-    data: XOR<StageUpdateManyMutationInput, StageUncheckedUpdateManyWithoutReportInput>
-  }
-
-  export type StageScalarWhereInput = {
-    AND?: StageScalarWhereInput | StageScalarWhereInput[]
-    OR?: StageScalarWhereInput[]
-    NOT?: StageScalarWhereInput | StageScalarWhereInput[]
-    id?: StringFilter<"Stage"> | string
-    stageTypeId?: StringFilter<"Stage"> | string
-    comment?: StringNullableFilter<"Stage"> | string | null
-    createdById?: StringNullableFilter<"Stage"> | string | null
-    updatedById?: StringNullableFilter<"Stage"> | string | null
-    createdAt?: DateTimeNullableFilter<"Stage"> | Date | string | null
-    updatedAt?: DateTimeNullableFilter<"Stage"> | Date | string | null
-    reportId?: StringNullableFilter<"Stage"> | string | null
-  }
-
   export type FileUpsertWithWhereUniqueWithoutReportInput = {
     where: FileWhereUniqueInput
     update: XOR<FileUpdateWithoutReportInput, FileUncheckedUpdateWithoutReportInput>
@@ -27097,7 +18794,6 @@ export namespace Prisma {
     OR?: FileScalarWhereInput[]
     NOT?: FileScalarWhereInput | FileScalarWhereInput[]
     id?: StringFilter<"File"> | string
-    filename?: StringFilter<"File"> | string
     path?: StringFilter<"File"> | string
     mimeType?: StringNullableFilter<"File"> | string | null
     size?: IntNullableFilter<"File"> | number | null
@@ -27109,8 +18805,7 @@ export namespace Prisma {
   export type ReportCreateWithoutFilesInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27119,15 +18814,13 @@ export namespace Prisma {
     updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
     organization?: OrganizationCreateNestedOneWithoutReportInput
     notes?: NoteCreateNestedManyWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
   }
 
   export type ReportUncheckedCreateWithoutFilesInput = {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27135,7 +18828,6 @@ export namespace Prisma {
     updatedById?: string | null
     organizationId?: string | null
     notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
   }
 
   export type ReportCreateOrConnectWithoutFilesInput = {
@@ -27157,8 +18849,7 @@ export namespace Prisma {
   export type ReportUpdateWithoutFilesInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27167,15 +18858,13 @@ export namespace Prisma {
     updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
     organization?: OrganizationUpdateOneWithoutReportNestedInput
     notes?: NoteUpdateManyWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
   }
 
   export type ReportUncheckedUpdateWithoutFilesInput = {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27183,7 +18872,6 @@ export namespace Prisma {
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
   }
 
   export type UserCreateWithoutCreatorNoteInput = {
@@ -27193,26 +18881,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -27224,26 +18899,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -27260,26 +18922,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -27291,26 +18940,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -27323,8 +18959,7 @@ export namespace Prisma {
   export type ReportCreateWithoutNotesInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27332,7 +18967,6 @@ export namespace Prisma {
     createdBy?: UserCreateNestedOneWithoutCreatorReportInput
     updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
     organization?: OrganizationCreateNestedOneWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
     files?: FileCreateNestedManyWithoutReportInput
   }
 
@@ -27340,15 +18974,13 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     createdById?: string | null
     updatedById?: string | null
     organizationId?: string | null
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
     files?: FileUncheckedCreateNestedManyWithoutReportInput
   }
 
@@ -27375,26 +19007,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -27406,26 +19025,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -27448,26 +19054,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -27479,26 +19072,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -27517,8 +19097,7 @@ export namespace Prisma {
   export type ReportUpdateWithoutNotesInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27526,7 +19105,6 @@ export namespace Prisma {
     createdBy?: UserUpdateOneWithoutCreatorReportNestedInput
     updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
     organization?: OrganizationUpdateOneWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
     files?: FileUpdateManyWithoutReportNestedInput
   }
 
@@ -27534,493 +19112,31 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
     files?: FileUncheckedUpdateManyWithoutReportNestedInput
   }
 
-  export type StageTypeCreateWithoutStagesInput = {
-    id?: string
-    model: string
-    order: number
-    value: string
-    label: string
-  }
-
-  export type StageTypeUncheckedCreateWithoutStagesInput = {
-    id?: string
-    model: string
-    order: number
-    value: string
-    label: string
-  }
-
-  export type StageTypeCreateOrConnectWithoutStagesInput = {
-    where: StageTypeWhereUniqueInput
-    create: XOR<StageTypeCreateWithoutStagesInput, StageTypeUncheckedCreateWithoutStagesInput>
-  }
-
-  export type UserCreateWithoutCreatorStageInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorStageInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorStageInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorStageInput, UserUncheckedCreateWithoutCreatorStageInput>
-  }
-
-  export type UserCreateWithoutUpdaterStageInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterStageInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterStageInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterStageInput, UserUncheckedCreateWithoutUpdaterStageInput>
-  }
-
-  export type ReportCreateWithoutStagesInput = {
-    id?: string
-    periodYear: string
-    periodMonth: string
-    periodDate?: string | null
-    version?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    category: ReportCategoryCreateNestedOneWithoutReportsInput
-    createdBy?: UserCreateNestedOneWithoutCreatorReportInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
-    organization?: OrganizationCreateNestedOneWithoutReportInput
-    notes?: NoteCreateNestedManyWithoutReportInput
-    files?: FileCreateNestedManyWithoutReportInput
-  }
-
-  export type ReportUncheckedCreateWithoutStagesInput = {
-    id?: string
-    categoryId: string
-    periodYear: string
-    periodMonth: string
-    periodDate?: string | null
-    version?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-    organizationId?: string | null
-    notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    files?: FileUncheckedCreateNestedManyWithoutReportInput
-  }
-
-  export type ReportCreateOrConnectWithoutStagesInput = {
-    where: ReportWhereUniqueInput
-    create: XOR<ReportCreateWithoutStagesInput, ReportUncheckedCreateWithoutStagesInput>
-  }
-
-  export type StageTypeUpsertWithoutStagesInput = {
-    update: XOR<StageTypeUpdateWithoutStagesInput, StageTypeUncheckedUpdateWithoutStagesInput>
-    create: XOR<StageTypeCreateWithoutStagesInput, StageTypeUncheckedCreateWithoutStagesInput>
-    where?: StageTypeWhereInput
-  }
-
-  export type StageTypeUpdateToOneWithWhereWithoutStagesInput = {
-    where?: StageTypeWhereInput
-    data: XOR<StageTypeUpdateWithoutStagesInput, StageTypeUncheckedUpdateWithoutStagesInput>
-  }
-
-  export type StageTypeUpdateWithoutStagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    value?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type StageTypeUncheckedUpdateWithoutStagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    value?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserUpsertWithoutCreatorStageInput = {
-    update: XOR<UserUpdateWithoutCreatorStageInput, UserUncheckedUpdateWithoutCreatorStageInput>
-    create: XOR<UserCreateWithoutCreatorStageInput, UserUncheckedCreateWithoutCreatorStageInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorStageInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorStageInput, UserUncheckedUpdateWithoutCreatorStageInput>
-  }
-
-  export type UserUpdateWithoutCreatorStageInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorStageInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterStageInput = {
-    update: XOR<UserUpdateWithoutUpdaterStageInput, UserUncheckedUpdateWithoutUpdaterStageInput>
-    create: XOR<UserCreateWithoutUpdaterStageInput, UserUncheckedCreateWithoutUpdaterStageInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterStageInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterStageInput, UserUncheckedUpdateWithoutUpdaterStageInput>
-  }
-
-  export type UserUpdateWithoutUpdaterStageInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterStageInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type ReportUpsertWithoutStagesInput = {
-    update: XOR<ReportUpdateWithoutStagesInput, ReportUncheckedUpdateWithoutStagesInput>
-    create: XOR<ReportCreateWithoutStagesInput, ReportUncheckedCreateWithoutStagesInput>
-    where?: ReportWhereInput
-  }
-
-  export type ReportUpdateToOneWithWhereWithoutStagesInput = {
-    where?: ReportWhereInput
-    data: XOR<ReportUpdateWithoutStagesInput, ReportUncheckedUpdateWithoutStagesInput>
-  }
-
-  export type ReportUpdateWithoutStagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: ReportCategoryUpdateOneRequiredWithoutReportsNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorReportNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
-    organization?: OrganizationUpdateOneWithoutReportNestedInput
-    notes?: NoteUpdateManyWithoutReportNestedInput
-    files?: FileUpdateManyWithoutReportNestedInput
-  }
-
-  export type ReportUncheckedUpdateWithoutStagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
-    periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    files?: FileUncheckedUpdateManyWithoutReportNestedInput
-  }
-
-  export type StageCreateWithoutTypeInput = {
-    id?: string
-    comment?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    createdBy?: UserCreateNestedOneWithoutCreatorStageInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterStageInput
-    report?: ReportCreateNestedOneWithoutStagesInput
-  }
-
-  export type StageUncheckedCreateWithoutTypeInput = {
-    id?: string
-    comment?: string | null
-    createdById?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageCreateOrConnectWithoutTypeInput = {
-    where: StageWhereUniqueInput
-    create: XOR<StageCreateWithoutTypeInput, StageUncheckedCreateWithoutTypeInput>
-  }
-
-  export type StageCreateManyTypeInputEnvelope = {
-    data: StageCreateManyTypeInput | StageCreateManyTypeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type StageUpsertWithWhereUniqueWithoutTypeInput = {
-    where: StageWhereUniqueInput
-    update: XOR<StageUpdateWithoutTypeInput, StageUncheckedUpdateWithoutTypeInput>
-    create: XOR<StageCreateWithoutTypeInput, StageUncheckedCreateWithoutTypeInput>
-  }
-
-  export type StageUpdateWithWhereUniqueWithoutTypeInput = {
-    where: StageWhereUniqueInput
-    data: XOR<StageUpdateWithoutTypeInput, StageUncheckedUpdateWithoutTypeInput>
-  }
-
-  export type StageUpdateManyWithWhereWithoutTypeInput = {
-    where: StageScalarWhereInput
-    data: XOR<StageUpdateManyMutationInput, StageUncheckedUpdateManyWithoutTypeInput>
-  }
-
-  export type DepartmentCreateWithoutUsersInput = {
+  export type RoleCreateWithoutUsersInput = {
     id?: string
     name: string
-    code: string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentInput
-    permissions?: DepartmentPermissionCreateNestedManyWithoutDepartmentInput
+    level: number
   }
 
-  export type DepartmentUncheckedCreateWithoutUsersInput = {
+  export type RoleUncheckedCreateWithoutUsersInput = {
     id?: string
     name: string
-    code: string
-    createdById?: string | null
-    updatedById?: string | null
-    permissions?: DepartmentPermissionUncheckedCreateNestedManyWithoutDepartmentInput
+    level: number
   }
 
-  export type DepartmentCreateOrConnectWithoutUsersInput = {
-    where: DepartmentWhereUniqueInput
-    create: XOR<DepartmentCreateWithoutUsersInput, DepartmentUncheckedCreateWithoutUsersInput>
+  export type RoleCreateOrConnectWithoutUsersInput = {
+    where: RoleWhereUniqueInput
+    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
   }
 
   export type OrganizationCreateWithoutUsersInput = {
@@ -28042,37 +19158,16 @@ export namespace Prisma {
     create: XOR<OrganizationCreateWithoutUsersInput, OrganizationUncheckedCreateWithoutUsersInput>
   }
 
-  export type RoleCreateWithoutUsersInput = {
-    id?: string
-    name: string
-    level: number
-  }
-
-  export type RoleUncheckedCreateWithoutUsersInput = {
-    id?: string
-    name: string
-    level: number
-  }
-
-  export type RoleCreateOrConnectWithoutUsersInput = {
-    where: RoleWhereUniqueInput
-    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-  }
-
   export type UserPermissionCreateWithoutUserInput = {
     id?: string
     createdAt?: Date | string
     permission: PermissionCreateNestedOneWithoutUsersInput
-    createdBy?: UserCreateNestedOneWithoutCreatorUserPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterUserPermissionInput
   }
 
   export type UserPermissionUncheckedCreateWithoutUserInput = {
     id?: string
     permissionId: string
     createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type UserPermissionCreateOrConnectWithoutUserInput = {
@@ -28170,71 +19265,10 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type StageCreateWithoutCreatedByInput = {
-    id?: string
-    comment?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    type: StageTypeCreateNestedOneWithoutStagesInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterStageInput
-    report?: ReportCreateNestedOneWithoutStagesInput
-  }
-
-  export type StageUncheckedCreateWithoutCreatedByInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageCreateOrConnectWithoutCreatedByInput = {
-    where: StageWhereUniqueInput
-    create: XOR<StageCreateWithoutCreatedByInput, StageUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type StageCreateManyCreatedByInputEnvelope = {
-    data: StageCreateManyCreatedByInput | StageCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type StageCreateWithoutUpdatedByInput = {
-    id?: string
-    comment?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    type: StageTypeCreateNestedOneWithoutStagesInput
-    createdBy?: UserCreateNestedOneWithoutCreatorStageInput
-    report?: ReportCreateNestedOneWithoutStagesInput
-  }
-
-  export type StageUncheckedCreateWithoutUpdatedByInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    createdById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageCreateOrConnectWithoutUpdatedByInput = {
-    where: StageWhereUniqueInput
-    create: XOR<StageCreateWithoutUpdatedByInput, StageUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type StageCreateManyUpdatedByInputEnvelope = {
-    data: StageCreateManyUpdatedByInput | StageCreateManyUpdatedByInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ReportCreateWithoutCreatedByInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28242,7 +19276,6 @@ export namespace Prisma {
     updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
     organization?: OrganizationCreateNestedOneWithoutReportInput
     notes?: NoteCreateNestedManyWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
     files?: FileCreateNestedManyWithoutReportInput
   }
 
@@ -28250,15 +19283,13 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     updatedById?: string | null
     organizationId?: string | null
     notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
     files?: FileUncheckedCreateNestedManyWithoutReportInput
   }
 
@@ -28275,8 +19306,7 @@ export namespace Prisma {
   export type ReportCreateWithoutUpdatedByInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28284,7 +19314,6 @@ export namespace Prisma {
     createdBy?: UserCreateNestedOneWithoutCreatorReportInput
     organization?: OrganizationCreateNestedOneWithoutReportInput
     notes?: NoteCreateNestedManyWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
     files?: FileCreateNestedManyWithoutReportInput
   }
 
@@ -28292,15 +19321,13 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     createdById?: string | null
     organizationId?: string | null
     notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
     files?: FileUncheckedCreateNestedManyWithoutReportInput
   }
 
@@ -28311,306 +19338,6 @@ export namespace Prisma {
 
   export type ReportCreateManyUpdatedByInputEnvelope = {
     data: ReportCreateManyUpdatedByInput | ReportCreateManyUpdatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ReportCategoryCreateWithoutCreatedByInput = {
-    id?: string
-    name: string
-    code: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    parent?: ReportCategoryCreateNestedOneWithoutChildrenInput
-    children?: ReportCategoryCreateNestedManyWithoutParentInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterReportCategoryInput
-    reports?: ReportCreateNestedManyWithoutCategoryInput
-  }
-
-  export type ReportCategoryUncheckedCreateWithoutCreatedByInput = {
-    id?: string
-    name: string
-    code: string
-    parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    updatedById?: string | null
-    children?: ReportCategoryUncheckedCreateNestedManyWithoutParentInput
-    reports?: ReportUncheckedCreateNestedManyWithoutCategoryInput
-  }
-
-  export type ReportCategoryCreateOrConnectWithoutCreatedByInput = {
-    where: ReportCategoryWhereUniqueInput
-    create: XOR<ReportCategoryCreateWithoutCreatedByInput, ReportCategoryUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type ReportCategoryCreateManyCreatedByInputEnvelope = {
-    data: ReportCategoryCreateManyCreatedByInput | ReportCategoryCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ReportCategoryCreateWithoutUpdatedByInput = {
-    id?: string
-    name: string
-    code: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    parent?: ReportCategoryCreateNestedOneWithoutChildrenInput
-    children?: ReportCategoryCreateNestedManyWithoutParentInput
-    createdBy?: UserCreateNestedOneWithoutCreatorReportCategoryInput
-    reports?: ReportCreateNestedManyWithoutCategoryInput
-  }
-
-  export type ReportCategoryUncheckedCreateWithoutUpdatedByInput = {
-    id?: string
-    name: string
-    code: string
-    parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById?: string | null
-    children?: ReportCategoryUncheckedCreateNestedManyWithoutParentInput
-    reports?: ReportUncheckedCreateNestedManyWithoutCategoryInput
-  }
-
-  export type ReportCategoryCreateOrConnectWithoutUpdatedByInput = {
-    where: ReportCategoryWhereUniqueInput
-    create: XOR<ReportCategoryCreateWithoutUpdatedByInput, ReportCategoryUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type ReportCategoryCreateManyUpdatedByInputEnvelope = {
-    data: ReportCategoryCreateManyUpdatedByInput | ReportCategoryCreateManyUpdatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type DepartmentCreateWithoutCreatedByInput = {
-    id?: string
-    name: string
-    code: string
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentInput
-    users?: UserCreateNestedManyWithoutDepartmentInput
-    permissions?: DepartmentPermissionCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentUncheckedCreateWithoutCreatedByInput = {
-    id?: string
-    name: string
-    code: string
-    updatedById?: string | null
-    users?: UserUncheckedCreateNestedManyWithoutDepartmentInput
-    permissions?: DepartmentPermissionUncheckedCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentCreateOrConnectWithoutCreatedByInput = {
-    where: DepartmentWhereUniqueInput
-    create: XOR<DepartmentCreateWithoutCreatedByInput, DepartmentUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type DepartmentCreateManyCreatedByInputEnvelope = {
-    data: DepartmentCreateManyCreatedByInput | DepartmentCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type DepartmentCreateWithoutUpdatedByInput = {
-    id?: string
-    name: string
-    code: string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentInput
-    users?: UserCreateNestedManyWithoutDepartmentInput
-    permissions?: DepartmentPermissionCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentUncheckedCreateWithoutUpdatedByInput = {
-    id?: string
-    name: string
-    code: string
-    createdById?: string | null
-    users?: UserUncheckedCreateNestedManyWithoutDepartmentInput
-    permissions?: DepartmentPermissionUncheckedCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentCreateOrConnectWithoutUpdatedByInput = {
-    where: DepartmentWhereUniqueInput
-    create: XOR<DepartmentCreateWithoutUpdatedByInput, DepartmentUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type DepartmentCreateManyUpdatedByInputEnvelope = {
-    data: DepartmentCreateManyUpdatedByInput | DepartmentCreateManyUpdatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PermissionCreateWithoutCreatedByInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    updatedBy?: UserCreateNestedOneWithoutUpdaterPermissionInput
-    dept?: DepartmentPermissionCreateNestedManyWithoutPermissionInput
-    users?: UserPermissionCreateNestedManyWithoutPermissionInput
-  }
-
-  export type PermissionUncheckedCreateWithoutCreatedByInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    updatedById?: string | null
-    dept?: DepartmentPermissionUncheckedCreateNestedManyWithoutPermissionInput
-    users?: UserPermissionUncheckedCreateNestedManyWithoutPermissionInput
-  }
-
-  export type PermissionCreateOrConnectWithoutCreatedByInput = {
-    where: PermissionWhereUniqueInput
-    create: XOR<PermissionCreateWithoutCreatedByInput, PermissionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type PermissionCreateManyCreatedByInputEnvelope = {
-    data: PermissionCreateManyCreatedByInput | PermissionCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PermissionCreateWithoutUpdatedByInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorPermissionInput
-    dept?: DepartmentPermissionCreateNestedManyWithoutPermissionInput
-    users?: UserPermissionCreateNestedManyWithoutPermissionInput
-  }
-
-  export type PermissionUncheckedCreateWithoutUpdatedByInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById?: string | null
-    dept?: DepartmentPermissionUncheckedCreateNestedManyWithoutPermissionInput
-    users?: UserPermissionUncheckedCreateNestedManyWithoutPermissionInput
-  }
-
-  export type PermissionCreateOrConnectWithoutUpdatedByInput = {
-    where: PermissionWhereUniqueInput
-    create: XOR<PermissionCreateWithoutUpdatedByInput, PermissionUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type PermissionCreateManyUpdatedByInputEnvelope = {
-    data: PermissionCreateManyUpdatedByInput | PermissionCreateManyUpdatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type DepartmentPermissionCreateWithoutCreatedByInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentPermissionInput
-    department: DepartmentCreateNestedOneWithoutPermissionsInput
-    permission: PermissionCreateNestedOneWithoutDeptInput
-  }
-
-  export type DepartmentPermissionUncheckedCreateWithoutCreatedByInput = {
-    id?: string
-    departmentId: string
-    permissionId: string
-    createdAt?: Date | string
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionCreateOrConnectWithoutCreatedByInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    create: XOR<DepartmentPermissionCreateWithoutCreatedByInput, DepartmentPermissionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type DepartmentPermissionCreateManyCreatedByInputEnvelope = {
-    data: DepartmentPermissionCreateManyCreatedByInput | DepartmentPermissionCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type DepartmentPermissionCreateWithoutUpdatedByInput = {
-    id?: string
-    createdAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentPermissionInput
-    department: DepartmentCreateNestedOneWithoutPermissionsInput
-    permission: PermissionCreateNestedOneWithoutDeptInput
-  }
-
-  export type DepartmentPermissionUncheckedCreateWithoutUpdatedByInput = {
-    id?: string
-    departmentId: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-  }
-
-  export type DepartmentPermissionCreateOrConnectWithoutUpdatedByInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    create: XOR<DepartmentPermissionCreateWithoutUpdatedByInput, DepartmentPermissionUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type DepartmentPermissionCreateManyUpdatedByInputEnvelope = {
-    data: DepartmentPermissionCreateManyUpdatedByInput | DepartmentPermissionCreateManyUpdatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserPermissionCreateWithoutCreatedByInput = {
-    id?: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutPermissionsInput
-    permission: PermissionCreateNestedOneWithoutUsersInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterUserPermissionInput
-  }
-
-  export type UserPermissionUncheckedCreateWithoutCreatedByInput = {
-    id?: string
-    userId: string
-    permissionId: string
-    createdAt?: Date | string
-    updatedById?: string | null
-  }
-
-  export type UserPermissionCreateOrConnectWithoutCreatedByInput = {
-    where: UserPermissionWhereUniqueInput
-    create: XOR<UserPermissionCreateWithoutCreatedByInput, UserPermissionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type UserPermissionCreateManyCreatedByInputEnvelope = {
-    data: UserPermissionCreateManyCreatedByInput | UserPermissionCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserPermissionCreateWithoutUpdatedByInput = {
-    id?: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutPermissionsInput
-    permission: PermissionCreateNestedOneWithoutUsersInput
-    createdBy?: UserCreateNestedOneWithoutCreatorUserPermissionInput
-  }
-
-  export type UserPermissionUncheckedCreateWithoutUpdatedByInput = {
-    id?: string
-    userId: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-  }
-
-  export type UserPermissionCreateOrConnectWithoutUpdatedByInput = {
-    where: UserPermissionWhereUniqueInput
-    create: XOR<UserPermissionCreateWithoutUpdatedByInput, UserPermissionUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type UserPermissionCreateManyUpdatedByInputEnvelope = {
-    data: UserPermissionCreateManyUpdatedByInput | UserPermissionCreateManyUpdatedByInput[]
     skipDuplicates?: boolean
   }
 
@@ -28682,33 +19409,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DepartmentUpsertWithoutUsersInput = {
-    update: XOR<DepartmentUpdateWithoutUsersInput, DepartmentUncheckedUpdateWithoutUsersInput>
-    create: XOR<DepartmentCreateWithoutUsersInput, DepartmentUncheckedCreateWithoutUsersInput>
-    where?: DepartmentWhereInput
+  export type RoleUpsertWithoutUsersInput = {
+    update: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
+    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+    where?: RoleWhereInput
   }
 
-  export type DepartmentUpdateToOneWithWhereWithoutUsersInput = {
-    where?: DepartmentWhereInput
-    data: XOR<DepartmentUpdateWithoutUsersInput, DepartmentUncheckedUpdateWithoutUsersInput>
+  export type RoleUpdateToOneWithWhereWithoutUsersInput = {
+    where?: RoleWhereInput
+    data: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
   }
 
-  export type DepartmentUpdateWithoutUsersInput = {
+  export type RoleUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentNestedInput
-    permissions?: DepartmentPermissionUpdateManyWithoutDepartmentNestedInput
+    level?: IntFieldUpdateOperationsInput | number
   }
 
-  export type DepartmentUncheckedUpdateWithoutUsersInput = {
+  export type RoleUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: DepartmentPermissionUncheckedUpdateManyWithoutDepartmentNestedInput
+    level?: IntFieldUpdateOperationsInput | number
   }
 
   export type OrganizationUpsertWithoutUsersInput = {
@@ -28736,29 +19457,6 @@ export namespace Prisma {
     Report?: ReportUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
-  export type RoleUpsertWithoutUsersInput = {
-    update: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
-    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-    where?: RoleWhereInput
-  }
-
-  export type RoleUpdateToOneWithWhereWithoutUsersInput = {
-    where?: RoleWhereInput
-    data: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type RoleUpdateWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    level?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type RoleUncheckedUpdateWithoutUsersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    level?: IntFieldUpdateOperationsInput | number
-  }
-
   export type UserPermissionUpsertWithWhereUniqueWithoutUserInput = {
     where: UserPermissionWhereUniqueInput
     update: XOR<UserPermissionUpdateWithoutUserInput, UserPermissionUncheckedUpdateWithoutUserInput>
@@ -28783,8 +19481,6 @@ export namespace Prisma {
     userId?: StringFilter<"UserPermission"> | string
     permissionId?: StringFilter<"UserPermission"> | string
     createdAt?: DateTimeFilter<"UserPermission"> | Date | string
-    createdById?: StringNullableFilter<"UserPermission"> | string | null
-    updatedById?: StringNullableFilter<"UserPermission"> | string | null
   }
 
   export type ProfileUpsertWithoutUserInput = {
@@ -28854,38 +19550,6 @@ export namespace Prisma {
     data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyWithoutUpdatedByInput>
   }
 
-  export type StageUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: StageWhereUniqueInput
-    update: XOR<StageUpdateWithoutCreatedByInput, StageUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<StageCreateWithoutCreatedByInput, StageUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type StageUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: StageWhereUniqueInput
-    data: XOR<StageUpdateWithoutCreatedByInput, StageUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type StageUpdateManyWithWhereWithoutCreatedByInput = {
-    where: StageScalarWhereInput
-    data: XOR<StageUpdateManyMutationInput, StageUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type StageUpsertWithWhereUniqueWithoutUpdatedByInput = {
-    where: StageWhereUniqueInput
-    update: XOR<StageUpdateWithoutUpdatedByInput, StageUncheckedUpdateWithoutUpdatedByInput>
-    create: XOR<StageCreateWithoutUpdatedByInput, StageUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type StageUpdateWithWhereUniqueWithoutUpdatedByInput = {
-    where: StageWhereUniqueInput
-    data: XOR<StageUpdateWithoutUpdatedByInput, StageUncheckedUpdateWithoutUpdatedByInput>
-  }
-
-  export type StageUpdateManyWithWhereWithoutUpdatedByInput = {
-    where: StageScalarWhereInput
-    data: XOR<StageUpdateManyMutationInput, StageUncheckedUpdateManyWithoutUpdatedByInput>
-  }
-
   export type ReportUpsertWithWhereUniqueWithoutCreatedByInput = {
     where: ReportWhereUniqueInput
     update: XOR<ReportUpdateWithoutCreatedByInput, ReportUncheckedUpdateWithoutCreatedByInput>
@@ -28916,204 +19580,6 @@ export namespace Prisma {
   export type ReportUpdateManyWithWhereWithoutUpdatedByInput = {
     where: ReportScalarWhereInput
     data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyWithoutUpdatedByInput>
-  }
-
-  export type ReportCategoryUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: ReportCategoryWhereUniqueInput
-    update: XOR<ReportCategoryUpdateWithoutCreatedByInput, ReportCategoryUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<ReportCategoryCreateWithoutCreatedByInput, ReportCategoryUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type ReportCategoryUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: ReportCategoryWhereUniqueInput
-    data: XOR<ReportCategoryUpdateWithoutCreatedByInput, ReportCategoryUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type ReportCategoryUpdateManyWithWhereWithoutCreatedByInput = {
-    where: ReportCategoryScalarWhereInput
-    data: XOR<ReportCategoryUpdateManyMutationInput, ReportCategoryUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type ReportCategoryUpsertWithWhereUniqueWithoutUpdatedByInput = {
-    where: ReportCategoryWhereUniqueInput
-    update: XOR<ReportCategoryUpdateWithoutUpdatedByInput, ReportCategoryUncheckedUpdateWithoutUpdatedByInput>
-    create: XOR<ReportCategoryCreateWithoutUpdatedByInput, ReportCategoryUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type ReportCategoryUpdateWithWhereUniqueWithoutUpdatedByInput = {
-    where: ReportCategoryWhereUniqueInput
-    data: XOR<ReportCategoryUpdateWithoutUpdatedByInput, ReportCategoryUncheckedUpdateWithoutUpdatedByInput>
-  }
-
-  export type ReportCategoryUpdateManyWithWhereWithoutUpdatedByInput = {
-    where: ReportCategoryScalarWhereInput
-    data: XOR<ReportCategoryUpdateManyMutationInput, ReportCategoryUncheckedUpdateManyWithoutUpdatedByInput>
-  }
-
-  export type DepartmentUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: DepartmentWhereUniqueInput
-    update: XOR<DepartmentUpdateWithoutCreatedByInput, DepartmentUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<DepartmentCreateWithoutCreatedByInput, DepartmentUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type DepartmentUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: DepartmentWhereUniqueInput
-    data: XOR<DepartmentUpdateWithoutCreatedByInput, DepartmentUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type DepartmentUpdateManyWithWhereWithoutCreatedByInput = {
-    where: DepartmentScalarWhereInput
-    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type DepartmentScalarWhereInput = {
-    AND?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
-    OR?: DepartmentScalarWhereInput[]
-    NOT?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
-    id?: StringFilter<"Department"> | string
-    name?: StringFilter<"Department"> | string
-    code?: StringFilter<"Department"> | string
-    createdById?: StringNullableFilter<"Department"> | string | null
-    updatedById?: StringNullableFilter<"Department"> | string | null
-  }
-
-  export type DepartmentUpsertWithWhereUniqueWithoutUpdatedByInput = {
-    where: DepartmentWhereUniqueInput
-    update: XOR<DepartmentUpdateWithoutUpdatedByInput, DepartmentUncheckedUpdateWithoutUpdatedByInput>
-    create: XOR<DepartmentCreateWithoutUpdatedByInput, DepartmentUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type DepartmentUpdateWithWhereUniqueWithoutUpdatedByInput = {
-    where: DepartmentWhereUniqueInput
-    data: XOR<DepartmentUpdateWithoutUpdatedByInput, DepartmentUncheckedUpdateWithoutUpdatedByInput>
-  }
-
-  export type DepartmentUpdateManyWithWhereWithoutUpdatedByInput = {
-    where: DepartmentScalarWhereInput
-    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyWithoutUpdatedByInput>
-  }
-
-  export type PermissionUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: PermissionWhereUniqueInput
-    update: XOR<PermissionUpdateWithoutCreatedByInput, PermissionUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<PermissionCreateWithoutCreatedByInput, PermissionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type PermissionUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: PermissionWhereUniqueInput
-    data: XOR<PermissionUpdateWithoutCreatedByInput, PermissionUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type PermissionUpdateManyWithWhereWithoutCreatedByInput = {
-    where: PermissionScalarWhereInput
-    data: XOR<PermissionUpdateManyMutationInput, PermissionUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type PermissionScalarWhereInput = {
-    AND?: PermissionScalarWhereInput | PermissionScalarWhereInput[]
-    OR?: PermissionScalarWhereInput[]
-    NOT?: PermissionScalarWhereInput | PermissionScalarWhereInput[]
-    id?: StringFilter<"Permission"> | string
-    name?: StringFilter<"Permission"> | string
-    resource?: StringFilter<"Permission"> | string
-    action?: StringFilter<"Permission"> | string
-    description?: StringNullableFilter<"Permission"> | string | null
-    createdAt?: DateTimeFilter<"Permission"> | Date | string
-    updatedAt?: DateTimeFilter<"Permission"> | Date | string
-    createdById?: StringNullableFilter<"Permission"> | string | null
-    updatedById?: StringNullableFilter<"Permission"> | string | null
-  }
-
-  export type PermissionUpsertWithWhereUniqueWithoutUpdatedByInput = {
-    where: PermissionWhereUniqueInput
-    update: XOR<PermissionUpdateWithoutUpdatedByInput, PermissionUncheckedUpdateWithoutUpdatedByInput>
-    create: XOR<PermissionCreateWithoutUpdatedByInput, PermissionUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type PermissionUpdateWithWhereUniqueWithoutUpdatedByInput = {
-    where: PermissionWhereUniqueInput
-    data: XOR<PermissionUpdateWithoutUpdatedByInput, PermissionUncheckedUpdateWithoutUpdatedByInput>
-  }
-
-  export type PermissionUpdateManyWithWhereWithoutUpdatedByInput = {
-    where: PermissionScalarWhereInput
-    data: XOR<PermissionUpdateManyMutationInput, PermissionUncheckedUpdateManyWithoutUpdatedByInput>
-  }
-
-  export type DepartmentPermissionUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    update: XOR<DepartmentPermissionUpdateWithoutCreatedByInput, DepartmentPermissionUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<DepartmentPermissionCreateWithoutCreatedByInput, DepartmentPermissionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type DepartmentPermissionUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    data: XOR<DepartmentPermissionUpdateWithoutCreatedByInput, DepartmentPermissionUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type DepartmentPermissionUpdateManyWithWhereWithoutCreatedByInput = {
-    where: DepartmentPermissionScalarWhereInput
-    data: XOR<DepartmentPermissionUpdateManyMutationInput, DepartmentPermissionUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type DepartmentPermissionScalarWhereInput = {
-    AND?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-    OR?: DepartmentPermissionScalarWhereInput[]
-    NOT?: DepartmentPermissionScalarWhereInput | DepartmentPermissionScalarWhereInput[]
-    id?: StringFilter<"DepartmentPermission"> | string
-    departmentId?: StringFilter<"DepartmentPermission"> | string
-    permissionId?: StringFilter<"DepartmentPermission"> | string
-    createdAt?: DateTimeFilter<"DepartmentPermission"> | Date | string
-    createdById?: StringNullableFilter<"DepartmentPermission"> | string | null
-    updatedById?: StringNullableFilter<"DepartmentPermission"> | string | null
-  }
-
-  export type DepartmentPermissionUpsertWithWhereUniqueWithoutUpdatedByInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    update: XOR<DepartmentPermissionUpdateWithoutUpdatedByInput, DepartmentPermissionUncheckedUpdateWithoutUpdatedByInput>
-    create: XOR<DepartmentPermissionCreateWithoutUpdatedByInput, DepartmentPermissionUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type DepartmentPermissionUpdateWithWhereUniqueWithoutUpdatedByInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    data: XOR<DepartmentPermissionUpdateWithoutUpdatedByInput, DepartmentPermissionUncheckedUpdateWithoutUpdatedByInput>
-  }
-
-  export type DepartmentPermissionUpdateManyWithWhereWithoutUpdatedByInput = {
-    where: DepartmentPermissionScalarWhereInput
-    data: XOR<DepartmentPermissionUpdateManyMutationInput, DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByInput>
-  }
-
-  export type UserPermissionUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: UserPermissionWhereUniqueInput
-    update: XOR<UserPermissionUpdateWithoutCreatedByInput, UserPermissionUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<UserPermissionCreateWithoutCreatedByInput, UserPermissionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type UserPermissionUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: UserPermissionWhereUniqueInput
-    data: XOR<UserPermissionUpdateWithoutCreatedByInput, UserPermissionUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type UserPermissionUpdateManyWithWhereWithoutCreatedByInput = {
-    where: UserPermissionScalarWhereInput
-    data: XOR<UserPermissionUpdateManyMutationInput, UserPermissionUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type UserPermissionUpsertWithWhereUniqueWithoutUpdatedByInput = {
-    where: UserPermissionWhereUniqueInput
-    update: XOR<UserPermissionUpdateWithoutUpdatedByInput, UserPermissionUncheckedUpdateWithoutUpdatedByInput>
-    create: XOR<UserPermissionCreateWithoutUpdatedByInput, UserPermissionUncheckedCreateWithoutUpdatedByInput>
-  }
-
-  export type UserPermissionUpdateWithWhereUniqueWithoutUpdatedByInput = {
-    where: UserPermissionWhereUniqueInput
-    data: XOR<UserPermissionUpdateWithoutUpdatedByInput, UserPermissionUncheckedUpdateWithoutUpdatedByInput>
-  }
-
-  export type UserPermissionUpdateManyWithWhereWithoutUpdatedByInput = {
-    where: UserPermissionScalarWhereInput
-    data: XOR<UserPermissionUpdateManyMutationInput, UserPermissionUncheckedUpdateManyWithoutUpdatedByInput>
   }
 
   export type ProfileUpsertWithWhereUniqueWithoutCreatedByInput = {
@@ -29164,6 +19630,270 @@ export namespace Prisma {
     data: XOR<ProfileUpdateManyMutationInput, ProfileUncheckedUpdateManyWithoutUpdatedByInput>
   }
 
+  export type UserCreateWithoutCreatorProfileInput = {
+    id?: string
+    username: string
+    password: string
+    status?: $Enums.UserStatus
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
+    permissions?: UserPermissionCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
+    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
+    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
+    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
+    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatorProfileInput = {
+    id?: string
+    username: string
+    password: string
+    status?: $Enums.UserStatus
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    roleId?: string | null
+    organizationId?: string | null
+    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
+    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
+    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatorProfileInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
+  }
+
+  export type UserCreateWithoutUpdaterProfileInput = {
+    id?: string
+    username: string
+    password: string
+    status?: $Enums.UserStatus
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
+    permissions?: UserPermissionCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
+    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
+    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
+    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
+    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutUpdaterProfileInput = {
+    id?: string
+    username: string
+    password: string
+    status?: $Enums.UserStatus
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    roleId?: string | null
+    organizationId?: string | null
+    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
+    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
+    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutUpdaterProfileInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
+  }
+
+  export type UserCreateWithoutProfileInput = {
+    id?: string
+    username: string
+    password: string
+    status?: $Enums.UserStatus
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
+    permissions?: UserPermissionCreateNestedManyWithoutUserInput
+    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
+    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
+    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
+    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
+    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
+    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutProfileInput = {
+    id?: string
+    username: string
+    password: string
+    status?: $Enums.UserStatus
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    roleId?: string | null
+    organizationId?: string | null
+    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
+    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
+    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
+    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
+    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutProfileInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+  }
+
+  export type UserUpsertWithoutCreatorProfileInput = {
+    update: XOR<UserUpdateWithoutCreatorProfileInput, UserUncheckedUpdateWithoutCreatorProfileInput>
+    create: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCreatorProfileInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCreatorProfileInput, UserUncheckedUpdateWithoutCreatorProfileInput>
+  }
+
+  export type UserUpdateWithoutCreatorProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
+    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
+    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
+    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
+    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
+    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCreatorProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
+    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
+    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
+  }
+
+  export type UserUpsertWithoutUpdaterProfileInput = {
+    update: XOR<UserUpdateWithoutUpdaterProfileInput, UserUncheckedUpdateWithoutUpdaterProfileInput>
+    create: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUpdaterProfileInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUpdaterProfileInput, UserUncheckedUpdateWithoutUpdaterProfileInput>
+  }
+
+  export type UserUpdateWithoutUpdaterProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
+    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
+    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
+    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
+    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
+    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUpdaterProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
+    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
+    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUpsertWithoutProfileInput = {
+    update: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
+    create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProfileInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type UserUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
+    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
+    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
+    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
+    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
+    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
+    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
+    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
+    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
+    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
+    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
+  }
+
   export type UserCreateWithoutOrganizationInput = {
     id?: string
     username: string
@@ -29171,26 +19901,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -29202,26 +19919,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
     roleId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -29239,8 +19943,7 @@ export namespace Prisma {
   export type ReportCreateWithoutOrganizationInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29248,7 +19951,6 @@ export namespace Prisma {
     createdBy?: UserCreateNestedOneWithoutCreatorReportInput
     updatedBy?: UserCreateNestedOneWithoutUpdaterReportInput
     notes?: NoteCreateNestedManyWithoutReportInput
-    stages?: StageCreateNestedManyWithoutReportInput
     files?: FileCreateNestedManyWithoutReportInput
   }
 
@@ -29256,15 +19958,13 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     createdById?: string | null
     updatedById?: string | null
     notes?: NoteUncheckedCreateNestedManyWithoutReportInput
-    stages?: StageUncheckedCreateNestedManyWithoutReportInput
     files?: FileUncheckedCreateNestedManyWithoutReportInput
   }
 
@@ -29304,9 +20004,8 @@ export namespace Prisma {
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    departmentId?: StringNullableFilter<"User"> | string | null
-    organizationId?: StringNullableFilter<"User"> | string | null
     roleId?: StringNullableFilter<"User"> | string | null
+    organizationId?: StringNullableFilter<"User"> | string | null
   }
 
   export type ReportUpsertWithWhereUniqueWithoutOrganizationInput = {
@@ -29332,26 +20031,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
     organization?: OrganizationCreateNestedOneWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -29363,26 +20049,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
     organizationId?: string | null
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -29413,590 +20086,16 @@ export namespace Prisma {
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutRoleInput>
   }
 
-  export type UserCreateWithoutCreatorDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorDepartmentInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorDepartmentInput, UserUncheckedCreateWithoutCreatorDepartmentInput>
-  }
-
-  export type UserCreateWithoutUpdaterDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterDepartmentInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterDepartmentInput, UserUncheckedCreateWithoutUpdaterDepartmentInput>
-  }
-
-  export type UserCreateWithoutDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutDepartmentInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDepartmentInput, UserUncheckedCreateWithoutDepartmentInput>
-  }
-
-  export type UserCreateManyDepartmentInputEnvelope = {
-    data: UserCreateManyDepartmentInput | UserCreateManyDepartmentInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type DepartmentPermissionCreateWithoutDepartmentInput = {
-    id?: string
-    createdAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentPermissionInput
-    permission: PermissionCreateNestedOneWithoutDeptInput
-  }
-
-  export type DepartmentPermissionUncheckedCreateWithoutDepartmentInput = {
-    id?: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionCreateOrConnectWithoutDepartmentInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    create: XOR<DepartmentPermissionCreateWithoutDepartmentInput, DepartmentPermissionUncheckedCreateWithoutDepartmentInput>
-  }
-
-  export type DepartmentPermissionCreateManyDepartmentInputEnvelope = {
-    data: DepartmentPermissionCreateManyDepartmentInput | DepartmentPermissionCreateManyDepartmentInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserUpsertWithoutCreatorDepartmentInput = {
-    update: XOR<UserUpdateWithoutCreatorDepartmentInput, UserUncheckedUpdateWithoutCreatorDepartmentInput>
-    create: XOR<UserCreateWithoutCreatorDepartmentInput, UserUncheckedCreateWithoutCreatorDepartmentInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorDepartmentInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorDepartmentInput, UserUncheckedUpdateWithoutCreatorDepartmentInput>
-  }
-
-  export type UserUpdateWithoutCreatorDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterDepartmentInput = {
-    update: XOR<UserUpdateWithoutUpdaterDepartmentInput, UserUncheckedUpdateWithoutUpdaterDepartmentInput>
-    create: XOR<UserCreateWithoutUpdaterDepartmentInput, UserUncheckedCreateWithoutUpdaterDepartmentInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterDepartmentInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterDepartmentInput, UserUncheckedUpdateWithoutUpdaterDepartmentInput>
-  }
-
-  export type UserUpdateWithoutUpdaterDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutDepartmentInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutDepartmentInput, UserUncheckedUpdateWithoutDepartmentInput>
-    create: XOR<UserCreateWithoutDepartmentInput, UserUncheckedCreateWithoutDepartmentInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutDepartmentInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutDepartmentInput, UserUncheckedUpdateWithoutDepartmentInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutDepartmentInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutDepartmentInput>
-  }
-
-  export type DepartmentPermissionUpsertWithWhereUniqueWithoutDepartmentInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    update: XOR<DepartmentPermissionUpdateWithoutDepartmentInput, DepartmentPermissionUncheckedUpdateWithoutDepartmentInput>
-    create: XOR<DepartmentPermissionCreateWithoutDepartmentInput, DepartmentPermissionUncheckedCreateWithoutDepartmentInput>
-  }
-
-  export type DepartmentPermissionUpdateWithWhereUniqueWithoutDepartmentInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    data: XOR<DepartmentPermissionUpdateWithoutDepartmentInput, DepartmentPermissionUncheckedUpdateWithoutDepartmentInput>
-  }
-
-  export type DepartmentPermissionUpdateManyWithWhereWithoutDepartmentInput = {
-    where: DepartmentPermissionScalarWhereInput
-    data: XOR<DepartmentPermissionUpdateManyMutationInput, DepartmentPermissionUncheckedUpdateManyWithoutDepartmentInput>
-  }
-
-  export type UserCreateWithoutCreatorPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorPermissionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorPermissionInput, UserUncheckedCreateWithoutCreatorPermissionInput>
-  }
-
-  export type UserCreateWithoutUpdaterPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterPermissionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterPermissionInput, UserUncheckedCreateWithoutUpdaterPermissionInput>
-  }
-
-  export type DepartmentPermissionCreateWithoutPermissionInput = {
-    id?: string
-    createdAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentPermissionInput
-    department: DepartmentCreateNestedOneWithoutPermissionsInput
-  }
-
-  export type DepartmentPermissionUncheckedCreateWithoutPermissionInput = {
-    id?: string
-    departmentId: string
-    createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionCreateOrConnectWithoutPermissionInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    create: XOR<DepartmentPermissionCreateWithoutPermissionInput, DepartmentPermissionUncheckedCreateWithoutPermissionInput>
-  }
-
-  export type DepartmentPermissionCreateManyPermissionInputEnvelope = {
-    data: DepartmentPermissionCreateManyPermissionInput | DepartmentPermissionCreateManyPermissionInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UserPermissionCreateWithoutPermissionInput = {
     id?: string
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutPermissionsInput
-    createdBy?: UserCreateNestedOneWithoutCreatorUserPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterUserPermissionInput
   }
 
   export type UserPermissionUncheckedCreateWithoutPermissionInput = {
     id?: string
     userId: string
     createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type UserPermissionCreateOrConnectWithoutPermissionInput = {
@@ -30007,168 +20106,6 @@ export namespace Prisma {
   export type UserPermissionCreateManyPermissionInputEnvelope = {
     data: UserPermissionCreateManyPermissionInput | UserPermissionCreateManyPermissionInput[]
     skipDuplicates?: boolean
-  }
-
-  export type UserUpsertWithoutCreatorPermissionInput = {
-    update: XOR<UserUpdateWithoutCreatorPermissionInput, UserUncheckedUpdateWithoutCreatorPermissionInput>
-    create: XOR<UserCreateWithoutCreatorPermissionInput, UserUncheckedCreateWithoutCreatorPermissionInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorPermissionInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorPermissionInput, UserUncheckedUpdateWithoutCreatorPermissionInput>
-  }
-
-  export type UserUpdateWithoutCreatorPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterPermissionInput = {
-    update: XOR<UserUpdateWithoutUpdaterPermissionInput, UserUncheckedUpdateWithoutUpdaterPermissionInput>
-    create: XOR<UserCreateWithoutUpdaterPermissionInput, UserUncheckedCreateWithoutUpdaterPermissionInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterPermissionInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterPermissionInput, UserUncheckedUpdateWithoutUpdaterPermissionInput>
-  }
-
-  export type UserUpdateWithoutUpdaterPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type DepartmentPermissionUpsertWithWhereUniqueWithoutPermissionInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    update: XOR<DepartmentPermissionUpdateWithoutPermissionInput, DepartmentPermissionUncheckedUpdateWithoutPermissionInput>
-    create: XOR<DepartmentPermissionCreateWithoutPermissionInput, DepartmentPermissionUncheckedCreateWithoutPermissionInput>
-  }
-
-  export type DepartmentPermissionUpdateWithWhereUniqueWithoutPermissionInput = {
-    where: DepartmentPermissionWhereUniqueInput
-    data: XOR<DepartmentPermissionUpdateWithoutPermissionInput, DepartmentPermissionUncheckedUpdateWithoutPermissionInput>
-  }
-
-  export type DepartmentPermissionUpdateManyWithWhereWithoutPermissionInput = {
-    where: DepartmentPermissionScalarWhereInput
-    data: XOR<DepartmentPermissionUpdateManyMutationInput, DepartmentPermissionUncheckedUpdateManyWithoutPermissionInput>
   }
 
   export type UserPermissionUpsertWithWhereUniqueWithoutPermissionInput = {
@@ -30187,406 +20124,6 @@ export namespace Prisma {
     data: XOR<UserPermissionUpdateManyMutationInput, UserPermissionUncheckedUpdateManyWithoutPermissionInput>
   }
 
-  export type UserCreateWithoutCreatorDepartmentPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorDepartmentPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorDepartmentPermissionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorDepartmentPermissionInput, UserUncheckedCreateWithoutCreatorDepartmentPermissionInput>
-  }
-
-  export type UserCreateWithoutUpdaterDepartmentPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterDepartmentPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterDepartmentPermissionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterDepartmentPermissionInput, UserUncheckedCreateWithoutUpdaterDepartmentPermissionInput>
-  }
-
-  export type DepartmentCreateWithoutPermissionsInput = {
-    id?: string
-    name: string
-    code: string
-    createdBy?: UserCreateNestedOneWithoutCreatorDepartmentInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterDepartmentInput
-    users?: UserCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentUncheckedCreateWithoutPermissionsInput = {
-    id?: string
-    name: string
-    code: string
-    createdById?: string | null
-    updatedById?: string | null
-    users?: UserUncheckedCreateNestedManyWithoutDepartmentInput
-  }
-
-  export type DepartmentCreateOrConnectWithoutPermissionsInput = {
-    where: DepartmentWhereUniqueInput
-    create: XOR<DepartmentCreateWithoutPermissionsInput, DepartmentUncheckedCreateWithoutPermissionsInput>
-  }
-
-  export type PermissionCreateWithoutDeptInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterPermissionInput
-    users?: UserPermissionCreateNestedManyWithoutPermissionInput
-  }
-
-  export type PermissionUncheckedCreateWithoutDeptInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-    users?: UserPermissionUncheckedCreateNestedManyWithoutPermissionInput
-  }
-
-  export type PermissionCreateOrConnectWithoutDeptInput = {
-    where: PermissionWhereUniqueInput
-    create: XOR<PermissionCreateWithoutDeptInput, PermissionUncheckedCreateWithoutDeptInput>
-  }
-
-  export type UserUpsertWithoutCreatorDepartmentPermissionInput = {
-    update: XOR<UserUpdateWithoutCreatorDepartmentPermissionInput, UserUncheckedUpdateWithoutCreatorDepartmentPermissionInput>
-    create: XOR<UserCreateWithoutCreatorDepartmentPermissionInput, UserUncheckedCreateWithoutCreatorDepartmentPermissionInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorDepartmentPermissionInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorDepartmentPermissionInput, UserUncheckedUpdateWithoutCreatorDepartmentPermissionInput>
-  }
-
-  export type UserUpdateWithoutCreatorDepartmentPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorDepartmentPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterDepartmentPermissionInput = {
-    update: XOR<UserUpdateWithoutUpdaterDepartmentPermissionInput, UserUncheckedUpdateWithoutUpdaterDepartmentPermissionInput>
-    create: XOR<UserCreateWithoutUpdaterDepartmentPermissionInput, UserUncheckedCreateWithoutUpdaterDepartmentPermissionInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterDepartmentPermissionInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterDepartmentPermissionInput, UserUncheckedUpdateWithoutUpdaterDepartmentPermissionInput>
-  }
-
-  export type UserUpdateWithoutUpdaterDepartmentPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterDepartmentPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type DepartmentUpsertWithoutPermissionsInput = {
-    update: XOR<DepartmentUpdateWithoutPermissionsInput, DepartmentUncheckedUpdateWithoutPermissionsInput>
-    create: XOR<DepartmentCreateWithoutPermissionsInput, DepartmentUncheckedCreateWithoutPermissionsInput>
-    where?: DepartmentWhereInput
-  }
-
-  export type DepartmentUpdateToOneWithWhereWithoutPermissionsInput = {
-    where?: DepartmentWhereInput
-    data: XOR<DepartmentUpdateWithoutPermissionsInput, DepartmentUncheckedUpdateWithoutPermissionsInput>
-  }
-
-  export type DepartmentUpdateWithoutPermissionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentNestedInput
-    users?: UserUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentUncheckedUpdateWithoutPermissionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    users?: UserUncheckedUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type PermissionUpsertWithoutDeptInput = {
-    update: XOR<PermissionUpdateWithoutDeptInput, PermissionUncheckedUpdateWithoutDeptInput>
-    create: XOR<PermissionCreateWithoutDeptInput, PermissionUncheckedCreateWithoutDeptInput>
-    where?: PermissionWhereInput
-  }
-
-  export type PermissionUpdateToOneWithWhereWithoutDeptInput = {
-    where?: PermissionWhereInput
-    data: XOR<PermissionUpdateWithoutDeptInput, PermissionUncheckedUpdateWithoutDeptInput>
-  }
-
-  export type PermissionUpdateWithoutDeptInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterPermissionNestedInput
-    users?: UserPermissionUpdateManyWithoutPermissionNestedInput
-  }
-
-  export type PermissionUncheckedUpdateWithoutDeptInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    users?: UserPermissionUncheckedUpdateManyWithoutPermissionNestedInput
-  }
-
   export type UserCreateWithoutPermissionsInput = {
     id?: string
     username: string
@@ -30594,26 +20131,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
     role?: RoleCreateNestedOneWithoutUsersInput
+    organization?: OrganizationCreateNestedOneWithoutUsersInput
     profile?: ProfileCreateNestedOneWithoutUserInput
     CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
   }
@@ -30625,26 +20149,13 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
     roleId?: string | null
+    organizationId?: string | null
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
     CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
     UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
   }
@@ -30662,9 +20173,6 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdBy?: UserCreateNestedOneWithoutCreatorPermissionInput
-    updatedBy?: UserCreateNestedOneWithoutUpdaterPermissionInput
-    dept?: DepartmentPermissionCreateNestedManyWithoutPermissionInput
   }
 
   export type PermissionUncheckedCreateWithoutUsersInput = {
@@ -30675,148 +20183,11 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-    dept?: DepartmentPermissionUncheckedCreateNestedManyWithoutPermissionInput
   }
 
   export type PermissionCreateOrConnectWithoutUsersInput = {
     where: PermissionWhereUniqueInput
     create: XOR<PermissionCreateWithoutUsersInput, PermissionUncheckedCreateWithoutUsersInput>
-  }
-
-  export type UserCreateWithoutCreatorUserPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorUserPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorUserPermissionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorUserPermissionInput, UserUncheckedCreateWithoutCreatorUserPermissionInput>
-  }
-
-  export type UserCreateWithoutUpdaterUserPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterUserPermissionInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterUserPermissionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterUserPermissionInput, UserUncheckedCreateWithoutUpdaterUserPermissionInput>
   }
 
   export type UserUpsertWithoutPermissionsInput = {
@@ -30837,26 +20208,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
+    organization?: OrganizationUpdateOneWithoutUsersNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -30868,26 +20226,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -30911,9 +20256,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterPermissionNestedInput
-    dept?: DepartmentPermissionUpdateManyWithoutPermissionNestedInput
   }
 
   export type PermissionUncheckedUpdateWithoutUsersInput = {
@@ -30924,592 +20266,20 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    dept?: DepartmentPermissionUncheckedUpdateManyWithoutPermissionNestedInput
-  }
-
-  export type UserUpsertWithoutCreatorUserPermissionInput = {
-    update: XOR<UserUpdateWithoutCreatorUserPermissionInput, UserUncheckedUpdateWithoutCreatorUserPermissionInput>
-    create: XOR<UserCreateWithoutCreatorUserPermissionInput, UserUncheckedCreateWithoutCreatorUserPermissionInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorUserPermissionInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorUserPermissionInput, UserUncheckedUpdateWithoutCreatorUserPermissionInput>
-  }
-
-  export type UserUpdateWithoutCreatorUserPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorUserPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterUserPermissionInput = {
-    update: XOR<UserUpdateWithoutUpdaterUserPermissionInput, UserUncheckedUpdateWithoutUpdaterUserPermissionInput>
-    create: XOR<UserCreateWithoutUpdaterUserPermissionInput, UserUncheckedCreateWithoutUpdaterUserPermissionInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterUserPermissionInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterUserPermissionInput, UserUncheckedUpdateWithoutUpdaterUserPermissionInput>
-  }
-
-  export type UserUpdateWithoutUpdaterUserPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterUserPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserCreateWithoutCreatorProfileInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatorProfileInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatorProfileInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
-  }
-
-  export type UserCreateWithoutUpdaterProfileInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    profile?: ProfileCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpdaterProfileInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpdaterProfileInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
-  }
-
-  export type UserCreateWithoutProfileInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    department?: DepartmentCreateNestedOneWithoutUsersInput
-    organization?: OrganizationCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    permissions?: UserPermissionCreateNestedManyWithoutUserInput
-    CreatorNote?: NoteCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutProfileInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    departmentId?: string | null
-    organizationId?: string | null
-    roleId?: string | null
-    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
-    CreatorNote?: NoteUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterNote?: NoteUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorStage?: StageUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterStage?: StageUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReport?: ReportUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReport?: ReportUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterReportCategory?: ReportCategoryUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartment?: DepartmentUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartment?: DepartmentUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorPermission?: PermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterPermission?: PermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterUserPermission?: UserPermissionUncheckedCreateNestedManyWithoutUpdatedByInput
-    CreatorProfile?: ProfileUncheckedCreateNestedManyWithoutCreatedByInput
-    UpdaterProfile?: ProfileUncheckedCreateNestedManyWithoutUpdatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutProfileInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
-  }
-
-  export type UserUpsertWithoutCreatorProfileInput = {
-    update: XOR<UserUpdateWithoutCreatorProfileInput, UserUncheckedUpdateWithoutCreatorProfileInput>
-    create: XOR<UserCreateWithoutCreatorProfileInput, UserUncheckedCreateWithoutCreatorProfileInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCreatorProfileInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatorProfileInput, UserUncheckedUpdateWithoutCreatorProfileInput>
-  }
-
-  export type UserUpdateWithoutCreatorProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCreatorProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUpsertWithoutUpdaterProfileInput = {
-    update: XOR<UserUpdateWithoutUpdaterProfileInput, UserUncheckedUpdateWithoutUpdaterProfileInput>
-    create: XOR<UserCreateWithoutUpdaterProfileInput, UserUncheckedCreateWithoutUpdaterProfileInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUpdaterProfileInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpdaterProfileInput, UserUncheckedUpdateWithoutUpdaterProfileInput>
-  }
-
-  export type UserUpdateWithoutUpdaterProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpdaterProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUpsertWithoutProfileInput = {
-    update: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
-    create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutProfileInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
-  }
-
-  export type UserUpdateWithoutProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
 
   export type ReportCategoryCreateManyParentInput = {
     id?: string
     name: string
-    code: string
+    interval?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type ReportCreateManyCategoryInput = {
     id?: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31521,23 +20291,19 @@ export namespace Prisma {
   export type ReportCategoryUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: ReportCategoryUpdateManyWithoutParentNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorReportCategoryNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterReportCategoryNestedInput
     reports?: ReportUpdateManyWithoutCategoryNestedInput
   }
 
   export type ReportCategoryUncheckedUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     children?: ReportCategoryUncheckedUpdateManyWithoutParentNestedInput
     reports?: ReportUncheckedUpdateManyWithoutCategoryNestedInput
   }
@@ -31545,18 +20311,15 @@ export namespace Prisma {
   export type ReportCategoryUncheckedUpdateManyWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
+    interval?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReportUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31564,15 +20327,13 @@ export namespace Prisma {
     updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
     organization?: OrganizationUpdateOneWithoutReportNestedInput
     notes?: NoteUpdateManyWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
     files?: FileUpdateManyWithoutReportNestedInput
   }
 
   export type ReportUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31580,15 +20341,13 @@ export namespace Prisma {
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
     files?: FileUncheckedUpdateManyWithoutReportNestedInput
   }
 
   export type ReportUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31606,19 +20365,8 @@ export namespace Prisma {
     updatedById?: string | null
   }
 
-  export type StageCreateManyReportInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    createdById?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-  }
-
   export type FileCreateManyReportInput = {
     id?: string
-    filename: string
     path: string
     mimeType?: string | null
     size?: number | null
@@ -31653,39 +20401,8 @@ export namespace Prisma {
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type StageUpdateWithoutReportInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: StageTypeUpdateOneRequiredWithoutStagesNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorStageNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterStageNestedInput
-  }
-
-  export type StageUncheckedUpdateWithoutReportInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type StageUncheckedUpdateManyWithoutReportInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
   export type FileUpdateWithoutReportInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31695,7 +20412,6 @@ export namespace Prisma {
 
   export type FileUncheckedUpdateWithoutReportInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31705,7 +20421,6 @@ export namespace Prisma {
 
   export type FileUncheckedUpdateManyWithoutReportInput = {
     id?: StringFieldUpdateOperationsInput | string
-    filename?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     mimeType?: NullableStringFieldUpdateOperationsInput | string | null
     size?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31713,52 +20428,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type StageCreateManyTypeInput = {
-    id?: string
-    comment?: string | null
-    createdById?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageUpdateWithoutTypeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: UserUpdateOneWithoutCreatorStageNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterStageNestedInput
-    report?: ReportUpdateOneWithoutStagesNestedInput
-  }
-
-  export type StageUncheckedUpdateWithoutTypeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type StageUncheckedUpdateManyWithoutTypeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type UserPermissionCreateManyUserInput = {
     id?: string
     permissionId: string
     createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type NoteCreateManyCreatedByInput = {
@@ -31779,32 +20452,11 @@ export namespace Prisma {
     reportId?: string | null
   }
 
-  export type StageCreateManyCreatedByInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    updatedById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
-  export type StageCreateManyUpdatedByInput = {
-    id?: string
-    stageTypeId: string
-    comment?: string | null
-    createdById?: string | null
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    reportId?: string | null
-  }
-
   export type ReportCreateManyCreatedByInput = {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31816,101 +20468,12 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     createdById?: string | null
     organizationId?: string | null
-  }
-
-  export type ReportCategoryCreateManyCreatedByInput = {
-    id?: string
-    name: string
-    code: string
-    parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    updatedById?: string | null
-  }
-
-  export type ReportCategoryCreateManyUpdatedByInput = {
-    id?: string
-    name: string
-    code: string
-    parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById?: string | null
-  }
-
-  export type DepartmentCreateManyCreatedByInput = {
-    id?: string
-    name: string
-    code: string
-    updatedById?: string | null
-  }
-
-  export type DepartmentCreateManyUpdatedByInput = {
-    id?: string
-    name: string
-    code: string
-    createdById?: string | null
-  }
-
-  export type PermissionCreateManyCreatedByInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    updatedById?: string | null
-  }
-
-  export type PermissionCreateManyUpdatedByInput = {
-    id?: string
-    name: string
-    resource: string
-    action: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById?: string | null
-  }
-
-  export type DepartmentPermissionCreateManyCreatedByInput = {
-    id?: string
-    departmentId: string
-    permissionId: string
-    createdAt?: Date | string
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionCreateManyUpdatedByInput = {
-    id?: string
-    departmentId: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-  }
-
-  export type UserPermissionCreateManyCreatedByInput = {
-    id?: string
-    userId: string
-    permissionId: string
-    createdAt?: Date | string
-    updatedById?: string | null
-  }
-
-  export type UserPermissionCreateManyUpdatedByInput = {
-    id?: string
-    userId: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
   }
 
   export type ProfileCreateManyCreatedByInput = {
@@ -31941,24 +20504,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permission?: PermissionUpdateOneRequiredWithoutUsersNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorUserPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterUserPermissionNestedInput
   }
 
   export type UserPermissionUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     permissionId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserPermissionUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     permissionId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NoteUpdateWithoutCreatedByInput = {
@@ -32015,71 +20572,10 @@ export namespace Prisma {
     reportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type StageUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: StageTypeUpdateOneRequiredWithoutStagesNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterStageNestedInput
-    report?: ReportUpdateOneWithoutStagesNestedInput
-  }
-
-  export type StageUncheckedUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type StageUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type StageUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: StageTypeUpdateOneRequiredWithoutStagesNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorStageNestedInput
-    report?: ReportUpdateOneWithoutStagesNestedInput
-  }
-
-  export type StageUncheckedUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type StageUncheckedUpdateManyWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stageTypeId?: StringFieldUpdateOperationsInput | string
-    comment?: NullableStringFieldUpdateOperationsInput | string | null
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reportId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type ReportUpdateWithoutCreatedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32087,7 +20583,6 @@ export namespace Prisma {
     updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
     organization?: OrganizationUpdateOneWithoutReportNestedInput
     notes?: NoteUpdateManyWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
     files?: FileUpdateManyWithoutReportNestedInput
   }
 
@@ -32095,15 +20590,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
     files?: FileUncheckedUpdateManyWithoutReportNestedInput
   }
 
@@ -32111,8 +20604,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32123,8 +20615,7 @@ export namespace Prisma {
   export type ReportUpdateWithoutUpdatedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32132,7 +20623,6 @@ export namespace Prisma {
     createdBy?: UserUpdateOneWithoutCreatorReportNestedInput
     organization?: OrganizationUpdateOneWithoutReportNestedInput
     notes?: NoteUpdateManyWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
     files?: FileUpdateManyWithoutReportNestedInput
   }
 
@@ -32140,15 +20630,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
     files?: FileUncheckedUpdateManyWithoutReportNestedInput
   }
 
@@ -32156,301 +20644,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ReportCategoryUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parent?: ReportCategoryUpdateOneWithoutChildrenNestedInput
-    children?: ReportCategoryUpdateManyWithoutParentNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterReportCategoryNestedInput
-    reports?: ReportUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type ReportCategoryUncheckedUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    children?: ReportCategoryUncheckedUpdateManyWithoutParentNestedInput
-    reports?: ReportUncheckedUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type ReportCategoryUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ReportCategoryUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parent?: ReportCategoryUpdateOneWithoutChildrenNestedInput
-    children?: ReportCategoryUpdateManyWithoutParentNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorReportCategoryNestedInput
-    reports?: ReportUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type ReportCategoryUncheckedUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    children?: ReportCategoryUncheckedUpdateManyWithoutParentNestedInput
-    reports?: ReportUncheckedUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type ReportCategoryUncheckedUpdateManyWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentNestedInput
-    users?: UserUpdateManyWithoutDepartmentNestedInput
-    permissions?: DepartmentPermissionUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentUncheckedUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    users?: UserUncheckedUpdateManyWithoutDepartmentNestedInput
-    permissions?: DepartmentPermissionUncheckedUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentNestedInput
-    users?: UserUpdateManyWithoutDepartmentNestedInput
-    permissions?: DepartmentPermissionUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentUncheckedUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    users?: UserUncheckedUpdateManyWithoutDepartmentNestedInput
-    permissions?: DepartmentPermissionUncheckedUpdateManyWithoutDepartmentNestedInput
-  }
-
-  export type DepartmentUncheckedUpdateManyWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type PermissionUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedBy?: UserUpdateOneWithoutUpdaterPermissionNestedInput
-    dept?: DepartmentPermissionUpdateManyWithoutPermissionNestedInput
-    users?: UserPermissionUpdateManyWithoutPermissionNestedInput
-  }
-
-  export type PermissionUncheckedUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-    dept?: DepartmentPermissionUncheckedUpdateManyWithoutPermissionNestedInput
-    users?: UserPermissionUncheckedUpdateManyWithoutPermissionNestedInput
-  }
-
-  export type PermissionUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type PermissionUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorPermissionNestedInput
-    dept?: DepartmentPermissionUpdateManyWithoutPermissionNestedInput
-    users?: UserPermissionUpdateManyWithoutPermissionNestedInput
-  }
-
-  export type PermissionUncheckedUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    dept?: DepartmentPermissionUncheckedUpdateManyWithoutPermissionNestedInput
-    users?: UserPermissionUncheckedUpdateManyWithoutPermissionNestedInput
-  }
-
-  export type PermissionUncheckedUpdateManyWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    resource?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentPermissionNestedInput
-    department?: DepartmentUpdateOneRequiredWithoutPermissionsNestedInput
-    permission?: PermissionUpdateOneRequiredWithoutDeptNestedInput
-  }
-
-  export type DepartmentPermissionUncheckedUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentPermissionNestedInput
-    department?: DepartmentUpdateOneRequiredWithoutPermissionsNestedInput
-    permission?: PermissionUpdateOneRequiredWithoutDeptNestedInput
-  }
-
-  export type DepartmentPermissionUncheckedUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type UserPermissionUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPermissionsNestedInput
-    permission?: PermissionUpdateOneRequiredWithoutUsersNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterUserPermissionNestedInput
-  }
-
-  export type UserPermissionUncheckedUpdateWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type UserPermissionUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type UserPermissionUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPermissionsNestedInput
-    permission?: PermissionUpdateOneRequiredWithoutUsersNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorUserPermissionNestedInput
-  }
-
-  export type UserPermissionUncheckedUpdateWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type UserPermissionUncheckedUpdateManyWithoutUpdatedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProfileUpdateWithoutCreatedByInput = {
@@ -32532,7 +20731,6 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
     roleId?: string | null
   }
 
@@ -32540,8 +20738,7 @@ export namespace Prisma {
     id?: string
     categoryId: string
     periodYear: string
-    periodMonth: string
-    periodDate?: string | null
+    periodMonth?: string | null
     version?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -32556,26 +20753,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
     role?: RoleUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -32587,26 +20771,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -32618,15 +20789,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReportUpdateWithoutOrganizationInput = {
     id?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32634,7 +20803,6 @@ export namespace Prisma {
     createdBy?: UserUpdateOneWithoutCreatorReportNestedInput
     updatedBy?: UserUpdateOneWithoutUpdaterReportNestedInput
     notes?: NoteUpdateManyWithoutReportNestedInput
-    stages?: StageUpdateManyWithoutReportNestedInput
     files?: FileUpdateManyWithoutReportNestedInput
   }
 
@@ -32642,15 +20810,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     updatedById?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NoteUncheckedUpdateManyWithoutReportNestedInput
-    stages?: StageUncheckedUpdateManyWithoutReportNestedInput
     files?: FileUncheckedUpdateManyWithoutReportNestedInput
   }
 
@@ -32658,8 +20824,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     periodYear?: StringFieldUpdateOperationsInput | string
-    periodMonth?: StringFieldUpdateOperationsInput | string
-    periodDate?: NullableStringFieldUpdateOperationsInput | string | null
+    periodMonth?: NullableStringFieldUpdateOperationsInput | string | null
     version?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32674,7 +20839,6 @@ export namespace Prisma {
     status?: $Enums.UserStatus
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    departmentId?: string | null
     organizationId?: string | null
   }
 
@@ -32685,26 +20849,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department?: DepartmentUpdateOneWithoutUsersNestedInput
     organization?: OrganizationUpdateOneWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
   }
@@ -32716,26 +20867,13 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
     CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
     UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
   }
@@ -32747,188 +20885,31 @@ export namespace Prisma {
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
     organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type UserCreateManyDepartmentInput = {
-    id?: string
-    username: string
-    password: string
-    status?: $Enums.UserStatus
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-    organizationId?: string | null
-    roleId?: string | null
-  }
-
-  export type DepartmentPermissionCreateManyDepartmentInput = {
-    id?: string
-    permissionId: string
-    createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type UserUpdateWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    organization?: OrganizationUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
-    profile?: ProfileUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
-    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
-    CreatorNote?: NoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterNote?: NoteUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorStage?: StageUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterStage?: StageUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReport?: ReportUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReport?: ReportUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorReportCategory?: ReportCategoryUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterReportCategory?: ReportCategoryUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartment?: DepartmentUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartment?: DepartmentUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorPermission?: PermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterPermission?: PermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterDepartmentPermission?: DepartmentPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorUserPermission?: UserPermissionUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterUserPermission?: UserPermissionUncheckedUpdateManyWithoutUpdatedByNestedInput
-    CreatorProfile?: ProfileUncheckedUpdateManyWithoutCreatedByNestedInput
-    UpdaterProfile?: ProfileUncheckedUpdateManyWithoutUpdatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    organizationId?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUpdateWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentPermissionNestedInput
-    permission?: PermissionUpdateOneRequiredWithoutDeptNestedInput
-  }
-
-  export type DepartmentPermissionUncheckedUpdateWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    permissionId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionCreateManyPermissionInput = {
-    id?: string
-    departmentId: string
-    createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
   }
 
   export type UserPermissionCreateManyPermissionInput = {
     id?: string
     userId: string
     createdAt?: Date | string
-    createdById?: string | null
-    updatedById?: string | null
-  }
-
-  export type DepartmentPermissionUpdateWithoutPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneWithoutCreatorDepartmentPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterDepartmentPermissionNestedInput
-    department?: DepartmentUpdateOneRequiredWithoutPermissionsNestedInput
-  }
-
-  export type DepartmentPermissionUncheckedUpdateWithoutPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type DepartmentPermissionUncheckedUpdateManyWithoutPermissionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departmentId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserPermissionUpdateWithoutPermissionInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPermissionsNestedInput
-    createdBy?: UserUpdateOneWithoutCreatorUserPermissionNestedInput
-    updatedBy?: UserUpdateOneWithoutUpdaterUserPermissionNestedInput
   }
 
   export type UserPermissionUncheckedUpdateWithoutPermissionInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserPermissionUncheckedUpdateManyWithoutPermissionInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

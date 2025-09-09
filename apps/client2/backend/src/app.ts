@@ -65,7 +65,7 @@ if (NODE_ENV === "development") {
 app.use(helmet());
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: true,
     credentials: true,
   })
 );
@@ -142,7 +142,7 @@ if (!process.env.DATABASE_URL) {
     await prisma.$connect();
     logger.info("Database connection successful.");
 
-    app.listen(PORT, () => {
+    app.listen(PORT, "0.0.0.0", () => {
       logger.info(`Server is running in ${NODE_ENV} mode on port ${PORT}`);
     });
 

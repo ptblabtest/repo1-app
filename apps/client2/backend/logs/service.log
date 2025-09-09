@@ -1084,3 +1084,2586 @@ Unknown argument `organizationId`. Available options are marked with ?.
 2025-08-22 02:53:30 [INFO]: Server is running in development mode on port 8001
 2025-08-22 02:53:32 [INFO]: Received SIGINT. Cleaning up...
 2025-08-22 02:53:32 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 12:53:49 [INFO]: Checking database connection...
+2025-08-22 12:53:49 [INFO]: Database connection successful.
+2025-08-22 12:53:49 [INFO]: Running scheduler at app startup...
+2025-08-22 12:53:49 [INFO]: Server is running in development mode on port 8001
+2025-08-22 13:26:34 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-22 13:26:35 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-22 13:26:38 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-22 13:26:42 [ERROR]: [SelectService] Unsupported select key: organizationId
+2025-08-22 15:00:46 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 15:00:46 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 15:00:46 [INFO]: Prisma disconnected. Exiting process.
+2025-08-22 15:08:15 [INFO]: Checking database connection...
+2025-08-22 15:08:15 [INFO]: Database connection successful.
+2025-08-22 15:08:15 [INFO]: Running scheduler at app startup...
+2025-08-22 15:08:15 [INFO]: Server is running in development mode on port 8001
+2025-08-22 15:08:16 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 15:08:16 [INFO]: Received SIGINT. Cleaning up...
+2025-08-22 15:08:16 [INFO]: Prisma disconnected. Exiting process.
+2025-08-29 07:29:12 [INFO]: Checking database connection...
+2025-08-29 07:29:12 [INFO]: Database connection successful.
+2025-08-29 07:29:12 [INFO]: Running scheduler at app startup...
+2025-08-29 07:29:12 [INFO]: Server is running in development mode on port 8001
+2025-08-29 07:29:18 [INFO]: Checking database connection...
+2025-08-29 07:29:19 [INFO]: Database connection successful.
+2025-08-29 07:29:19 [INFO]: Running scheduler at app startup...
+2025-08-29 07:29:19 [INFO]: Server is running in development mode on port 8001
+2025-08-29 07:29:31 [INFO]: Checking database connection...
+2025-08-29 07:29:31 [INFO]: Database connection successful.
+2025-08-29 07:29:31 [INFO]: Running scheduler at app startup...
+2025-08-29 07:29:31 [INFO]: Server is running in development mode on port 8000
+2025-08-29 07:29:57 [INFO]: Received SIGINT. Cleaning up...
+2025-08-29 07:29:57 [INFO]: Received SIGINT. Cleaning up...
+2025-08-29 07:29:57 [INFO]: Prisma disconnected. Exiting process.
+2025-08-29 07:32:24 [INFO]: Checking database connection...
+2025-08-29 07:32:24 [INFO]: Database connection successful.
+2025-08-29 07:32:24 [INFO]: Running scheduler at app startup...
+2025-08-29 07:32:24 [INFO]: Server is running in development mode on port 8000
+2025-08-29 07:32:54 [INFO]: Received SIGINT. Cleaning up...
+2025-08-29 07:32:54 [INFO]: Received SIGINT. Cleaning up...
+2025-08-29 07:32:54 [INFO]: Prisma disconnected. Exiting process.
+2025-08-29 07:33:18 [INFO]: Checking database connection...
+2025-08-29 07:33:19 [INFO]: Database connection successful.
+2025-08-29 07:33:19 [INFO]: Running scheduler at app startup...
+2025-08-29 07:33:19 [INFO]: Server is running in development mode on port 8000
+2025-08-29 07:49:07 [INFO]: Checking database connection...
+2025-08-29 07:49:07 [INFO]: Database connection successful.
+2025-08-29 07:49:07 [INFO]: Running scheduler at app startup...
+2025-08-29 07:49:07 [INFO]: Server is running in development mode on port 8000
+2025-08-29 07:49:08 [INFO]: Checking database connection...
+2025-08-29 07:49:08 [INFO]: Database connection successful.
+2025-08-29 07:49:08 [INFO]: Running scheduler at app startup...
+2025-08-29 07:49:08 [INFO]: Server is running in development mode on port 8000
+2025-08-29 07:52:14 [INFO]: Received SIGINT. Cleaning up...
+2025-08-29 07:52:14 [INFO]: Received SIGINT. Cleaning up...
+2025-08-29 07:52:14 [INFO]: Prisma disconnected. Exiting process.
+2025-08-29 07:53:50 [INFO]: Checking database connection...
+2025-08-29 07:53:50 [INFO]: Database connection successful.
+2025-08-29 07:53:50 [INFO]: Running scheduler at app startup...
+2025-08-29 07:53:50 [INFO]: Server is running in development mode on port 8000
+2025-08-29 08:09:24 [INFO]: Checking database connection...
+2025-08-29 08:09:24 [INFO]: Database connection successful.
+2025-08-29 08:09:24 [INFO]: Running scheduler at app startup...
+2025-08-29 08:09:24 [INFO]: Server is running in development mode on port 8000
+2025-08-29 08:17:09 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:17:09 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "12f7e7c4-2976-4571-a1d9-edf593222729"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:18:51 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:22:49 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:22:53 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "4869eb53-7abc-4e51-ae97-cb3d6d9f45ff"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:22:53 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:23:52 [INFO]: Checking database connection...
+2025-08-29 08:23:52 [INFO]: Database connection successful.
+2025-08-29 08:23:52 [INFO]: Running scheduler at app startup...
+2025-08-29 08:23:52 [INFO]: Server is running in development mode on port 8000
+2025-08-29 08:23:56 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:24:46 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:24:49 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "4869eb53-7abc-4e51-ae97-cb3d6d9f45ff"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:24:50 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:25:19 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:25:22 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "1",
+            where: {
+              categoryId: "4869eb53-7abc-4e51-ae97-cb3d6d9f45ff"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:25:22 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "1",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:25:49 [INFO]: Checking database connection...
+2025-08-29 08:25:49 [INFO]: Database connection successful.
+2025-08-29 08:25:49 [INFO]: Running scheduler at app startup...
+2025-08-29 08:25:49 [INFO]: Server is running in development mode on port 8000
+2025-08-29 08:25:55 [INFO]: Checking database connection...
+2025-08-29 08:25:55 [INFO]: Database connection successful.
+2025-08-29 08:25:55 [INFO]: Running scheduler at app startup...
+2025-08-29 08:25:55 [INFO]: Server is running in development mode on port 8000
+2025-08-29 08:26:03 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "org1",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "1",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:27:27 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:27:32 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:33:57 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "603bcba9-a082-415c-9cb4-44ed628cd1a4"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:36:35 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:36:38 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "2",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:37:25 [INFO]: Checking database connection...
+2025-08-29 08:37:26 [INFO]: Database connection successful.
+2025-08-29 08:37:26 [INFO]: Running scheduler at app startup...
+2025-08-29 08:37:26 [INFO]: Server is running in development mode on port 8000
+2025-08-29 08:37:37 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            where: {
+              categoryId: "84719683-a3c8-4216-ae1a-d79fe2054de2"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:37:39 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "1",
+            where: {
+              categoryId: "4869eb53-7abc-4e51-ae97-cb3d6d9f45ff"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 08:37:40 [ERROR]: Unhandled Rejection: 
+Invalid `prisma[model].findMany()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/utils/serviceFactory.ts:112:43
+
+  109 
+  110 if (operations.includes("findMany")) {
+  111   service.findMany = async (queryParams?: any) => {
+→ 112     const records = await prisma[model].findMany({
+            organizationId: "da35444f-985a-4831-8d72-5a929c7e2f17",
+            ~~~~~~~~~~~~~~
+            periodYear: "2025",
+            periodMonth: "1",
+            where: {
+              categoryId: "111117cf-cb49-4954-8ae6-99ff08c409df"
+            },
+            select: {
+              id: true,
+              categoryId: true,
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              periodYear: true,
+              periodMonth: true,
+              periodDate: true,
+              version: true,
+              organizationId: true,
+              organization: {
+                select: {
+                  id: true,
+                  name: true,
+                  code: true
+                }
+              },
+              files: {
+                select: {
+                  id: true,
+                  filename: true,
+                  path: true,
+                  mimeType: true,
+                  size: true,
+                  createdAt: true
+                }
+              },
+              notes: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              stages: {
+                select: {
+                  id: true,
+                  comment: true,
+                  stageTypeId: true,
+                  type: {
+                    select: {
+                      id: true,
+                      value: true,
+                      label: true,
+                      order: true
+                    }
+                  },
+                  createdAt: true,
+                  createdById: true
+                },
+                orderBy: {
+                  createdAt: "desc"
+                }
+              },
+              createdAt: true,
+              updatedAt: true,
+              createdById: true,
+              updatedById: true
+            },
+          ? orderBy?: ReportOrderByWithRelationInput[] | ReportOrderByWithRelationInput,
+          ? cursor?: ReportWhereUniqueInput,
+          ? take?: Int,
+          ? skip?: Int,
+          ? distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
+          })
+
+Unknown argument `organizationId`. Available options are marked with ?.
+2025-08-29 10:49:57 [ERROR]: [SelectService] Unsupported select key: departmentId
+2025-08-29 10:49:58 [ERROR]: [SelectService] Unsupported select key: departmentId
+2025-08-29 10:50:00 [ERROR]: [SelectService] Unsupported select key: departmentId
+2025-09-01 12:21:11 [INFO]: Received SIGINT. Cleaning up...
+2025-09-01 12:21:11 [INFO]: Received SIGINT. Cleaning up...
+2025-09-01 12:21:11 [INFO]: Prisma disconnected. Exiting process.
+2025-09-02 17:35:44 [INFO]: Checking database connection...
+2025-09-02 17:35:44 [INFO]: Database connection successful.
+2025-09-02 17:35:44 [INFO]: Running scheduler at app startup...
+2025-09-02 17:35:44 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:36:15 [INFO]: Checking database connection...
+2025-09-02 17:36:15 [INFO]: Database connection successful.
+2025-09-02 17:36:15 [INFO]: Running scheduler at app startup...
+2025-09-02 17:36:15 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:37:25 [INFO]: Checking database connection...
+2025-09-02 17:37:25 [INFO]: Database connection successful.
+2025-09-02 17:37:25 [INFO]: Running scheduler at app startup...
+2025-09-02 17:37:25 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:37:41 [INFO]: Checking database connection...
+2025-09-02 17:37:41 [INFO]: Database connection successful.
+2025-09-02 17:37:41 [INFO]: Running scheduler at app startup...
+2025-09-02 17:37:41 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:38:20 [INFO]: Checking database connection...
+2025-09-02 17:38:20 [INFO]: Database connection successful.
+2025-09-02 17:38:20 [INFO]: Running scheduler at app startup...
+2025-09-02 17:38:20 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:38:46 [INFO]: Checking database connection...
+2025-09-02 17:38:46 [INFO]: Database connection successful.
+2025-09-02 17:38:46 [INFO]: Running scheduler at app startup...
+2025-09-02 17:38:46 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:40:19 [INFO]: Checking database connection...
+2025-09-02 17:40:19 [INFO]: Database connection successful.
+2025-09-02 17:40:19 [INFO]: Running scheduler at app startup...
+2025-09-02 17:40:19 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:41:03 [INFO]: Received SIGINT. Cleaning up...
+2025-09-02 17:41:22 [INFO]: Checking database connection...
+2025-09-02 17:41:22 [INFO]: Database connection successful.
+2025-09-02 17:41:22 [INFO]: Running scheduler at app startup...
+2025-09-02 17:41:22 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:43:24 [INFO]: Received SIGINT. Cleaning up...
+2025-09-02 17:43:37 [INFO]: Checking database connection...
+2025-09-02 17:43:37 [INFO]: Database connection successful.
+2025-09-02 17:43:37 [INFO]: Running scheduler at app startup...
+2025-09-02 17:43:37 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:46:35 [INFO]: Checking database connection...
+2025-09-02 17:46:35 [INFO]: Database connection successful.
+2025-09-02 17:46:35 [INFO]: Running scheduler at app startup...
+2025-09-02 17:46:35 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:46:48 [INFO]: Checking database connection...
+2025-09-02 17:46:48 [INFO]: Database connection successful.
+2025-09-02 17:46:48 [INFO]: Running scheduler at app startup...
+2025-09-02 17:46:48 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:46:49 [INFO]: Received SIGINT. Cleaning up...
+2025-09-02 17:48:39 [INFO]: Checking database connection...
+2025-09-02 17:48:39 [INFO]: Database connection successful.
+2025-09-02 17:48:39 [INFO]: Running scheduler at app startup...
+2025-09-02 17:48:39 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:48:55 [ERROR]: Unhandled error: SyntaxError: Expected double-quoted property name in JSON at position 60 (line 4 column 1)
+    at JSON.parse (<anonymous>)
+    at parse (/Users/ryans-mac/_projects/repo1-app/node_modules/body-parser/lib/types/json.js:92:19)
+    at /Users/ryans-mac/_projects/repo1-app/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:238:16)
+    at done (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/Users/ryans-mac/_projects/repo1-app/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:507:28)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-09-02 17:51:06 [INFO]: Checking database connection...
+2025-09-02 17:51:06 [INFO]: Database connection successful.
+2025-09-02 17:51:06 [INFO]: Running scheduler at app startup...
+2025-09-02 17:51:06 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:51:13 [INFO]: Checking database connection...
+2025-09-02 17:51:13 [INFO]: Database connection successful.
+2025-09-02 17:51:13 [INFO]: Running scheduler at app startup...
+2025-09-02 17:51:13 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:51:30 [INFO]: Received SIGINT. Cleaning up...
+2025-09-02 17:51:40 [INFO]: Checking database connection...
+2025-09-02 17:51:40 [INFO]: Database connection successful.
+2025-09-02 17:51:40 [INFO]: Running scheduler at app startup...
+2025-09-02 17:51:40 [INFO]: Server is running in development mode on port 8000
+2025-09-02 17:57:25 [INFO]: Checking database connection...
+2025-09-02 17:57:25 [INFO]: Database connection successful.
+2025-09-02 17:57:25 [INFO]: Running scheduler at app startup...
+2025-09-02 17:57:25 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:02:36 [INFO]: Checking database connection...
+2025-09-02 18:02:36 [INFO]: Database connection successful.
+2025-09-02 18:02:36 [INFO]: Running scheduler at app startup...
+2025-09-02 18:02:36 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:04:03 [INFO]: Checking database connection...
+2025-09-02 18:04:03 [INFO]: Database connection successful.
+2025-09-02 18:04:03 [INFO]: Running scheduler at app startup...
+2025-09-02 18:04:03 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:06:49 [INFO]: Checking database connection...
+2025-09-02 18:06:49 [INFO]: Database connection successful.
+2025-09-02 18:06:49 [INFO]: Running scheduler at app startup...
+2025-09-02 18:06:49 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:07:02 [INFO]: Checking database connection...
+2025-09-02 18:07:02 [INFO]: Database connection successful.
+2025-09-02 18:07:02 [INFO]: Running scheduler at app startup...
+2025-09-02 18:07:02 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:07:19 [INFO]: Checking database connection...
+2025-09-02 18:07:19 [INFO]: Database connection successful.
+2025-09-02 18:07:19 [INFO]: Running scheduler at app startup...
+2025-09-02 18:07:19 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:13:06 [INFO]: Checking database connection...
+2025-09-02 18:13:06 [INFO]: Database connection successful.
+2025-09-02 18:13:06 [INFO]: Running scheduler at app startup...
+2025-09-02 18:13:06 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:13:07 [INFO]: Checking database connection...
+2025-09-02 18:13:07 [INFO]: Database connection successful.
+2025-09-02 18:13:07 [INFO]: Running scheduler at app startup...
+2025-09-02 18:13:07 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:13:21 [INFO]: Checking database connection...
+2025-09-02 18:13:21 [INFO]: Database connection successful.
+2025-09-02 18:13:21 [INFO]: Running scheduler at app startup...
+2025-09-02 18:13:21 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:13:22 [INFO]: Checking database connection...
+2025-09-02 18:13:22 [INFO]: Database connection successful.
+2025-09-02 18:13:22 [INFO]: Running scheduler at app startup...
+2025-09-02 18:13:22 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:13:25 [ERROR]: Unhandled error: PrismaClientValidationError: 
+Invalid `prisma.user.findUnique()` invocation in
+/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/auth/passport.ts:62:36
+
+  59 // Deserialize user from session
+  60 passport.deserializeUser(async (id: string, done) => {
+  61   try {
+→ 62     const user = await prisma.user.findUnique({
+           where: {
+             id: "2155f0f9-d812-4b52-9df4-63bc20800d9f"
+           },
+           select: {
+             id: true,
+             username: true,
+             status: true,
+             role: {
+               level: true,
+               ~~~~~
+         ?     where?: RoleWhereInput
+             },
+             organization: {
+               id: true,
+               name: true,
+               code: true
+             }
+           }
+         })
+
+Unknown argument `level`. Available options are marked with ?.
+    at _n (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:32:1363)
+    at ei.handleRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6926)
+    at ei.handleAndLogRequestError (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6608)
+    at ei.request (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:124:6315)
+    at async a (/Users/ryans-mac/_projects/repo1-app/apps/client2/backend/generated/prisma/runtime/library.js:133:9551)
+    at async <anonymous> (/Users/ryans-mac/_projects/repo1-app/packages/shared-backend/auth/passport.ts:62:18)
+2025-09-02 18:15:38 [INFO]: Checking database connection...
+2025-09-02 18:15:38 [INFO]: Database connection successful.
+2025-09-02 18:15:38 [INFO]: Running scheduler at app startup...
+2025-09-02 18:15:38 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:15:42 [INFO]: Checking database connection...
+2025-09-02 18:15:42 [INFO]: Database connection successful.
+2025-09-02 18:15:42 [INFO]: Running scheduler at app startup...
+2025-09-02 18:15:42 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:15:53 [INFO]: Checking database connection...
+2025-09-02 18:15:53 [INFO]: Database connection successful.
+2025-09-02 18:15:53 [INFO]: Running scheduler at app startup...
+2025-09-02 18:15:53 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:15:58 [INFO]: Checking database connection...
+2025-09-02 18:15:58 [INFO]: Database connection successful.
+2025-09-02 18:15:58 [INFO]: Running scheduler at app startup...
+2025-09-02 18:15:58 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:15:59 [INFO]: Checking database connection...
+2025-09-02 18:15:59 [INFO]: Database connection successful.
+2025-09-02 18:15:59 [INFO]: Running scheduler at app startup...
+2025-09-02 18:15:59 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:24:19 [INFO]: Checking database connection...
+2025-09-02 18:24:19 [INFO]: Database connection successful.
+2025-09-02 18:24:19 [INFO]: Running scheduler at app startup...
+2025-09-02 18:24:19 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:26:28 [INFO]: Checking database connection...
+2025-09-02 18:26:28 [INFO]: Database connection successful.
+2025-09-02 18:26:28 [INFO]: Running scheduler at app startup...
+2025-09-02 18:26:28 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:26:43 [INFO]: Checking database connection...
+2025-09-02 18:26:43 [INFO]: Database connection successful.
+2025-09-02 18:26:43 [INFO]: Running scheduler at app startup...
+2025-09-02 18:26:43 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:32:03 [INFO]: Checking database connection...
+2025-09-02 18:32:03 [INFO]: Database connection successful.
+2025-09-02 18:32:03 [INFO]: Running scheduler at app startup...
+2025-09-02 18:32:03 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:32:09 [INFO]: Checking database connection...
+2025-09-02 18:32:09 [INFO]: Database connection successful.
+2025-09-02 18:32:09 [INFO]: Running scheduler at app startup...
+2025-09-02 18:32:09 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:32:09 [INFO]: Checking database connection...
+2025-09-02 18:32:09 [INFO]: Database connection successful.
+2025-09-02 18:32:09 [INFO]: Running scheduler at app startup...
+2025-09-02 18:32:09 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:32:31 [INFO]: Checking database connection...
+2025-09-02 18:32:31 [INFO]: Database connection successful.
+2025-09-02 18:32:31 [INFO]: Running scheduler at app startup...
+2025-09-02 18:32:31 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:32:38 [INFO]: Checking database connection...
+2025-09-02 18:32:38 [INFO]: Database connection successful.
+2025-09-02 18:32:38 [INFO]: Running scheduler at app startup...
+2025-09-02 18:32:38 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:35:05 [INFO]: Checking database connection...
+2025-09-02 18:35:05 [INFO]: Database connection successful.
+2025-09-02 18:35:05 [INFO]: Running scheduler at app startup...
+2025-09-02 18:35:05 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:35:06 [INFO]: Checking database connection...
+2025-09-02 18:35:06 [INFO]: Database connection successful.
+2025-09-02 18:35:06 [INFO]: Running scheduler at app startup...
+2025-09-02 18:35:06 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:35:27 [INFO]: Checking database connection...
+2025-09-02 18:35:27 [INFO]: Database connection successful.
+2025-09-02 18:35:27 [INFO]: Running scheduler at app startup...
+2025-09-02 18:35:27 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:39:25 [INFO]: Checking database connection...
+2025-09-02 18:39:25 [INFO]: Database connection successful.
+2025-09-02 18:39:25 [INFO]: Running scheduler at app startup...
+2025-09-02 18:39:25 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:39:26 [INFO]: Checking database connection...
+2025-09-02 18:39:26 [INFO]: Database connection successful.
+2025-09-02 18:39:26 [INFO]: Running scheduler at app startup...
+2025-09-02 18:39:26 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:39:39 [INFO]: Checking database connection...
+2025-09-02 18:39:39 [INFO]: Database connection successful.
+2025-09-02 18:39:39 [INFO]: Running scheduler at app startup...
+2025-09-02 18:39:39 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:39:50 [INFO]: Checking database connection...
+2025-09-02 18:39:50 [INFO]: Database connection successful.
+2025-09-02 18:39:50 [INFO]: Running scheduler at app startup...
+2025-09-02 18:39:50 [INFO]: Server is running in development mode on port 8000
+2025-09-02 18:52:49 [INFO]: Checking database connection...
+2025-09-02 18:52:49 [INFO]: Database connection successful.
+2025-09-02 18:52:49 [INFO]: Running scheduler at app startup...
+2025-09-02 18:52:49 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:10:20 [INFO]: Checking database connection...
+2025-09-03 13:10:20 [INFO]: Database connection successful.
+2025-09-03 13:10:20 [INFO]: Running scheduler at app startup...
+2025-09-03 13:10:20 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:11:56 [INFO]: Checking database connection...
+2025-09-03 13:11:56 [INFO]: Database connection successful.
+2025-09-03 13:11:56 [INFO]: Running scheduler at app startup...
+2025-09-03 13:11:56 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:38:39 [INFO]: Checking database connection...
+2025-09-03 13:38:39 [INFO]: Database connection successful.
+2025-09-03 13:38:39 [INFO]: Running scheduler at app startup...
+2025-09-03 13:38:39 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:38:39 [INFO]: Checking database connection...
+2025-09-03 13:38:39 [INFO]: Database connection successful.
+2025-09-03 13:38:39 [INFO]: Running scheduler at app startup...
+2025-09-03 13:38:39 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:38:53 [INFO]: Checking database connection...
+2025-09-03 13:38:53 [INFO]: Database connection successful.
+2025-09-03 13:38:53 [INFO]: Running scheduler at app startup...
+2025-09-03 13:38:53 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:38:55 [INFO]: Checking database connection...
+2025-09-03 13:38:55 [INFO]: Database connection successful.
+2025-09-03 13:38:55 [INFO]: Running scheduler at app startup...
+2025-09-03 13:38:55 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:39:12 [INFO]: Checking database connection...
+2025-09-03 13:39:12 [INFO]: Database connection successful.
+2025-09-03 13:39:12 [INFO]: Running scheduler at app startup...
+2025-09-03 13:39:12 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:39:12 [INFO]: Checking database connection...
+2025-09-03 13:39:12 [INFO]: Database connection successful.
+2025-09-03 13:39:12 [INFO]: Running scheduler at app startup...
+2025-09-03 13:39:12 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:39:23 [INFO]: Checking database connection...
+2025-09-03 13:39:23 [INFO]: Database connection successful.
+2025-09-03 13:39:23 [INFO]: Running scheduler at app startup...
+2025-09-03 13:39:23 [INFO]: Server is running in development mode on port 8000
+2025-09-03 13:39:24 [INFO]: Checking database connection...
+2025-09-03 13:39:24 [INFO]: Database connection successful.
+2025-09-03 13:39:24 [INFO]: Running scheduler at app startup...
+2025-09-03 13:39:24 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:09:52 [INFO]: Checking database connection...
+2025-09-03 14:09:52 [INFO]: Database connection successful.
+2025-09-03 14:09:52 [INFO]: Running scheduler at app startup...
+2025-09-03 14:09:52 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:10:11 [INFO]: Checking database connection...
+2025-09-03 14:10:11 [INFO]: Database connection successful.
+2025-09-03 14:10:11 [INFO]: Running scheduler at app startup...
+2025-09-03 14:10:11 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:10:11 [INFO]: Checking database connection...
+2025-09-03 14:10:12 [INFO]: Database connection successful.
+2025-09-03 14:10:12 [INFO]: Running scheduler at app startup...
+2025-09-03 14:10:12 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:10:15 [INFO]: Checking database connection...
+2025-09-03 14:10:15 [INFO]: Database connection successful.
+2025-09-03 14:10:15 [INFO]: Running scheduler at app startup...
+2025-09-03 14:10:15 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:19:25 [INFO]: Checking database connection...
+2025-09-03 14:19:25 [INFO]: Database connection successful.
+2025-09-03 14:19:25 [INFO]: Running scheduler at app startup...
+2025-09-03 14:19:25 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:22:44 [INFO]: Checking database connection...
+2025-09-03 14:22:44 [INFO]: Database connection successful.
+2025-09-03 14:22:44 [INFO]: Running scheduler at app startup...
+2025-09-03 14:22:44 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:22:48 [INFO]: Checking database connection...
+2025-09-03 14:22:48 [INFO]: Database connection successful.
+2025-09-03 14:22:48 [INFO]: Running scheduler at app startup...
+2025-09-03 14:22:48 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:25:25 [INFO]: Checking database connection...
+2025-09-03 14:25:25 [INFO]: Database connection successful.
+2025-09-03 14:25:25 [INFO]: Running scheduler at app startup...
+2025-09-03 14:25:25 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:25:25 [INFO]: Checking database connection...
+2025-09-03 14:25:25 [INFO]: Database connection successful.
+2025-09-03 14:25:25 [INFO]: Running scheduler at app startup...
+2025-09-03 14:25:25 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:30:49 [INFO]: Checking database connection...
+2025-09-03 14:30:49 [INFO]: Database connection successful.
+2025-09-03 14:30:49 [INFO]: Running scheduler at app startup...
+2025-09-03 14:30:49 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:30:53 [INFO]: Checking database connection...
+2025-09-03 14:30:53 [INFO]: Database connection successful.
+2025-09-03 14:30:53 [INFO]: Running scheduler at app startup...
+2025-09-03 14:30:53 [INFO]: Server is running in development mode on port 8000
+2025-09-03 14:30:54 [INFO]: Checking database connection...
+2025-09-03 14:30:54 [INFO]: Database connection successful.
+2025-09-03 14:30:54 [INFO]: Running scheduler at app startup...
+2025-09-03 14:30:54 [INFO]: Server is running in development mode on port 8000
+2025-09-03 15:08:25 [INFO]: Received SIGINT. Cleaning up...
+2025-09-03 15:08:25 [INFO]: Received SIGINT. Cleaning up...
+2025-09-03 15:08:25 [INFO]: Prisma disconnected. Exiting process.
+2025-09-03 15:09:21 [INFO]: Checking database connection...
+2025-09-03 15:09:21 [INFO]: Database connection successful.
+2025-09-03 15:09:21 [INFO]: Running scheduler at app startup...
+2025-09-03 15:09:21 [INFO]: Server is running in development mode on port 8000
+2025-09-03 21:39:17 [INFO]: Checking database connection...
+2025-09-03 21:39:17 [INFO]: Database connection successful.
+2025-09-03 21:39:17 [INFO]: Running scheduler at app startup...
+2025-09-03 21:39:17 [INFO]: Server is running in development mode on port 8000
+2025-09-03 21:41:42 [INFO]: Checking database connection...
+2025-09-03 21:41:42 [INFO]: Database connection successful.
+2025-09-03 21:41:42 [INFO]: Running scheduler at app startup...
+2025-09-03 21:41:42 [INFO]: Server is running in development mode on port 8000
+2025-09-03 21:42:15 [INFO]: Checking database connection...
+2025-09-03 21:42:15 [INFO]: Database connection successful.
+2025-09-03 21:42:15 [INFO]: Running scheduler at app startup...
+2025-09-03 21:42:15 [INFO]: Server is running in development mode on port 8000
+2025-09-03 21:59:25 [INFO]: Checking database connection...
+2025-09-03 21:59:25 [INFO]: Database connection successful.
+2025-09-03 21:59:25 [INFO]: Running scheduler at app startup...
+2025-09-03 21:59:25 [INFO]: Server is running in development mode on port 8000
+2025-09-03 21:59:35 [INFO]: Checking database connection...
+2025-09-03 21:59:35 [INFO]: Database connection successful.
+2025-09-03 21:59:35 [INFO]: Running scheduler at app startup...
+2025-09-03 21:59:35 [INFO]: Server is running in development mode on port 8000
+2025-09-03 21:59:58 [INFO]: Checking database connection...
+2025-09-03 21:59:58 [INFO]: Database connection successful.
+2025-09-03 21:59:58 [INFO]: Running scheduler at app startup...
+2025-09-03 21:59:58 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:00:16 [INFO]: Checking database connection...
+2025-09-03 22:00:16 [INFO]: Database connection successful.
+2025-09-03 22:00:16 [INFO]: Running scheduler at app startup...
+2025-09-03 22:00:16 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:02:24 [INFO]: Checking database connection...
+2025-09-03 22:02:24 [INFO]: Database connection successful.
+2025-09-03 22:02:24 [INFO]: Running scheduler at app startup...
+2025-09-03 22:02:24 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:23:38 [INFO]: Checking database connection...
+2025-09-03 22:23:38 [INFO]: Database connection successful.
+2025-09-03 22:23:38 [INFO]: Running scheduler at app startup...
+2025-09-03 22:23:38 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:26:01 [INFO]: Checking database connection...
+2025-09-03 22:26:01 [INFO]: Database connection successful.
+2025-09-03 22:26:01 [INFO]: Running scheduler at app startup...
+2025-09-03 22:26:01 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:26:22 [INFO]: Checking database connection...
+2025-09-03 22:26:22 [INFO]: Database connection successful.
+2025-09-03 22:26:22 [INFO]: Running scheduler at app startup...
+2025-09-03 22:26:22 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:26:28 [INFO]: Checking database connection...
+2025-09-03 22:26:28 [INFO]: Database connection successful.
+2025-09-03 22:26:28 [INFO]: Running scheduler at app startup...
+2025-09-03 22:26:28 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:26:33 [INFO]: Checking database connection...
+2025-09-03 22:26:33 [INFO]: Database connection successful.
+2025-09-03 22:26:33 [INFO]: Running scheduler at app startup...
+2025-09-03 22:26:33 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:26:33 [INFO]: Checking database connection...
+2025-09-03 22:26:33 [INFO]: Database connection successful.
+2025-09-03 22:26:33 [INFO]: Running scheduler at app startup...
+2025-09-03 22:26:33 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:26:35 [INFO]: Checking database connection...
+2025-09-03 22:26:35 [INFO]: Database connection successful.
+2025-09-03 22:26:35 [INFO]: Running scheduler at app startup...
+2025-09-03 22:26:35 [INFO]: Server is running in development mode on port 8000
+2025-09-03 22:32:13 [INFO]: Checking database connection...
+2025-09-03 22:32:13 [INFO]: Database connection successful.
+2025-09-03 22:32:13 [INFO]: Running scheduler at app startup...
+2025-09-03 22:32:13 [INFO]: Server is running in development mode on port 8000
+2025-09-04 06:58:51 [INFO]: Checking database connection...
+2025-09-04 06:58:51 [INFO]: Database connection successful.
+2025-09-04 06:58:51 [INFO]: Running scheduler at app startup...
+2025-09-04 06:58:51 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:11:17 [INFO]: Checking database connection...
+2025-09-04 07:11:17 [INFO]: Database connection successful.
+2025-09-04 07:11:17 [INFO]: Running scheduler at app startup...
+2025-09-04 07:11:17 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:11:53 [INFO]: Checking database connection...
+2025-09-04 07:11:54 [INFO]: Database connection successful.
+2025-09-04 07:11:54 [INFO]: Running scheduler at app startup...
+2025-09-04 07:11:54 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:12:52 [INFO]: Checking database connection...
+2025-09-04 07:12:52 [INFO]: Database connection successful.
+2025-09-04 07:12:52 [INFO]: Running scheduler at app startup...
+2025-09-04 07:12:52 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:13:13 [INFO]: Checking database connection...
+2025-09-04 07:13:13 [INFO]: Database connection successful.
+2025-09-04 07:13:13 [INFO]: Running scheduler at app startup...
+2025-09-04 07:13:13 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:27:09 [INFO]: Checking database connection...
+2025-09-04 07:27:09 [INFO]: Database connection successful.
+2025-09-04 07:27:09 [INFO]: Running scheduler at app startup...
+2025-09-04 07:27:09 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:28:07 [INFO]: Checking database connection...
+2025-09-04 07:28:07 [INFO]: Database connection successful.
+2025-09-04 07:28:07 [INFO]: Running scheduler at app startup...
+2025-09-04 07:28:07 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:28:35 [INFO]: Checking database connection...
+2025-09-04 07:28:35 [INFO]: Database connection successful.
+2025-09-04 07:28:35 [INFO]: Running scheduler at app startup...
+2025-09-04 07:28:35 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:28:42 [INFO]: Checking database connection...
+2025-09-04 07:28:42 [INFO]: Database connection successful.
+2025-09-04 07:28:42 [INFO]: Running scheduler at app startup...
+2025-09-04 07:28:42 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:29:59 [INFO]: Checking database connection...
+2025-09-04 07:29:59 [INFO]: Database connection successful.
+2025-09-04 07:29:59 [INFO]: Running scheduler at app startup...
+2025-09-04 07:29:59 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:30:22 [INFO]: Checking database connection...
+2025-09-04 07:30:22 [INFO]: Database connection successful.
+2025-09-04 07:30:22 [INFO]: Running scheduler at app startup...
+2025-09-04 07:30:22 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:30:30 [INFO]: Checking database connection...
+2025-09-04 07:30:30 [INFO]: Database connection successful.
+2025-09-04 07:30:30 [INFO]: Running scheduler at app startup...
+2025-09-04 07:30:30 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:30:33 [INFO]: Checking database connection...
+2025-09-04 07:30:33 [INFO]: Database connection successful.
+2025-09-04 07:30:33 [INFO]: Running scheduler at app startup...
+2025-09-04 07:30:33 [INFO]: Server is running in development mode on port 8000
+2025-09-04 07:59:32 [INFO]: Checking database connection...
+2025-09-04 07:59:33 [INFO]: Checking database connection...
+2025-09-04 07:59:33 [INFO]: Database connection successful.
+2025-09-04 07:59:33 [INFO]: Running scheduler at app startup...
+2025-09-04 07:59:33 [INFO]: Server is running in development mode on port 8000
+2025-09-04 08:12:17 [INFO]: Checking database connection...
+2025-09-04 08:12:17 [INFO]: Database connection successful.
+2025-09-04 08:12:17 [INFO]: Running scheduler at app startup...
+2025-09-04 08:12:17 [INFO]: Server is running in development mode on port 8000
+2025-09-04 08:12:37 [INFO]: Checking database connection...
+2025-09-04 08:12:37 [INFO]: Database connection successful.
+2025-09-04 08:12:37 [INFO]: Running scheduler at app startup...
+2025-09-04 08:12:37 [INFO]: Server is running in development mode on port 8000
+2025-09-04 08:14:25 [INFO]: Checking database connection...
+2025-09-04 08:14:25 [INFO]: Database connection successful.
+2025-09-04 08:14:25 [INFO]: Running scheduler at app startup...
+2025-09-04 08:14:25 [INFO]: Server is running in development mode on port 8000
+2025-09-04 08:16:43 [INFO]: Checking database connection...
+2025-09-04 08:16:43 [INFO]: Database connection successful.
+2025-09-04 08:16:43 [INFO]: Running scheduler at app startup...
+2025-09-04 08:16:43 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:01:37 [INFO]: Checking database connection...
+2025-09-04 10:01:37 [INFO]: Database connection successful.
+2025-09-04 10:01:37 [INFO]: Running scheduler at app startup...
+2025-09-04 10:01:37 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:01:39 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:01:39 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:01:39 [INFO]: Prisma disconnected. Exiting process.
+2025-09-04 10:01:54 [INFO]: Checking database connection...
+2025-09-04 10:01:54 [INFO]: Database connection successful.
+2025-09-04 10:01:54 [INFO]: Running scheduler at app startup...
+2025-09-04 10:01:54 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:01:58 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:01:58 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:01:58 [INFO]: Prisma disconnected. Exiting process.
+2025-09-04 10:02:04 [INFO]: Checking database connection...
+2025-09-04 10:02:04 [INFO]: Database connection successful.
+2025-09-04 10:02:04 [INFO]: Running scheduler at app startup...
+2025-09-04 10:02:04 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:03:12 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:03:12 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:03:12 [INFO]: Prisma disconnected. Exiting process.
+2025-09-04 10:03:18 [INFO]: Checking database connection...
+2025-09-04 10:03:18 [INFO]: Database connection successful.
+2025-09-04 10:03:18 [INFO]: Running scheduler at app startup...
+2025-09-04 10:03:18 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:06:46 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:06:46 [INFO]: Prisma disconnected. Exiting process.
+2025-09-04 10:09:34 [INFO]: Checking database connection...
+2025-09-04 10:09:34 [INFO]: Database connection successful.
+2025-09-04 10:09:34 [INFO]: Running scheduler at app startup...
+2025-09-04 10:09:34 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:15:43 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:15:43 [INFO]: Received SIGINT. Cleaning up...
+2025-09-04 10:15:43 [INFO]: Prisma disconnected. Exiting process.
+2025-09-04 10:16:22 [INFO]: Checking database connection...
+2025-09-04 10:16:22 [INFO]: Database connection successful.
+2025-09-04 10:16:22 [INFO]: Running scheduler at app startup...
+2025-09-04 10:16:22 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:53:25 [INFO]: Checking database connection...
+2025-09-04 10:53:25 [INFO]: Database connection successful.
+2025-09-04 10:53:25 [INFO]: Running scheduler at app startup...
+2025-09-04 10:53:25 [INFO]: Server is running in development mode on port 8000
+2025-09-04 10:56:35 [INFO]: Checking database connection...
+2025-09-04 10:56:35 [INFO]: Database connection successful.
+2025-09-04 10:56:35 [INFO]: Running scheduler at app startup...
+2025-09-04 10:56:35 [INFO]: Server is running in development mode on port 8000

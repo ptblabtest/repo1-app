@@ -1,309 +1,221 @@
-import { serviceFactory } from "@shared/shared/utils/serviceFactory";
 import prisma from "@shared/lib/prisma";
-import fs from "fs";
-import path from "path";
-import { permissionService } from "@shared/modules/_permissions/Permission/PermissionService";
+import { prepareForView } from "@shared/utils/query/prepareForView";
+import { profile } from "console";
+import { z } from "zod";
 
-// ReportCategory Service
-const reportCategoryService = serviceFactory("reportCategory", {
-  operations: [
-    "create",
-    "update",
-    "findMany",
-    "findUnique",
-    "delete",
-    "upsert",
-  ],
-  queryOptions: {
+const reportSchema = z.object({
+  categoryId: z.string(),
+  periodYear: z.string(),
+  periodMonth: z.string().optional(),
+  organizationId: z.string().optional(),
+  createdById: z.string().optional(),
+});
+
+const REPORT_SELECT = {
+  id: true,
+  categoryId: true,
+  category: {
     select: {
       id: true,
       name: true,
-      code: true,
-      parentId: true,
-      parent: {
-        select: {
-          id: true,
-          name: true,
-          code: true,
-        },
-      },
-      createdAt: true,
-      updatedAt: true,
-      createdById: true,
-      updatedById: true,
+      interval: true,
     },
   },
-  beforeCreate: async (data: any, user: any, context: any) => {
-    // Validate max depth of 3 levels
-    if (data.parentId) {
-      const depth = await getCategoryDepth(data.parentId);
-      if (depth >= 2) {
-        throw new Error("Category hierarchy cannot exceed 3 levels");
-      }
-    }
-    // Store user in context for afterCreate
-    context.user = user;
-    return data;
-  },
-  afterCreate: async (record: any, context: any) => {
-    // Create permissions using permissionService
-    const actions = ["create", "read", "update", "delete"];
-    const resource = `report.${record.code.toLowerCase()}`;
-
-    for (const action of actions) {
-      try {
-        await permissionService.create(
-          {
-            resource: resource,
-            action: action,
-            description: `${action.charAt(0).toUpperCase() + action.slice(1)} ${record.name}`,
-          },
-          context.user
-        );
-      } catch (err: any) {
-        // Skip if permission already exists
-        if (err.message?.includes("Unique constraint")) {
-          continue;
-        }
-        console.error(
-          `Failed to create permission ${resource}.${action}:`,
-          err.message
-        );
-      }
-    }
-  },
-  beforeUpdate: async (data: any, id: string, user: any) => {
-    // Validate max depth when changing parent
-    if (data.parentId) {
-      const depth = await getCategoryDepth(data.parentId);
-      if (depth >= 2) {
-        throw new Error("Category hierarchy cannot exceed 3 levels");
-      }
-
-      if (data.parentId === id) {
-        throw new Error("Category cannot be its own parent");
-      }
-    }
-    return data;
-  },
-  afterUpdate: async (record: any) => {
-    // Update permission descriptions if category name changed
-    if (record.name) {
-      const resource = `report.${record.code.toLowerCase()}`;
-      const permissions = await prisma.permission.findMany({
-        where: { resource },
-      });
-
-      for (const perm of permissions) {
-        await permissionService.update(
-          {
-            description: `${perm.action.charAt(0).toUpperCase() + perm.action.slice(1)} ${record.name}`,
-          },
-          perm.id,
-          { id: record.updatedById }
-        ); // Pass user context
-      }
-    }
-  },
-  afterDelete: async (record: any) => {
-    // Delete related permissions using direct prisma (since permissionService might not have deleteMany)
-    const resource = `report.${record.code.toLowerCase()}`;
-    const permissions = await prisma.permission.findMany({
-      where: { resource },
-    });
-
-    for (const perm of permissions) {
-      try {
-        await permissionService.delete(perm.id);
-      } catch (err) {
-        console.error(`Failed to delete permission ${perm.name}:`, err);
-      }
-    }
-  },
-});
-
-// Override the upsert to handle parentCode reference
-reportCategoryService.upsert = async (body: any, user: any) => {
-  const items = body.data;
-  const results = [];
-  const codeToIdMap: any = {}; // Map code to real id
-
-  for (const item of items) {
-    const { parentCode, ...itemData } = item;
-
-    // Replace parentCode with real parentId
-    if (parentCode && codeToIdMap[parentCode]) {
-      itemData.parentId = codeToIdMap[parentCode];
-    }
-
-    let result;
-    if (itemData.id) {
-      result = await reportCategoryService.update(itemData, itemData.id, user);
-    } else {
-      result = await reportCategoryService.create(itemData, user);
-    }
-
-    // Store mapping of code to id
-    codeToIdMap[result.code] = result.id;
-
-    results.push(result);
-  }
-
-  return results;
-};
-
-// Report Service
-const reportService = serviceFactory("report", {
-  operations: ["create", "update", "findMany", "findUnique", "delete"],
-  queryOptions: {
+  periodYear: true,
+  periodMonth: true,
+  version: true,
+  organizationId: true,
+  organization: { select: { id: true, name: true } },
+  files: {
     select: {
       id: true,
-      categoryId: true,
-      category: {
-        select: {
-          id: true,
-          name: true,
-          code: true,
-        },
-      },
-      periodYear: true,
-      periodMonth: true,
-      periodDate: true,
-      version: true,
-      organizationId: true,
-      organization: {
-        select: {
-          id: true,
-          name: true,
-          code: true,
-        },
-      },
-      files: {
-        select: {
-          id: true,
-          filename: true,
-          path: true,
-          mimeType: true,
-          size: true,
-          createdAt: true,
-        },
-      },
-      notes: {
-        select: {
-          id: true,
-          description: true,
-          createdAt: true,
-          createdById: true,
-        },
-        orderBy: {
-          createdAt: "desc" as any,
-        },
-      },
-      stages: {
-        select: {
-          id: true,
-          comment: true,
-          stageTypeId: true,
-          type: {
-            select: {
-              id: true,
-              value: true,
-              label: true,
-              order: true,
-            },
-          },
-          createdAt: true,
-          createdById: true,
-        },
-        orderBy: {
-          createdAt: "desc" as any,
-        },
-      },
-      createdAt: true,
-      updatedAt: true,
-      createdById: true,
-      updatedById: true,
+      path: true,
+      mimeType: true,
+      size: true,
     },
   },
-  beforeCreate: async (data: any, user: any, context: any) => {
-    // Check for duplicate report in same period
-    const existingReport = await prisma.report.findFirst({
-      where: {
-        categoryId: data.categoryId,
-        periodYear: data.periodYear,
-        periodMonth: data.periodMonth,
-        periodDate: data.periodDate || null,
-        organizationId: data.organizationId,
+  createdAt: true,
+  updatedAt: true,
+  createdBy: {
+    select: {
+      profile: {
+        select: {
+          id: true,
+          name: true,
+        },
       },
-    });
+    },
+  },
+  updatedBy: {
+    select: {
+      profile: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+  },
+};
 
-    if (existingReport) {
-      throw new Error("Report already exists for this period");
+const transformReport = (report: any) => {
+  const prepared = prepareForView(report);
+  return {
+    ...prepared,
+    fileId: report.files[0]?.id || null,
+    files: undefined,
+    categoryName: report.category?.name,
+    createdByName: report.createdBy?.profile?.name,
+    organizationName: report.organization?.name,
+  };
+};
+
+const checkPermissions = async (
+  user: any,
+  categoryId: string,
+  action: string
+) => {
+  // Level 1-2: Always allowed
+  if (user.role.level <= 2) return true;
+
+  // Level 4: No create allowed
+  if (user.role.level === 4 && action === "create") return false;
+
+  // Check category permission
+  const hasPermission = await prisma.userPermission.findFirst({
+    where: {
+      userId: user.id,
+      permission: {
+        resource: `report:category:${categoryId}`,
+        action,
+      },
+    },
+  });
+
+  return !!hasPermission;
+};
+
+export const reportService = {
+  create: async (data: any, user: any) => {
+    const validatedData = await reportSchema.parseAsync(data);
+
+    // Check permissions
+    if (!(await checkPermissions(user, validatedData.categoryId, "create"))) {
+      throw new Error("Access denied");
     }
 
-    return data;
-  },
-  beforeUpdate: async (data: any, id: string, user: any) => {
-    // Increment version on update
-    const currentReport = await prisma.report.findUnique({
-      where: { id },
+    // Level 3: Check organization
+    if (
+      user.role.level === 3 &&
+      validatedData.organizationId !== user.organizationId
+    ) {
+      throw new Error("Access denied - wrong organization");
+    }
+
+    // Get category to check interval
+    const category = await prisma.reportCategory.findUnique({
+      where: { id: validatedData.categoryId },
+      select: { interval: true },
+    });
+
+    if (!category) throw new Error("Category not found");
+
+    // Validate period matches category interval
+    if (category.interval === "monthly" && !validatedData.periodMonth) {
+      throw new Error("Month is required for monthly reports");
+    }
+
+    if (category.interval === "yearly" && validatedData.periodMonth) {
+      throw new Error("Month should not be provided for yearly reports");
+    }
+
+    // Check for existing report to determine version
+    const existingReport = await prisma.report.findFirst({
+      where: {
+        categoryId: validatedData.categoryId,
+        periodYear: validatedData.periodYear,
+        periodMonth: validatedData.periodMonth || null,
+        organizationId: validatedData.organizationId || user.organizationId,
+      },
+      orderBy: { version: "desc" },
       select: { version: true },
     });
 
-    if (currentReport) {
-      data.version = currentReport.version + 1;
-    }
+    const processedData = {
+      ...validatedData,
+      periodMonth:
+        category.interval === "yearly" ? null : validatedData.periodMonth,
+      createdById: user.id,
+      organizationId: validatedData.organizationId || user.organizationId,
+      version: existingReport ? existingReport.version + 1 : 1,
+    };
 
-    return data;
-  },
-  afterDelete: async (deletedReport: any) => {
-    // Find all files associated with this report
-    const files = await prisma.file.findMany({
-      where: { reportId: deletedReport.id },
+    const report = await prisma.report.create({
+      data: processedData,
     });
 
-    // Delete physical files from filesystem
-    for (const file of files) {
-      const filePath = path.join(process.cwd(), file.path);
-      if (fs.existsSync(filePath)) {
-        try {
-          fs.unlinkSync(filePath);
-          console.log(`Deleted file: ${filePath}`);
-        } catch (error) {
-          console.error(`Failed to delete file: ${filePath}`, error);
-        }
-      }
-    }
-
-    // Delete file records from database
-    if (files.length > 0) {
-      await prisma.file.deleteMany({
-        where: { reportId: deletedReport.id },
-      });
-      console.log(
-        `Deleted ${files.length} file records for report ${deletedReport.id}`
-      );
-    }
+    return report;
   },
-});
 
-// Helper function for category depth validation
-async function getCategoryDepth(
-  categoryId: string,
-  depth = 0
-): Promise<number> {
-  if (depth >= 3) return depth;
+  findMany: async (queryParams: any, user: any) => {
+    let where = { ...queryParams?.where };
 
-  const category = await prisma.reportCategory.findUnique({
-    where: { id: categoryId },
-    select: { parentId: true },
-  });
+    // Apply permission filters based on role
+    if (user.role.level > 2) {
+      // Level 3: Organization filter
+      if (user.role.level === 3) {
+        where.organizationId = user.organizationId;
+      }
 
-  if (!category?.parentId) return depth;
-  return getCategoryDepth(category.parentId, depth + 1);
-}
+      // Level 3-4: Category permission filter
+      const permissions = await prisma.userPermission.findMany({
+        where: {
+          userId: user.id,
+          permission: {
+            resource: { startsWith: "report:category:" },
+            action: "view",
+          },
+        },
+        select: { permission: true },
+      });
 
-export const ReportService = {
-  report: reportService,
-  category: reportCategoryService,
+      const categoryIds = permissions.map((p: any) =>
+        p.permission.resource.replace("report:category:", "")
+      );
+
+      where.categoryId = { in: categoryIds };
+    }
+
+    const reports = await prisma.report.findMany({
+      ...queryParams,
+      where,
+      select: REPORT_SELECT,
+    });
+
+    return reports.map(transformReport);
+  },
+
+  findUnique: async (id: string, user: any) => {
+    const report = await prisma.report.findUnique({
+      where: { id },
+      select: REPORT_SELECT,
+    });
+
+    if (!report) return null;
+
+    // Check view permission
+    if (!(await checkPermissions(user, report.categoryId, "view"))) {
+      throw new Error("Access denied");
+    }
+
+    // Level 3: Check organization
+    if (
+      user.role.level === 3 &&
+      report.organizationId !== user.organizationId
+    ) {
+      throw new Error("Access denied");
+    }
+
+    return transformReport(report);
+  },
 };
