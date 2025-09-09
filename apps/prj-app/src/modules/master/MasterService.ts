@@ -183,7 +183,7 @@ const vendorService = {
 
 const productService = {
   ...serviceFactory("product", {
-    operations: ["create", "update", "findMany", "findUnique"],
+    operations: ["create", "update", "findMany"],
     schema: z.object({
       regNumber: z.string().optional().nullable(),
       name: z.string().min(1, "Name is required"),
