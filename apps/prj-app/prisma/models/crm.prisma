@@ -1,0 +1,141 @@
+model Pipeline {
+    id        String  @id @default(uuid())
+    regNumber String?
+    category  String?
+
+    // Non-unique relations (multiple pipelines can reference same record)
+    leadId String?
+    lead   Lead?   @relation(fields: [leadId], references: [id])
+
+    opportunityId String?
+    opportunity   Opportunity? @relation(fields: [opportunityId], references: [id])
+
+    quoteId String?
+    quote   Quote?  @relation(fields: [quoteId], references: [id])
+
+    contractId String?
+    contract   Contract? @relation(fields: [contractId], references: [id])
+
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
+
+    assignee    User?   @relation("Assignee", fields: [assigneeId], references: [id])
+    assigneeId  String?
+    members     User[]  @relation("PipelineMembers")
+    createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+    createdById String?
+    updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+    updatedById String?
+
+    // Pipeline owns these
+    stages Stage[]
+    notes  Note[]
+    events Event[]
+}
+
+model Lead {
+    id                String    @id @default(uuid())
+    regNumber         String?
+    name              String?
+    role              String?
+    email             String?
+    phone             String?
+    leadSource        String?
+    leadDate          DateTime?
+    leadAddress       String?
+    description       String?
+    prospectLocation  String?
+    approvedDate      DateTime?
+    expectedCloseDate DateTime?
+
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
+
+    products      Product[]
+    client        Client?       @relation(fields: [clientId], references: [id], onDelete: SetNull)
+    clientId      String?
+    opportunities Opportunity[]
+
+    pipeline Pipeline[]
+}
+
+model Opportunity {
+    id                String    @id @default(uuid())
+    regNumber         String?
+    title             String
+    currency          String?
+    baseAmount        Decimal?
+    exchangeRate      Decimal?
+    amount            Decimal?
+    expectedCloseDate DateTime?
+    description       String?
+    approvedDate      DateTime?
+
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
+
+    products Product[]
+    client   Client?   @relation(fields: [clientId], references: [id], onDelete: SetNull)
+    clientId String?
+    lead     Lead?     @relation(fields: [leadId], references: [id], onDelete: SetNull)
+    leadId   String?
+
+    quotes Quote[]
+
+    pipeline Pipeline[]
+}
+
+model Quote {
+    id                String    @id @default(uuid())
+    regNumber         String?
+    title             String
+    currency          String?
+    baseAmount        Decimal?
+    exchangeRate      Decimal?
+    amount            Decimal?
+    releasedDate      DateTime?
+    approvedDate      DateTime?
+    expiredDate       DateTime?
+    expectedCloseDate DateTime?
+    description       String?
+
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
+
+    products      Product[]
+    client        Client?      @relation(fields: [clientId], references: [id], onDelete: SetNull)
+    clientId      String?
+    opportunity   Opportunity? @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+    opportunityId String?
+
+    contracts Contract[]
+    pipeline  Pipeline[]
+}
+
+model Contract {
+    id            String    @id @default(uuid())
+    regNumber     String?
+    title         String
+    signedDate    DateTime?
+    startDate     DateTime?
+    endDate       DateTime?
+    description   String?
+    penalty       Boolean?  @default(false)
+    currency      String?
+    baseAmount    Decimal?
+    exchangeRate  Decimal?
+    amount        Decimal?
+    clientPicName String?
+
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
+
+    products Product[]
+    client   Client?   @relation(fields: [clientId], references: [id], onDelete: SetNull)
+    clientId String?
+    quote    Quote?    @relation(fields: [quoteId], references: [id], onDelete: SetNull)
+    quoteId  String?
+
+    project  Project?
+    pipeline Pipeline[]
+}

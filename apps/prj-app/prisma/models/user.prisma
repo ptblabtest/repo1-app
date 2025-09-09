@@ -1,0 +1,112 @@
+model User {
+  id       String @id @default(uuid())
+  username String @unique
+  password String
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  status String @default("ACTIVE")
+
+  role           Role?         @relation(fields: [roleId], references: [id])
+  roleId         String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+
+  profile Profile?
+
+  BudgetAssignee Budget[] @relation("Assignee")
+  CreatorBudget  Budget[] @relation("CreatedBy")
+  UpdaterBudget  Budget[] @relation("UpdatedBy")
+
+  CreatorClient Client[] @relation("CreatedBy")
+  UpdaterClient Client[] @relation("UpdatedBy")
+
+  CreatorEvent Event[] @relation("CreatedBy")
+  UpdaterEvent Event[] @relation("UpdatedBy")
+
+  CreatorExpense Expense[] @relation("CreatedBy")
+  UpdaterExpense Expense[] @relation("UpdatedBy")
+
+  FundAssignee Fund[] @relation("Assignee")
+  CreatorFund  Fund[] @relation("CreatedBy")
+  UpdaterFund  Fund[] @relation("UpdatedBy")
+
+  MilestoneAssignee Milestone[] @relation("Assignee")
+  CreatorMilestone  Milestone[] @relation("CreatedBy")
+  UpdaterMilestone  Milestone[] @relation("UpdatedBy")
+
+  CreatorNote Note[] @relation("CreatedBy")
+  UpdaterNote Note[] @relation("UpdatedBy")
+
+  CreatorProduct Product[] @relation("CreatedBy")
+  UpdaterProduct Product[] @relation("UpdatedBy")
+
+  ProjectAssignee Project[] @relation("Assignee")
+  CreatorProject  Project[] @relation("CreatedBy")
+  UpdaterProject  Project[] @relation("UpdatedBy")
+  ProjectMember   Project[] @relation("ProjectMembers")
+
+  CreatorStage Stage[] @relation("CreatedBy")
+  UpdaterStage Stage[] @relation("UpdatedBy")
+
+  TaskAssignee Task[] @relation("Assignee")
+  CreatorTask  Task[] @relation("CreatedBy")
+  UpdaterTask  Task[] @relation("UpdatedBy")
+  TaskMember   Task[] @relation("TaskMembers")
+
+  PipelineAssignee Pipeline[] @relation("Assignee")
+  CreatorPipeline  Pipeline[] @relation("CreatedBy")
+  UpdaterPipeline  Pipeline[] @relation("UpdatedBy")
+  PipelineMember   Pipeline[] @relation("PipelineMembers")
+
+  CreatorVendor Vendor[] @relation("CreatedBy")
+  UpdaterVendor Vendor[] @relation("UpdatedBy")
+
+  CreatorProfile Profile[] @relation("CreatedBy")
+  UpdaterProfile Profile[] @relation("UpdatedBy")
+
+  CreatorCostType CostType[] @relation("CreatedBy")
+  UpdaterCostType CostType[] @relation("UpdatedBy")
+}
+
+model Role {
+  id    String @id @default(uuid())
+  name  String @unique
+  level Int
+
+  users User[]
+}
+
+model Organization {
+  id   String  @id @default(uuid())
+  name String  @unique
+  code String? @unique
+
+  users User[]
+}
+
+model Profile {
+  id       String    @id @default(uuid())
+  name     String?
+  joinDate DateTime?
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  createdBy   User?   @relation("CreatedBy", fields: [createdById], references: [id])
+  createdById String?
+  updatedBy   User?   @relation("UpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+model Session {
+  sid    String   @id(map: "session_pkey") @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+}
